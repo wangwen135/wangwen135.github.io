@@ -1,0 +1,759 @@
+/*
+ * 整体样式
+ */
+html, body {
+	font-family: "Microsoft YaHei", "Arial", "Verdana", "Tahoma";
+	height: 100%;
+	background-color: #555;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: "Microsoft YaHei", "Arial", "Verdana", "Tahoma";
+	font-weight: 500;
+}
+
+/******************* logo  系统名称 样式 ********************/
+.logo-big-div {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.logo-big, .logo-big:focus, .logo-big:hover, .logo-big:active {
+	font-size: 34px;
+	font-family: "楷体", "KaiTi", "SimHei", "SimSun";
+	font-weight: bold;
+	color: #dff0d8;
+	text-shadow: 1px 1px 0.5px black;
+	text-decoration: none;
+}
+
+.logo-big:hover {
+	color: #ff7c2c;
+	text-shadow: 1px 1px 1px black;
+}
+
+.system-name-big {
+	font-size: 24px;
+	font-family: "楷体", "KaiTi", "SimHei", "SimSun";
+	font-weight: bold;
+	color: #eee;
+	text-shadow: 1px 1px 0.5px black;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+/**** home 页面的 logo ****/
+.logo-small-div {
+	height: 45px;
+	padding-top: 10px;
+	margin-right: 10px;
+}
+
+@media ( min-width : 768px) {
+	.logo-small-div {
+		margin-left: -10px;
+	}
+}
+
+.logo-small, .logo-small:focus, .logo-small:hover, .logo-small:active {
+	font-size: 22px;
+	font-family: "楷体", "KaiTi", "SimHei", "SimSun";
+	font-weight: bold;
+	color: #dff0d8;
+	text-shadow: 1px 1px 0.5px black;
+	text-decoration: none;
+}
+
+.logo-small:hover {
+	color: #ff7c2c;
+	text-shadow: 1px 1px 1px black;
+}
+
+.system-name-small {
+	font-size: 16px;
+	font-family: "楷体", "KaiTi", "SimHei", "SimSun";
+	font-weight: bold;
+	color: #9D9D9D;
+	text-shadow: 1px 1px 0.5px black;
+}
+
+/**************** 导航条样式 ****************/
+/*覆盖导航条*/
+.navbar {
+	min-height: 45px;
+	margin-bottom: 6px;
+}
+/*控制导航条的高度*/
+#navbar>ul>li>a {
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+/*弹出菜单方块*/
+.navbar-toggle-margin {
+	margin-top: 6px;
+	margin-bottom: 5px;
+}
+
+/**************** 左边菜单样式 ****************/
+
+/*左侧菜单*/
+.left-menu {
+	border: 1px solid black;
+	background-color: white;
+}
+
+/*左侧菜单头*/
+.left-menu>.left-menu-title {
+	padding-top: 7px;
+	padding-left: 6px;
+	padding-bottom: 6px;
+	background-color: #222;
+	/*
+	border-radius: 0px; 
+	border-color: #222
+	*/
+}
+
+/*左侧菜单体收缩部分*/
+.left-menu-body-collapse {
+	padding: 0px;
+}
+
+/*左侧菜单体*/
+.left-menu-body {
+	padding: 1px 0px;
+	padding: 2px 0px;
+}
+
+/*菜单*/
+.menu {
+	
+}
+
+/****** 左侧菜单胶囊 ******/
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>li>a {
+	margin-left: 2px;
+	margin-right: 2px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 10px;
+	padding-right: 2px;
+	color: #000;
+	background-color: #eee;
+	border-radius: 10px;
+	/*过渡效果*/
+	-webkit-transition: background 1s, padding 0.5s, color 0.5s,
+		border-radius 1s; /* For Safari 3.1 to 6.0 */
+	transition: background 1s, padding 0.5s, color 0.5s, border-radius 1s;
+}
+/***** 菜单的中的分割条 ******/
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.separator {
+	height: 1px;
+	margin: 9px 0;
+	overflow: hidden;
+	background-color: #e5e5e5;
+}
+
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.text-separator
+	{
+	display: block;
+	padding: 3px 20px;
+	font-size: 12px;
+	line-height: 1.42857143;
+	color: #777;
+	white-space: nowrap;
+}
+
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>li>a:hover {
+	padding-left: 15px;
+	color: black;
+	background-color: #777;
+}
+
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.active>a,
+	.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.active>a:hover
+	{
+	margin-left: 10px;
+	margin-right: 0px;
+	padding-left: 12px;
+	background-color: #333;
+	color: #eee;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.active>a:hover
+	{
+	color: #dff0d8;
+}
+/** 当前选中 **/
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.currentSelect>a:hover
+	{
+	color: #458746;
+}
+/** 当前选中小图标颜色 **/
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.currentSelect>a>span
+	{
+	color: #B94846;
+}
+
+/*小图标*/
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>li>a>span {
+	color: #dff0d8;
+	float: right;
+	display: none;
+}
+
+/*小图标显示*/
+.left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.active>a>span
+	{
+	display: inline-block;
+	-webkit-animation: arrowsMove 1s 1; /* Chrome, Safari, Opera */
+	animation: arrowsMove 1s 1;
+}
+
+/*-* 这一段不能格式化 *-*/
+/* Chrome, Safari, Opera */
+@-webkit-keyframes arrowsMove {
+	from {right: 30px;}
+	to {right: 0px;}
+}
+
+/* Standard syntax */
+@keyframes arrowsMove {
+	from {right: 30px;}
+	to {right: 0px;}
+}
+/*-* 这一段不能格式化 *-*/
+
+/**************** 列之间的填充 ****************/
+.col-padding {
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+/******* ########## ********右侧面板******** ########## ********/
+.right-tab {
+	border: 1px solid black;
+	background-color: white;
+}
+
+.right-tab-title {
+	background-color: #222;
+	min-height: 33px;
+}
+/**** 覆盖 bootstrap ****/
+.right-tab>.right-tab-title>.nav-tabs {
+	border-bottom: 0px;
+}
+
+.right-tab>.right-tab-title>.nav-tabs>li>a {
+	display: inline-block;
+	padding: 6px;
+	border-top-left-radius: 10px;
+}
+
+/**** 右侧标签的关闭按钮 ****/
+.tabClose { //
+	float: right;
+	display: inline-block;
+	font-size: 21px;
+	font-weight: bold;
+	line-height: 0;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	filter: alpha(opacity = 20);
+	opacity: 0.2;
+}
+
+.tabClose:hover, .tabClose:focus {
+	color: #B94846;
+	text-decoration: none;
+	cursor: pointer;
+	filter: alpha(opacity = 90);
+	opacity: 0.9;
+}
+
+/*右侧标签页*/
+.right-tab-body {
+	background-color: white;
+	min-height: 33px;
+	padding: 5px;
+	position: relative;
+}
+
+/* ################ 标签页中的弹出对话框窗口 ################ */
+.message-modal {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 135;
+	display: none;
+	overflow: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	outline: 0;	
+	background-color: rgba(205, 205, 205, 0.5);
+}
+/*在body中弹出时*/
+.message-modal-body{
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1035;
+	display: none;
+	overflow: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	outline: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+/*对话框*/
+.message-modal-dialog {
+	position: relative;
+	width: auto;
+	margin: 40px;
+}
+/*对话框宽度*/
+@media ( min-width : 768px) {
+	.message-modal-dialog {
+		width: 400px;
+		margin: 80px auto;
+	}
+}
+
+/** 对话框 三个位置的填充*/
+.message-modal-dialog>.modal-content>.modal-header,
+	.message-modal-dialog>.modal-content>.modal-footer {
+	padding: 10px;
+}
+
+/** 对话框 标题*/
+.message-modal-dialog>.modal-content>.modal-header>span {
+	font-size: 16px;
+}
+/* ################ 标签页中的弹出模态窗口 ################ */
+.inside-modal {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	display: none;
+	overflow: hidden;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	outline: 0;
+	background-color: rgba(204, 204, 204, 0.5);
+}
+/*模态框*/
+.inside-modal-dialog {
+	position: relative;
+	width: auto;
+	margin: 10px;
+}
+/*模态框宽度*/
+@media ( min-width : 768px) {
+	.inside-modal-dialog {
+		width: 80%;
+		margin: 30px auto;
+	}
+}
+/*模态框中的三个部分*/
+.inside-modal-dialog>.modal-content>.modal-header, .inside-modal-dialog>.modal-content>.modal-body,
+	.inside-modal-dialog>.modal-content>.modal-footer {
+	padding: 10px;
+}
+
+.inside-modal-dialog>.modal-content>.modal-body {
+	padding-bottom: 0px;
+}
+
+.inside-modal-dialog>.modal-content>.modal-header>.modal-title {
+	/* font-size: 16px;
+	font-weight: 300; */
+	font-weight: bold;
+}
+
+.modal-header>.align-control {
+	margin-right: 10px;
+	float: right;
+}
+
+@media ( min-width : 768px) {
+	.modal-header>.align-control {
+		margin-right: 30px;
+	}
+}
+
+/*指定表单的对齐方式*/
+.inside-modal-dialog>.modal-content>.modal-body {
+	text-align: justify;
+}
+/*模态框中的表单*/
+.inside-modal-dialog>.modal-content>.modal-body>.form-inline>.form-group
+	{
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.inside-modal-dialog>.modal-content>.modal-body>.form-horizontal>.form-group
+	{
+	margin-bottom: 5px;
+}
+
+/*设置日期控件最小宽度*/
+.form-inline>.form-group input[type="datetime-local"] {
+	min-width: 212px;
+}
+
+.form-group>.form-group-div {
+	display: inline-block;
+}
+
+.form-group>.form-group-div-auto>* {
+	width: 100%;
+}
+/*用于表单中的隔断*/
+.form-separator {
+	width: 100%;
+	display: inline-block;
+	height: 1px;
+	margin: 0px;
+	padding: 0px;
+}
+
+/*查询面板*/
+.search-panel {
+	padding: 3px;
+	margin-bottom: 5px;
+}
+
+/*查询面板下的form-group*/
+.search-panel>.form-inline>.form-group {
+	margin: 5px;
+}
+
+/*操作面板*/
+.operate-panel {
+	padding: 3px;
+	margin-bottom: 5px;
+}
+/*操作面板下的按钮*/
+.operate-panel>button {
+	margin: 5px;
+}
+
+/*表格面板*/
+.table-panel {
+	margin: 0px;
+}
+/*表格面板中的表头*/
+.table-panel>.panel-heading {
+	padding: 3px;
+}
+
+/*表格面板中的表头下面的from*/
+.table-panel>.panel-heading>.form-inline {
+	text-align: right;
+}
+
+/*表格面板中的表头下面的from-group*/
+.table-panel>.panel-heading>.form-inline>.form-group {
+	margin-left: 5px;
+	margin-right: 5px
+}
+
+/*数据过滤组*/
+@media ( min-width : 768px) {
+	.page-size-group {
+		float: left;
+	}
+}
+/*表格面板中的表体 */
+.table-panel>.panel-body {
+	overflow: auto;
+	padding: 0px;
+	margin: 0px;
+	min-height: 360px;
+}
+/*表体下的table*/
+.table-panel>.panel-body>.table {
+	word-break: keep-all;
+	margin: 0px;
+}
+
+.table-panel>.panel-body>.table>thead {
+	background-color: #337AB7;
+	color: #f5f5f5;
+}
+
+.table-panel>.panel-body>.table>thead>tr>th {
+	text-align: center;
+	/*不自动换行*/
+	white-space: nowrap;
+}
+
+/*不自动换行*/
+.table-panel>.panel-body>.table>tbody>tr>td {
+	white-space: nowrap;
+}
+/*表格中被选中行*/
+.table-panel>.panel-body>.table>tbody>.selected {
+	background-color: #B94846;
+}
+
+/*表格中的行有匹配的记录*/
+.table-panel>.panel-body>.table>tbody>.data-filter-row-match {
+	/* border-bottom: 2px solid #B94846 */
+	border-bottom-color: #FC8C3C;
+	border-bottom-style: dashed;
+	border-bottom-width: 2px;
+}
+
+/*表格中的TD有匹配的记录*/
+.table-panel>.panel-body>.table>tbody>tr>.data-filter-td-match {
+	background-color: yellow;
+}
+
+.table-panel>.panel-footer {
+	text-align: center;
+	padding: 3px;
+}
+/*显示记录总条数*/
+.table-panel>.panel-footer>.total-size {
+	display: block;
+	text-align: left;
+}
+/*分页标记*/
+.table-panel>.panel-footer>nav>.pagination {
+	margin: 0px;
+}
+
+/*************** 右侧面板 end ****************/
+
+/************************* 其他样式 *************************/
+
+/*************** 系统版本 ***************/
+.sysversion-badge {
+	display: inline-block;
+	min-width: 10px;
+	padding: 1px 6px;
+	font-size: 10px;
+	line-height: 1;
+	color: #fff;
+	text-align: center;
+	white-space: nowrap;
+	background-color: #458746;
+	border-radius: 10px;
+}
+
+/*************** 定义黑色面板 ****************/
+.panel-black {
+	border-color: #080808;
+}
+
+.panel-black>.panel-heading {
+	color: #DDD;
+	background-color: #222;
+	border-color: #080808;
+}
+
+.panel-black>.panel-heading+.panel-collapse>.panel-body {
+	border-top-color: #080808;
+}
+
+.panel-black>.panel-heading .badge {
+	color: #222;
+	background-color: #DDD;
+}
+
+.panel-success>.panel-footer+.panel-collapse>.panel-body {
+	border-bottom-color: #080808;
+}
+
+/***************定义颜色****************/
+/**** logo 颜色 ****/
+.logo-color {
+	color: #dff0d8;
+}
+
+.bg-logo-color {
+	background-color: #dff0d8;
+}
+
+/**** body 颜色****/
+.body-color {
+	color: #555;
+}
+
+.bg-body-color {
+	background-color: #555;
+}
+
+.white {
+	color: white;
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.black {
+	color: black;
+}
+
+.bg-black {
+	background-color: black;
+}
+
+.green {
+	color: #458746;
+}
+
+.bg-green {
+	background-color: #458746;
+}
+
+.red {
+	color: #B94846;
+}
+
+.bg-red {
+	background-color: #B94846;
+}
+
+.blue {
+	color: #3986AC;
+}
+
+.bg-blue {
+	background-color: #3986AC;
+}
+
+.yellow {
+	color: #F99406;
+}
+
+.bg-yellow {
+	background-color: #F99406;
+}
+
+/* 白色链接 */
+.a-white, .a-white:focus, .a-white:hover, .a-white:active {
+	color: #fff;
+	text-decoration: none;
+}
+
+/*字体相关*/
+.font-size-14 {
+	font-size: 14px;
+}
+
+.text-shadow-05 {
+	text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+.text-shadow-10 {
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 1);
+}
+
+/****************** 版权申明 ************************/
+.copyright {
+	position: fixed;
+	bottom: 0px;
+	text-align: center;
+	width: 100%;
+	color: #ccc;
+}
+
+@media ( max-height : 500px) {
+	.copyright{
+	position: static;
+	}
+}
+
+/****************** 错误页面 ************************/
+.error-top-div {
+	width: 100%;
+	min-height: 250px;
+	text-align: center;
+}
+
+.error-code-div {
+	/* min-width: 50%;
+	text-align: right; */
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 30px;
+}
+
+.error-code {
+	font-family: 'Creepster', cursive, arial, helvetica, sans-serif;
+	font-size: 200px;
+	color: rgba(255, 255, 255, 0.98);
+	text-shadow: 5px 5px hsl(0, 0%, 25%);
+}
+
+.error-message-div {
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 30px;
+}
+
+.error-message {
+	font-family: 'Audiowide', cursive, arial, helvetica, sans-serif;
+	font-size: 50px;
+	color: white;
+	text-shadow: 2px 2px 5px hsl(0, 0%, 61%);
+}
+
+.error-content {
+	text-align: center;
+	line-height: 30px;
+	color: white;
+	font-size: 28px;
+	margin-bottom: 50px;
+}
+
+.error-content a {
+	text-decoration: none;
+	color: #9ECDFF;
+	text-shadow: 0px 0px 2px white;
+}
+
+.error-content a:hover {
+	color: white;
+}
+/**适应小分辨率*/
+@media ( max-width : 768px) {
+	.error-top-div {
+		min-height: 180px;
+	}
+	.error-code-div {
+		padding: 15px;
+	}
+	.error-code {
+		font-size: 100px;
+	}
+	.error-message-div {
+		padding: 15px;
+	}
+	.error-message {
+		font-size: 25px;
+	}
+	.error-content {
+		font-size: 18px;
+	}
+}

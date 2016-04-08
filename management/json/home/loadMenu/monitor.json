@@ -1,0 +1,44 @@
+{
+    "data": [
+        {
+            "icon": "",
+            "key": "systen",
+            "name": "系统",
+            "type": 2
+        },
+        {
+            "icon": "glyphicon-circle-arrow-left",
+            "key": "monitor1",
+            "name": "系统监控1",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-dashboard",
+            "key": "monitor2",
+            "name": "系统监控t",
+            "type": 0
+        },
+        {
+            "icon": "",
+            "key": "performance",
+            "name": "性能",
+            "type": 2
+        },
+        {
+            "icon": "glyphicon-resize-vertical",
+            "key": "performance1",
+            "name": "性能监控1",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-flash",
+            "key": "performance2",
+            "name": "性能监控t",
+            "type": 0
+        }
+    ],
+    "errorCode": null,
+    "jsonMap": null,
+    "message": null,
+    "success": true
+}

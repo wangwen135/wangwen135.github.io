@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="WHW--管理系统">
+<meta name="author" content="xrkj">
+
+<link rel="icon" href="../favicon.ico">
+<title>管理系统</title>
+
+<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/wwh.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+	<!-- 处理全局错误的模态框 -->
+	<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalTitle" aria-hidden="true">
+		<div class="modal-dialog ">
+			<div class="modal-content ">
+				<div class="modal-header red">
+					<button type="button" class="close " data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="errorModalTitle"></h4>
+				</div>
+				<div class="modal-body " id="errorModalTxt"></div>
+				<!-- <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 模态框 -->
+
+
+	<!-- .navbar-inverse-->
+	<nav class="navbar navbar-default navbar-static-top  navbar-inverse ">
+		<!-- container-fluid  两边不会有空隙-->
+		<div class="container-fluid">
+			<div class="navbar-header" id="navbar-header">
+				<button type="button" class="navbar-toggle collapsed navbar-toggle-margin" data-toggle="collapse" data-target="#navbar,#menunav" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="logo-small-div">
+					<a class=" logo-small" href="#">
+						<!-- img alt="Brand" src="放置图标的" -->
+						<!-- <img src="resources/logo.png" width="30px" height="30px" /> -->
+						<span class="glyphicon glyphicon-heart"> </span>
+						 小冬瓜
+					</a>
+					<span class="system-name-small">管理系统</span>
+					<span class="sysversion-badge ">V 0.1</span>
+				</div>
+			</div>
+
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul id="modules" class="nav  navbar-nav">
+					
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="javascript:void(0)">
+							<span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+							<span class="badge bg-red">4</span>
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0)">
+							<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+							<span class="badge bg-green">3</span>
+						</a>
+					</li>
+
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+							管理员ww
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li>
+								<a href="javascript:void(0)">
+									任务列表
+									<span class="badge bg-red">4</span>
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)">
+									通知列表
+									<span class="badge bg-green">3</span>
+								</a>
+							</li>
+
+							<li class="dropdown-header">账户设置</li>
+							<li id="profile">
+								<a href="javascript:void(0)">用户配置文件</a>
+							</li>
+							<li id="changePwd">
+								<a href="javascript:void(0)">修改登录密码</a>
+							</li>
+
+							<li role="separator" class="divider"></li>
+							<li id="logout">
+								<a href="javascript:void(0)">退出系统</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+	<div id="containerBody" class="container-fluid">
+		<div class="row">
+			<div class="col-md-2   col-padding">
+				<div class="left-menu" id="leftMenuPanel">
+					<div class="left-menu-title">
+						<span class="logo-color" id="leftMenuTitle"></span>
+					</div>
+					<div class="collapse navbar-collapse left-menu-body-collapse" id="menunav">
+						<div class=" left-menu-body">
+							<ul class="nav nav-pills nav-stacked menu" id="leftMenu">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-10 col-padding">
+				<div id="rightPanel" class="right-tab">
+					<div class="right-tab-title">
+						<ul id="tabList" class="nav nav-tabs" role="tablist">
+						</ul>
+					</div>
+					<div id="tabContent" class="tab-content  right-tab-body"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<script src="js/wwh.js"></script>
+	<script src="js/home.js"></script>
+	
+</body>
+</html>
+
+

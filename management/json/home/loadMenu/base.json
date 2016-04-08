@@ -1,0 +1,94 @@
+{
+    "data": [
+		{
+            "icon": "glyphicon-globe",
+            "key": "country",
+            "name": "国家地区",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-equalizer",
+            "key": "china",
+            "name": "中国地区编码1",
+            "type": 0
+        },
+		{
+            "icon": "glyphicon-equalizer",
+            "key": "china1",
+            "name": "中国地区编码2",
+            "type": 0
+        },
+		{
+            "icon": "glyphicon-equalizer",
+            "key": "china2",
+            "name": "中国地区编码3",
+            "type": 0
+        },
+        {
+            "icon": "",
+            "key": "separator2",
+            "name": "分隔条",
+            "type": 1
+        },
+		{
+            "icon": "",
+            "key": "car1",
+            "name": "汽车型号1",
+            "type": 2
+        },
+        {
+            "icon": "glyphicon-scale ",
+            "key": "car2",
+            "name": "车辆型号",
+            "type": 0
+        },
+		{
+            "icon": "glyphicon-scale ",
+            "key": "car3",
+            "name": "车辆型号2",
+            "type": 0
+        },
+		{
+            "icon": "glyphicon-scale ",
+            "key": "car4",
+            "name": "车辆型号3",
+            "type": 0
+        },
+		{
+            "icon": "",
+            "key": "demo",
+            "name": "栗子",
+            "type": 2
+        },
+        {
+            "icon": "glyphicon-phone",
+            "key": "demo1",
+            "name": "举个栗子",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-calendar",
+            "key": "demo2",
+            "name": "栗子",
+            "type": 0
+        },
+
+		{
+            "icon": "glyphicon-phone",
+            "key": "demo3",
+            "name": "再举个栗子",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-calendar",
+            "key": "demo4",
+            "name": "又栗子",
+            "type": 0
+        }
+
+    ],
+    "errorCode": null,
+    "jsonMap": null,
+    "message": null,
+    "success": true
+}

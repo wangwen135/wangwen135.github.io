@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="description" content="XXX--管理系统">
+<meta name="author" content="wwh">
+
+<link rel="icon" href="../favicon.ico">
+<title>登录页面</title>
+
+<link href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/wwh.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<!-- 处理全局错误的模态框 -->
+	<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalTitle" aria-hidden="true">
+		<div class="modal-dialog ">
+			<div class="modal-content">
+				<div class="modal-header red">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="errorModalTitle"></h4>
+				</div>
+				<div class="modal-body " id="errorModalTxt"></div>
+				<!-- <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 模态框 -->
+
+	<div class="container">
+
+		<div class="row">
+			<div class="col-xs-12 ">
+
+				<div class="logo-big-div">
+					<a href="#" class="logo-big">
+						<span class="glyphicon glyphicon-heart"> </span>
+						 小冬瓜
+						<!-- <img src="image/logo.png" width="40px" height="40px" /> -->
+					</a>
+				</div>
+				<div class="system-name-big">
+					WHW 管理系统
+					<span class="badge bg-green">V 0.1 </span>
+				</div>
+			</div>
+		</div>
+		<br />
+
+		<div class="row">
+			<!-- 居中 -->
+			<div class="col-xs-10 col-xs-offset-1  col-sm-6  col-sm-offset-3 col-md-4 col-md-offset-4">
+				<div class="panel  panel-success">
+					<div class="panel-heading ">
+						<strong>请先登录系统</strong>
+					</div>
+
+					<form class="panel-body">
+						<div class="form-group">
+							<label for="inputEmail" class="sr-only">邮箱地址</label>
+							<div class="input-group " id="emailGroup">
+								<input type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="邮箱地址" required autofocus>
+								<span class="input-group-addon">
+									<i class="glyphicon glyphicon-envelope"></i>
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="inputPassword" class="sr-only">密码</label>
+							<div class="input-group">
+								<input type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="密码" required>
+								<span class="input-group-addon">
+									<i class="glyphicon glyphicon-lock "></i>
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="captcha" class="sr-only">验证码</label>
+							<div class="input-group" id="captchaGroup">
+								<input type="text" id="captcha" name="captcha" class="form-control" placeholder="验证码" required>
+								<span class="input-group-addon">
+									<span class="glyphicon glyphicon-ok"></span>
+								</span>
+							</div>
+
+							<button id="captcha_btn" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="点击刷新" style="margin-top: 2px; padding: 1px">
+								<img id="captcha_img" src="img/captcha.jpg">
+							</button>
+						</div>
+
+						<button class="btn btn-lg btn-primary  btn-block" type="submit" id="submit">登&nbsp;&nbsp;&nbsp;&nbsp;录</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="copyright">
+		<p>
+			Copyright © 2016
+			<a href="#" class="a-white">小冬瓜粑粑</a>
+		</p>
+	</div>
+
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+	<script src="js/wwh.js"></script>
+	<script src="js/login.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+{
+    "data": [
+        {
+            "icon": null,
+            "key": "separator1",
+            "name": "权限",
+            "type": 2
+        },
+        {
+            "icon": "glyphicon-user",
+            "key": "user",
+            "name": "用户管理",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-duplicate",
+            "key": "role",
+            "name": "角色管理",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-alert",
+            "key": "privilege",
+            "name": "权限管理",
+            "type": 0
+        },
+        {
+            "icon": null,
+            "key": "config1",
+            "name": "配置",
+            "type": 2
+        },
+        {
+            "icon": "glyphicon-file",
+            "key": "resource",
+            "name": "资源配置",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-file",
+            "key": "resource2",
+            "name": "资源配置2",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-file",
+            "key": "resource3",
+            "name": "资源配置3",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-file",
+            "key": "resource4",
+            "name": "资源配置4",
+            "type": 0
+        },
+        {
+            "icon": "",
+            "key": "separator2",
+            "name": "分隔条",
+            "type": 1
+        },
+        {
+            "icon": "glyphicon-align-left",
+            "key": "resource5",
+            "name": "配置管理",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-align-justify",
+            "key": "resource6",
+            "name": "配置管理2",
+            "type": 0
+        },
+        {
+            "icon": "",
+            "key": "security",
+            "name": "安全",
+            "type": 2
+        },
+        {
+            "icon": "glyphicon-bookmark",
+            "key": "security1",
+            "name": "安全配置1",
+            "type": 0
+        },
+        {
+            "icon": "glyphicon-arrow-right",
+            "key": "security2",
+            "name": "安全配置2",
+            "type": 0
+        }
+    ],
+    "errorCode": null,
+    "jsonMap": null,
+    "message": null,
+    "success": true
+}

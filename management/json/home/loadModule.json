@@ -1,0 +1,23 @@
+{
+    "data": [
+        {
+            "icon": "glyphicon-menu-hamburger",
+            "key": "base",
+            "name": "基础数据"
+        },
+        {
+            "icon": "glyphicon-cog",
+            "key": "config",
+            "name": "配置管理"
+        },
+        {
+            "icon": "glyphicon-dashboard",
+            "key": "monitor",
+            "name": "系统监控"
+        }
+    ],
+    "errorCode": null,
+    "jsonMap": null,
+    "message": null,
+    "success": true
+}
