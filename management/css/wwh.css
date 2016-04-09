@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-size: 34px;
 	font-family: "楷体", "KaiTi", "SimHei", "SimSun";
 	font-weight: bold;
-	color: #dff0d8;
+	color: #CDDC39;
 	text-shadow: 1px 1px 0.5px black;
 	text-decoration: none;
 }
@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-size: 22px;
 	font-family: "楷体", "KaiTi", "SimHei", "SimSun";
 	font-weight: bold;
-	color: #dff0d8;
+	color: #CDDC39;
 	text-shadow: 1px 1px 0.5px black;
 	text-decoration: none;
 }
@@ -187,7 +187,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.active>a:hover
 	{
-	color: #dff0d8;
+	color: #CDDC39;
 }
 /** 当前选中 **/
 .left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.currentSelect>a:hover
@@ -197,12 +197,12 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /** 当前选中小图标颜色 **/
 .left-menu>.left-menu-body-collapse>.left-menu-body>.menu>.currentSelect>a>span
 	{
-	color: #B94846;
+	color: #5cb85c;
 }
 
 /*小图标*/
 .left-menu>.left-menu-body-collapse>.left-menu-body>.menu>li>a>span {
-	color: #dff0d8;
+	color: #eee;
 	float: right;
 	display: none;
 }
@@ -584,11 +584,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 /***************定义颜色****************/
 /**** logo 颜色 ****/
 .logo-color {
-	color: #dff0d8;
+	color: #CDDC39;
 }
 
 .bg-logo-color {
-	background-color: #dff0d8;
+	background-color: #CDDC39;
 }
 
 /**** body 颜色****/

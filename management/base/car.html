@@ -1,0 +1,295 @@
+
+<!-- 弹出的模态窗口 -->
+<div class="inside-modal " id="modal" role="dialog" tabindex="-1">
+	<div class="inside-modal-dialog" id="modalDialog">
+		<div class="modal-content ">
+			<div class="modal-header ">
+				<span id="insertTitle" class="text-primary  modal-title">
+					<span class="glyphicon  glyphicon-plus" aria-hidden="true"></span>
+					新增车辆型号
+				</span>
+
+				<span id="viewTitle" class="text-success modal-title">
+					<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+					查看车辆型号
+				</span>
+
+				<span id="modifyTitle" class="text-info modal-title">
+					<span class="glyphicon  glyphicon-pencil" aria-hidden="true"></span>
+					修改车辆型号
+				</span>
+
+				<button type="button" class="close " data-dismiss="modal" aria-hidden="true">&times;</button>
+				<div class="align-control">
+					<button type="button" id="formAlignJustifyBlock" class="btn btn-default btn-xs red" aria-label="Justify Block Align">
+						<span class="  glyphicon glyphicon-th" aria-hidden="true"></span>
+					</button>
+					<button type="button" id="formAlignList" class="btn btn-default btn-xs" aria-label="List Align">
+						<span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+					</button>
+					<button type="button" id="formAlignJustify" class="btn btn-default btn-xs" aria-label="Justify Align">
+						<span class=" glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div>
+
+			<div class="modal-body ">
+				<!-- 表单 -->
+				<form id="modalForm" name="modalForm" class="form-inline">
+
+					<div class="form-group form-group-sm">
+						<label for="carModelId" class="control-label">车辆型号ID</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="carModelId" name="carModelId" type="number" min="0" max="99999999999999999999" readonly placeholder="自动生成" >
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="firstLetter" class="control-label">品牌首字母</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="firstLetter" name="firstLetter" type="text" size="2" maxlength="1" required >
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="brand" class="control-label">品牌名称</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="brand" name="brand" type="text" size="60" maxlength="30" required >
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="name" class="control-label">车系名称</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="name" name="name" type="text" size="60" maxlength="30" required >
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="level" class="control-label">车系级别</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="level" name="level" type="text" size="60" maxlength="30" required >
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="ifValid" class=" control-label">记录是否有效</label>
+						<div class="form-group-div-auto">
+							<select class="form-control" id="ifValid" name="ifValid">
+								<option value="1">1 有效</option>
+								<option value="0">0 无效</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="languageCode" class=" control-label">语言种类代码</label>
+						<div class="form-group-div-auto">
+							<select class="form-control" id="languageCode" name="languageCode">
+								<option value="cn">cn 中文</option>
+								<option value="en">en 英文</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-separator"></div>
+
+					<div class="form-group form-group-sm">
+						<label for="createTime" class=" control-label">记录创建时间</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="createTime" name="createTime" placeholder="CURRENT_TIMESTAMP" type="datetime-local" readonly>
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="createUserId" class=" control-label">记录创建用户ID</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="createUserId" name="createUserId" type="number" min="0" max="99999999999999" readonly>
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="modifyTime" class=" control-label">记录修改时间</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="modifyTime" name="modifyTime" type="datetime-local" readonly>
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="modifyUserId" class=" control-label">记录修改用户ID</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="modifyUserId" name="modifyUserId" type="number" min="0" max="99999999999999" readonly>
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="deleteTime" class=" control-label">记录删除时间</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="deleteTime" name="deleteTime" type="datetime-local" readonly>
+						</div>
+					</div>
+
+					<div class="form-group form-group-sm">
+						<label for="deleteUserId" class=" control-label">记录删除用户ID</label>
+						<div class="form-group-div-auto">
+							<input class="form-control" id="deleteUserId" name="deleteUserId" type="number" min="0" max="99999999999999" readonly>
+						</div>
+					</div>
+
+					<div class="form-separator"></div>
+				</form>
+			</div>
+
+			<div class="modal-footer">
+				<button type="submit" id="saveBtn" form="modalForm" class="btn btn-primary">保存</button>
+				<button type="submit" id="modifyBtn" form="modalForm" class="btn btn-primary">修改</button>
+				<button type="button" data-dismiss="modal" class="btn btn-default">关闭</button>
+			</div>
+
+		</div>
+	</div>
+
+	<div tabindex="0" data-focus="modal"></div>
+</div>
+
+<!-- 内容 -->
+<div class="well search-panel">
+	<!-- <p>查询条件</p> -->
+	<form name="searchForm" id="searchForm" class="form-inline">
+		<div class="form-group form-group-sm">
+			<label for="carModelId">主键ID</label>
+			<input type="number" min="0" max="99999999999999999999" class="form-control" id="behaviorClassId" name="carModelId" placeholder="ID">
+		</div>
+		<div class="form-group form-group-sm">
+			<label for="code">资料编码</label>
+			<input type="text" pattern="[0-9a-zA-Z]*" title="资料编码只能是数字和字母" class="form-control" id="code" name="code" placeholder="code">
+		</div>
+		<div class="form-group form-group-sm">
+			<label for="ifValid">是否有效</label>
+			<select class="form-control" id="ifValid" name="ifValid">
+				<option value=""></option>
+				<option value="1">有效</option>
+				<option value="0">无效</option>
+			</select>
+		</div>
+		<div class="form-group form-group-sm">
+			<label for="languageCode">语言代码</label>
+			<select class="form-control" id="languageCode" name="languageCode">
+				<option value=""></option>
+				<option value="cn">中文 cn</option>
+				<option value="en">英文 en</option>
+			</select>
+		</div>
+
+		<button type="submit" id="searchButton" class="btn btn-primary">
+			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+			查询数据
+		</button>
+	</form>
+</div>
+
+<div class="well operate-panel">
+	<button id="insert" type="button" class="btn btn-primary">
+		<span class="glyphicon  glyphicon-plus" aria-hidden="true"></span>
+		新增
+	</button>
+
+	<button id="view" type="button" class="btn btn-success">
+		<span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+		查看
+	</button>
+
+	<button id="modify" type="button" class="btn btn-info">
+		<span class="glyphicon  glyphicon-pencil" aria-hidden="true"></span>
+		修改
+	</button>
+
+	<button id="disable" type="button" class="btn btn-warning">
+		<span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+		禁用
+	</button>
+	<button id="enablie" type="button" class="btn btn-warning">
+		<span class="glyphicon  glyphicon-ok-circle" aria-hidden="true"></span>
+		启用
+	</button>
+
+	<button id="delete" type="button" class="btn btn-danger">
+		<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+		删除
+	</button>
+</div>
+
+<div class="panel panel-default table-panel">
+	<!-- 标题面板 -->
+	<div class="panel-heading">
+		<div class="form-inline">
+			<div class="form-group form-group-sm page-size-group">
+				<label for="pageSize">每页记录数</label>
+				<select class="form-control" id="pageSize" name="pageSize">
+					<option value="10">10</option>
+					<option value="20">20</option>
+					<option value="30">30</option>
+					<option value="40">40</option>
+					<option value="50">50</option>
+					<option value="60">60</option>
+					<option value="70">70</option>
+					<option value="80">80</option>
+					<option value="90">90</option>
+					<option value="100">100</option>
+				</select>
+			</div>
+
+			<div class="form-group form-group-sm">
+				<label for="dataFilter">数据过滤</label>
+				<input type="text" class="form-control" id="dataFilter" name="dataFilter" placeholder="输入关键字">
+			</div>
+
+		</div>
+	</div>
+
+	<div class="panel-body">
+
+		<table id="contentTable" class="table table-bordered table-striped table-hover table-condensed ">
+			<!-- <caption></caption> -->
+			<thead>
+				<tr>
+					<th>车辆型号ID</th>
+					<th>品牌首字母</th>
+					<th>品牌名称</th>
+					<th>车系名称</th>
+					<th>车系级别</th>
+					<th>是否有效</th>
+					<th>语言种类代码</th>
+					<th>记录创建时间</th>
+					<th>记录创建用户ID</th>
+					<th>记录修改时间</th>
+					<th>记录修改用户ID</th>
+					<th>记录删除时间</th>
+					<th>记录删除用户ID</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>car_model_id</td>
+					<td>first_letter</td>
+					<td>brand</td>
+					<td>name</td>
+					<td>level</td>
+					<td>is_valid</td>
+					<td>language_code</td>
+					<td>create_time</td>
+					<td>create_user_id</td>
+					<td>modify_time</td>
+					<td>modify_user_id</td>
+					<td>delete_time</td>
+					<td>delete_user_id</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- 脚注面板 -->
+	<div id="paginationDiv" class="panel-footer">
+
+	</div>
+</div>

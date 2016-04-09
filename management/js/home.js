@@ -216,7 +216,7 @@ $(function() {
 								contentDiv = $("#tabContent #" + tableId);
 								contentDiv
 										.load(
-												"/" + moduleName + "/" + tableId ,
+												moduleName + "/" + tableId + ".html",
 												function(response, status, xhr) {
 
 													if (status != "success") {
@@ -227,7 +227,7 @@ $(function() {
 														$("#tabContent #" + tableId).html(loadFailed);
 													} else {
 														// 页面加载完成再加载JS脚本
-														$.getScript("/resources/js/" + moduleName + "/" + tableId + ".js").fail(function() {
+														$.getScript("js/" + moduleName + "/" + tableId + ".js").fail(function() {
 															showErrorDialog(contentDiv, "错误", "脚本加载失败，请关闭页面重试！", null);
 														});
 													}

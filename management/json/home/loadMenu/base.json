@@ -18,58 +18,47 @@
             "name": "国家地区2",
             "type": 0
         },
-        {
-            "icon": "glyphicon-home",
-            "key": "china",
-            "name": "中国地区编码1",
-            "type": 0
-        },
 		{
-            "icon": "glyphicon-equalizer",
-            "key": "china1",
-            "name": "中国地区编码2",
-            "type": 0
-        },
-		{
-            "icon": "glyphicon-bookmark",
-            "key": "china2",
-            "name": "中国地区编码3",
-            "type": 0
-        },
-        {
             "icon": "",
             "key": "separator2",
             "name": "分隔条",
             "type": 1
         },
+        {
+            "icon": "glyphicon-home",
+            "key": "china",
+            "name": "中国地区编码",
+            "type": 0
+        },
+		{
+            "icon": "glyphicon-equalizer",
+            "key": "china2",
+            "name": "中国地区编码2",
+            "type": 0
+        },
+        
 		{
             "icon": "",
-            "key": "car1",
-            "name": "又个栗子",
+            "key": "carTitle",
+            "name": "两个栗子",
             "type": 2
         },
         {
             "icon": "glyphicon-scale ",
-            "key": "car2",
+            "key": "car",
             "name": "车辆型号",
             "type": 0
         },
 		{
             "icon": "glyphicon-adjust ",
-            "key": "car3",
+            "key": "car2",
             "name": "车辆型号2",
-            "type": 0
-        },
-		{
-            "icon": "glyphicon-th-large ",
-            "key": "car4",
-            "name": "车辆型号3",
             "type": 0
         },
 		{
             "icon": "",
             "key": "demo",
-            "name": "栗子",
+            "name": "三个栗子",
             "type": 2
         },
         {
@@ -94,7 +83,7 @@
         {
             "icon": "glyphicon-flag",
             "key": "demo4",
-            "name": "又栗子",
+            "name": "又一个栗子",
             "type": 0
         }
 
