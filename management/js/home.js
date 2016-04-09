@@ -256,13 +256,30 @@ $(function() {
 	 * 用户配置文件
 	 */
 	function profile() {
-		alert("用户配置文件");
+		
+		showSuccessDialog(null, "用户配置文件", "这个是没有做的", null); 
 	}
 	/**
 	 * 修改密码
 	 */
 	function changePwd() {
-		alert("修改密码");
+		showConfirmDialog(null, "确认？", "确认要修改密码？", null, function(){
+			showInfoDialog(null, "呵呵", "这个也是没有做的", null); 	
+		}); 
+	}
+	
+	/**
+	* 显示任务列表
+	*/
+	function showTask(){
+		location.href = "error.html";
+	}
+	
+	/**
+	* 显示邮件列表
+	*/
+	function showEmail(){
+		showSuccessDialog(null, "通知列表", "这个是没有做的", null); 
 	}
 
 	// 用户配置文件
@@ -273,7 +290,12 @@ $(function() {
 	$("#logout").click(logout);
 
 	// 任务列表
+	$("#taskBadge").click(showTask);
+	$("#taskMenu").click(showTask);
+	
 	// 通知列表
+	$("#emailBadge").click(showEmail);
+	$("#emailMenu").click(showEmail);
 
 	// 启动时加载模块信息
 	loadModule();

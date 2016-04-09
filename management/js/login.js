@@ -31,7 +31,7 @@ $(function() {// 加载执行
 			return false;
 		}
 
-		$.post("json/auth/login.json", $("form").serialize(), function(data) {
+		$.get("json/auth/login.json", $("form").serialize(), function(data) {
 
 			if (data.success) {
 				// 跳转到首页
@@ -57,7 +57,9 @@ $(function() {// 加载执行
 	});
 
 	//提示信息
-	showInfoDialog(null, "提示", "全部都是静态页面，随便填~~", null); 
+	setTimeout(function() {
+		showInfoDialog(null, "不太友好的提示", "全部都是静态页面，随便填~~<br>哦！邮箱按格式，验证码4位<br><br> O(∩_∩)O 新手 求轻喷", null); 
+		}, 1000);
 });
 
 /**
