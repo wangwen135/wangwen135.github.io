@@ -214,6 +214,7 @@ $(function() {
 
 								/** 全部完了再正式加载页面 */
 								contentDiv = $("#tabContent #" + tableId);
+								/**
 								contentDiv
 										.load(
 												moduleName + "/" + tableId + ".html",
@@ -232,6 +233,28 @@ $(function() {
 														});
 													}
 												});
+								**/
+								debugger;
+								
+								$.get(moduleName + "/" + tableId + ".html",
+												function(data, status, xhr) {
+													contentDiv.html(data);
+													// 页面加载完成再加载JS脚本
+													$.getScript("js/" + moduleName + "/" + tableId + ".js").fail(function() {
+														showErrorDialog(contentDiv, "错误", "脚本加载失败，请关闭页面重试！", null);
+													});
+													
+												}).fail(
+												function(xhr){
+													debugger;
+													var loadFailed = "<br/><div class='progress'>"
+																+ "<div class='progress-bar  progress-bar-danger progress-bar-striped' role='progressbar' aria-valuenow='65' aria-valuemin='0' aria-valuemax='100' style='width: 65%'>"
+																+ "<span class='sr-only'>65% Complete</span>页面加载失败</div></div>" + "<p class='red'>错误代码："
+																+ xhr.status + "<br> 错误描述：" + xhr.statusText + "</p>" + "<p>页面加载失败，请稍候重试！</p><br/>";
+														contentDiv.html(loadFailed);
+													});
+
+													
 							}
 						});
 	}
@@ -248,7 +271,7 @@ $(function() {
 			// 5秒未操作就自动跳转到登陆页面
 			setTimeout(function() {
 				location.href = "login.html";
-			}, 5000);
+			}, 3000);
 		});
 	}
 
