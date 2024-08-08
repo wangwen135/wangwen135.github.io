@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
@@ -765,147 +764,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Hexo安装使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-24 00:00:00" itemprop="dateCreated datePublished" datetime="2024-07-24T00:00:00+08:00">2024-07-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%8D%9A%E5%AE%A2/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>657</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
-<p><a target="_blank" rel="noopener" href="https://hexo.io/docs/">https://hexo.io/docs/</a></p>
-<p>Hexo 是一个快速、简洁且高效的博客框架。 Hexo 使用 Markdown（或其他标记语言）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
-<blockquote>
-<p>使用 Node.js 编写</p>
-</blockquote>
-<h3 id="安装-Node-js-和-git"><a href="#安装-Node-js-和-git" class="headerlink" title="安装 Node.js 和 git"></a>安装 Node.js 和 git</h3><p>Hexo 需要 Node.js 和 npm（Node.js 的包管理器）。你可以从 Node.js 官网 下载并安装最新版本的 Node.js。安装 Node.js 后，npm 会自动随之安装。</p>
-<blockquote>
-<p>Node.js (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</p>
-</blockquote>
-<p>git 正常安装即可</p>
-<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>打开终端或命令提示符，运行以下命令来全局安装 Hexo：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>有点慢，好像需要科学上网<br>可以指定国内镜像：–registry&#x3D;<a target="_blank" rel="noopener" href="https://registry.npmmirror.com/">https://registry.npmmirror.com</a></p>
-</blockquote>
-<h3 id="创建新的-Hexo-博客"><a href="#创建新的-Hexo-博客" class="headerlink" title="创建新的 Hexo 博客"></a>创建新的 Hexo 博客</h3><p>选择一个你希望存放博客的目录，并进入该目录，然后运行：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-
-<p>这将会在 blog 目录下创建一个新的 Hexo 博客项目。你也可以将 blog 替换为你希望的项目名称。</p>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>进入你的博客目录后，安装项目依赖：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">#或者指定淘宝镜像</span><br><span class="line">npm install --registry=https://registry.npmmirror.com</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建新的文章"><a href="#创建新的文章" class="headerlink" title="创建新的文章"></a>创建新的文章</h3><p>使用 Hexo 提供的命令来创建新的文章：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;我的第一篇文章&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>这会在 source&#x2F;_posts 目录下生成一个新的 Markdown 文件，你可以在这个文件中编写你的文章。</p>
-<h3 id="生成和预览网站"><a href="#生成和预览网站" class="headerlink" title="生成和预览网站"></a>生成和预览网站</h3><p>在生成网站之前，你可以先在本地预览网站：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<p>然后在浏览器中访问 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> 来查看你的博客。</p>
-<p>当你对博客的内容感到满意时，可以生成静态文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>生成的静态文件会放在 public 目录下。</p>
-<hr>
-<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>Hexo 支持多种部署方式，如 GitHub Pages、Netlify 等。以下是将博客部署到 GitHub Pages 的步骤：</p>
-<ol>
-<li>在 GitHub 上创建一个新的仓库。</li>
-<li>修改 Hexo 配置文件 _config.yml 中的部署设置，添加你的仓库地址。例如：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/你的用户名/你的仓库名.git</span><br><span class="line">  branch: main</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>安装 Hexo 部署插件：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
-<li>部署到 GitHub Pages：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<h3 id="配置和主题"><a href="#配置和主题" class="headerlink" title="配置和主题"></a>配置和主题</h3><p>Hexo 的配置文件 _config.yml 可以用来设置网站的基本信息，如标题、描述、作者等。你还可以通过安装和配置主题来改变博客的外观，主题通常放在 themes 目录下。</p>
-<p>要添加新的主题，你可以从 Hexo 官方主题库 下载，然后将其放在 themes 目录下，修改 _config.yml 中的 theme 选项以使用新的主题。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E6%96%87%E7%AB%A0Front-matter%E8%AF%B4%E6%98%8E/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1065,6 +923,147 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - [Java, SpringBoot]</span><br></pre></td></tr></table></figure>
 
 <p>则展示效果如：<br><img src="https://img.wangwen135.top:23456/note/2024/07/66a1cd3524da0.png" alt="1721879855319.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Hexo安装使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-24 00:00:00" itemprop="dateCreated datePublished" datetime="2024-07-24T00:00:00+08:00">2024-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>657</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/docs/">https://hexo.io/docs/</a></p>
+<p>Hexo 是一个快速、简洁且高效的博客框架。 Hexo 使用 Markdown（或其他标记语言）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<blockquote>
+<p>使用 Node.js 编写</p>
+</blockquote>
+<h3 id="安装-Node-js-和-git"><a href="#安装-Node-js-和-git" class="headerlink" title="安装 Node.js 和 git"></a>安装 Node.js 和 git</h3><p>Hexo 需要 Node.js 和 npm（Node.js 的包管理器）。你可以从 Node.js 官网 下载并安装最新版本的 Node.js。安装 Node.js 后，npm 会自动随之安装。</p>
+<blockquote>
+<p>Node.js (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</p>
+</blockquote>
+<p>git 正常安装即可</p>
+<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>打开终端或命令提示符，运行以下命令来全局安装 Hexo：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>有点慢，好像需要科学上网<br>可以指定国内镜像：–registry&#x3D;<a target="_blank" rel="noopener" href="https://registry.npmmirror.com/">https://registry.npmmirror.com</a></p>
+</blockquote>
+<h3 id="创建新的-Hexo-博客"><a href="#创建新的-Hexo-博客" class="headerlink" title="创建新的 Hexo 博客"></a>创建新的 Hexo 博客</h3><p>选择一个你希望存放博客的目录，并进入该目录，然后运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+
+<p>这将会在 blog 目录下创建一个新的 Hexo 博客项目。你也可以将 blog 替换为你希望的项目名称。</p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>进入你的博客目录后，安装项目依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">#或者指定淘宝镜像</span><br><span class="line">npm install --registry=https://registry.npmmirror.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建新的文章"><a href="#创建新的文章" class="headerlink" title="创建新的文章"></a>创建新的文章</h3><p>使用 Hexo 提供的命令来创建新的文章：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;我的第一篇文章&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这会在 source&#x2F;_posts 目录下生成一个新的 Markdown 文件，你可以在这个文件中编写你的文章。</p>
+<h3 id="生成和预览网站"><a href="#生成和预览网站" class="headerlink" title="生成和预览网站"></a>生成和预览网站</h3><p>在生成网站之前，你可以先在本地预览网站：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>然后在浏览器中访问 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> 来查看你的博客。</p>
+<p>当你对博客的内容感到满意时，可以生成静态文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>生成的静态文件会放在 public 目录下。</p>
+<hr>
+<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>Hexo 支持多种部署方式，如 GitHub Pages、Netlify 等。以下是将博客部署到 GitHub Pages 的步骤：</p>
+<ol>
+<li>在 GitHub 上创建一个新的仓库。</li>
+<li>修改 Hexo 配置文件 _config.yml 中的部署设置，添加你的仓库地址。例如：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/你的用户名/你的仓库名.git</span><br><span class="line">  branch: main</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>安装 Hexo 部署插件：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+<li>部署到 GitHub Pages：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h3 id="配置和主题"><a href="#配置和主题" class="headerlink" title="配置和主题"></a>配置和主题</h3><p>Hexo 的配置文件 _config.yml 可以用来设置网站的基本信息，如标题、描述、作者等。你还可以通过安装和配置主题来改变博客的外观，主题通常放在 themes 目录下。</p>
+<p>要添加新的主题，你可以从 Hexo 官方主题库 下载，然后将其放在 themes 目录下，修改 _config.yml 中的 theme 选项以使用新的主题。</p>
 
       
     </div>

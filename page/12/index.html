@@ -176,7 +176,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Maven/%E4%BE%9D%E8%B5%96%E6%9C%AC%E5%9C%B0jar%E5%8C%85/">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Maven/%E6%9F%A5%E7%9C%8Bmaven-plugin%E6%89%80%E5%8C%85%E5%90%AB%E7%9A%84goal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -194,7 +194,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/Maven/%E4%BE%9D%E8%B5%96%E6%9C%AC%E5%9C%B0jar%E5%8C%85/" class="post-title-link" itemprop="url">依赖本地jar包</a>
+          <a href="/Maven/%E6%9F%A5%E7%9C%8Bmaven-plugin%E6%89%80%E5%8C%85%E5%90%AB%E7%9A%84goal/" class="post-title-link" itemprop="url">查看maven-plugin所包含的goal</a>
         </h2>
 
         <div class="post-meta-container">
@@ -224,7 +224,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>88</span>
+      <span>305</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -242,11 +242,17 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="依赖本地jar包"><a href="#依赖本地jar包" class="headerlink" title="依赖本地jar包"></a>依赖本地jar包</h2><p>有的jar包，在maven中心库里面没有，我们一般是放到项目的lib目录下<br>如：这里的xxxx.jar</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">├─lib</span><br><span class="line">│  └─xxxx.jar</span><br><span class="line">├─src</span><br><span class="line">│  ├─main</span><br><span class="line">│  │  ├─java</span><br><span class="line">│  │  │  └─com</span><br><span class="line">│  │  │      └─xxx</span><br><span class="line">│  │  └─resources</span><br><span class="line">│  │      └─xxx</span><br><span class="line">│  └─test</span><br><span class="line">│      ├─java</span><br><span class="line">│      └─resources</span><br><span class="line">└─target</span><br></pre></td></tr></table></figure>
+          <p>要使用maven插件提供的goal，首先得知道这些插件提供了哪些goal以及他们的用法。</p>
+<p>maven的核心插件之一 — help插件（Maven Help Plugin）可以用于查看插件提供了哪些goal。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn help:describe -Dplugin=groupId:artifactId:version</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>可以省略版本号</p>
+</blockquote>
+<p>还可以使用插件目标前缀替换坐标:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mvn help:describe -Dplugin=compiler</span><br></pre></td></tr></table></figure>
 
-<p>此时在pom.xml里面增加依赖引入该jar<br>例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">	&lt;dependency&gt;</span><br><span class="line">		&lt;groupId&gt;org.xxx&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;xxx&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.0&lt;/version&gt;</span><br><span class="line">		&lt;scope&gt;system&lt;/scope&gt;</span><br><span class="line">		&lt;systemPath&gt;$&#123;basedir&#125;/lib/xxxxx.jar&lt;/systemPath&gt;</span><br><span class="line">	&lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="例子："><a href="#例子：" class="headerlink" title="例子："></a>例子：</h4><p>查看 maven-source-plugin 的信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">mvn help:describe -Dplugin=org.apache.maven.plugins:maven-source-plugin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">......</span><br><span class="line">Name: Apache Maven Source Plugin</span><br><span class="line">Description: The Maven Source Plugin creates a JAR archive of the source</span><br><span class="line">  files of the current project.</span><br><span class="line">Group Id: org.apache.maven.plugins</span><br><span class="line">Artifact Id: maven-source-plugin</span><br><span class="line">Version: 3.0.1</span><br><span class="line">Goal Prefix: source</span><br><span class="line"></span><br><span class="line">This plugin has 7 goals:</span><br><span class="line"></span><br><span class="line">source:aggregate</span><br><span class="line">  Description: Aggregate sources for all modules in an aggregator project.</span><br><span class="line"></span><br><span class="line">source:generated-test-jar</span><br><span class="line">  Description: This plugin bundles all the test sources into a jar archive.</span><br><span class="line"></span><br><span class="line">source:help</span><br><span class="line">  Description: Display help information on maven-source-plugin.</span><br><span class="line">    Call mvn source:help -Ddetail=true -Dgoal=&lt;goal-name&gt; to display parameter</span><br><span class="line">    details.</span><br><span class="line"></span><br><span class="line">source:jar</span><br><span class="line">  Description: This plugin bundles all the sources into a jar archive.</span><br><span class="line"></span><br><span class="line">source:jar-no-fork</span><br><span class="line">  Description: This goal bundles all the sources into a jar archive. This</span><br><span class="line">    goal functions the same as the jar goal but does not fork the build and is</span><br><span class="line">    suitable for attaching to the build lifecycle.</span><br><span class="line"></span><br><span class="line">source:test-jar</span><br><span class="line">  Description: This plugin bundles all the test sources into a jar archive.</span><br><span class="line"></span><br><span class="line">source:test-jar-no-fork</span><br><span class="line">  Description: This goal bundles all the test sources into a jar archive.</span><br><span class="line">    This goal functions the same as the test-jar goal but does not fork the</span><br><span class="line">    build, and is suitable for attaching to the build lifecycle.</span><br><span class="line"></span><br><span class="line">For more information, run &#x27;mvn help:describe [...] -Ddetail&#x27;</span><br><span class="line">......</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
