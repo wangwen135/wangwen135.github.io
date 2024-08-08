@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">157</span>
+          <span class="site-state-item-count">158</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -136,7 +136,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">117</span>
+        <span class="site-state-item-count">121</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,6 +167,141 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E6%88%96%E9%99%8D%E7%BA%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E6%88%96%E9%99%8D%E7%BA%A7/" class="post-title-link" itemprop="url">Linux内核版本升级或降级</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-12 23:26:00" itemprop="dateCreated datePublished" datetime="2021-08-12T23:26:00+08:00">2021-08-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>583</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>测试系统PVE 7.0</p>
+</blockquote>
+<h2 id="PVE内核升级或降级"><a href="#PVE内核升级或降级" class="headerlink" title="PVE内核升级或降级"></a>PVE内核升级或降级</h2><h3 id="当前版本信息"><a href="#当前版本信息" class="headerlink" title="当前版本信息"></a>当前版本信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># uname -r</span><br><span class="line">5.11.22-1-pve</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># lsb_release -a</span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID: Debian</span><br><span class="line">Description:    Debian GNU/Linux 11 (bullseye)</span><br><span class="line">Release:        11</span><br><span class="line">Codename:       bullseye</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="查找内核"><a href="#查找内核" class="headerlink" title="查找内核"></a>查找内核</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># apt-cache search linux | grep &#x27;PVE Kernel Image&#x27;</span><br><span class="line"></span><br><span class="line">pve-kernel-5.11.17-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.11.21-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.11.22-2-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.11.7-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.4.119-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.4.124-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.4.128-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="安装内核"><a href="#安装内核" class="headerlink" title="安装内核"></a>安装内核</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># apt-get install pve-kernel-5.11.21-1-pve</span><br><span class="line"></span><br><span class="line">apt-get install pve-kernel-5.4.128-1-pve</span><br><span class="line"></span><br><span class="line"># 安装不了配置镜像</span><br><span class="line"># 还不行挂代理</span><br><span class="line"></span><br><span class="line">apt -o Acquire::http::proxy=&quot;http://192.168.1.100:10809/&quot; install pve-kernel-5.4.128-1-pve</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="查看当前系统内核启动顺序"><a href="#查看当前系统内核启动顺序" class="headerlink" title="查看当前系统内核启动顺序"></a>查看当前系统内核启动顺序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">grep menuentry /boot/grub/grub.cfg</span><br><span class="line"></span><br><span class="line"># 或者</span><br><span class="line"></span><br><span class="line">cat /boot/grub/grub.cfg | grep menuentry</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="修改内核启动顺序"><a href="#修改内核启动顺序" class="headerlink" title="修改内核启动顺序"></a>修改内核启动顺序</h3><p>如果你升级的版本比当前内核版本高的话，默认新安装的内核就是第一顺序启动的，只需重启系统就行了，否则，则需要修改配置文件</p>
+<p>找到上一步中的名称（启动到时候可以看到）<br>如：</p>
+<blockquote>
+<p>Advanced options for Proxmox VE GNU&#x2F;Linux<br>Proxmox VE GNU&#x2F;Linux, with Linux 5.4.128-1-pve  </p>
+</blockquote>
+<h4 id="修改-etc-default-grub中-GRUB-DEFAULT"><a href="#修改-etc-default-grub中-GRUB-DEFAULT" class="headerlink" title="修改&#x2F;etc&#x2F;default&#x2F;grub中 GRUB_DEFAULT"></a>修改&#x2F;etc&#x2F;default&#x2F;grub中 GRUB_DEFAULT</h4><p><strong>可以使用顺序号（从0开始）或使用菜单名称</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/default/grub</span><br><span class="line"></span><br><span class="line"># 将 GRUB_DEFAULT=0 修改想要的菜单，如果有二级菜单的，用&gt; 符合指定</span><br><span class="line"># 如这里的改成第二个菜单的第三项</span><br><span class="line"></span><br><span class="line">GRUB_DEFAULT=&quot;1&gt;2&quot;</span><br><span class="line"></span><br><span class="line"># 或者</span><br><span class="line">#GRUB_DEFAULT=&quot;Advanced options for Proxmox VE GNU/Linux&gt;Proxmox VE GNU/Linux, with Linux 5.4.128-1-pve&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>注意有二级菜单时要有引号</strong></p>
+<p>其他示例：</p>
+<ul>
+<li>GRUB_DEFAULT&#x3D; “Previous Linux versions&gt;Ubuntu, with Linux 3.2.0-18-generic-pae”</li>
+<li>GRUB_DEFAULT&#x3D; “Previous Linux versions&gt;0”</li>
+<li>GRUB_DEFAULT&#x3D; “2&gt;0”</li>
+<li>GRUB_DEFAULT&#x3D; “2&gt;Ubuntu, with Linux 3.2.0-18-generic-pae”</li>
+</ul>
+<h3 id="更新引导并重启"><a href="#更新引导并重启" class="headerlink" title="更新引导并重启"></a>更新引导并重启</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">update-grub</span><br><span class="line"></span><br><span class="line">reboot</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>重启后，使用命令uname -r查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># uname -r</span><br><span class="line">5.4.128-1-pve</span><br></pre></td></tr></table></figure>
+
+<hr>
+<hr>
+<h2 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h2><p>因为在PVE下创建虚拟机 Realtek RTL8125 2.5GbE 的网卡 与1G的交换机连接 无法跑满速（只有大概20 ~ 40Mb&#x2F;s），为降内核版本了安装 realtek-r8125-dkms_9.005.06-1_amd64.deb 驱动进行测试</p>
+<p>实际上据说也是驱动bug，新的r8169驱动也支持这个网卡并且修复了这个bug，但是实际上测试并没有……</p>
+<h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><p>Chipset -&gt; South Cluster Configuration -&gt; PIC Express Configuration -&gt; PCI Express Root Port</p>
+<p>将全部PCI Express Root Port 的  ASPM 的Auto改成Disable</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1374,121 +1509,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8&%E5%85%89%E7%8C%AB/%E5%85%89%E7%8C%ABtelnet%20%E5%B9%B6%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8&%E5%85%89%E7%8C%AB/%E5%85%89%E7%8C%ABtelnet%20%E5%B9%B6%E8%8E%B7%E5%8F%96%E6%9D%83%E9%99%90/" class="post-title-link" itemprop="url">光猫telnet 并获取权限</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-06-17 00:00:00" itemprop="dateCreated datePublished" datetime="2021-06-17T00:00:00+08:00">2021-06-17</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8-%E5%85%89%E7%8C%AB/" itemprop="url" rel="index"><span itemprop="name">路由器&光猫</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>266</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="临时启用telnet和ftp"><a href="#临时启用telnet和ftp" class="headerlink" title="临时启用telnet和ftp"></a>临时启用telnet和ftp</h3><p><a target="_blank" rel="noopener" href="http://192.168.1.1:8080/bd/modify_hide.asp">http://192.168.1.1:8080/bd/modify_hide.asp</a> </p>
-<h3 id="telnet访问"><a href="#telnet访问" class="headerlink" title="telnet访问"></a>telnet访问</h3><blockquote>
-<p>telnet 端口号是23</p>
-</blockquote>
-<h4 id="telent用户名密码"><a href="#telent用户名密码" class="headerlink" title="telent用户名密码"></a>telent用户名密码</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">telnet 192.168.1.1</span><br><span class="line"></span><br><span class="line">#用户名</span><br><span class="line">admin</span><br><span class="line"></span><br><span class="line">#密码</span><br><span class="line">TeleCom_1234</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 再切换到超级用户</span><br><span class="line"></span><br><span class="line">su telecomadmin</span><br><span class="line"></span><br><span class="line">#密码</span><br><span class="line">TeleCom_xxxxxx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>密码：（后面6位是设备标识的后六位，光猫背面有）<br>不能直接用telecomadmin</p>
-</blockquote>
-<h3 id="ftp访问"><a href="#ftp访问" class="headerlink" title="ftp访问"></a>ftp访问</h3><blockquote>
-<p>ftp控制端口一般为21，而数据端口不一定是20，这和FTP的应用模式有关，如果是主动模式，应该为20，如果为被动模式，由服务器端和客户端协商而定</p>
-</blockquote>
-<h4 id="防火墙策略"><a href="#防火墙策略" class="headerlink" title="防火墙策略"></a>防火墙策略</h4><p>开放&#x2F;关闭 FTP</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#添加规则</span><br><span class="line">iptables -I ftp_account 1 -i br0 -p tcp --dport 21 -j ACCEPT </span><br><span class="line"></span><br><span class="line">#查看</span><br><span class="line">iptables -L ftp_account -n -v</span><br><span class="line"></span><br><span class="line">#删除规则</span><br><span class="line">iptables -D ftp_account 1 </span><br></pre></td></tr></table></figure>
-
-
-<h4 id="ftp用户名密码"><a href="#ftp用户名密码" class="headerlink" title="ftp用户名密码"></a>ftp用户名密码</h4><p>忘记了。。。。</p>
-<h3 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h3><p>开放关闭SSH</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//开</span><br><span class="line">iptables -I inacc 1 -i br0 -p tcp --dport 22 -j ACCEPT</span><br><span class="line">//查看</span><br><span class="line">iptables -L inacc -n -v --line-numbers</span><br><span class="line">//关</span><br><span class="line">iptables -D inacc 1 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># SSH用户名密码就是电信的超级密码</span><br><span class="line"># SSH 算法协议较老 需要增加额外的弱密码算法 ssh</span><br><span class="line"></span><br><span class="line">telecomadmin@192.168.1.1 -oKexAlgorithms=+diffie-hellman-group1-sha1 -oCiphers=+3des-cbc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1512,13 +1532,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">136k</span>
+    <span title="站点总字数">138k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:16</span>
+    <span title="站点阅读时长">8:20</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

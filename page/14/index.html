@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">157</span>
+          <span class="site-state-item-count">158</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -136,7 +136,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">117</span>
+        <span class="site-state-item-count">121</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,6 +167,134 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Elasticsearch/ES%20%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Elasticsearch/ES%20%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2/" class="post-title-link" itemprop="url">ES 全文搜索</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-06-29 11:36:00" itemprop="dateCreated datePublished" datetime="2017-06-29T11:36:00+08:00">2017-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>897</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="ES-全文搜索"><a href="#ES-全文搜索" class="headerlink" title="ES 全文搜索"></a>ES 全文搜索</h1><h3 id="1-全文搜索"><a href="#1-全文搜索" class="headerlink" title="1. 全文搜索"></a>1. 全文搜索</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET /my_index/my_type/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;match&quot;: &#123;</span><br><span class="line">            &quot;title&quot;: &quot;BROWN DOG!&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用了match查询的多词查询只是简单地将生成的term查询包含在了一个bool查询中。通过默认的or操作符，每个term查询都以一个语句被添加，所以至少一个should语句需要被匹配。以下两个查询是等价的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;match&quot;: &#123; &quot;title&quot;: &quot;brown fox&quot;&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;bool&quot;: &#123;</span><br><span class="line">    &quot;should&quot;: [</span><br><span class="line">      &#123; &quot;term&quot;: &#123; &quot;title&quot;: &quot;brown&quot; &#125;&#125;,</span><br><span class="line">      &#123; &quot;term&quot;: &#123; &quot;title&quot;: &quot;fox&quot;   &#125;&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-提高查询精度"><a href="#2-提高查询精度" class="headerlink" title="2. 提高查询精度"></a>2. 提高查询精度</h3><p>match查询接受一个operator参数，该参数的默认值是”or”。你可以将它改变为”and”来要求所有的词条都需要被匹配：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /my_index/my_type/_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;match&quot;: &#123;</span><br><span class="line">            &quot;title&quot;: &#123;      </span><br><span class="line">                &quot;query&quot;:    &quot;BROWN DOG!&quot;,</span><br><span class="line">                &quot;operator&quot;: &quot;and&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用and操作符时，所有的term查询都以must语句被添加，因此所有的查询都需要匹配。以下两个查询是等价的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">        &quot;title&quot;: &#123;</span><br><span class="line">            &quot;query&quot;:    &quot;brown fox&quot;,</span><br><span class="line">            &quot;operator&quot;: &quot;and&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;bool&quot;: &#123;</span><br><span class="line">    &quot;must&quot;: [</span><br><span class="line">      &#123; &quot;term&quot;: &#123; &quot;title&quot;: &quot;brown&quot; &#125;&#125;,</span><br><span class="line">      &#123; &quot;term&quot;: &#123; &quot;title&quot;: &quot;fox&quot;   &#125;&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-控制查询精度"><a href="#3-控制查询精度" class="headerlink" title="3. 控制查询精度"></a>3. 控制查询精度</h3><p>match查询支持minimum_should_match参数，它能够让你指定有多少词条必须被匹配才会让该文档被当做一个相关的文档。尽管你能够指定一个词条的绝对数量，但是通常指定一个百分比会更有意义，因为你无法控制用户会输入多少个词条：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /my_index/my_type/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">      &quot;title&quot;: &#123;</span><br><span class="line">        &quot;query&quot;:                &quot;quick brown dog&quot;,</span><br><span class="line">        &quot;minimum_should_match&quot;: &quot;75%&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果指定了minimum_should_match参数，它会直接被传入到bool查询中，因此下面两个查询是等价的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">        &quot;title&quot;: &#123;</span><br><span class="line">            &quot;query&quot;:                &quot;quick brown fox&quot;,</span><br><span class="line">            &quot;minimum_should_match&quot;: &quot;75%&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;bool&quot;: &#123;</span><br><span class="line">    &quot;should&quot;: [</span><br><span class="line">      &#123; &quot;term&quot;: &#123; &quot;title&quot;: &quot;brown&quot; &#125;&#125;,</span><br><span class="line">      &#123; &quot;term&quot;: &#123; &quot;title&quot;: &quot;fox&quot;   &#125;&#125;,</span><br><span class="line">      &#123; &quot;term&quot;: &#123; &quot;title&quot;: &quot;quick&quot; &#125;&#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;minimum_should_match&quot;: 2 </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-合并查询"><a href="#4-合并查询" class="headerlink" title="4. 合并查询"></a>4. 合并查询</h3><p>bool查询通过must，must_not以及should参数来接受多个查询。比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /my_index/my_type/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">      &quot;must&quot;:     &#123; &quot;match&quot;: &#123; &quot;title&quot;: &quot;quick&quot; &#125;&#125;,</span><br><span class="line">      &quot;must_not&quot;: &#123; &quot;match&quot;: &#123; &quot;title&quot;: &quot;lazy&quot;  &#125;&#125;,</span><br><span class="line">      &quot;should&quot;: [</span><br><span class="line">                  &#123; &quot;match&quot;: &#123; &quot;title&quot;: &quot;brown&quot; &#125;&#125;,</span><br><span class="line">                  &#123; &quot;match&quot;: &#123; &quot;title&quot;: &quot;dog&quot;   &#125;&#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-控制精度"><a href="#5-控制精度" class="headerlink" title="5. 控制精度"></a>5. 控制精度</h3><p>正如可以控制match查询的精度，也能够通过minimum_should_match参数来控制should语句需要匹配的数量，该参数可以是一个绝对数值或者一个百分比：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /my_index/my_type/_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">      &quot;should&quot;: [</span><br><span class="line">        &#123; &quot;match&quot;: &#123; &quot;title&quot;: &quot;brown&quot; &#125;&#125;,</span><br><span class="line">        &#123; &quot;match&quot;: &#123; &quot;title&quot;: &quot;fox&quot;   &#125;&#125;,</span><br><span class="line">        &#123; &quot;match&quot;: &#123; &quot;title&quot;: &quot;dog&quot;   &#125;&#125;</span><br><span class="line">      ],</span><br><span class="line">      &quot;minimum_should_match&quot;: 2 </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-提升查询子句-Boosting-Query-Clause"><a href="#6-提升查询子句-Boosting-Query-Clause" class="headerlink" title="6. 提升查询子句(Boosting Query Clause)"></a>6. 提升查询子句(Boosting Query Clause)</h3><p>假设我们需要搜索和”full-text search”相关的文档，但是我们想要给予那些提到了”Elasticsearch”或者”Lucene”的文档更多权重。更多权重的意思是，对于提到了”Elasticsearch”或者”Lucene”的文档，它们的相关度_score会更高，即它们会出现在结果列表的前面。<br>一个简单的bool查询能够让我们表达较为复杂的逻辑：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">    &quot;query&quot;: &#123;</span><br><span class="line">        &quot;bool&quot;: &#123;</span><br><span class="line">            &quot;must&quot;: &#123;</span><br><span class="line">                &quot;match&quot;: &#123;</span><br><span class="line">                    &quot;content&quot;: &#123; </span><br><span class="line">                        &quot;query&quot;:    &quot;full text search&quot;,</span><br><span class="line">                        &quot;operator&quot;: &quot;and&quot;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;should&quot;: [ </span><br><span class="line">                &#123; &quot;match&quot;: &#123; &quot;content&quot;: &quot;Elasticsearch&quot; &#125;&#125;,</span><br><span class="line">                &#123; &quot;match&quot;: &#123; &quot;content&quot;: &quot;Lucene&quot;        &#125;&#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-多个查询字符串-Multiple-Query-Strings"><a href="#7-多个查询字符串-Multiple-Query-Strings" class="headerlink" title="7. 多个查询字符串(Multiple Query Strings)"></a>7. 多个查询字符串(Multiple Query Strings)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">      &quot;should&quot;: [</span><br><span class="line">        &#123; &quot;match&quot;: &#123; &quot;title&quot;:  &quot;War and Peace&quot; &#125;&#125;,</span><br><span class="line">        &#123; &quot;match&quot;: &#123; &quot;author&quot;: &quot;Leo Tolstoy&quot;   &#125;&#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">      &quot;should&quot;: [</span><br><span class="line">        &#123; &quot;match&quot;: &#123; &quot;title&quot;:  &quot;War and Peace&quot; &#125;&#125;,</span><br><span class="line">        &#123; &quot;match&quot;: &#123; &quot;author&quot;: &quot;Leo Tolstoy&quot;   &#125;&#125;,</span><br><span class="line">        &#123; &quot;bool&quot;:  &#123;</span><br><span class="line">          &quot;should&quot;: [</span><br><span class="line">            &#123; &quot;match&quot;: &#123; &quot;translator&quot;: &quot;Constance Garnett&quot; &#125;&#125;,</span><br><span class="line">            &#123; &quot;match&quot;: &#123; &quot;translator&quot;: &quot;Louise Maude&quot;      &#125;&#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-设置子句优先级"><a href="#8-设置子句优先级" class="headerlink" title="8. 设置子句优先级"></a>8. 设置子句优先级</h3><p>通过boost参数，增加字段的权重</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">GET /_search</span><br><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">      &quot;should&quot;: [</span><br><span class="line">        &#123; &quot;match&quot;: &#123; </span><br><span class="line">            &quot;title&quot;:  &#123;</span><br><span class="line">              &quot;query&quot;: &quot;War and Peace&quot;,</span><br><span class="line">              &quot;boost&quot;: 2</span><br><span class="line">        &#125;&#125;&#125;,</span><br><span class="line">        &#123; &quot;match&quot;: &#123; </span><br><span class="line">            &quot;author&quot;:  &#123;</span><br><span class="line">              &quot;query&quot;: &quot;Leo Tolstoy&quot;,</span><br><span class="line">              &quot;boost&quot;: 2</span><br><span class="line">        &#125;&#125;&#125;,</span><br><span class="line">        &#123; &quot;bool&quot;:  &#123; </span><br><span class="line">            &quot;should&quot;: [</span><br><span class="line">              &#123; &quot;match&quot;: &#123; &quot;translator&quot;: &quot;Constance Garnett&quot; &#125;&#125;,</span><br><span class="line">              &#123; &quot;match&quot;: &#123; &quot;translator&quot;: &quot;Louise Maude&quot;      &#125;&#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-多字段查询"><a href="#9-多字段查询" class="headerlink" title="9. 多字段查询"></a>9. 多字段查询</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;multi_match&quot;: &#123;</span><br><span class="line">        &quot;query&quot;:                &quot;Quick brown fox&quot;,</span><br><span class="line">        &quot;type&quot;:                 &quot;best_fields&quot;, </span><br><span class="line">        &quot;fields&quot;:               [ &quot;title&quot;, &quot;body&quot; ],</span><br><span class="line">        &quot;tie_breaker&quot;:          0.3,</span><br><span class="line">        &quot;minimum_should_match&quot;: &quot;30%&quot; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意到以上的type属性为best_fields、minimum_should_match和operator参数会被传入到生成的match查询中。<br>在字段名中使用通配符</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;multi_match&quot;: &#123;</span><br><span class="line">        &quot;query&quot;:  &quot;Quick brown fox&quot;,</span><br><span class="line">        &quot;fields&quot;: &quot;*_title&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>提升个别字段<br>个别字段可以通过caret语法(^)进行提升：仅需要在字段名后添加^boost，其中的boost是一个浮点数：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;multi_match&quot;: &#123;</span><br><span class="line">        &quot;query&quot;:  &quot;Quick brown fox&quot;,</span><br><span class="line">        &quot;fields&quot;: [ &quot;*_title&quot;, &quot;chapter_title^2&quot; ] </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>同一个字段使用了不同的解析器的情况</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">GET /my_index/_search</span><br><span class="line">&#123;</span><br><span class="line">   &quot;query&quot;: &#123;</span><br><span class="line">        &quot;multi_match&quot;: &#123;</span><br><span class="line">            &quot;query&quot;:  &quot;jumping rabbits&quot;,</span><br><span class="line">            &quot;type&quot;:   &quot;most_fields&quot;, </span><br><span class="line">            &quot;fields&quot;: [ &quot;title&quot;, &quot;title.std&quot; ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1404,120 +1532,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%BA%A6%E5%85%8B%E9%A3%8E%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%BA%A6%E5%85%8B%E9%A3%8E%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">树莓派麦克风摄像头测试</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2017-03-18 00:00:00" itemprop="dateCreated datePublished" datetime="2017-03-18T00:00:00+08:00">2017-03-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/" itemprop="url" rel="index"><span itemprop="name">树莓派</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>303</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="麦克风"><a href="#麦克风" class="headerlink" title="麦克风"></a>麦克风</h3><p>使用 arecord 录一段声音</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo arecord -D &quot;plughw:1,0&quot; -d 5 f1.wav</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">      arecord [flags] [filename]</span><br><span class="line">       aplay [flags] [filename [filename]] ...</span><br><span class="line">选项:</span><br><span class="line">       -h, --help帮助.</span><br><span class="line">       --version打印版本信息.</span><br><span class="line">       -l, --list-devices列出全部声卡和数字音频设备.</span><br><span class="line">       -L, --list-pcms列出全部PCM定义.</span><br><span class="line">       -D, --device=NAME指定PCM设备名称.</span><br><span class="line">       -q --quiet安静模式.</span><br><span class="line">       -t, --file-type TYPE文件类型(voc,wav,raw或au).</span><br><span class="line">       -c, --channels=#设置通道号.</span><br><span class="line">       -f --format=FORMAT设置格式.格式包括:S8  U8  S16_LE  S16_BE  U16_LE</span><br><span class="line">              U16_BE  S24_LE S24_BE U24_LE U24_BE S32_LE S32_BE U32_LE U32_BE</span><br><span class="line">              FLOAT_LE  FLOAT_BE  FLOAT64_LE  FLOAT64_BE   IEC958_SUBFRAME_LE</span><br><span class="line">              IEC958_SUBFRAME_BE MU_LAW A_LAW IMA_ADPCM MPEG GSM</span><br><span class="line">       -r, --rate=#&amp;lt;Hz&amp;gt;设置频率.</span><br><span class="line">       -d, --duration=#设置持续时间,单位为秒.</span><br><span class="line">       -s, --sleep-min=#设置最小休眠时间.</span><br><span class="line">       -M, --mmap　mmap流.</span><br><span class="line">       -N, --nonblock设置为非块模式.</span><br><span class="line">       -B, --buffer-time=#缓冲持续时长.单位为微妙.</span><br><span class="line">       -v, --verbose显示PCM结构和设置.</span><br><span class="line">       -I, --separate-channels设置为每个通道一个单独文件.</span><br></pre></td></tr></table></figure>
-
-<p>demo</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    aplay -c 1 -t raw -r 22050 -f mu_law foobar</span><br><span class="line">播放raw文件foobar.以22050Hz,单声道,8位,mu_law格式.</span><br><span class="line"></span><br><span class="line">      arecord -d 10 -f cd -t wav -D copy foobar.wav</span><br><span class="line">以CD质量录制foobar.wav文件10秒钟.使用PCM的&quot;copy&quot;.</span><br></pre></td></tr></table></figure>
-
-
-
-<p>装播放器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install omxplayer</span><br></pre></td></tr></table></figure>
-
-<p>播放录的声音</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">omxplayer f1.wav </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="摄像头"><a href="#摄像头" class="headerlink" title="摄像头"></a>摄像头</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raspistill -o keychain.jpg -t 2000 </span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1541,13 +1555,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">136k</span>
+    <span title="站点总字数">138k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:16</span>
+    <span title="站点阅读时长">8:20</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

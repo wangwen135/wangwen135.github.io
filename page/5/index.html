@@ -125,7 +125,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">157</span>
+          <span class="site-state-item-count">158</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -136,7 +136,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">117</span>
+        <span class="site-state-item-count">121</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,6 +167,127 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96Photo%20station/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96Photo%20station/" class="post-title-link" itemprop="url">群晖Photo station</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-25 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-25T00:00:00+08:00">2021-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/" itemprop="url" rel="index"><span itemprop="name">黑群晖</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>348</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>已有公网IP<br>已配置DDNS，IP地址绑定了域名 （阿里云域名）<br>已经设置了ssl证书  （阿里云免费）  </p>
+</blockquote>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>用admin账号登录，安装Photo station套件即可</p>
+<h3 id="外网无法访问问题"><a href="#外网无法访问问题" class="headerlink" title="外网无法访问问题"></a>外网无法访问问题</h3><p>在外网环境，通过DSM直接跳转到Photo station套件网页版时无法访问，<strong>Photo station使用80 或443 端口</strong>，需要在路由器上做端口映射。  </p>
+<p>由于运营商封闭了这两个端口，需要改成别的端口</p>
+<h4 id="在路由器上设置端口映射"><a href="#在路由器上设置端口映射" class="headerlink" title="在路由器上设置端口映射"></a>在路由器上设置端口映射</h4><ul>
+<li>8066 端口 映射到群晖的 80端口 （示例，http不安全）</li>
+<li>44366 端口 映射到群晖的 443端口</li>
+</ul>
+<p>外网只支持HTTPS方式，这里我们映射443端口即可</p>
+<h4 id="在Photo-station-中进行设置"><a href="#在Photo-station-中进行设置" class="headerlink" title="在Photo station 中进行设置"></a>在Photo station 中进行设置</h4><p>设置 &gt; 常规 &gt; 路由器端口</p>
+<ul>
+<li>主机名称或固定IP：这里输入你的域名，如：xxx123.top</li>
+<li>HTTPS: 44366 (上面映射的外网端口)</li>
+</ul>
+<p>点击保存</p>
+<blockquote>
+<p>外网只允许https访问，只要映射https端口即可</p>
+</blockquote>
+<h4 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h4><p>外网通过 <strong>https:&#x2F;&#x2F;域名:端口</strong> 的方式登录DSM，点击Photo station时会自动跳转到 44366端口</p>
+<p>如果内网是通过ip地址访问DSM，跳转时则是走的80 或 443 端口</p>
+<hr>
+<h3 id="Photo-station权限"><a href="#Photo-station权限" class="headerlink" title="Photo station权限"></a>Photo station权限</h3><p>默认创建 “photo” 共享文件夹 无法在控制面板中设置权限</p>
+<p>需要进入photo station 进行权限设置</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1355,141 +1476,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E6%88%96%E9%99%8D%E7%BA%A7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E6%88%96%E9%99%8D%E7%BA%A7/" class="post-title-link" itemprop="url">Linux内核版本升级或降级</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-08-12 23:26:00" itemprop="dateCreated datePublished" datetime="2021-08-12T23:26:00+08:00">2021-08-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>583</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>测试系统PVE 7.0</p>
-</blockquote>
-<h2 id="PVE内核升级或降级"><a href="#PVE内核升级或降级" class="headerlink" title="PVE内核升级或降级"></a>PVE内核升级或降级</h2><h3 id="当前版本信息"><a href="#当前版本信息" class="headerlink" title="当前版本信息"></a>当前版本信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># uname -r</span><br><span class="line">5.11.22-1-pve</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># lsb_release -a</span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID: Debian</span><br><span class="line">Description:    Debian GNU/Linux 11 (bullseye)</span><br><span class="line">Release:        11</span><br><span class="line">Codename:       bullseye</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="查找内核"><a href="#查找内核" class="headerlink" title="查找内核"></a>查找内核</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># apt-cache search linux | grep &#x27;PVE Kernel Image&#x27;</span><br><span class="line"></span><br><span class="line">pve-kernel-5.11.17-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.11.21-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.11.22-2-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.11.7-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.4.119-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.4.124-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line">pve-kernel-5.4.128-1-pve - The Proxmox PVE Kernel Image</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="安装内核"><a href="#安装内核" class="headerlink" title="安装内核"></a>安装内核</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># apt-get install pve-kernel-5.11.21-1-pve</span><br><span class="line"></span><br><span class="line">apt-get install pve-kernel-5.4.128-1-pve</span><br><span class="line"></span><br><span class="line"># 安装不了配置镜像</span><br><span class="line"># 还不行挂代理</span><br><span class="line"></span><br><span class="line">apt -o Acquire::http::proxy=&quot;http://192.168.1.100:10809/&quot; install pve-kernel-5.4.128-1-pve</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="查看当前系统内核启动顺序"><a href="#查看当前系统内核启动顺序" class="headerlink" title="查看当前系统内核启动顺序"></a>查看当前系统内核启动顺序</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">grep menuentry /boot/grub/grub.cfg</span><br><span class="line"></span><br><span class="line"># 或者</span><br><span class="line"></span><br><span class="line">cat /boot/grub/grub.cfg | grep menuentry</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="修改内核启动顺序"><a href="#修改内核启动顺序" class="headerlink" title="修改内核启动顺序"></a>修改内核启动顺序</h3><p>如果你升级的版本比当前内核版本高的话，默认新安装的内核就是第一顺序启动的，只需重启系统就行了，否则，则需要修改配置文件</p>
-<p>找到上一步中的名称（启动到时候可以看到）<br>如：</p>
-<blockquote>
-<p>Advanced options for Proxmox VE GNU&#x2F;Linux<br>Proxmox VE GNU&#x2F;Linux, with Linux 5.4.128-1-pve  </p>
-</blockquote>
-<h4 id="修改-etc-default-grub中-GRUB-DEFAULT"><a href="#修改-etc-default-grub中-GRUB-DEFAULT" class="headerlink" title="修改&#x2F;etc&#x2F;default&#x2F;grub中 GRUB_DEFAULT"></a>修改&#x2F;etc&#x2F;default&#x2F;grub中 GRUB_DEFAULT</h4><p><strong>可以使用顺序号（从0开始）或使用菜单名称</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/default/grub</span><br><span class="line"></span><br><span class="line"># 将 GRUB_DEFAULT=0 修改想要的菜单，如果有二级菜单的，用&gt; 符合指定</span><br><span class="line"># 如这里的改成第二个菜单的第三项</span><br><span class="line"></span><br><span class="line">GRUB_DEFAULT=&quot;1&gt;2&quot;</span><br><span class="line"></span><br><span class="line"># 或者</span><br><span class="line">#GRUB_DEFAULT=&quot;Advanced options for Proxmox VE GNU/Linux&gt;Proxmox VE GNU/Linux, with Linux 5.4.128-1-pve&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>注意有二级菜单时要有引号</strong></p>
-<p>其他示例：</p>
-<ul>
-<li>GRUB_DEFAULT&#x3D; “Previous Linux versions&gt;Ubuntu, with Linux 3.2.0-18-generic-pae”</li>
-<li>GRUB_DEFAULT&#x3D; “Previous Linux versions&gt;0”</li>
-<li>GRUB_DEFAULT&#x3D; “2&gt;0”</li>
-<li>GRUB_DEFAULT&#x3D; “2&gt;Ubuntu, with Linux 3.2.0-18-generic-pae”</li>
-</ul>
-<h3 id="更新引导并重启"><a href="#更新引导并重启" class="headerlink" title="更新引导并重启"></a>更新引导并重启</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">update-grub</span><br><span class="line"></span><br><span class="line">reboot</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>重启后，使用命令uname -r查看</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># uname -r</span><br><span class="line">5.4.128-1-pve</span><br></pre></td></tr></table></figure>
-
-<hr>
-<hr>
-<h2 id="PS"><a href="#PS" class="headerlink" title="PS"></a>PS</h2><p>因为在PVE下创建虚拟机 Realtek RTL8125 2.5GbE 的网卡 与1G的交换机连接 无法跑满速（只有大概20 ~ 40Mb&#x2F;s），为降内核版本了安装 realtek-r8125-dkms_9.005.06-1_amd64.deb 驱动进行测试</p>
-<p>实际上据说也是驱动bug，新的r8169驱动也支持这个网卡并且修复了这个bug，但是实际上测试并没有……</p>
-<h4 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h4><p>Chipset -&gt; South Cluster Configuration -&gt; PIC Express Configuration -&gt; PCI Express Root Port</p>
-<p>将全部PCI Express Root Port 的  ASPM 的Auto改成Disable</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1513,13 +1499,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">136k</span>
+    <span title="站点总字数">138k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:16</span>
+    <span title="站点阅读时长">8:20</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
