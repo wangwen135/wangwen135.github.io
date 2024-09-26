@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Spring 表达式语言 (SpEL)使用 Spring 的表达式接口进行表达式求值下面的代码引入了 SpEL API 来评估文字字符串表达式 ‘Hello World’ 123ExpressionParser parser &#x3D; new SpelExpressionParser();Expression exp &#x3D; parser.parseExpression(&quot;&#x27;Hello">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring 表达式语言 (SpEL)">
+<meta property="og:url" content="https://wangwen135.github.io/Spring/Spring%20%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E8%A8%80%20(SpEL)/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="Spring 表达式语言 (SpEL)使用 Spring 的表达式接口进行表达式求值下面的代码引入了 SpEL API 来评估文字字符串表达式 ‘Hello World’ 123ExpressionParser parser &#x3D; new SpelExpressionParser();Expression exp &#x3D; parser.parseExpression(&quot;&#x27;Hello">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-04T15:41:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="SpEL">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/Spring/Spring%20%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E8%A8%80%20(SpEL)/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/Spring/Spring%20%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E8%A8%80%20(SpEL)/","path":"Spring/Spring 表达式语言 (SpEL)/","title":"Spring 表达式语言 (SpEL)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Spring 表达式语言 (SpEL) | 王某某的笔记</title>
+  
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E8%A8%80-SpEL"><span class="nav-number">1.</span> <span class="nav-text">Spring 表达式语言 (SpEL)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-Spring-%E7%9A%84%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%8E%A5%E5%8F%A3%E8%BF%9B%E8%A1%8C%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="nav-number">1.1.</span> <span class="nav-text">使用 Spring 的表达式接口进行表达式求值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EvaluationContext%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.1.1.</span> <span class="nav-text">EvaluationContext接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E5%8F%82%E8%80%83"><span class="nav-number">1.2.</span> <span class="nav-text">语法参考</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E5%AD%97%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">文字表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7%E3%80%81%E6%95%B0%E7%BB%84%E3%80%81Lists%E3%80%81Maps%E3%80%81Indexers"><span class="nav-number">1.2.2.</span> <span class="nav-text">属性、数组、Lists、Maps、Indexers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.3.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6%E5%8F%B7"><span class="nav-number">1.2.4.</span> <span class="nav-text">运算符号</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.2.4.1.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.2.4.2.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.2.4.3.</span> <span class="nav-text">数学运算符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B5%8B%E5%80%BC"><span class="nav-number">1.2.5.</span> <span class="nav-text">赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.6.</span> <span class="nav-text">类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E5%99%A8"><span class="nav-number">1.2.7.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.2.8.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#this-%E5%8F%98%E9%87%8F"><span class="nav-number">1.2.8.1.</span> <span class="nav-text">#this 变量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.9.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6%EF%BC%88If-Then-Else%EF%BC%89"><span class="nav-number">1.2.10.</span> <span class="nav-text">三元运算符（If-Then-Else）</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Spring/Spring%20%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E8%A8%80%20(SpEL)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Spring 表达式语言 (SpEL) | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spring 表达式语言 (SpEL)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-06-04 23:41:00" itemprop="dateCreated datePublished" datetime="2022-06-04T23:41:00+08:00">2022-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Spring-表达式语言-SpEL"><a href="#Spring-表达式语言-SpEL" class="headerlink" title="Spring 表达式语言 (SpEL)"></a>Spring 表达式语言 (SpEL)</h1><h2 id="使用-Spring-的表达式接口进行表达式求值"><a href="#使用-Spring-的表达式接口进行表达式求值" class="headerlink" title="使用 Spring 的表达式接口进行表达式求值"></a>使用 Spring 的表达式接口进行表达式求值</h2><p>下面的代码引入了 SpEL API 来评估文字字符串表达式 ‘Hello World’</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line">Expression exp = parser.parseExpression(&quot;&#x27;Hello World&#x27;&quot;);</span><br><span class="line">String message = (String) exp.getValue();</span><br></pre></td></tr></table></figure>
+<p>常用的 SpEL 类和接口位于包org.springframework.expression 及其子包和spel.support中。</p>
+<p>作为方法调用的示例，我们在字符串文字上调用“concat”方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line">Expression exp = parser.parseExpression(&quot;&#x27;Hello World&#x27;.concat(&#x27;!&#x27;)&quot;);</span><br><span class="line">String message = (String) exp.getValue();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这将返回 ‘Hello World!’</p>
+</blockquote>
+<p>使用点号来获取属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line">// invokes &#x27;getBytes().length&#x27;</span><br><span class="line">Expression exp = parser.parseExpression(&quot;&#x27;Hello World&#x27;.bytes.length&quot;);  </span><br><span class="line">int length = (Integer) exp.getValue();</span><br></pre></td></tr></table></figure>
+<p>调用方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line">Expression exp = parser.parseExpression(&quot;new String(&#x27;hello world&#x27;).toUpperCase()&quot;);</span><br><span class="line">String message = exp.getValue(String.class);</span><br></pre></td></tr></table></figure>
+<h3 id="EvaluationContext接口"><a href="#EvaluationContext接口" class="headerlink" title="EvaluationContext接口"></a>EvaluationContext接口</h3><p>EvaluationContext在评估表达式以解析属性、方法、字段并帮助执行类型转换时使用该接口。开箱即用的实现使用反射来StandardEvaluationContext操作对象，缓存 j ava.lang.reflect的Method和 实例以提高性能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Simple &#123;</span><br><span class="line">    public List&lt;Boolean&gt; booleanList = new ArrayList&lt;Boolean&gt;();</span><br><span class="line">&#125;</span><br><span class="line">    	</span><br><span class="line">Simple simple = new Simple();</span><br><span class="line"></span><br><span class="line">simple.booleanList.add(true);</span><br><span class="line"></span><br><span class="line">StandardEvaluationContext simpleContext = new StandardEvaluationContext(simple);</span><br><span class="line"></span><br><span class="line">// false is passed in here as a string.  SpEL and the conversion service will </span><br><span class="line">// correctly recognize that it needs to be a Boolean and convert it</span><br><span class="line">parser.parseExpression(&quot;booleanList[0]&quot;).setValue(simpleContext, &quot;false&quot;);</span><br><span class="line"></span><br><span class="line">// b will be false</span><br><span class="line">Boolean b = simple.booleanList.get(0);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="语法参考"><a href="#语法参考" class="headerlink" title="语法参考"></a>语法参考</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch06s05.html">https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch06s05.html</a></p>
+<h3 id="文字表达式"><a href="#文字表达式" class="headerlink" title="文字表达式"></a>文字表达式</h3><p>支持的文字表达式类型有字符串、日期、数值（整数、实数和十六进制）、布尔值和空值。字符串由单引号分隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">// evals to &quot;Hello World&quot;</span><br><span class="line">String helloWorld = (String) parser.parseExpression(&quot;&#x27;Hello World&#x27;&quot;).getValue(); </span><br><span class="line"></span><br><span class="line">double avogadrosNumber  = (Double) parser.parseExpression(&quot;6.0221415E+23&quot;).getValue();  </span><br><span class="line"></span><br><span class="line">// evals to 2147483647</span><br><span class="line">int maxValue = (Integer) parser.parseExpression(&quot;0x7FFFFFFF&quot;).getValue();  </span><br><span class="line"></span><br><span class="line">boolean trueValue = (Boolean) parser.parseExpression(&quot;true&quot;).getValue();</span><br><span class="line"></span><br><span class="line">Object nullValue = parser.parseExpression(&quot;null&quot;).getValue();</span><br></pre></td></tr></table></figure>
+<p>数字支持使用负号、指数记数法和小数点。默认情况下，使用 Double.parseDouble() 解析实数。</p>
+<h3 id="属性、数组、Lists、Maps、Indexers"><a href="#属性、数组、Lists、Maps、Indexers" class="headerlink" title="属性、数组、Lists、Maps、Indexers"></a>属性、数组、Lists、Maps、Indexers</h3><p>使用<strong>点</strong>来表示属性引用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int year = (Integer) parser.parseExpression(&quot;Birthdate.Year + 1900&quot;).getValue(context); </span><br><span class="line"></span><br><span class="line">String city = (String) parser.parseExpression(&quot;placeOfBirth.City&quot;).getValue(context);</span><br></pre></td></tr></table></figure>
+<p>数组和列表的内容是使用<strong>方括号</strong>表示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">// Inventions Array</span><br><span class="line">StandardEvaluationContext teslaContext = new StandardEvaluationContext(tesla);</span><br><span class="line"></span><br><span class="line">// evaluates to &quot;Induction motor&quot;</span><br><span class="line">String invention = parser.parseExpression(&quot;inventions[3]&quot;).getValue(teslaContext, </span><br><span class="line">                                                                    String.class); </span><br><span class="line"></span><br><span class="line">// Members List</span><br><span class="line">StandardEvaluationContext societyContext = new StandardEvaluationContext(ieee);</span><br><span class="line"></span><br><span class="line">// evaluates to &quot;Nikola Tesla&quot;</span><br><span class="line">String name = parser.parseExpression(&quot;Members[0].Name&quot;).getValue(societyContext, String.class);</span><br><span class="line"></span><br><span class="line">// List and Array navigation</span><br><span class="line">// evaluates to &quot;Wireless communication&quot;</span><br><span class="line">String invention = parser.parseExpression(&quot;Members[0].Inventions[6]&quot;).getValue(societyContext,</span><br><span class="line">                                                                               String.class);</span><br></pre></td></tr></table></figure>
+<p>map的内容是通过在括号内指定文字键值来获得的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// Officer&#x27;s Dictionary</span><br><span class="line"></span><br><span class="line">Inventor pupin = parser.parseExpression(&quot;Officers[&#x27;president&#x27;]&quot;).getValue(societyContext, </span><br><span class="line">                                                                          Inventor.class);</span><br><span class="line"></span><br><span class="line">// evaluates to &quot;Idvor&quot;</span><br><span class="line">String city = </span><br><span class="line">    parser.parseExpression(&quot;Officers[&#x27;president&#x27;].PlaceOfBirth.City&quot;).getValue(societyContext,</span><br><span class="line">                                                                               String.class);</span><br><span class="line"></span><br><span class="line">// setting values</span><br><span class="line">parser.parseExpression(&quot;Officers[&#x27;advisors&#x27;][0].PlaceOfBirth.Country&quot;).setValue(societyContext,</span><br><span class="line">                                                                                &quot;Croatia&quot;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>使用典型的 Java 编程语法调用方法。还可以在文字上调用方法，支持方法参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// string literal, evaluates to &quot;bc&quot;</span><br><span class="line">String c = parser.parseExpression(&quot;&#x27;abc&#x27;.substring(2, 3)&quot;).getValue(String.class);</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">boolean isMember = parser.parseExpression(&quot;isMember(&#x27;Mihajlo Pupin&#x27;)&quot;).getValue(societyContext,</span><br><span class="line">                                                                                Boolean.class);</span><br></pre></td></tr></table></figure>
+
+<h3 id="运算符号"><a href="#运算符号" class="headerlink" title="运算符号"></a>运算符号</h3><h4 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h4><p>使用标准运算符表示法支持等于、不等于、小于、小于或等于、大于和大于或等于。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 计算结果为真</span><br><span class="line">boolean trueValue = parser.parseExpression( &quot; 2 == 2&quot; ).getValue(Boolean.class );</span><br><span class="line"></span><br><span class="line">// 计算结果为假</span><br><span class="line">boolean falseValue = parser.parseExpression( &quot; 2 &lt; -5.0&quot; ).getValue(Boolean.class );</span><br><span class="line"></span><br><span class="line">// 计算结果为真</span><br><span class="line">boolean trueValue = parser.parseExpression( &quot; &#x27;black&#x27; &lt; &#x27;block&#x27;&quot; ).getValue(Boolean.class );</span><br></pre></td></tr></table></figure>
+<p>除了标准的关系运算符之外，SpEL 还支持“instanceof”和基于正则表达式的“匹配”运算符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// evaluates to false</span><br><span class="line">boolean falseValue = parser.parseExpression(&quot;&#x27;xyz&#x27; instanceof T(int)&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">boolean trueValue = </span><br><span class="line">     parser.parseExpression(&quot;&#x27;5.00&#x27; matches &#x27;^-?\\d+(\\.\\d&#123;2&#125;)?$&#x27;&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line">//evaluates to false</span><br><span class="line">boolean falseValue = </span><br><span class="line">     parser.parseExpression(&quot;&#x27;5.0067&#x27; matches &#x27;^-?\\d+(\\.\\d&#123;2&#125;)?$&#x27;&quot;).getValue(Boolean.class);</span><br></pre></td></tr></table></figure>
+<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>支持的逻辑运算符有 and、or 和 not。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// -- AND --</span><br><span class="line"></span><br><span class="line">// evaluates to false</span><br><span class="line">boolean falseValue = parser.parseExpression(&quot;true and false&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">String expression =  &quot;isMember(&#x27;Nikola Tesla&#x27;) and isMember(&#x27;Mihajlo Pupin&#x27;)&quot;;</span><br><span class="line">boolean trueValue = parser.parseExpression(expression).getValue(societyContext, Boolean.class);</span><br><span class="line"></span><br><span class="line">// -- OR --</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">boolean trueValue = parser.parseExpression(&quot;true or false&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">String expression =  &quot;isMember(&#x27;Nikola Tesla&#x27;) or isMember(&#x27;Albert Einstien&#x27;)&quot;;</span><br><span class="line">boolean trueValue = parser.parseExpression(expression).getValue(societyContext, Boolean.class);</span><br><span class="line"></span><br><span class="line">// -- NOT --</span><br><span class="line"></span><br><span class="line">// evaluates to false</span><br><span class="line">boolean falseValue = parser.parseExpression(&quot;!true&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// -- AND and NOT --</span><br><span class="line">String expression =  &quot;isMember(&#x27;Nikola Tesla&#x27;) and !isMember(&#x27;Mihajlo Pupin&#x27;)&quot;;</span><br><span class="line">boolean falseValue = parser.parseExpression(expression).getValue(societyContext, Boolean.class);</span><br></pre></td></tr></table></figure>
+
+<h4 id="数学运算符"><a href="#数学运算符" class="headerlink" title="数学运算符"></a>数学运算符</h4><p>加法运算符可用于数字、字符串和日期。减法可用于数字和日期。乘法和除法只能用于数字。其他支持的数学运算符是模数 (%) 和指数幂 (^)。执行标准运算符优先级。这些运算符如下所示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// Addition</span><br><span class="line">int two = parser.parseExpression(&quot;1 + 1&quot;).getValue(Integer.class); // 2</span><br><span class="line"></span><br><span class="line">String testString = </span><br><span class="line">   parser.parseExpression(&quot;&#x27;test&#x27; + &#x27; &#x27; + &#x27;string&#x27;&quot;).getValue(String.class);  // &#x27;test string&#x27;</span><br><span class="line"></span><br><span class="line">// Subtraction</span><br><span class="line">int four =  parser.parseExpression(&quot;1 - -3&quot;).getValue(Integer.class); // 4</span><br><span class="line"></span><br><span class="line">double d = parser.parseExpression(&quot;1000.00 - 1e4&quot;).getValue(Double.class); // -9000</span><br><span class="line"></span><br><span class="line">// Multiplication</span><br><span class="line">int six =  parser.parseExpression(&quot;-2 * -3&quot;).getValue(Integer.class); // 6</span><br><span class="line"></span><br><span class="line">double twentyFour = parser.parseExpression(&quot;2.0 * 3e0 * 4&quot;).getValue(Double.class); // 24.0</span><br><span class="line"></span><br><span class="line">// Division</span><br><span class="line">int minusTwo =  parser.parseExpression(&quot;6 / -3&quot;).getValue(Integer.class); // -2</span><br><span class="line"></span><br><span class="line">double one = parser.parseExpression(&quot;8.0 / 4e0 / 2&quot;).getValue(Double.class); // 1.0</span><br><span class="line"></span><br><span class="line">// Modulus</span><br><span class="line">int three =  parser.parseExpression(&quot;7 % 4&quot;).getValue(Integer.class); // 3</span><br><span class="line"></span><br><span class="line">int one = parser.parseExpression(&quot;8 / 5 % 2&quot;).getValue(Integer.class); // 1</span><br><span class="line"></span><br><span class="line">// Operator precedence</span><br><span class="line">int minusTwentyOne = parser.parseExpression(&quot;1+2-3*8&quot;).getValue(Integer.class); // -21</span><br></pre></td></tr></table></figure>
+
+<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>可以使用语法#variableName 在表达式中引用变量。使用 StandardEvaluationContext 上的 setVariable 方法设置变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Inventor tesla = new Inventor(&quot;Nikola Tesla&quot;, &quot;Serbian&quot;);</span><br><span class="line">StandardEvaluationContext context = new StandardEvaluationContext(tesla);</span><br><span class="line">context.setVariable(&quot;newName&quot;, &quot;Mike Tesla&quot;);</span><br><span class="line"></span><br><span class="line">parser.parseExpression(&quot;Name = #newName&quot;).getValue(context);</span><br><span class="line"></span><br><span class="line">System.out.println(tesla.getName()) // &quot;Mike Tesla&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="this-变量"><a href="#this-变量" class="headerlink" title="#this 变量"></a>#this 变量</h4><p>变量 #this 始终被定义并引用当前评估对象</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h3 id="三元运算符（If-Then-Else）"><a href="#三元运算符（If-Then-Else）" class="headerlink" title="三元运算符（If-Then-Else）"></a>三元运算符（If-Then-Else）</h3>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+              <a href="/tags/SpEL/" rel="tag"># SpEL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/alibaba/Nacos/Nacos%20%E5%BF%BD%E7%95%A5%E7%BD%91%E5%8D%A1/" rel="prev" title="Nacos 忽略网卡">
+                  <i class="fa fa-angle-left"></i> Nacos 忽略网卡
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8&%E5%85%89%E7%8C%AB/%E5%A4%96%E7%BD%91SSH%E4%BB%A5%E5%8F%8Aip%E7%99%BD%E5%90%8D%E5%8D%95/" rel="next" title="外网SSH以及ip白名单">
+                  外网SSH以及ip白名单 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">150k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">9:05</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

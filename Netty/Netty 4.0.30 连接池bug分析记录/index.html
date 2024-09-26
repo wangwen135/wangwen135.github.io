@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Fastdfs 问题分析记录 问题生产上存在上传文件到fastdfs中时一直卡死的问题 大概半个月出现一次，重启就能恢复日志中没有任何错误 分析线程堆栈： 1234567891011121314151617&quot;taskExecutor-5&quot; #638 prio&#x3D;5 os_prio&#x3D;0 tid&#x3D;0x00007f970800b000 nid&#x3D;0x1be3 waiting on con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Netty 4.0.30 连接池bug分析记录">
+<meta property="og:url" content="https://wangwen135.github.io/Netty/Netty%204.0.30%20%E8%BF%9E%E6%8E%A5%E6%B1%A0bug%E5%88%86%E6%9E%90%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="Fastdfs 问题分析记录 问题生产上存在上传文件到fastdfs中时一直卡死的问题 大概半个月出现一次，重启就能恢复日志中没有任何错误 分析线程堆栈： 1234567891011121314151617&quot;taskExecutor-5&quot; #638 prio&#x3D;5 os_prio&#x3D;0 tid&#x3D;0x00007f970800b000 nid&#x3D;0x1be3 waiting on con">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2dc9af4f4.png">
+<meta property="og:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2e2f65550.png">
+<meta property="og:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2ea3cc665.png">
+<meta property="og:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2ec28d5b5.png">
+<meta property="og:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2f20ad8fc.png">
+<meta property="og:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2f3c04e77.png">
+<meta property="og:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2f6623b14.png">
+<meta property="og:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2fbd6e512.png">
+<meta property="og:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2fdaa5906.png">
+<meta property="article:published_time" content="2019-06-14T15:41:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Netty">
+<meta property="article:tag" content="FastDFS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.wangwen135.top:23456/image/2024/08/66ba2dc9af4f4.png">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/Netty/Netty%204.0.30%20%E8%BF%9E%E6%8E%A5%E6%B1%A0bug%E5%88%86%E6%9E%90%E8%AE%B0%E5%BD%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/Netty/Netty%204.0.30%20%E8%BF%9E%E6%8E%A5%E6%B1%A0bug%E5%88%86%E6%9E%90%E8%AE%B0%E5%BD%95/","path":"Netty/Netty 4.0.30 连接池bug分析记录/","title":"Netty 4.0.30 连接池bug分析记录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Netty 4.0.30 连接池bug分析记录 | 王某某的笔记</title>
+  
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">总结问题：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%9F%A5%E5%8E%9F%E5%9B%A0%EF%BC%9A"><span class="nav-number">2.2.</span> <span class="nav-text">检查原因：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E9%87%8D%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">问题重现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%A1%88"><span class="nav-number">4.</span> <span class="nav-text">修复方案</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Netty/Netty%204.0.30%20%E8%BF%9E%E6%8E%A5%E6%B1%A0bug%E5%88%86%E6%9E%90%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Netty 4.0.30 连接池bug分析记录 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Netty 4.0.30 连接池bug分析记录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-06-14 23:41:00" itemprop="dateCreated datePublished" datetime="2019-06-14T23:41:00+08:00">2019-06-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Netty/" itemprop="url" rel="index"><span itemprop="name">Netty</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>846</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>Fastdfs 问题分析记录</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>生产上存在上传文件到fastdfs中时一直卡死的问题</p>
+<p>大概半个月出现一次，重启就能恢复<br>日志中没有任何错误</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>线程堆栈：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&quot;taskExecutor-5&quot; #638 prio=5 os_prio=0 tid=0x00007f970800b000 nid=0x1be3 waiting on condition [0x00007f9632008000]</span><br><span class="line">   java.lang.Thread.State: WAITING (parking)</span><br><span class="line">	at sun.misc.Unsafe.park(Native Method)</span><br><span class="line">	- parking to wait for  &lt;0x00000000e134e670&gt; (a java.util.concurrent.CompletableFuture$Signaller)</span><br><span class="line">	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)</span><br><span class="line">	at java.util.concurrent.CompletableFuture$Signaller.block(CompletableFuture.java:1693)</span><br><span class="line">	at java.util.concurrent.ForkJoinPool.managedBlock(ForkJoinPool.java:3323)</span><br><span class="line">	at java.util.concurrent.CompletableFuture.waitingGet(CompletableFuture.java:1729)</span><br><span class="line">	at java.util.concurrent.CompletableFuture.get(CompletableFuture.java:1895)</span><br><span class="line">	at com.appleframework.file.provider.fdfs.FdfsProvider.upload(FdfsProvider.java:61)</span><br><span class="line">	at com.appleframework.file.spring.AbstractFSProviderSpringFacade.upload(AbstractFSProviderSpringFacade.java:70)</span><br><span class="line">	at com.chedaia.biz.renew.provider.service.impl.CustomerShoppingServiceImpl$1.run(CustomerShoppingServiceImpl.java:956)</span><br><span class="line">	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)</span><br><span class="line">	at java.util.concurrent.FutureTask.run(FutureTask.java:266)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</span><br><span class="line">	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</span><br><span class="line">	at java.lang.Thread.run(Thread.java:748)</span><br></pre></td></tr></table></figure>
+<p>只知道是在等一个CompletableFuture异步计算的返回结果，可能是再等待获取存储服务器地址，也可能是再等待上传结果</p>
+<p>检查代码并进行测试，没有发现问题<br>猜测可能是获取不到连接导致的，连接没有归还到连接池中等，也可能是fastdfs一直没有响应，或者网络出现了什么问题等。</p>
+<p>直到生产上再次出现该问题<br>将生产上的程序堆栈dump出来查看对比之前看的代码，发现是获取的连接数达到了最大值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmap -dump:format=b,file=文件名 [pid]</span><br></pre></td></tr></table></figure>
+<p><img src="https://img.wangwen135.top:23456/image/2024/08/66ba2dc9af4f4.png" alt="图片1.png"></p>
+<p>而连接池中并没连接</p>
+<p><img src="https://img.wangwen135.top:23456/image/2024/08/66ba2e2f65550.png" alt="图片2.png"></p>
+<p>OQL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select x.deque from io.netty.channel.pool.FixedChannelPool x</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="总结问题："><a href="#总结问题：" class="headerlink" title="总结问题："></a>总结问题：</h3><p><code>FixedChannelPool</code> 类的 <code>acquiredChannelCount</code> 字段<br>一直增加到了最大的限制（100）导致的<br>获取到的连接一直没有释放</p>
+<h3 id="检查原因："><a href="#检查原因：" class="headerlink" title="检查原因："></a>检查原因：</h3><p>查代码，并且重点测试这个变量，一直无法重现该问题（怀疑人生<del>_</del>）</p>
+<p>导出测试程序的dump文件和线上的进行比较<br>对比了一下测试版本和线上版本的dump文件，发现类不一致</p>
+<p><img src="https://img.wangwen135.top:23456/image/2024/08/66ba2ea3cc665.png" alt="图片3.png"></p>
+<p>线上版本没有这个变量</p>
+<p><img src="https://img.wangwen135.top:23456/image/2024/08/66ba2ec28d5b5.png" alt="图片4.png"></p>
+<p>检查发现 调试版本 和 线上的版本 不一致</p>
+<ul>
+<li><p>调试版本：<strong>netty-all-4.0.34.Final.jar</strong></p>
+</li>
+<li><p>线上版本：<strong>netty-all-4.0.30.Final.jar</strong></p>
+</li>
+</ul>
+<p>再次查看netty-all-4.0.30的代码，发现netty的连接池存在问题</p>
+<h2 id="问题重现"><a href="#问题重现" class="headerlink" title="问题重现"></a>问题重现</h2><p>检查代码发现连接归还到连接池中再次获取时存在问题<br>当连接用完之后，归还到连接池中，过了一段时间之后连接变成了 TIME_WAIT 状态（或断开），再去获取连接（此时将获取到一个异常的连接）</p>
+<p><img src="https://img.wangwen135.top:23456/image/2024/08/66ba2f20ad8fc.png" alt="图片5.png"></p>
+<p>获取到连接之后会对连接的有效性进行检查</p>
+<p><img src="https://img.wangwen135.top:23456/image/2024/08/66ba2f3c04e77.png" alt="图片6.png"></p>
+<p>检查到连接异常之后会关掉这个连接并再次获取连接</p>
+<p><img src="https://img.wangwen135.top:23456/image/2024/08/66ba2f6623b14.png" alt="图片7.png"></p>
+<p>此时会再调用<strong>FixedChannelPool</strong>类的<code>acquire0</code>方法获取连接，这将导致<strong>acquiredChannelCount</strong> 变量再次 +1，这次获取连接将会+2，而在释放时只会-1，这将导致这个值一直增大，直到达到maxConnections 的限制，之后就再也获取不到连接了</p>
+<p><img src="https://img.wangwen135.top:23456/image/2024/08/66ba2fbd6e512.png" alt="图片8.png"></p>
+<p>释放连接时只会-1</p>
+<p><img src="https://img.wangwen135.top:23456/image/2024/08/66ba2fdaa5906.png" alt="图片9.png"></p>
+<h2 id="修复方案"><a href="#修复方案" class="headerlink" title="修复方案"></a>修复方案</h2><p>升级netty的包到更高的版本</p>
+<p><strong><code>netty-all-4.0.30.Final.jar 包存在这个问题</code></strong></p>
+<p><strong>netty-all-4.0.34.Final.jar 已经修复了这个问题</strong></p>
+<blockquote>
+<p>PS：<br>这个4.0.34版本还是可能会有问题<br>private int acquiredChannelCount;<br>这个变量是int类型，存在并发问题，可能多个线程同时修改这个变量，应该用AtomicInteger，但是以目前系统的并发量来看，完全可以忽略。</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Netty/" rel="tag"># Netty</a>
+              <a href="/tags/FastDFS/" rel="tag"># FastDFS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/java/java%E7%A8%8B%E5%BA%8FClassLoad%E5%8A%A0%E5%AF%86%E7%9A%84%E9%80%9A%E7%94%A8%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/" rel="prev" title="java程序ClassLoad加密的通用破解方法">
+                  <i class="fa fa-angle-left"></i> java程序ClassLoad加密的通用破解方法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/java/sun.misc.Unsafe/" rel="next" title="sun.misc.Unsafe">
+                  sun.misc.Unsafe <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">150k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">9:05</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

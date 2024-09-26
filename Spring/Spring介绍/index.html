@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="从这个地方随手翻译过来的https:&#x2F;&#x2F;www.tutorialspoint.com&#x2F;spring&#x2F;index.htm   概述Spring是企业Java最流行的应用程序开发框架。全球数以百万计的开发人员使用Spring Framework创建高性能，易于测试和可重用的代码。 Spring框架是一个开源的Java平台。它最初由Rod Johnson编写，并于2003年6月首次在Apache 2.0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring介绍">
+<meta property="og:url" content="https://wangwen135.github.io/Spring/Spring%E4%BB%8B%E7%BB%8D/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="从这个地方随手翻译过来的https:&#x2F;&#x2F;www.tutorialspoint.com&#x2F;spring&#x2F;index.htm   概述Spring是企业Java最流行的应用程序开发框架。全球数以百万计的开发人员使用Spring Framework创建高性能，易于测试和可重用的代码。 Spring框架是一个开源的Java平台。它最初由Rod Johnson编写，并于2003年6月首次在Apache 2.0">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-06-04T15:41:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Spring">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/Spring/Spring%E4%BB%8B%E7%BB%8D/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/Spring/Spring%E4%BB%8B%E7%BB%8D/","path":"Spring/Spring介绍/","title":"Spring介绍"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Spring介绍 | 王某某的笔记</title>
+  
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%EF%BC%88DI%EF%BC%89"><span class="nav-number">1.1.</span> <span class="nav-text">依赖注入（DI）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%88%87%E9%9D%A2%E7%BC%96%E7%A8%8B%EF%BC%88AOP%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">面向切面编程（AOP）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%AE%B9%E5%99%A8"><span class="nav-number">2.1.</span> <span class="nav-text">核心容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%AE%BF%E9%97%AE-%E9%9B%86%E6%88%90"><span class="nav-number">2.2.</span> <span class="nav-text">数据访问&#x2F;集成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WEB"><span class="nav-number">2.3.</span> <span class="nav-text">WEB</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%82%E9%A1%B9"><span class="nav-number">2.4.</span> <span class="nav-text">杂项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E5%AE%9A%E4%B9%89"><span class="nav-number">3.</span> <span class="nav-text">Bean定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">Spring 配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E7%9A%84%E8%8C%83%E5%9B%B4"><span class="nav-number">4.</span> <span class="nav-text">Bean的范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">5.</span> <span class="nav-text">Bean的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%9B%9E%E8%B0%83"><span class="nav-number">5.1.</span> <span class="nav-text">初始化回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%80%E6%AF%81%E5%9B%9E%E8%B0%83"><span class="nav-number">5.2.</span> <span class="nav-text">销毁回调</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%BB%98%E8%AE%A4%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E9%94%80%E6%AF%81%E6%96%B9%E6%B3%95"><span class="nav-number">5.3.</span> <span class="nav-text">默认初始化和销毁方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean-Post-Processors"><span class="nav-number">6.</span> <span class="nav-text">Bean Post Processors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean%E5%AE%9A%E4%B9%89%E7%BB%A7%E6%89%BF"><span class="nav-number">7.</span> <span class="nav-text">Bean定义继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF"><span class="nav-number">7.1.</span> <span class="nav-text">定义模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="nav-number">8.</span> <span class="nav-text">依赖注入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E9%9B%86%E5%90%88"><span class="nav-number">8.1.</span> <span class="nav-text">注入集合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E7%A9%BA%E5%92%8C%E7%A9%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%80%BC"><span class="nav-number">8.2.</span> <span class="nav-text">注入空和空字符串值</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Spring/Spring%E4%BB%8B%E7%BB%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Spring介绍 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Spring介绍
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-06-04 23:41:00" itemprop="dateCreated datePublished" datetime="2018-06-04T23:41:00+08:00">2018-06-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Spring/" itemprop="url" rel="index"><span itemprop="name">Spring</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><em>从这个地方随手翻译过来的</em><br><em><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/spring/index.htm">https://www.tutorialspoint.com/spring/index.htm</a></em>  </p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Spring是企业Java最流行的应用程序开发框架。全球数以百万计的开发人员使用Spring Framework创建高性能，易于测试和可重用的代码。</p>
+<p>Spring框架是一个开源的Java平台。它最初由Rod Johnson编写，并于2003年6月首次在Apache 2.0许可下发布。</p>
+<p>Spring框架的核心功能可以用于开发任何Java应用程序，但是在Java EE平台之上还可以扩展构建Web应用程序。Spring框架的目标是通过启用基于POJO的编程模型来使J2EE开发更易于使用，并促进良好的编程实践。</p>
+<h3 id="依赖注入（DI）"><a href="#依赖注入（DI）" class="headerlink" title="依赖注入（DI）"></a>依赖注入（DI）</h3><p>Spring最认常用技术是控制反转的依赖注入（DI）。该控制反转（IOC）是一个笼统的概念，它可以在许多不同的方式来表达。依赖注入仅仅是控制反转的一个具体例子。</p>
+<h3 id="面向切面编程（AOP）"><a href="#面向切面编程（AOP）" class="headerlink" title="面向切面编程（AOP）"></a>面向切面编程（AOP）</h3><p>Spring的关键组件之一是面向切面编程（AOP）框架。跨越应用程序多个点的功能称为横切关注点，这些横切关注点在概念上与应用程序的业务逻辑分离。有各种常见的很好的例子，包括日志记录，声明式事务，安全性，缓存等等。</p>
+<hr>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>Spring框架提供了大约20个模块，可以根据应用需求使用。</p>
+<h3 id="核心容器"><a href="#核心容器" class="headerlink" title="核心容器"></a>核心容器</h3><p>核心容器由Core，Beans，Context和Expression Language模块组成</p>
+<ul>
+<li>Core 提供了框架的基本部分，包括IOC和依赖注入特征。</li>
+<li>Beans 提供的BeanFactory，是工厂模式的一个复杂实现。</li>
+<li>Context 上下文模块构建在Core和Beans模块提供的基础之上，它是访问定义和配置的任何对象的媒介。ApplicationContext接口是上下文模块的焦点。</li>
+<li>Expression Language SpEL模块提供了一种强大的表达式语言，用于在运行时查询和操作对象图。</li>
+</ul>
+<h3 id="数据访问-集成"><a href="#数据访问-集成" class="headerlink" title="数据访问&#x2F;集成"></a>数据访问&#x2F;集成</h3><p>数据访问&#x2F;集成层由JDBC，ORM，OXM，JMS和事务模块组成</p>
+<ul>
+<li>JDBC模块提供了JDBC抽象层，消除了对冗长的JDBC相关编码的需要。</li>
+<li>ORM模块为流行的对象-关系映射api提供集成层，包括JPA、JDO、Hibernate和iBatis。</li>
+<li>OXM模块提供了一个抽象层，支持JAXB、Castor、XMLBeans、JiBX和XStream的对象&#x2F;XML映射实现。</li>
+<li>Java消息传递服务JMS模块包含用于生成和使用消息的功能。</li>
+<li>事务模块支持实现特殊接口和所有pojo的类的编程和声明式事务管理。</li>
+</ul>
+<h3 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h3><p>Web层由Web，Web-MVC，Web-Socket和Web-Portlet模块组成</p>
+<ul>
+<li>Web模块提供面向Web的基本集成特性，如多部分文件上传功能，以及使用servlet侦听器和面向Web的应用程序上下文初始化IoC容器。 </li>
+<li>Web-MVC模块包含用于web应用程序的Spring的模型-视图-控制器(MVC)实现。</li>
+<li>Web-Socket模块支持web应用程序中的客户端和服务器之间的基于websocket的双向通信。</li>
+<li>Web-Portlet模块提供了将在portlet环境中使用的MVC实现，并镜像了web servlet模块的功能。</li>
+</ul>
+<h3 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h3><p>重要模块像AOP，Aspects（切面），仪表，消息和测试模块等<br>…<br>…  </p>
+<h2 id="Bean定义"><a href="#Bean定义" class="headerlink" title="Bean定义"></a>Bean定义</h2><p>构成应用程序主干和由Spring IoC容器管理的对象称为bean。bean是由Spring IoC容器实例化、组装和管理的对象。这些bean是用你提供给容器的配置元数据创建的。例如，XML <bean/>定义的形式</p>
+<p>配置一个bean容器需要知道如下信息：</p>
+<ul>
+<li>如何创建一个bean</li>
+<li>Bean的生命周期细节</li>
+<li>Bean的依赖关系</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>class</td>
+<td>该属性是强制性的，指定了用于创建bean的类。</td>
+</tr>
+<tr>
+<td>name</td>
+<td>该属性唯一的指定了bean标识符。在基于XML的配置元数据中，使用id （and&#x2F;or）name属性来指定bean标识符。</td>
+</tr>
+<tr>
+<td>scope</td>
+<td>指定了从特定的bean定义创建的对象的范围</td>
+</tr>
+<tr>
+<td>constructor-arg</td>
+<td>构造参数，用于注入依赖关系</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>属性，用于注入依赖关系</td>
+</tr>
+<tr>
+<td>autowiring mode</td>
+<td>自动装配模式，用于注入依赖关系</td>
+</tr>
+<tr>
+<td>lazy-initialization mode</td>
+<td>延时加载,告诉IoC容器在第一次请求时创建一个bean实例，而不是在启动时</td>
+</tr>
+<tr>
+<td>initialization method</td>
+<td>初始化方法，在bean的所有必要属性设置之后立即调用的回调方面</td>
+</tr>
+<tr>
+<td>destruction method</td>
+<td>销毁方法，在bean的容器被销毁时要调用的回调函数</td>
+</tr>
+</tbody></table>
+<h3 id="Spring-配置"><a href="#Spring-配置" class="headerlink" title="Spring 配置"></a>Spring 配置</h3><p>配置Spring一般包括3中方式</p>
+<ul>
+<li>基于XML的配置文件</li>
+<li>基于注解的配置</li>
+<li>基于Java的配置</li>
+</ul>
+<p>基于XML的配置文件示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!-- A simple bean definition --&gt;</span><br><span class="line">   &lt;bean id = &quot;...&quot; class = &quot;...&quot;&gt;</span><br><span class="line">      &lt;!-- collaborators and configuration for this bean go here --&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!-- A bean definition with lazy init set on --&gt;</span><br><span class="line">   &lt;bean id = &quot;...&quot; class = &quot;...&quot; lazy-init = &quot;true&quot;&gt;</span><br><span class="line">      &lt;!-- collaborators and configuration for this bean go here --&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!-- A bean definition with initialization method --&gt;</span><br><span class="line">   &lt;bean id = &quot;...&quot; class = &quot;...&quot; init-method = &quot;...&quot;&gt;</span><br><span class="line">      &lt;!-- collaborators and configuration for this bean go here --&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!-- A bean definition with destruction method --&gt;</span><br><span class="line">   &lt;bean id = &quot;...&quot; class = &quot;...&quot; destroy-method = &quot;...&quot;&gt;</span><br><span class="line">      &lt;!-- collaborators and configuration for this bean go here --&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!-- more bean definitions go here --&gt;</span><br><span class="line">   </span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bean的范围"><a href="#Bean的范围" class="headerlink" title="Bean的范围"></a>Bean的范围</h2><p>定义一个<bean>时，你可以选择为该bean声明一个范围。例如，为了强制Spring在每次需要时产生一个新的bean实例，你应该声明bean的scope属性是<strong>prototype</strong>。同样，如果你希望Spring在每次需要时都返回相同的bean实例，你应该声明bean的scope属性为<strong>singleton</strong>。</p>
+<p>Spring框架支持以下五个范围，其中三个仅在您使用Web感知的ApplicationContext时才可用。</p>
+<table>
+<thead>
+<tr>
+<th>范围</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>singleton</td>
+<td>单实例，每次都使用同一个bean（默认值），对象创建好之后会被缓存，</td>
+</tr>
+<tr>
+<td>prototype</td>
+<td>多实例，每次都返回新的实例</td>
+</tr>
+<tr>
+<td>request</td>
+<td>在一次HTTP请求中使用相同实例。<br>只有在Web感知的Spring ApplicationContext的上下文中才有效。</td>
+</tr>
+<tr>
+<td>session</td>
+<td>在一个HTTP会话中使用相同实例。<br>只有在Web感知的Spring ApplicationContext的上下文中才有效。</td>
+</tr>
+<tr>
+<td>global-session</td>
+<td>在一个全局HTTP会话中使用相同实例。<br>只有在Web感知的Spring ApplicationContext的上下文中才有效。</td>
+</tr>
+</tbody></table>
+<h2 id="Bean的生命周期"><a href="#Bean的生命周期" class="headerlink" title="Bean的生命周期"></a>Bean的生命周期</h2><h3 id="初始化回调"><a href="#初始化回调" class="headerlink" title="初始化回调"></a>初始化回调</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ExampleBean implements InitializingBean &#123;</span><br><span class="line">   public void afterPropertiesSet() &#123;</span><br><span class="line">      // do some initialization work</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于基于XML的配置元数据，可以使用init-method属性来指定具有void无参数签名的方法的名称。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id = &quot;exampleBean&quot; class = &quot;examples.ExampleBean&quot; init-method = &quot;init&quot;/&gt;</span><br><span class="line"></span><br><span class="line">public class ExampleBean &#123;</span><br><span class="line">   public void init() &#123;</span><br><span class="line">      // do some initialization work</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="销毁回调"><a href="#销毁回调" class="headerlink" title="销毁回调"></a>销毁回调</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class ExampleBean implements DisposableBean &#123;</span><br><span class="line">   public void destroy() &#123;</span><br><span class="line">      // do some destruction work</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于基于XML的配置元数据，可以使用destroy-method属性来指定具有void无参数签名的方法的名称。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id = &quot;exampleBean&quot; class = &quot;examples.ExampleBean&quot; destroy-method = &quot;destroy&quot;/&gt;</span><br><span class="line"></span><br><span class="line">public class ExampleBean &#123;</span><br><span class="line">   public void destroy() &#123;</span><br><span class="line">      // do some destruction work</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="默认初始化和销毁方法"><a href="#默认初始化和销毁方法" class="headerlink" title="默认初始化和销毁方法"></a>默认初始化和销毁方法</h3><p>如果你的bean有太多具有相同名称的初始化和&#x2F;或销毁方法，则不需要在每个单独的bean上声明init-method和destroy-method。这种情况可以使用<beans>元素上的default-init-method和default-destroy-method属性来配置，如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;</span><br><span class="line">   default-init-method = &quot;init&quot; </span><br><span class="line">   default-destroy-method = &quot;destroy&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean id = &quot;...&quot; class = &quot;...&quot;&gt;</span><br><span class="line">      &lt;!-- collaborators and configuration for this bean go here --&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line">   </span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bean-Post-Processors"><a href="#Bean-Post-Processors" class="headerlink" title="Bean Post Processors"></a>Bean Post Processors</h2><p>BeanPostProcessor接口定义了回调方法，你可以实现这些方法来提供您自己的实例化逻辑、依赖解析逻辑等。还可以在Spring容器完成实例化、配置和初始化bean之后，通过插入一个或多个BeanPostProcessor实现来实现一些自定义逻辑。<br>可以配置多个BeanPostProcessor接口，并且您可以通过设置order属性来控制这些BeanPostProcessor接口执行的顺序。</p>
+<p>ApplicationContext自动检测由BeanPostProcessor接口实现定义的任何bean，并将这些bean注册为postprocessor，然后容器在创建bean时相应地调用这些bean。</p>
+<p>HelloWorld.java文件的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">public class HelloWorld &#123;</span><br><span class="line">   private String message;</span><br><span class="line"></span><br><span class="line">   public void setMessage(String message)&#123;</span><br><span class="line">      this.message  = message;</span><br><span class="line">   &#125;</span><br><span class="line">   public void getMessage()&#123;</span><br><span class="line">      System.out.println(&quot;Your Message : &quot; + message);</span><br><span class="line">   &#125;</span><br><span class="line">   public void init()&#123;</span><br><span class="line">      System.out.println(&quot;Bean is going through init.&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">   public void destroy()&#123;</span><br><span class="line">      System.out.println(&quot;Bean will destroy now.&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>InitHelloWorld.java文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.config.BeanPostProcessor;</span><br><span class="line">import org.springframework.beans.BeansException;</span><br><span class="line"></span><br><span class="line">public class InitHelloWorld implements BeanPostProcessor &#123;</span><br><span class="line">   public Object postProcessBeforeInitialization(Object bean, String beanName) </span><br><span class="line">      throws BeansException &#123;</span><br><span class="line">      </span><br><span class="line">      System.out.println(&quot;BeforeInitialization : &quot; + beanName);</span><br><span class="line">      return bean;  // you can return any other object as well</span><br><span class="line">   &#125;</span><br><span class="line">   public Object postProcessAfterInitialization(Object bean, String beanName) </span><br><span class="line">      throws BeansException &#123;</span><br><span class="line">      </span><br><span class="line">      System.out.println(&quot;AfterInitialization : &quot; + beanName);</span><br><span class="line">      return bean;  // you can return any other object as well</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Beans.xml 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean id = &quot;helloWorld&quot; class = &quot;com.tutorialspoint.HelloWorld&quot;</span><br><span class="line">      init-method = &quot;init&quot; destroy-method = &quot;destroy&quot;&gt;</span><br><span class="line">      &lt;property name = &quot;message&quot; value = &quot;Hello World!&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean class = &quot;com.tutorialspoint.InitHelloWorld&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<p>MainApp.java文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.support.AbstractApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">public class MainApp &#123;</span><br><span class="line">   public static void main(String[] args) &#123;</span><br><span class="line">      AbstractApplicationContext context = new ClassPathXmlApplicationContext(&quot;Beans.xml&quot;);</span><br><span class="line"></span><br><span class="line">      HelloWorld obj = (HelloWorld) context.getBean(&quot;helloWorld&quot;);</span><br><span class="line">      obj.getMessage();</span><br><span class="line">      context.registerShutdownHook();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BeforeInitialization : helloWorld</span><br><span class="line">Bean is going through init.</span><br><span class="line">AfterInitialization : helloWorld</span><br><span class="line">Your Message : Hello World!</span><br><span class="line">Bean will destroy now.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Bean定义继承"><a href="#Bean定义继承" class="headerlink" title="Bean定义继承"></a>Bean定义继承</h2><p>bean定义可以包含许多配置信息，包括构造函数参数、属性值和容器特定的信息，如初始化方法、静态工厂方法名称等。</p>
+<p>子bean定义从父定义继承配置数据。子定义可以覆盖一些值，或者根据需要添加其他值。<br>Spring Bean定义继承与Java类继承没有关系，但是继承概念是相同的。可以将父bean定义定义定义为模板，其他子bean可以从父bean继承所需的配置。</p>
+<p>当使用基于xml的配置元数据时，您通过使用父属性指定子bean定义，指定父bean作为该属性的值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean id = &quot;helloWorld&quot; class = &quot;com.tutorialspoint.HelloWorld&quot;&gt;</span><br><span class="line">      &lt;property name = &quot;message1&quot; value = &quot;Hello World!&quot;/&gt;</span><br><span class="line">      &lt;property name = &quot;message2&quot; value = &quot;Hello Second World!&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean id =&quot; helloIndia&quot; class = &quot;com.tutorialspoint.HelloIndia&quot; parent = &quot;helloWorld&quot;&gt;</span><br><span class="line">      &lt;property name = &quot;message1&quot; value = &quot;Hello India!&quot;/&gt;</span><br><span class="line">      &lt;property name = &quot;message3&quot; value = &quot;Namaste India!&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义模板"><a href="#定义模板" class="headerlink" title="定义模板"></a>定义模板</h3><p>定义Bean定义模板时，不应指定类属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean id = &quot;beanTeamplate&quot; abstract = &quot;true&quot;&gt;</span><br><span class="line">      &lt;property name = &quot;message1&quot; value = &quot;Hello World!&quot;/&gt;</span><br><span class="line">      &lt;property name = &quot;message2&quot; value = &quot;Hello Second World!&quot;/&gt;</span><br><span class="line">      &lt;property name = &quot;message3&quot; value = &quot;Namaste India!&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean id = &quot;helloIndia&quot; class = &quot;com.tutorialspoint.HelloIndia&quot; parent = &quot;beanTeamplate&quot;&gt;</span><br><span class="line">      &lt;property name = &quot;message1&quot; value = &quot;Hello India!&quot;/&gt;</span><br><span class="line">      &lt;property name = &quot;message3&quot; value = &quot;Namaste India!&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line">   </span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<p>父bean不能自行实例化，因为它是不完整的，并且它也明确标记为抽象。当定义像这样抽象时，它只能用作纯模板bean定义，作为子定义的父定义。</p>
+<h2 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h2><p>依赖注入主要包括基于构造函数的依赖注入和基于Setter的依赖注入  </p>
+<p>基于setter的注入但使用内部bean的配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!-- Definition for textEditor bean using inner bean --&gt;</span><br><span class="line">   &lt;bean id = &quot;textEditor&quot; class = &quot;com.tutorialspoint.TextEditor&quot;&gt;</span><br><span class="line">      &lt;property name = &quot;spellChecker&quot;&gt;</span><br><span class="line">         &lt;bean id = &quot;spellChecker&quot; class = &quot;com.tutorialspoint.SpellChecker&quot;/&gt;</span><br><span class="line">      &lt;/property&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注入集合"><a href="#注入集合" class="headerlink" title="注入集合"></a>注入集合</h3><p>包括list、set、map、props</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!-- Definition for javaCollection --&gt;</span><br><span class="line">   &lt;bean id = &quot;javaCollection&quot; class = &quot;com.tutorialspoint.JavaCollection&quot;&gt;</span><br><span class="line">      </span><br><span class="line">      &lt;!-- results in a setAddressList(java.util.List) call --&gt;</span><br><span class="line">      &lt;property name = &quot;addressList&quot;&gt;</span><br><span class="line">         &lt;list&gt;</span><br><span class="line">            &lt;value&gt;INDIA&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;Pakistan&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;USA&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;USA&lt;/value&gt;</span><br><span class="line">         &lt;/list&gt;</span><br><span class="line">      &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!-- results in a setAddressSet(java.util.Set) call --&gt;</span><br><span class="line">      &lt;property name = &quot;addressSet&quot;&gt;</span><br><span class="line">         &lt;set&gt;</span><br><span class="line">            &lt;value&gt;INDIA&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;Pakistan&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;USA&lt;/value&gt;</span><br><span class="line">            &lt;value&gt;USA&lt;/value&gt;</span><br><span class="line">         &lt;/set&gt;</span><br><span class="line">      &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!-- results in a setAddressMap(java.util.Map) call --&gt;</span><br><span class="line">      &lt;property name = &quot;addressMap&quot;&gt;</span><br><span class="line">         &lt;map&gt;</span><br><span class="line">            &lt;entry key = &quot;1&quot; value = &quot;INDIA&quot;/&gt;</span><br><span class="line">            &lt;entry key = &quot;2&quot; value = &quot;Pakistan&quot;/&gt;</span><br><span class="line">            &lt;entry key = &quot;3&quot; value = &quot;USA&quot;/&gt;</span><br><span class="line">            &lt;entry key = &quot;4&quot; value = &quot;USA&quot;/&gt;</span><br><span class="line">         &lt;/map&gt;</span><br><span class="line">      &lt;/property&gt;</span><br><span class="line">      </span><br><span class="line">      &lt;!-- results in a setAddressProp(java.util.Properties) call --&gt;</span><br><span class="line">      &lt;property name = &quot;addressProp&quot;&gt;</span><br><span class="line">         &lt;props&gt;</span><br><span class="line">            &lt;prop key = &quot;one&quot;&gt;INDIA&lt;/prop&gt;</span><br><span class="line">            &lt;prop key = &quot;one&quot;&gt;INDIA&lt;/prop&gt;</span><br><span class="line">            &lt;prop key = &quot;two&quot;&gt;Pakistan&lt;/prop&gt;</span><br><span class="line">            &lt;prop key = &quot;three&quot;&gt;USA&lt;/prop&gt;</span><br><span class="line">            &lt;prop key = &quot;four&quot;&gt;USA&lt;/prop&gt;</span><br><span class="line">         &lt;/props&gt;</span><br><span class="line">      &lt;/property&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<p>将bean引用注入为集合元素中，使引用和值混合在一起</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;!-- Bean Definition to handle references and values --&gt;</span><br><span class="line">   &lt;bean id = &quot;...&quot; class = &quot;...&quot;&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!-- Passing bean reference  for java.util.List --&gt;</span><br><span class="line">      &lt;property name = &quot;addressList&quot;&gt;</span><br><span class="line">         &lt;list&gt;</span><br><span class="line">            &lt;ref bean = &quot;address1&quot;/&gt;</span><br><span class="line">            &lt;ref bean = &quot;address2&quot;/&gt;</span><br><span class="line">            &lt;value&gt;Pakistan&lt;/value&gt;</span><br><span class="line">         &lt;/list&gt;</span><br><span class="line">      &lt;/property&gt;</span><br><span class="line">      </span><br><span class="line">      &lt;!-- Passing bean reference  for java.util.Set --&gt;</span><br><span class="line">      &lt;property name = &quot;addressSet&quot;&gt;</span><br><span class="line">         &lt;set&gt;</span><br><span class="line">            &lt;ref bean = &quot;address1&quot;/&gt;</span><br><span class="line">            &lt;ref bean = &quot;address2&quot;/&gt;</span><br><span class="line">            &lt;value&gt;Pakistan&lt;/value&gt;</span><br><span class="line">         &lt;/set&gt;</span><br><span class="line">      &lt;/property&gt;</span><br><span class="line">      </span><br><span class="line">      &lt;!-- Passing bean reference  for java.util.Map --&gt;</span><br><span class="line">      &lt;property name = &quot;addressMap&quot;&gt;</span><br><span class="line">         &lt;map&gt;</span><br><span class="line">            &lt;entry key = &quot;one&quot; value = &quot;INDIA&quot;/&gt;</span><br><span class="line">            &lt;entry key = &quot;two&quot; value-ref = &quot;address1&quot;/&gt;</span><br><span class="line">            &lt;entry key = &quot;three&quot; value-ref = &quot;address2&quot;/&gt;</span><br><span class="line">         &lt;/map&gt;</span><br><span class="line">      &lt;/property&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<p>要使用上面的bean定义，你需要定义你的setter方法，以便它们也能够处理引用。</p>
+<h3 id="注入空和空字符串值"><a href="#注入空和空字符串值" class="headerlink" title="注入空和空字符串值"></a>注入空和空字符串值</h3><p>空字符串作为值:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id = &quot;...&quot; class = &quot;exampleBean&quot;&gt;</span><br><span class="line">   &lt;property name = &quot;email&quot; value = &quot;&quot;/&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p>传递一个NULL值</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id = &quot;...&quot; class = &quot;exampleBean&quot;&gt;</span><br><span class="line">   &lt;property name = &quot;email&quot;&gt;&lt;null/&gt;&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<p>等同于：exampleBean.setEmail(null)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Spring/" rel="tag"># Spring</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Redis/Spring%20Data%20Redis/" rel="prev" title="Spring Data Redis">
+                  <i class="fa fa-angle-left"></i> Spring Data Redis
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Spring/Spring%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/" rel="next" title="Spring中的事件处理">
+                  Spring中的事件处理 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">150k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">9:05</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

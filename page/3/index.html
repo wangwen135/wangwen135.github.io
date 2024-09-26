@@ -40,6 +40,8 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -125,18 +127,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-count">169</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-count">146</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -167,105 +169,6 @@
     </div>
 
     <div class="main-inner index posts-expand">
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Zookeeper/Curator-%E4%BE%8B%E5%AD%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Zookeeper/Curator-%E4%BE%8B%E5%AD%90/" class="post-title-link" itemprop="url">Curator-例子</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-10-06 23:41:00" itemprop="dateCreated datePublished" datetime="2022-10-06T23:41:00+08:00">2022-10-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Zookeeper/" itemprop="url" rel="index"><span itemprop="name">Zookeeper</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>567</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>先在applicationContext.xml 文件中集成Curator</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 重连策略 --&gt;</span><br><span class="line">&lt;bean id=&quot;retryPolicy&quot; class=&quot;org.apache.curator.retry.ExponentialBackoffRetry&quot;&gt;</span><br><span class="line">    &lt;constructor-arg index=&quot;0&quot; value=&quot;$&#123;curator.retry.baseSleepTimeMs&#125;&quot; /&gt; &lt;!-- 间隔时间基数 --&gt;</span><br><span class="line">    &lt;constructor-arg index=&quot;1&quot; value=&quot;$&#123;curator.retry.maxRetries&#125;&quot; /&gt;&lt;!-- 最多重试几次 --&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;bean id=&quot;curatorClient&quot; class=&quot;org.apache.curator.framework.CuratorFrameworkFactory&quot; factory-method=&quot;newClient&quot; init-method=&quot;start&quot; destroy-method=&quot;close&quot;&gt;</span><br><span class="line">    &lt;constructor-arg index=&quot;0&quot; value=&quot;$&#123;curator.server.list&#125;&quot; /&gt;</span><br><span class="line">    &lt;constructor-arg index=&quot;1&quot; value=&quot;$&#123;curator.session.timeout&#125;&quot; /&gt;&lt;!-- sessionTimeoutMs会话超时时间，单位为毫秒。默认是60000ms --&gt;</span><br><span class="line">    &lt;constructor-arg index=&quot;2&quot; value=&quot;$&#123;curator.connection.timeout&#125;&quot; /&gt;&lt;!-- connectionTimeoutMs连接创建超时时间，单位毫秒，默认15000ms --&gt;</span><br><span class="line">    &lt;constructor-arg index=&quot;3&quot; ref=&quot;retryPolicy&quot; /&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
-<p>config.properties</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">## curator 的相关配置</span><br><span class="line">#间隔时间基数</span><br><span class="line">curator.retry.baseSleepTimeMs=1000</span><br><span class="line">#最多重试几次</span><br><span class="line">curator.retry.maxRetries=3</span><br><span class="line"></span><br><span class="line">curator.server.list=192.168.1.213:2181</span><br><span class="line">curator.session.timeout=15000</span><br><span class="line">curator.connection.timeout=10000</span><br></pre></td></tr></table></figure>
-
-<p>java</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.concurrent.TimeUnit;</span><br><span class="line">import java.util.concurrent.locks.Condition;</span><br><span class="line">import java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line">import org.apache.curator.framework.CuratorFramework;</span><br><span class="line">import org.apache.curator.framework.recipes.locks.InterProcessMutex;</span><br><span class="line">import org.slf4j.Logger;</span><br><span class="line">import org.slf4j.LoggerFactory;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.beans.factory.annotation.Value;</span><br><span class="line">import org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * &lt;pre&gt;</span><br><span class="line"> * 任务线程</span><br><span class="line"> * &lt;/pre&gt;</span><br><span class="line"> * </span><br><span class="line"> * @author wwh</span><br><span class="line"> */</span><br><span class="line">@Component</span><br><span class="line">public class TaskThread2 implements Runnable &#123;</span><br><span class="line"></span><br><span class="line">    private final static Logger logger = LoggerFactory.getLogger(TaskThread2.class);</span><br><span class="line">    /**</span><br><span class="line">     * 获取锁的超时时间</span><br><span class="line">     */</span><br><span class="line">    private static final int LOCK_ACQUIRE_TIMEOUT = 1000;</span><br><span class="line">    /**</span><br><span class="line">     * 锁路径&lt;br&gt;</span><br><span class="line">     * 全路径为：zkBasePath + LOCK_PATH + task.getId();</span><br><span class="line">     */</span><br><span class="line">    private static final String LOCK_PATH = &quot;/lock/&quot;;</span><br><span class="line">    @Autowired</span><br><span class="line">    private CuratorFramework curatorClient;</span><br><span class="line">    /**</span><br><span class="line">     * 基础路径</span><br><span class="line">     */</span><br><span class="line">    @Value(&quot;$&#123;zookeeper.basePath&#125;&quot;)</span><br><span class="line">    private String zkBasePath;</span><br><span class="line"></span><br><span class="line">    private Thread thread;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 运行标记</span><br><span class="line">     */</span><br><span class="line">    private boolean runFlag = true;</span><br><span class="line"></span><br><span class="line">    private final ReentrantLock lock = new ReentrantLock();</span><br><span class="line">    private final Condition sysClose = lock.newCondition();</span><br><span class="line"></span><br><span class="line">    private String task;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run() &#123;</span><br><span class="line">        InterProcessMutex lock = new InterProcessMutex(curatorClient, getLockPath());</span><br><span class="line"></span><br><span class="line">        while (runFlag) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                if (lock.acquire(LOCK_ACQUIRE_TIMEOUT, TimeUnit.MILLISECONDS)) &#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        logger.debug(&quot;当前线程获取到锁，开始处理数据&quot;);</span><br><span class="line">                        doWithLock();</span><br><span class="line">                    &#125; catch (Exception e) &#123;</span><br><span class="line">                        logger.error(&quot;执行任务：&#123;&#125; 处理逻辑时异常，&quot;, task, e);</span><br><span class="line">                    &#125; finally &#123;</span><br><span class="line">                        try &#123;</span><br><span class="line">                            lock.release();</span><br><span class="line">                        &#125; catch (Exception e) &#123;</span><br><span class="line">                            logger.error(&quot;任务：&#123;&#125; , 释放锁时：ZK错误或链接中断&quot;, task, e);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (Exception e) &#123;</span><br><span class="line">                logger.error(&quot;任务：&#123;&#125; 获取锁时：ZK错误或链接中断&quot;, task, e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        logger.info(&quot;任务：&#123;&#125; , 处理线程退出&quot;, task);</span><br><span class="line">        // 移除zookeeper上锁节点</span><br><span class="line">        destroyZKLockPath();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 具体执行代码&lt;br&gt;</span><br><span class="line">     * 获取到锁的时候才会运行</span><br><span class="line">     */</span><br><span class="line">    private void doWithLock() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 获取锁的路径，以任务ID为锁</span><br><span class="line">     * </span><br><span class="line">     * @return</span><br><span class="line">     */</span><br><span class="line">    private String getLockPath() &#123;</span><br><span class="line">        // 以任务id作为锁的路径</span><br><span class="line">        return zkBasePath + LOCK_PATH + task;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void destroyZKLockPath() &#123;</span><br><span class="line">        // 删除锁的条件是没有其他的节点了</span><br><span class="line">        try &#123;</span><br><span class="line">            String path = getLockPath();</span><br><span class="line">            List&lt;String&gt; list = curatorClient.getChildren().forPath(path);</span><br><span class="line">            if (list == null || list.isEmpty()) &#123;</span><br><span class="line">                // 如果没有其他节点还在获取锁就删除</span><br><span class="line">                curatorClient.delete().forPath(path);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 启动任务</span><br><span class="line">     * </span><br><span class="line">     * @param task</span><br><span class="line">     */</span><br><span class="line">    public void start(String task) &#123;</span><br><span class="line">        // 只能启动一次</span><br><span class="line">        if (thread != null) &#123;</span><br><span class="line">            throw new IllegalStateException(&quot;任务线程只能启动一次&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        logger.info(&quot;开始处理任务：&#123;&#125;&quot;, task);</span><br><span class="line">        this.task = task;</span><br><span class="line">        // 启动线程</span><br><span class="line">        thread = new Thread(this, &quot;T-&quot; + task);</span><br><span class="line">        thread.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 停止任务</span><br><span class="line">     */</span><br><span class="line">    public void stop() &#123;</span><br><span class="line">        runFlag = false;</span><br><span class="line">        // 如果是获取锁时的等待无法唤醒</span><br><span class="line">        lock.lock();</span><br><span class="line">        try &#123;</span><br><span class="line">            sysClose.signalAll();// 唤醒空数据时的等待</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
 
     
 
@@ -453,183 +356,6 @@
 </blockquote>
 <h5 id="在线测试地址"><a href="#在线测试地址" class="headerlink" title="在线测试地址"></a>在线测试地址</h5><p><a target="_blank" rel="noopener" href="https://8gwifi.org/curlfunctions.jsp">https://8gwifi.org/curlfunctions.jsp</a></p>
 <h4 id="测试速度"><a href="#测试速度" class="headerlink" title="测试速度"></a>测试速度</h4><p><a target="_blank" rel="noopener" href="http://speed.neu6.edu.cn/">http://speed.neu6.edu.cn/</a> </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Zookeeper/Curator-%E5%9F%BA%E6%9C%ACAPI-%E6%93%8D%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Zookeeper/Curator-%E5%9F%BA%E6%9C%ACAPI-%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">Curator-基本API-操作</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-08-01 23:41:00" itemprop="dateCreated datePublished" datetime="2022-08-01T23:41:00+08:00">2022-08-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Zookeeper/" itemprop="url" rel="index"><span itemprop="name">Zookeeper</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>583</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>Curator框架提供了一种流式接口。 操作通过builder串联起来， 这样方法调用类似语句一样。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">client.create().forPath(&quot;/head&quot;, new byte[0]);</span><br><span class="line">client.delete().inBackground().forPath(&quot;/head&quot;);</span><br><span class="line">client.create().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(&quot;/head/child&quot;, new byte[0]);</span><br><span class="line">client.getData().watched().inBackground().forPath(&quot;/test&quot;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>CuratorFramework提供的方法：</p>
-<table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>create()</td>
-<td>开始创建操作， 可以调用额外的方法(比如方式mode 或者后台执行background) 并在最后调用forPath()指定要操作的ZNode</td>
-</tr>
-<tr>
-<td>delete()</td>
-<td>开始删除操作. 可以调用额外的方法(版本或者后台处理version or background)并在最后调用forPath()指定要操作的ZNode</td>
-</tr>
-<tr>
-<td>checkExists()</td>
-<td>开始检查ZNode是否存在的操作. 可以调用额外的方法(监控或者后台处理)并在最后调用forPath()指定要操作的ZNode</td>
-</tr>
-<tr>
-<td>getData()</td>
-<td>开始获得ZNode节点数据的操作. 可以调用额外的方法(监控、后台处理或者获取状态watch, background or get stat) 并在最后调用forPath()指定要操作的ZNode</td>
-</tr>
-<tr>
-<td>setData()</td>
-<td>开始设置ZNode节点数据的操作. 可以调用额外的方法(版本或者后台处理) 并在最后调用forPath()指定要操作的ZNode</td>
-</tr>
-<tr>
-<td>getChildren()</td>
-<td>开始获得ZNode的子节点列表。 以调用额外的方法(监控、后台处理或者获取状态watch, background or get stat) 并在最后调用forPath()指定要操作的ZNode</td>
-</tr>
-<tr>
-<td>inTransaction()</td>
-<td>开始是原子ZooKeeper事务. 可以复合create, setData, check, and&#x2F;or delete 等操作然后调用commit()作为一个原子操作提交</td>
-</tr>
-</tbody></table>
-<p>后台操作的通知和监控可以通过ClientListener接口发布. 你可以在CuratorFramework实例上通过addListener()注册listener, Listener实现了下面的方法:</p>
-<ul>
-<li>eventReceived() 一个后台操作完成或者一个监控被触发</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>Event Type</th>
-<th>Event Methods</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>CREATE</td>
-<td>getResultCode() and getPath()</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td>getResultCode() and getPath()</td>
-</tr>
-<tr>
-<td>EXISTS</td>
-<td>getResultCode(), getPath() and getStat()</td>
-</tr>
-<tr>
-<td>GETDATA</td>
-<td>getResultCode(), getPath(), getStat() and getData()</td>
-</tr>
-<tr>
-<td>SETDATA</td>
-<td>getResultCode(), getPath() and getStat()</td>
-</tr>
-<tr>
-<td>CHILDREN</td>
-<td>getResultCode(), getPath(), getStat(), getChildren()</td>
-</tr>
-<tr>
-<td>WATCHED</td>
-<td>getWatchedEvent()</td>
-</tr>
-</tbody></table>
-<p>还可以通过ConnectionStateListener接口监控连接的状态。</p>
-<p>可以使用命名空间Namespace避免多个应用的节点的名称冲突。 CuratorFramework提供了命名空间的概念，这样CuratorFramework会为它的API调用的path加上命名空间：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CuratorFramework client = CuratorFrameworkFactory.builder().namespace(&quot;MyApp&quot;) ... build();</span><br><span class="line"> ...</span><br><span class="line">client.create().forPath(&quot;/test&quot;, data);</span><br><span class="line">// node was actually written to: &quot;/MyApp/test&quot;</span><br></pre></td></tr></table></figure>
-
-<p>Curator还提供了临时的CuratorFramework： CuratorTempFramework， 一定时间不活动后连接会被关闭</p>
 
       
     </div>
@@ -912,7 +638,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/RESTful/JAX-RS/">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Spring/Spring%20%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E8%A8%80%20(SpEL)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -930,7 +656,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/RESTful/JAX-RS/" class="post-title-link" itemprop="url">JAX-RS</a>
+          <a href="/Spring/Spring%20%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%AF%AD%E8%A8%80%20(SpEL)/" class="post-title-link" itemprop="url">Spring 表达式语言 (SpEL)</a>
         </h2>
 
         <div class="post-meta-container">
@@ -941,1365 +667,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-04-22 23:41:00" itemprop="dateCreated datePublished" datetime="2022-04-22T23:41:00+08:00">2022-04-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/RESTful/" itemprop="url" rel="index"><span itemprop="name">RESTful</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>466</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="JAX-RS"><a href="#JAX-RS" class="headerlink" title="JAX-RS"></a>JAX-RS</h1><p><strong>JAX-RS: Java API for RESTful Web Services</strong>是一个Java编程语言的应用程序接口,支持按照 表象化状态转变 (REST)架构风格创建Web服务。JAX-RS使用了 ++Java SE 5++ 引入的Java 标注来简化Web服务客户端和服务端的开发和部署。</p>
-<h2 id="规范内容"><a href="#规范内容" class="headerlink" title="规范内容"></a>规范内容</h2><p>JAX-RS提供了一些标注将一个资源类，一个POJOJava类，封装为Web资源。标注包括：</p>
-<ul>
-<li>@Path，标注资源类或方法的相对路径</li>
-<li>@GET，@PUT，@POST，@DELETE，标注方法是用的HTTP请求的类型</li>
-<li>@Produces，标注返回的MIME媒体类型</li>
-<li>@Consumes，标注可接受请求的MIME媒体类型</li>
-<li>@PathParam，@QueryParam，@HeaderParam，@CookieParam，@MatrixParam，@FormParam,分别标注方法的参数来自于HTTP请求的不同位置，例如@PathParam来自于URL的路径，@QueryParam来自于URL的查询参数，@HeaderParam来自于HTTP请求的头信息，@CookieParam来自于HTTP请求的Cookie。</li>
-</ul>
-<h2 id="JAX-RS的实现"><a href="#JAX-RS的实现" class="headerlink" title="JAX-RS的实现"></a>JAX-RS的实现</h2><ul>
-<li>Apache CXF，开源的Web服务框架。</li>
-<li>Jersey， 由Sun提供的JAX-RS的参考实现。</li>
-<li>RESTEasy，JBoss的实现。</li>
-<li>Restlet，由Jerome Louvel和Dave Pawson开发，是最早的REST框架，先于JAX-RS出现。</li>
-<li>Apache Wink，一个Apache软件基金会孵化器中的项目，其服务模块实现JAX-RS规范</li>
-</ul>
-<hr>
-<h2 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h2><p>Java EE 6 引入了对 JSR-311 的支持。JSR-311（JAX-RS：Java API for RESTful Web Services）旨在定义一个统一的规范，使得 Java 程序员可以使用一套固定的接口来开发 REST 应用，避免了依赖于第三方框架。同时，JAX-RS 使用 POJO 编程模型和基于标注的配置，并集成了 JAXB，从而可以有效缩短 REST 应用的开发周期。  </p>
-<p>JAX-RS 定义的 API 位于 javax.ws.rs 包中。  </p>
-<p>JAX-RS 的具体实现由第三方提供，例如 Sun 的参考实现 Jersey、Apache 的 CXF 以及 JBoss 的 RESTEasy。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/MySQL/Mysql-%E5%85%B3%E9%94%AE%E5%AD%97-%E4%BF%9D%E7%95%99%E5%AD%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/MySQL/Mysql-%E5%85%B3%E9%94%AE%E5%AD%97-%E4%BF%9D%E7%95%99%E5%AD%97/" class="post-title-link" itemprop="url">Mysql-关键字-保留字</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-03-20 23:41:00" itemprop="dateCreated datePublished" datetime="2022-03-20T23:41:00+08:00">2022-03-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.8k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>7 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><em>2017年7月</em></p>
-<hr>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/keywords.html#">https://dev.mysql.com/doc/refman/5.7/en/keywords.html#</a></p>
-<h2 id="9-3关键字和保留字"><a href="#9-3关键字和保留字" class="headerlink" title="9.3关键字和保留字"></a>9.3关键字和保留字</h2><p>关键字是在SQL中具有重要意义的词。某些关键字，如SELECT， DELETE或 BIGINT，被保留，需要用作标识符，例如表和列名特殊待遇。对于内置函数的名称也是如此。</p>
-<p>非保留关键字作为标识符而不引用。如第9.2节“架构对象名称”中所述，如果引用了保留字，则可以将其保留为标识符：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE interval (begin INT, end INT);</span><br><span class="line">ERROR 1064 (42000): You have an error in your SQL syntax ...</span><br><span class="line">near &#x27;interval (begin INT, end INT)&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>BEGIN并且END是关键字但不保留，因此它们用作标识符不需要引用。INTERVAL是一个保留关键字，必须引用为标识符：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE `interval` (begin INT, end INT);</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-
-<p>例外：在限定名称中的句点后面的单词必须是一个标识符，所以即使被保留，也不需要引用它：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE TABLE mydb.interval (begin INT, end INT);</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
-<p>允许内置函数的名称作为标识符，但可能需要谨慎使用。例如， COUNT作为列名可以接受。但是，默认情况下，在函数名和下一个( 字符之间的函数调用中不允许有空格。该要求使分析器能够区分名称是否在函数调用中使用，也可以在非功能上下文中使用。有关识别功能名称的更多详细信息，请参见 第9.2.4节“功能名称解析和分辨率”。</p>
-<p>下表显示了MySQL 5.7中的关键字和保留字，以及从版本到版本的单个字的更改。保留关键字标有（R）。另外，_FILENAME是保留的。</p>
-<p>在某些时候，您可能会升级到更高版本，所以看一下未来的保留字也是一个好主意。您可以在涵盖更高版本的MySQL的手册中找到这些。标准SQL作为列或表名称禁止表中的大多数保留字（例如， GROUP）。有一些是保留的，因为MySQL需要它们并使用yacc解析器。</p>
-<h3 id="表9-2-MySQL中的关键字和保留字5-7"><a href="#表9-2-MySQL中的关键字和保留字5-7" class="headerlink" title="表9.2 MySQL中的关键字和保留字5.7"></a>表9.2 MySQL中的关键字和保留字5.7</h3><table>
-<thead>
-<tr>
-<th>ACCESSIBLE (R)</th>
-<th>ACCOUNT[a]</th>
-<th>ACTION</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ADD (R)</td>
-<td>AFTER</td>
-<td>AGAINST</td>
-</tr>
-<tr>
-<td>AGGREGATE</td>
-<td>ALGORITHM</td>
-<td>ALL (R)</td>
-</tr>
-<tr>
-<td>ALTER (R)</td>
-<td>ALWAYS[b]</td>
-<td>ANALYSE</td>
-</tr>
-<tr>
-<td>ANALYZE (R)</td>
-<td>AND (R)</td>
-<td>ANY</td>
-</tr>
-<tr>
-<td>AS (R)</td>
-<td>ASC (R)</td>
-<td>ASCII</td>
-</tr>
-<tr>
-<td>ASENSITIVE (R)</td>
-<td>AT</td>
-<td>AUTOEXTEND_SIZE</td>
-</tr>
-<tr>
-<td>AUTO_INCREMENT</td>
-<td>AVG</td>
-<td>AVG_ROW_LENGTH</td>
-</tr>
-<tr>
-<td>BACKUP</td>
-<td>BEFORE (R)</td>
-<td>BEGIN</td>
-</tr>
-<tr>
-<td>BETWEEN (R)</td>
-<td>BIGINT (R)</td>
-<td>BINARY (R)</td>
-</tr>
-<tr>
-<td>BINLOG</td>
-<td>BIT</td>
-<td>BLOB (R)</td>
-</tr>
-<tr>
-<td>BLOCK</td>
-<td>BOOL</td>
-<td>BOOLEAN</td>
-</tr>
-<tr>
-<td>BOTH (R)</td>
-<td>BTREE</td>
-<td>BY (R)</td>
-</tr>
-<tr>
-<td>BYTE</td>
-<td>CACHE</td>
-<td>CALL (R)</td>
-</tr>
-<tr>
-<td>CASCADE (R)</td>
-<td>CASCADED</td>
-<td>CASE (R)</td>
-</tr>
-<tr>
-<td>CATALOG_NAME</td>
-<td>CHAIN</td>
-<td>CHANGE (R)</td>
-</tr>
-<tr>
-<td>CHANGED</td>
-<td>CHANNEL[c]</td>
-<td>CHAR (R)</td>
-</tr>
-<tr>
-<td>CHARACTER (R)</td>
-<td>CHARSET</td>
-<td>CHECK (R)</td>
-</tr>
-<tr>
-<td>CHECKSUM</td>
-<td>CIPHER</td>
-<td>CLASS_ORIGIN</td>
-</tr>
-<tr>
-<td>CLIENT</td>
-<td>CLOSE</td>
-<td>COALESCE</td>
-</tr>
-<tr>
-<td>CODE</td>
-<td>COLLATE (R)</td>
-<td>COLLATION</td>
-</tr>
-<tr>
-<td>COLUMN (R)</td>
-<td>COLUMNS</td>
-<td>COLUMN_FORMAT</td>
-</tr>
-<tr>
-<td>COLUMN_NAME</td>
-<td>COMMENT</td>
-<td>COMMIT</td>
-</tr>
-<tr>
-<td>COMMITTED</td>
-<td>COMPACT</td>
-<td>COMPLETION</td>
-</tr>
-<tr>
-<td>COMPRESSED</td>
-<td>COMPRESSION[d]</td>
-<td>CONCURRENT</td>
-</tr>
-<tr>
-<td>CONDITION (R)</td>
-<td>CONNECTION</td>
-<td>CONSISTENT</td>
-</tr>
-<tr>
-<td>CONSTRAINT (R)</td>
-<td>CONSTRAINT_CATALOG</td>
-<td>CONSTRAINT_NAME</td>
-</tr>
-<tr>
-<td>CONSTRAINT_SCHEMA</td>
-<td>CONTAINS</td>
-<td>CONTEXT</td>
-</tr>
-<tr>
-<td>CONTINUE (R)</td>
-<td>CONVERT (R)</td>
-<td>CPU</td>
-</tr>
-<tr>
-<td>CREATE (R)</td>
-<td>CROSS (R)</td>
-<td>CUBE</td>
-</tr>
-<tr>
-<td>CURRENT</td>
-<td>CURRENT_DATE (R)</td>
-<td>CURRENT_TIME (R)</td>
-</tr>
-<tr>
-<td>CURRENT_TIMESTAMP (R)</td>
-<td>CURRENT_USER (R)</td>
-<td>CURSOR (R)</td>
-</tr>
-<tr>
-<td>CURSOR_NAME</td>
-<td>DATA</td>
-<td>DATABASE (R)</td>
-</tr>
-<tr>
-<td>DATABASES (R)</td>
-<td>DATAFILE</td>
-<td>DATE</td>
-</tr>
-<tr>
-<td>DATETIME</td>
-<td>DAY</td>
-<td>DAY_HOUR (R)</td>
-</tr>
-<tr>
-<td>DAY_MICROSECOND (R)</td>
-<td>DAY_MINUTE (R)</td>
-<td>DAY_SECOND (R)</td>
-</tr>
-<tr>
-<td>DEALLOCATE</td>
-<td>DEC (R)</td>
-<td>DECIMAL (R)</td>
-</tr>
-<tr>
-<td>DECLARE (R)</td>
-<td>DEFAULT (R)</td>
-<td>DEFAULT_AUTH</td>
-</tr>
-<tr>
-<td>DEFINER</td>
-<td>DELAYED (R)</td>
-<td>DELAY_KEY_WRITE</td>
-</tr>
-<tr>
-<td>DELETE (R)</td>
-<td>DESC (R)</td>
-<td>DESCRIBE (R)</td>
-</tr>
-<tr>
-<td>DES_KEY_FILE</td>
-<td>DETERMINISTIC (R)</td>
-<td>DIAGNOSTICS</td>
-</tr>
-<tr>
-<td>DIRECTORY</td>
-<td>DISABLE</td>
-<td>DISCARD</td>
-</tr>
-<tr>
-<td>DISK</td>
-<td>DISTINCT (R)</td>
-<td>DISTINCTROW (R)</td>
-</tr>
-<tr>
-<td>DIV (R)</td>
-<td>DO</td>
-<td>DOUBLE (R)</td>
-</tr>
-<tr>
-<td>DROP (R)</td>
-<td>DUAL (R)</td>
-<td>DUMPFILE</td>
-</tr>
-<tr>
-<td>DUPLICATE</td>
-<td>DYNAMIC</td>
-<td>EACH (R)</td>
-</tr>
-<tr>
-<td>ELSE (R)</td>
-<td>ELSEIF (R)</td>
-<td>ENABLE</td>
-</tr>
-<tr>
-<td>ENCLOSED (R)</td>
-<td>ENCRYPTION[e]</td>
-<td>END</td>
-</tr>
-<tr>
-<td>ENDS</td>
-<td>ENGINE</td>
-<td>ENGINES</td>
-</tr>
-<tr>
-<td>ENUM</td>
-<td>ERROR</td>
-<td>ERRORS</td>
-</tr>
-<tr>
-<td>ESCAPE</td>
-<td>ESCAPED (R)</td>
-<td>EVENT</td>
-</tr>
-<tr>
-<td>EVENTS</td>
-<td>EVERY</td>
-<td>EXCHANGE</td>
-</tr>
-<tr>
-<td>EXECUTE</td>
-<td>EXISTS (R)</td>
-<td>EXIT (R)</td>
-</tr>
-<tr>
-<td>EXPANSION</td>
-<td>EXPIRE</td>
-<td>EXPLAIN (R)</td>
-</tr>
-<tr>
-<td>EXPORT</td>
-<td>EXTENDED</td>
-<td>EXTENT_SIZE</td>
-</tr>
-<tr>
-<td>FALSE (R)</td>
-<td>FAST</td>
-<td>FAULTS</td>
-</tr>
-<tr>
-<td>FETCH (R)</td>
-<td>FIELDS</td>
-<td>FILE</td>
-</tr>
-<tr>
-<td>FILE_BLOCK_SIZE[f]</td>
-<td>FILTER[g]</td>
-<td>FIRST</td>
-</tr>
-<tr>
-<td>FIXED</td>
-<td>FLOAT (R)</td>
-<td>FLOAT4 (R)</td>
-</tr>
-<tr>
-<td>FLOAT8 (R)</td>
-<td>FLUSH</td>
-<td>FOLLOWS[h]</td>
-</tr>
-<tr>
-<td>FOR (R)</td>
-<td>FORCE (R)</td>
-<td>FOREIGN (R)</td>
-</tr>
-<tr>
-<td>FORMAT</td>
-<td>FOUND</td>
-<td>FROM (R)</td>
-</tr>
-<tr>
-<td>FULL</td>
-<td>FULLTEXT (R)</td>
-<td>FUNCTION</td>
-</tr>
-<tr>
-<td>GENERAL</td>
-<td>GENERATED[i] (R)</td>
-<td>GEOMETRY</td>
-</tr>
-<tr>
-<td>GEOMETRYCOLLECTION</td>
-<td>GET (R)</td>
-<td>GET_FORMAT</td>
-</tr>
-<tr>
-<td>GLOBAL</td>
-<td>GRANT (R)</td>
-<td>GRANTS</td>
-</tr>
-<tr>
-<td>GROUP (R)</td>
-<td>GROUP_REPLICATION[j]</td>
-<td>HANDLER</td>
-</tr>
-<tr>
-<td>HASH</td>
-<td>HAVING (R)</td>
-<td>HELP</td>
-</tr>
-<tr>
-<td>HIGH_PRIORITY (R)</td>
-<td>HOST</td>
-<td>HOSTS</td>
-</tr>
-<tr>
-<td>HOUR</td>
-<td>HOUR_MICROSECOND (R)</td>
-<td>HOUR_MINUTE (R)</td>
-</tr>
-<tr>
-<td>HOUR_SECOND (R)</td>
-<td>IDENTIFIED</td>
-<td>IF (R)</td>
-</tr>
-<tr>
-<td>IGNORE (R)</td>
-<td>IGNORE_SERVER_IDS</td>
-<td>IMPORT</td>
-</tr>
-<tr>
-<td>IN (R)</td>
-<td>INDEX (R)</td>
-<td>INDEXES</td>
-</tr>
-<tr>
-<td>INFILE (R)</td>
-<td>INITIAL_SIZE</td>
-<td>INNER (R)</td>
-</tr>
-<tr>
-<td>INOUT (R)</td>
-<td>INSENSITIVE (R)</td>
-<td>INSERT (R)</td>
-</tr>
-<tr>
-<td>INSERT_METHOD</td>
-<td>INSTALL</td>
-<td>INSTANCE[k]</td>
-</tr>
-<tr>
-<td>INT (R)</td>
-<td>INT1 (R)</td>
-<td>INT2 (R)</td>
-</tr>
-<tr>
-<td>INT3 (R)</td>
-<td>INT4 (R)</td>
-<td>INT8 (R)</td>
-</tr>
-<tr>
-<td>INTEGER (R)</td>
-<td>INTERVAL (R)</td>
-<td>INTO (R)</td>
-</tr>
-<tr>
-<td>INVOKER</td>
-<td>IO</td>
-<td>IO_AFTER_GTIDS (R)</td>
-</tr>
-<tr>
-<td>IO_BEFORE_GTIDS (R)</td>
-<td>IO_THREAD</td>
-<td>IPC</td>
-</tr>
-<tr>
-<td>IS (R)</td>
-<td>ISOLATION</td>
-<td>ISSUER</td>
-</tr>
-<tr>
-<td>ITERATE (R)</td>
-<td>JOIN (R)</td>
-<td>JSON[l]</td>
-</tr>
-<tr>
-<td>KEY (R)</td>
-<td>KEYS (R)</td>
-<td>KEY_BLOCK_SIZE</td>
-</tr>
-<tr>
-<td>KILL (R)</td>
-<td>LANGUAGE</td>
-<td>LAST</td>
-</tr>
-<tr>
-<td>LEADING (R)</td>
-<td>LEAVE (R)</td>
-<td>LEAVES</td>
-</tr>
-<tr>
-<td>LEFT (R)</td>
-<td>LESS</td>
-<td>LEVEL</td>
-</tr>
-<tr>
-<td>LIKE (R)</td>
-<td>LIMIT (R)</td>
-<td>LINEAR (R)</td>
-</tr>
-<tr>
-<td>LINES (R)</td>
-<td>LINESTRING</td>
-<td>LIST</td>
-</tr>
-<tr>
-<td>LOAD (R)</td>
-<td>LOCAL</td>
-<td>LOCALTIME (R)</td>
-</tr>
-<tr>
-<td>LOCALTIMESTAMP (R)</td>
-<td>LOCK (R)</td>
-<td>LOCKS</td>
-</tr>
-<tr>
-<td>LOGFILE</td>
-<td>LOGS</td>
-<td>LONG (R)</td>
-</tr>
-<tr>
-<td>LONGBLOB (R)</td>
-<td>LONGTEXT (R)</td>
-<td>LOOP (R)</td>
-</tr>
-<tr>
-<td>LOW_PRIORITY (R)</td>
-<td>MASTER</td>
-<td>MASTER_AUTO_POSITION</td>
-</tr>
-<tr>
-<td>MASTER_BIND (R)</td>
-<td>MASTER_CONNECT_RETRY</td>
-<td>MASTER_DELAY</td>
-</tr>
-<tr>
-<td>MASTER_HEARTBEAT_PERIOD</td>
-<td>MASTER_HOST</td>
-<td>MASTER_LOG_FILE</td>
-</tr>
-<tr>
-<td>MASTER_LOG_POS</td>
-<td>MASTER_PASSWORD</td>
-<td>MASTER_PORT</td>
-</tr>
-<tr>
-<td>MASTER_RETRY_COUNT</td>
-<td>MASTER_SERVER_ID</td>
-<td>MASTER_SSL</td>
-</tr>
-<tr>
-<td>MASTER_SSL_CA</td>
-<td>MASTER_SSL_CAPATH</td>
-<td>MASTER_SSL_CERT</td>
-</tr>
-<tr>
-<td>MASTER_SSL_CIPHER</td>
-<td>MASTER_SSL_CRL</td>
-<td>MASTER_SSL_CRLPATH</td>
-</tr>
-<tr>
-<td>MASTER_SSL_KEY</td>
-<td>MASTER_SSL_VERIFY_SERVER_CERT (R)</td>
-<td>MASTER_TLS_VERSION[m]</td>
-</tr>
-<tr>
-<td>MASTER_USER</td>
-<td>MATCH (R)</td>
-<td>MAXVALUE (R)</td>
-</tr>
-<tr>
-<td>MAX_CONNECTIONS_PER_HOUR</td>
-<td>MAX_QUERIES_PER_HOUR</td>
-<td>MAX_ROWS</td>
-</tr>
-<tr>
-<td>MAX_SIZE</td>
-<td>MAX_STATEMENT_TIME[n]</td>
-<td>MAX_UPDATES_PER_HOUR</td>
-</tr>
-<tr>
-<td>MAX_USER_CONNECTIONS</td>
-<td>MEDIUM</td>
-<td>MEDIUMBLOB (R)</td>
-</tr>
-<tr>
-<td>MEDIUMINT (R)</td>
-<td>MEDIUMTEXT (R)</td>
-<td>MEMORY</td>
-</tr>
-<tr>
-<td>MERGE</td>
-<td>MESSAGE_TEXT</td>
-<td>MICROSECOND</td>
-</tr>
-<tr>
-<td>MIDDLEINT (R)</td>
-<td>MIGRATE</td>
-<td>MINUTE</td>
-</tr>
-<tr>
-<td>MINUTE_MICROSECOND (R)</td>
-<td>MINUTE_SECOND (R)</td>
-<td>MIN_ROWS</td>
-</tr>
-<tr>
-<td>MOD (R)</td>
-<td>MODE</td>
-<td>MODIFIES (R)</td>
-</tr>
-<tr>
-<td>MODIFY</td>
-<td>MONTH</td>
-<td>MULTILINESTRING</td>
-</tr>
-<tr>
-<td>MULTIPOINT</td>
-<td>MULTIPOLYGON</td>
-<td>MUTEX</td>
-</tr>
-<tr>
-<td>MYSQL_ERRNO</td>
-<td>NAME</td>
-<td>NAMES</td>
-</tr>
-<tr>
-<td>NATIONAL</td>
-<td>NATURAL (R)</td>
-<td>NCHAR</td>
-</tr>
-<tr>
-<td>NDB</td>
-<td>NDBCLUSTER</td>
-<td>NEVER[o]</td>
-</tr>
-<tr>
-<td>NEW</td>
-<td>NEXT</td>
-<td>NO</td>
-</tr>
-<tr>
-<td>NODEGROUP</td>
-<td>NONBLOCKING[p]</td>
-<td>NONE</td>
-</tr>
-<tr>
-<td>NOT (R)</td>
-<td>NO_WAIT</td>
-<td>NO_WRITE_TO_BINLOG (R)</td>
-</tr>
-<tr>
-<td>NULL (R)</td>
-<td>NUMBER</td>
-<td>NUMERIC (R)</td>
-</tr>
-<tr>
-<td>NVARCHAR</td>
-<td>OFFSET</td>
-<td>OLD_PASSWORD[q]</td>
-</tr>
-<tr>
-<td>ON (R)</td>
-<td>ONE</td>
-<td>ONLY</td>
-</tr>
-<tr>
-<td>OPEN</td>
-<td>OPTIMIZE (R)</td>
-<td>OPTIMIZER_COSTS[r] (R)</td>
-</tr>
-<tr>
-<td>OPTION (R)</td>
-<td>OPTIONALLY (R)</td>
-<td>OPTIONS</td>
-</tr>
-<tr>
-<td>OR (R)</td>
-<td>ORDER (R)</td>
-<td>OUT (R)</td>
-</tr>
-<tr>
-<td>OUTER (R)</td>
-<td>OUTFILE (R)</td>
-<td>OWNER</td>
-</tr>
-<tr>
-<td>PACK_KEYS</td>
-<td>PAGE</td>
-<td>PARSER</td>
-</tr>
-<tr>
-<td>PARSE_GCOL_EXPR[s]</td>
-<td>PARTIAL</td>
-<td>PARTITION (R)</td>
-</tr>
-<tr>
-<td>PARTITIONING</td>
-<td>PARTITIONS</td>
-<td>PASSWORD</td>
-</tr>
-<tr>
-<td>PHASE</td>
-<td>PLUGIN</td>
-<td>PLUGINS</td>
-</tr>
-<tr>
-<td>PLUGIN_DIR</td>
-<td>POINT</td>
-<td>POLYGON</td>
-</tr>
-<tr>
-<td>PORT</td>
-<td>PRECEDES[t]</td>
-<td>PRECISION (R)</td>
-</tr>
-<tr>
-<td>PREPARE</td>
-<td>PRESERVE</td>
-<td>PREV</td>
-</tr>
-<tr>
-<td>PRIMARY (R)</td>
-<td>PRIVILEGES</td>
-<td>PROCEDURE (R)</td>
-</tr>
-<tr>
-<td>PROCESSLIST</td>
-<td>PROFILE</td>
-<td>PROFILES</td>
-</tr>
-<tr>
-<td>PROXY</td>
-<td>PURGE (R)</td>
-<td>QUARTER</td>
-</tr>
-<tr>
-<td>QUERY</td>
-<td>QUICK</td>
-<td>RANGE (R)</td>
-</tr>
-<tr>
-<td>READ (R)</td>
-<td>READS (R)</td>
-<td>READ_ONLY</td>
-</tr>
-<tr>
-<td>READ_WRITE (R)</td>
-<td>REAL (R)</td>
-<td>REBUILD</td>
-</tr>
-<tr>
-<td>RECOVER</td>
-<td>REDOFILE</td>
-<td>REDO_BUFFER_SIZE</td>
-</tr>
-<tr>
-<td>REDUNDANT</td>
-<td>REFERENCES (R)</td>
-<td>REGEXP (R)</td>
-</tr>
-<tr>
-<td>RELAY</td>
-<td>RELAYLOG</td>
-<td>RELAY_LOG_FILE</td>
-</tr>
-<tr>
-<td>RELAY_LOG_POS</td>
-<td>RELAY_THREAD</td>
-<td>RELEASE (R)</td>
-</tr>
-<tr>
-<td>RELOAD</td>
-<td>REMOVE</td>
-<td>RENAME (R)</td>
-</tr>
-<tr>
-<td>REORGANIZE</td>
-<td>REPAIR</td>
-<td>REPEAT (R)</td>
-</tr>
-<tr>
-<td>REPEATABLE</td>
-<td>REPLACE (R)</td>
-<td>REPLICATE_DO_DB[u]</td>
-</tr>
-<tr>
-<td>REPLICATE_DO_TABLE[v]</td>
-<td>REPLICATE_IGNORE_DB[w]</td>
-<td>REPLICATE_IGNORE_TABLE[x]</td>
-</tr>
-<tr>
-<td>REPLICATE_REWRITE_DB[y]</td>
-<td>REPLICATE_WILD_DO_TABLE[z]</td>
-<td>REPLICATE_WILD_IGNORE_TABLE[aa]</td>
-</tr>
-<tr>
-<td>REPLICATION</td>
-<td>REQUIRE (R)</td>
-<td>RESET</td>
-</tr>
-<tr>
-<td>RESIGNAL (R)</td>
-<td>RESTORE</td>
-<td>RESTRICT (R)</td>
-</tr>
-<tr>
-<td>RESUME</td>
-<td>RETURN (R)</td>
-<td>RETURNED_SQLSTATE</td>
-</tr>
-<tr>
-<td>RETURNS</td>
-<td>REVERSE</td>
-<td>REVOKE (R)</td>
-</tr>
-<tr>
-<td>RIGHT (R)</td>
-<td>RLIKE (R)</td>
-<td>ROLLBACK</td>
-</tr>
-<tr>
-<td>ROLLUP</td>
-<td>ROTATE[ab]</td>
-<td>ROUTINE</td>
-</tr>
-<tr>
-<td>ROW</td>
-<td>ROWS</td>
-<td>ROW_COUNT</td>
-</tr>
-<tr>
-<td>ROW_FORMAT</td>
-<td>RTREE</td>
-<td>SAVEPOINT</td>
-</tr>
-<tr>
-<td>SCHEDULE</td>
-<td>SCHEMA (R)</td>
-<td>SCHEMAS (R)</td>
-</tr>
-<tr>
-<td>SCHEMA_NAME</td>
-<td>SECOND</td>
-<td>SECOND_MICROSECOND (R)</td>
-</tr>
-<tr>
-<td>SECURITY</td>
-<td>SELECT (R)</td>
-<td>SENSITIVE (R)</td>
-</tr>
-<tr>
-<td>SEPARATOR (R)</td>
-<td>SERIAL</td>
-<td>SERIALIZABLE</td>
-</tr>
-<tr>
-<td>SERVER</td>
-<td>SESSION</td>
-<td>SET (R)</td>
-</tr>
-<tr>
-<td>SHARE</td>
-<td>SHOW (R)</td>
-<td>SHUTDOWN</td>
-</tr>
-<tr>
-<td>SIGNAL (R)</td>
-<td>SIGNED</td>
-<td>SIMPLE</td>
-</tr>
-<tr>
-<td>SLAVE</td>
-<td>SLOW</td>
-<td>SMALLINT (R)</td>
-</tr>
-<tr>
-<td>SNAPSHOT</td>
-<td>SOCKET</td>
-<td>SOME</td>
-</tr>
-<tr>
-<td>SONAME</td>
-<td>SOUNDS</td>
-<td>SOURCE</td>
-</tr>
-<tr>
-<td>SPATIAL (R)</td>
-<td>SPECIFIC (R)</td>
-<td>SQL (R)</td>
-</tr>
-<tr>
-<td>SQLEXCEPTION (R)</td>
-<td>SQLSTATE (R)</td>
-<td>SQLWARNING (R)</td>
-</tr>
-<tr>
-<td>SQL_AFTER_GTIDS</td>
-<td>SQL_AFTER_MTS_GAPS</td>
-<td>SQL_BEFORE_GTIDS</td>
-</tr>
-<tr>
-<td>SQL_BIG_RESULT (R)</td>
-<td>SQL_BUFFER_RESULT</td>
-<td>SQL_CACHE</td>
-</tr>
-<tr>
-<td>SQL_CALC_FOUND_ROWS (R)</td>
-<td>SQL_NO_CACHE</td>
-<td>SQL_SMALL_RESULT (R)</td>
-</tr>
-<tr>
-<td>SQL_THREAD</td>
-<td>SQL_TSI_DAY</td>
-<td>SQL_TSI_HOUR</td>
-</tr>
-<tr>
-<td>SQL_TSI_MINUTE</td>
-<td>SQL_TSI_MONTH</td>
-<td>SQL_TSI_QUARTER</td>
-</tr>
-<tr>
-<td>SQL_TSI_SECOND</td>
-<td>SQL_TSI_WEEK</td>
-<td>SQL_TSI_YEAR</td>
-</tr>
-<tr>
-<td>SSL (R)</td>
-<td>STACKED</td>
-<td>START</td>
-</tr>
-<tr>
-<td>STARTING (R)</td>
-<td>STARTS</td>
-<td>STATS_AUTO_RECALC</td>
-</tr>
-<tr>
-<td>STATS_PERSISTENT</td>
-<td>STATS_SAMPLE_PAGES</td>
-<td>STATUS</td>
-</tr>
-<tr>
-<td>STOP</td>
-<td>STORAGE</td>
-<td>STORED[ac] (R)</td>
-</tr>
-<tr>
-<td>STRAIGHT_JOIN (R)</td>
-<td>STRING</td>
-<td>SUBCLASS_ORIGIN</td>
-</tr>
-<tr>
-<td>SUBJECT</td>
-<td>SUBPARTITION</td>
-<td>SUBPARTITIONS</td>
-</tr>
-<tr>
-<td>SUPER</td>
-<td>SUSPEND</td>
-<td>SWAPS</td>
-</tr>
-<tr>
-<td>SWITCHES</td>
-<td>TABLE (R)</td>
-<td>TABLES</td>
-</tr>
-<tr>
-<td>TABLESPACE</td>
-<td>TABLE_CHECKSUM</td>
-<td>TABLE_NAME</td>
-</tr>
-<tr>
-<td>TEMPORARY</td>
-<td>TEMPTABLE</td>
-<td>TERMINATED (R)</td>
-</tr>
-<tr>
-<td>TEXT</td>
-<td>THAN</td>
-<td>THEN (R)</td>
-</tr>
-<tr>
-<td>TIME</td>
-<td>TIMESTAMP</td>
-<td>TIMESTAMPADD</td>
-</tr>
-<tr>
-<td>TIMESTAMPDIFF</td>
-<td>TINYBLOB (R)</td>
-<td>TINYINT (R)</td>
-</tr>
-<tr>
-<td>TINYTEXT (R)</td>
-<td>TO (R)</td>
-<td>TRAILING (R)</td>
-</tr>
-<tr>
-<td>TRANSACTION</td>
-<td>TRIGGER (R)</td>
-<td>TRIGGERS</td>
-</tr>
-<tr>
-<td>TRUE (R)</td>
-<td>TRUNCATE</td>
-<td>TYPE</td>
-</tr>
-<tr>
-<td>TYPES</td>
-<td>UNCOMMITTED</td>
-<td>UNDEFINED</td>
-</tr>
-<tr>
-<td>UNDO (R)</td>
-<td>UNDOFILE</td>
-<td>UNDO_BUFFER_SIZE</td>
-</tr>
-<tr>
-<td>UNICODE</td>
-<td>UNINSTALL</td>
-<td>UNION (R)</td>
-</tr>
-<tr>
-<td>UNIQUE (R)</td>
-<td>UNKNOWN</td>
-<td>UNLOCK (R)</td>
-</tr>
-<tr>
-<td>UNSIGNED (R)</td>
-<td>UNTIL</td>
-<td>UPDATE (R)</td>
-</tr>
-<tr>
-<td>UPGRADE</td>
-<td>USAGE (R)</td>
-<td>USE (R)</td>
-</tr>
-<tr>
-<td>USER</td>
-<td>USER_RESOURCES</td>
-<td>USE_FRM</td>
-</tr>
-<tr>
-<td>USING (R)</td>
-<td>UTC_DATE (R)</td>
-<td>UTC_TIME (R)</td>
-</tr>
-<tr>
-<td>UTC_TIMESTAMP (R)</td>
-<td>VALIDATION[ad]</td>
-<td>VALUE</td>
-</tr>
-<tr>
-<td>VALUES (R)</td>
-<td>VARBINARY (R)</td>
-<td>VARCHAR (R)</td>
-</tr>
-<tr>
-<td>VARCHARACTER (R)</td>
-<td>VARIABLES</td>
-<td>VARYING (R)</td>
-</tr>
-<tr>
-<td>VIEW</td>
-<td>VIRTUAL[ae] (R)</td>
-<td>WAIT</td>
-</tr>
-<tr>
-<td>WARNINGS</td>
-<td>WEEK</td>
-<td>WEIGHT_STRING</td>
-</tr>
-<tr>
-<td>WHEN (R)</td>
-<td>WHERE (R)</td>
-<td>WHILE (R)</td>
-</tr>
-<tr>
-<td>WITH (R)</td>
-<td>WITHOUT[af]</td>
-<td>WORK</td>
-</tr>
-<tr>
-<td>WRAPPER</td>
-<td>WRITE (R)</td>
-<td>X509</td>
-</tr>
-<tr>
-<td>XA</td>
-<td>XID[ag]</td>
-<td>XML</td>
-</tr>
-<tr>
-<td>XOR (R)</td>
-<td>YEAR</td>
-<td>YEAR_MONTH (R)</td>
-</tr>
-<tr>
-<td>ZEROFILL (R)</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>[a]ACCOUNT：添加在5.7.6（非保留）</p>
-<p>[b]ALWAYS：加入5.7.6（非保留）</p>
-<p>[c]CHANNEL：加入5.7.6（非保留）</p>
-<p>[d]COMPRESSION：加入5.7.8（非保留）</p>
-<p>[e]ENCRYPTION：加入5.7.11（非保留）</p>
-<p>[f]FILE_BLOCK_SIZE：加入5.7.6（非保留）</p>
-<p>[g]FILTER：加入5.7.3（非保留）</p>
-<p>[h]FOLLOWS：加入5.7.2（非保留）</p>
-<p>[i]GENERATED：加入5.7.6（保留）</p>
-<p>[j]GROUP_REPLICATION：加入5.7.6（非保留）</p>
-<p>[k]INSTANCE：加入5.7.11（非保留）</p>
-<p>[l]JSON：加入5.7.8（非保留）</p>
-<p>[m]MASTER_TLS_VERSION：加入5.7.10（非保留）</p>
-<p>[n]MAX_STATEMENT_TIME：加入5.7.4（非保留）; 在5.7.8中删除</p>
-<p>[o]NEVER：加入5.7.4（非保留）</p>
-<p>[p]NONBLOCKING：在5.7.6中删除</p>
-<p>[q]OLD_PASSWORD：在5.7.5中删除</p>
-<p>[r]OPTIMIZER_COSTS：加入5.7.5（保留）</p>
-<p>[s]PARSE_GCOL_EXPR：加入5.7.6（保留）; 在5.7.8中没有保留</p>
-<p>[t]PRECEDES：添加在5.7.2（非保留）</p>
-<p>[u]REPLICATE_DO_DB：添加在5.7.3（非保留）</p>
-<p>[v]REPLICATE_DO_TABLE：添加在5.7.3（非保留）</p>
-<p>[w]REPLICATE_IGNORE_DB：加入5.7.3（非保留）</p>
-<p>[x]REPLICATE_IGNORE_TABLE：添加在5.7.3（非保留）</p>
-<p>[y]REPLICATE_REWRITE_DB：添加在5.7.3（非保留）</p>
-<p>[z]REPLICATE_WILD_DO_TABLE：添加在5.7.3（非保留）</p>
-<p>[aa]REPLICATE_WILD_IGNORE_TABLE：添加在5.7.3（非保留）</p>
-<p>[ab]ROTATE：添加在5.7.11（非保留）</p>
-<p>[ac]STORED：添加在5.7.6（保留）</p>
-<p>[ad]VALIDATION：加入5.7.5（非保留）</p>
-<p>[ae]VIRTUAL：加入5.7.6（保留）</p>
-<p>[af]WITHOUT：加入5.7.5（非保留）</p>
-<p>[ag]XID：加入5.7.5（非保留）</p>
-<p>下表显示了MySQL 5.7中添加的关键字和保留字。保留关键字标有（R）。</p>
-<h3 id="表9-3-MySQL中添加的关键字和保留字5-7与MySQL-5-6相比"><a href="#表9-3-MySQL中添加的关键字和保留字5-7与MySQL-5-6相比" class="headerlink" title="表9.3 MySQL中添加的关键字和保留字5.7与MySQL 5.6相比"></a>表9.3 MySQL中添加的关键字和保留字5.7与MySQL 5.6相比</h3><table>
-<thead>
-<tr>
-<th>ACCOUNT</th>
-<th>ALWAYS</th>
-<th>CHANNEL</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>COMPRESSION</td>
-<td>ENCRYPTION</td>
-<td>FILE_BLOCK_SIZE</td>
-</tr>
-<tr>
-<td>FILTER</td>
-<td>FOLLOWS</td>
-<td>GENERATED (R)</td>
-</tr>
-<tr>
-<td>GROUP_REPLICATION</td>
-<td>INSTANCE</td>
-<td>JSON</td>
-</tr>
-<tr>
-<td>MASTER_TLS_VERSION</td>
-<td>NEVER</td>
-<td>OPTIMIZER_COSTS (R)</td>
-</tr>
-<tr>
-<td>PARSE_GCOL_EXPR</td>
-<td>PRECEDES</td>
-<td>REPLICATE_DO_DB</td>
-</tr>
-<tr>
-<td>REPLICATE_DO_TABLE</td>
-<td>REPLICATE_IGNORE_DB</td>
-<td>REPLICATE_IGNORE_TABLE</td>
-</tr>
-<tr>
-<td>REPLICATE_REWRITE_DB</td>
-<td>REPLICATE_WILD_DO_TABLE</td>
-<td>REPLICATE_WILD_IGNORE_TABLE</td>
-</tr>
-<tr>
-<td>ROTATE</td>
-<td>STACKED</td>
-<td>STORED (R)</td>
-</tr>
-<tr>
-<td>VALIDATION</td>
-<td>VIRTUAL (R)</td>
-<td>WITHOUT</td>
-</tr>
-<tr>
-<td>XID</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>下表显示了MySQL 5.7中删除的关键字和保留字。保留关键字标有（R）。</p>
-<h3 id="表9-4-MySQL-5-7中删除的关键字和保留字与MySQL-5-6相比"><a href="#表9-4-MySQL-5-7中删除的关键字和保留字与MySQL-5-6相比" class="headerlink" title="表9.4 MySQL 5.7中删除的关键字和保留字与MySQL 5.6相比"></a>表9.4 MySQL 5.7中删除的关键字和保留字与MySQL 5.6相比</h3><p>  | |<br>—|—|—<br>OLD_PASSWORD|  |  </p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Spring/Spring%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Spring/Spring%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">Spring中的事件处理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-02-27 23:41:00" itemprop="dateCreated datePublished" datetime="2022-02-27T23:41:00+08:00">2022-02-27</time>
+      <time title="创建时间：2022-06-04 23:41:00" itemprop="dateCreated datePublished" datetime="2022-06-04T23:41:00+08:00">2022-06-04</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -2318,14 +686,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>722</span>
+      <span>1.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>4 分钟</span>
     </span>
 </div>
 
@@ -2336,224 +704,50 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Spring的核心是ApplicationContext，它管理bean的整个生命周期。ApplicationContext在加载Bean时发布某些类型的事件。例如，ContextStartedEvent在上下文启动时发布，而ContextStoppedEvent在上下文停止时发布。</p>
-<p>ApplicationContext中的事件处理通过ApplicationEvent类和ApplicationListener接口提供。如果一个bean实现了ApplicationListener，那么每当一个ApplicationEvent被发布到ApplicationContext时，该bean就会被通知。</p>
-<p>Spring提供了以下标准事件</p>
-<table>
-<thead>
-<tr>
-<th>事件</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ContextRefreshedEvent</td>
-<td>此事件在ApplicationContext初始化或刷新时发布。这也可以使用ConfigurableApplicationContext接口上的refresh（）方法引发。</td>
-</tr>
-<tr>
-<td>ContextStartedEvent</td>
-<td>使用ConfigurableApplicationContext接口上的start（）方法启动ApplicationContext时，会发布此事件。</td>
-</tr>
-<tr>
-<td>ContextStoppedEvent</td>
-<td>使用ConfigurableApplicationContext接口上的stop（）方法停止ApplicationContext时发布此事件。</td>
-</tr>
-<tr>
-<td>ContextClosedEvent</td>
-<td>使用ConfigurableApplicationContext接口上的close（）方法关闭ApplicationContext时发布此事件。一个关闭的上下文达到其生命的尽头，它不能被刷新或重新启动。</td>
-</tr>
-<tr>
-<td>RequestHandledEvent</td>
-<td>这是一个特定于web的事件，它告诉所有bean已经提供HTTP请求。</td>
-</tr>
-</tbody></table>
+          <h1 id="Spring-表达式语言-SpEL"><a href="#Spring-表达式语言-SpEL" class="headerlink" title="Spring 表达式语言 (SpEL)"></a>Spring 表达式语言 (SpEL)</h1><h2 id="使用-Spring-的表达式接口进行表达式求值"><a href="#使用-Spring-的表达式接口进行表达式求值" class="headerlink" title="使用 Spring 的表达式接口进行表达式求值"></a>使用 Spring 的表达式接口进行表达式求值</h2><p>下面的代码引入了 SpEL API 来评估文字字符串表达式 ‘Hello World’</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line">Expression exp = parser.parseExpression(&quot;&#x27;Hello World&#x27;&quot;);</span><br><span class="line">String message = (String) exp.getValue();</span><br></pre></td></tr></table></figure>
+<p>常用的 SpEL 类和接口位于包org.springframework.expression 及其子包和spel.support中。</p>
+<p>作为方法调用的示例，我们在字符串文字上调用“concat”方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line">Expression exp = parser.parseExpression(&quot;&#x27;Hello World&#x27;.concat(&#x27;!&#x27;)&quot;);</span><br><span class="line">String message = (String) exp.getValue();</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>Spring的事件处理是单线程的，一个事件被发布，直到所有的接收者都处理完这个消息之前，进程会被阻塞，流程将不会继续。因此，如果要使用事件处理，应在设计应用程序时小心谨慎。</p>
+<p>这将返回 ‘Hello World!’</p>
 </blockquote>
-<h3 id="听上下文事件"><a href="#听上下文事件" class="headerlink" title="听上下文事件"></a>听上下文事件</h3><p>要监听上下文事件，bean应该实现只有一个方法onApplicationEvent（）的ApplicationListener接口。</p>
-<p>HelloWorld.java文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">public class HelloWorld &#123;</span><br><span class="line">   private String message;</span><br><span class="line"></span><br><span class="line">   public void setMessage(String message)&#123;</span><br><span class="line">      this.message  = message;</span><br><span class="line">   &#125;</span><br><span class="line">   public void getMessage()&#123;</span><br><span class="line">      System.out.println(&quot;Your Message : &quot; + message);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>CStartEventHandler.java文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.ApplicationListener;</span><br><span class="line">import org.springframework.context.event.ContextStartedEvent;</span><br><span class="line"></span><br><span class="line">public class CStartEventHandler </span><br><span class="line">   implements ApplicationListener&lt;ContextStartedEvent&gt;&#123;</span><br><span class="line"></span><br><span class="line">   public void onApplicationEvent(ContextStartedEvent event) &#123;</span><br><span class="line">      System.out.println(&quot;ContextStartedEvent Received&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>CStopEventHandler.java文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.ApplicationListener;</span><br><span class="line">import org.springframework.context.event.ContextStoppedEvent;</span><br><span class="line"></span><br><span class="line">public class CStopEventHandler </span><br><span class="line">   implements ApplicationListener&lt;ContextStoppedEvent&gt;&#123;</span><br><span class="line"></span><br><span class="line">   public void onApplicationEvent(ContextStoppedEvent event) &#123;</span><br><span class="line">      System.out.println(&quot;ContextStoppedEvent Received&quot;);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>MainApp.java文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">public class MainApp &#123;</span><br><span class="line">   public static void main(String[] args) &#123;</span><br><span class="line">      ConfigurableApplicationContext context = </span><br><span class="line">         new ClassPathXmlApplicationContext(&quot;Beans.xml&quot;);</span><br><span class="line"></span><br><span class="line">      // Let us raise a start event.</span><br><span class="line">      context.start();</span><br><span class="line">	  </span><br><span class="line">      HelloWorld obj = (HelloWorld) context.getBean(&quot;helloWorld&quot;);</span><br><span class="line">      obj.getMessage();</span><br><span class="line"></span><br><span class="line">      // Let us raise a stop event.</span><br><span class="line">      context.stop();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>配置文件Beans.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean id = &quot;helloWorld&quot; class = &quot;com.tutorialspoint.HelloWorld&quot;&gt;</span><br><span class="line">      &lt;property name = &quot;message&quot; value = &quot;Hello World!&quot;/&gt;</span><br><span class="line">   &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean id = &quot;cStartEventHandler&quot; class = &quot;com.tutorialspoint.CStartEventHandler&quot;/&gt;</span><br><span class="line">   &lt;bean id = &quot;cStopEventHandler&quot; class = &quot;com.tutorialspoint.CStopEventHandler&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
-<p>程序运行结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ContextStartedEvent Received</span><br><span class="line">Your Message : Hello World!</span><br><span class="line">ContextStoppedEvent Received</span><br></pre></td></tr></table></figure>
-
-<h2 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h2><p>CustomEvent.java文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.ApplicationEvent;</span><br><span class="line"></span><br><span class="line">public class CustomEvent extends ApplicationEvent&#123;</span><br><span class="line">   public CustomEvent(Object source) &#123;</span><br><span class="line">      super(source);</span><br><span class="line">   &#125;</span><br><span class="line">   public String toString()&#123;</span><br><span class="line">      return &quot;My Custom Event&quot;;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>CustomEventPublisher.java文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.ApplicationEventPublisher;</span><br><span class="line">import org.springframework.context.ApplicationEventPublisherAware;</span><br><span class="line"></span><br><span class="line">public class CustomEventPublisher implements ApplicationEventPublisherAware &#123;</span><br><span class="line">   private ApplicationEventPublisher publisher;</span><br><span class="line">   </span><br><span class="line">   public void setApplicationEventPublisher (ApplicationEventPublisher publisher) &#123;</span><br><span class="line">      this.publisher = publisher;</span><br><span class="line">   &#125;</span><br><span class="line">   public void publish() &#123;</span><br><span class="line">      CustomEvent ce = new CustomEvent(this);</span><br><span class="line">      publisher.publishEvent(ce);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>CustomEventHandler.java文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.ApplicationListener;</span><br><span class="line"></span><br><span class="line">public class CustomEventHandler implements ApplicationListener&lt;CustomEvent&gt; &#123;</span><br><span class="line">   public void onApplicationEvent(CustomEvent event) &#123;</span><br><span class="line">      System.out.println(event.toString());</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>MainApp.java文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">package com.tutorialspoint;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.ConfigurableApplicationContext;</span><br><span class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</span><br><span class="line"></span><br><span class="line">public class MainApp &#123;</span><br><span class="line">   public static void main(String[] args) &#123;</span><br><span class="line">      ConfigurableApplicationContext context = </span><br><span class="line">         new ClassPathXmlApplicationContext(&quot;Beans.xml&quot;);</span><br><span class="line">	  </span><br><span class="line">      CustomEventPublisher cvp = </span><br><span class="line">         (CustomEventPublisher) context.getBean(&quot;customEventPublisher&quot;);</span><br><span class="line">      </span><br><span class="line">      cvp.publish();  </span><br><span class="line">      cvp.publish();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>配置文件Beans.xml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version = &quot;1.0&quot; encoding = &quot;UTF-8&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;beans xmlns = &quot;http://www.springframework.org/schema/beans&quot;</span><br><span class="line">   xmlns:xsi = &quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">   xsi:schemaLocation = &quot;http://www.springframework.org/schema/beans</span><br><span class="line">   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;bean id = &quot;customEventHandler&quot; class = &quot;com.tutorialspoint.CustomEventHandler&quot;/&gt;</span><br><span class="line">   &lt;bean id = &quot;customEventPublisher&quot; class = &quot;com.tutorialspoint.CustomEventPublisher&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
-<p>运行结果</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">My Custom Event</span><br><span class="line">My Custom Event</span><br></pre></td></tr></table></figure>
+<p>使用点号来获取属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line">// invokes &#x27;getBytes().length&#x27;</span><br><span class="line">Expression exp = parser.parseExpression(&quot;&#x27;Hello World&#x27;.bytes.length&quot;);  </span><br><span class="line">int length = (Integer) exp.getValue();</span><br></pre></td></tr></table></figure>
+<p>调用方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line">Expression exp = parser.parseExpression(&quot;new String(&#x27;hello world&#x27;).toUpperCase()&quot;);</span><br><span class="line">String message = exp.getValue(String.class);</span><br></pre></td></tr></table></figure>
+<h3 id="EvaluationContext接口"><a href="#EvaluationContext接口" class="headerlink" title="EvaluationContext接口"></a>EvaluationContext接口</h3><p>EvaluationContext在评估表达式以解析属性、方法、字段并帮助执行类型转换时使用该接口。开箱即用的实现使用反射来StandardEvaluationContext操作对象，缓存 j ava.lang.reflect的Method和 实例以提高性能。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Simple &#123;</span><br><span class="line">    public List&lt;Boolean&gt; booleanList = new ArrayList&lt;Boolean&gt;();</span><br><span class="line">&#125;</span><br><span class="line">    	</span><br><span class="line">Simple simple = new Simple();</span><br><span class="line"></span><br><span class="line">simple.booleanList.add(true);</span><br><span class="line"></span><br><span class="line">StandardEvaluationContext simpleContext = new StandardEvaluationContext(simple);</span><br><span class="line"></span><br><span class="line">// false is passed in here as a string.  SpEL and the conversion service will </span><br><span class="line">// correctly recognize that it needs to be a Boolean and convert it</span><br><span class="line">parser.parseExpression(&quot;booleanList[0]&quot;).setValue(simpleContext, &quot;false&quot;);</span><br><span class="line"></span><br><span class="line">// b will be false</span><br><span class="line">Boolean b = simple.booleanList.get(0);</span><br></pre></td></tr></table></figure>
 
 
+<h2 id="语法参考"><a href="#语法参考" class="headerlink" title="语法参考"></a>语法参考</h2><p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch06s05.html">https://docs.spring.io/spring-framework/docs/3.0.0.M4/reference/html/ch06s05.html</a></p>
+<h3 id="文字表达式"><a href="#文字表达式" class="headerlink" title="文字表达式"></a>文字表达式</h3><p>支持的文字表达式类型有字符串、日期、数值（整数、实数和十六进制）、布尔值和空值。字符串由单引号分隔。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">// evals to &quot;Hello World&quot;</span><br><span class="line">String helloWorld = (String) parser.parseExpression(&quot;&#x27;Hello World&#x27;&quot;).getValue(); </span><br><span class="line"></span><br><span class="line">double avogadrosNumber  = (Double) parser.parseExpression(&quot;6.0221415E+23&quot;).getValue();  </span><br><span class="line"></span><br><span class="line">// evals to 2147483647</span><br><span class="line">int maxValue = (Integer) parser.parseExpression(&quot;0x7FFFFFFF&quot;).getValue();  </span><br><span class="line"></span><br><span class="line">boolean trueValue = (Boolean) parser.parseExpression(&quot;true&quot;).getValue();</span><br><span class="line"></span><br><span class="line">Object nullValue = parser.parseExpression(&quot;null&quot;).getValue();</span><br></pre></td></tr></table></figure>
+<p>数字支持使用负号、指数记数法和小数点。默认情况下，使用 Double.parseDouble() 解析实数。</p>
+<h3 id="属性、数组、Lists、Maps、Indexers"><a href="#属性、数组、Lists、Maps、Indexers" class="headerlink" title="属性、数组、Lists、Maps、Indexers"></a>属性、数组、Lists、Maps、Indexers</h3><p>使用<strong>点</strong>来表示属性引用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int year = (Integer) parser.parseExpression(&quot;Birthdate.Year + 1900&quot;).getValue(context); </span><br><span class="line"></span><br><span class="line">String city = (String) parser.parseExpression(&quot;placeOfBirth.City&quot;).getValue(context);</span><br></pre></td></tr></table></figure>
+<p>数组和列表的内容是使用<strong>方括号</strong>表示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">ExpressionParser parser = new SpelExpressionParser();</span><br><span class="line"></span><br><span class="line">// Inventions Array</span><br><span class="line">StandardEvaluationContext teslaContext = new StandardEvaluationContext(tesla);</span><br><span class="line"></span><br><span class="line">// evaluates to &quot;Induction motor&quot;</span><br><span class="line">String invention = parser.parseExpression(&quot;inventions[3]&quot;).getValue(teslaContext, </span><br><span class="line">                                                                    String.class); </span><br><span class="line"></span><br><span class="line">// Members List</span><br><span class="line">StandardEvaluationContext societyContext = new StandardEvaluationContext(ieee);</span><br><span class="line"></span><br><span class="line">// evaluates to &quot;Nikola Tesla&quot;</span><br><span class="line">String name = parser.parseExpression(&quot;Members[0].Name&quot;).getValue(societyContext, String.class);</span><br><span class="line"></span><br><span class="line">// List and Array navigation</span><br><span class="line">// evaluates to &quot;Wireless communication&quot;</span><br><span class="line">String invention = parser.parseExpression(&quot;Members[0].Inventions[6]&quot;).getValue(societyContext,</span><br><span class="line">                                                                               String.class);</span><br></pre></td></tr></table></figure>
+<p>map的内容是通过在括号内指定文字键值来获得的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// Officer&#x27;s Dictionary</span><br><span class="line"></span><br><span class="line">Inventor pupin = parser.parseExpression(&quot;Officers[&#x27;president&#x27;]&quot;).getValue(societyContext, </span><br><span class="line">                                                                          Inventor.class);</span><br><span class="line"></span><br><span class="line">// evaluates to &quot;Idvor&quot;</span><br><span class="line">String city = </span><br><span class="line">    parser.parseExpression(&quot;Officers[&#x27;president&#x27;].PlaceOfBirth.City&quot;).getValue(societyContext,</span><br><span class="line">                                                                               String.class);</span><br><span class="line"></span><br><span class="line">// setting values</span><br><span class="line">parser.parseExpression(&quot;Officers[&#x27;advisors&#x27;][0].PlaceOfBirth.Country&quot;).setValue(societyContext,</span><br><span class="line">                                                                                &quot;Croatia&quot;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>使用典型的 Java 编程语法调用方法。还可以在文字上调用方法，支持方法参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// string literal, evaluates to &quot;bc&quot;</span><br><span class="line">String c = parser.parseExpression(&quot;&#x27;abc&#x27;.substring(2, 3)&quot;).getValue(String.class);</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">boolean isMember = parser.parseExpression(&quot;isMember(&#x27;Mihajlo Pupin&#x27;)&quot;).getValue(societyContext,</span><br><span class="line">                                                                                Boolean.class);</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
+<h3 id="运算符号"><a href="#运算符号" class="headerlink" title="运算符号"></a>运算符号</h3><h4 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h4><p>使用标准运算符表示法支持等于、不等于、小于、小于或等于、大于和大于或等于。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 计算结果为真</span><br><span class="line">boolean trueValue = parser.parseExpression( &quot; 2 == 2&quot; ).getValue(Boolean.class );</span><br><span class="line"></span><br><span class="line">// 计算结果为假</span><br><span class="line">boolean falseValue = parser.parseExpression( &quot; 2 &lt; -5.0&quot; ).getValue(Boolean.class );</span><br><span class="line"></span><br><span class="line">// 计算结果为真</span><br><span class="line">boolean trueValue = parser.parseExpression( &quot; &#x27;black&#x27; &lt; &#x27;block&#x27;&quot; ).getValue(Boolean.class );</span><br></pre></td></tr></table></figure>
+<p>除了标准的关系运算符之外，SpEL 还支持“instanceof”和基于正则表达式的“匹配”运算符。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// evaluates to false</span><br><span class="line">boolean falseValue = parser.parseExpression(&quot;&#x27;xyz&#x27; instanceof T(int)&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">boolean trueValue = </span><br><span class="line">     parser.parseExpression(&quot;&#x27;5.00&#x27; matches &#x27;^-?\\d+(\\.\\d&#123;2&#125;)?$&#x27;&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line">//evaluates to false</span><br><span class="line">boolean falseValue = </span><br><span class="line">     parser.parseExpression(&quot;&#x27;5.0067&#x27; matches &#x27;^-?\\d+(\\.\\d&#123;2&#125;)?$&#x27;&quot;).getValue(Boolean.class);</span><br></pre></td></tr></table></figure>
+<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>支持的逻辑运算符有 and、or 和 not。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// -- AND --</span><br><span class="line"></span><br><span class="line">// evaluates to false</span><br><span class="line">boolean falseValue = parser.parseExpression(&quot;true and false&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">String expression =  &quot;isMember(&#x27;Nikola Tesla&#x27;) and isMember(&#x27;Mihajlo Pupin&#x27;)&quot;;</span><br><span class="line">boolean trueValue = parser.parseExpression(expression).getValue(societyContext, Boolean.class);</span><br><span class="line"></span><br><span class="line">// -- OR --</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">boolean trueValue = parser.parseExpression(&quot;true or false&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line">// evaluates to true</span><br><span class="line">String expression =  &quot;isMember(&#x27;Nikola Tesla&#x27;) or isMember(&#x27;Albert Einstien&#x27;)&quot;;</span><br><span class="line">boolean trueValue = parser.parseExpression(expression).getValue(societyContext, Boolean.class);</span><br><span class="line"></span><br><span class="line">// -- NOT --</span><br><span class="line"></span><br><span class="line">// evaluates to false</span><br><span class="line">boolean falseValue = parser.parseExpression(&quot;!true&quot;).getValue(Boolean.class);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">// -- AND and NOT --</span><br><span class="line">String expression =  &quot;isMember(&#x27;Nikola Tesla&#x27;) and !isMember(&#x27;Mihajlo Pupin&#x27;)&quot;;</span><br><span class="line">boolean falseValue = parser.parseExpression(expression).getValue(societyContext, Boolean.class);</span><br></pre></td></tr></table></figure>
 
-    
-    
-    
+<h4 id="数学运算符"><a href="#数学运算符" class="headerlink" title="数学运算符"></a>数学运算符</h4><p>加法运算符可用于数字、字符串和日期。减法可用于数字和日期。乘法和除法只能用于数字。其他支持的数学运算符是模数 (%) 和指数幂 (^)。执行标准运算符优先级。这些运算符如下所示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// Addition</span><br><span class="line">int two = parser.parseExpression(&quot;1 + 1&quot;).getValue(Integer.class); // 2</span><br><span class="line"></span><br><span class="line">String testString = </span><br><span class="line">   parser.parseExpression(&quot;&#x27;test&#x27; + &#x27; &#x27; + &#x27;string&#x27;&quot;).getValue(String.class);  // &#x27;test string&#x27;</span><br><span class="line"></span><br><span class="line">// Subtraction</span><br><span class="line">int four =  parser.parseExpression(&quot;1 - -3&quot;).getValue(Integer.class); // 4</span><br><span class="line"></span><br><span class="line">double d = parser.parseExpression(&quot;1000.00 - 1e4&quot;).getValue(Double.class); // -9000</span><br><span class="line"></span><br><span class="line">// Multiplication</span><br><span class="line">int six =  parser.parseExpression(&quot;-2 * -3&quot;).getValue(Integer.class); // 6</span><br><span class="line"></span><br><span class="line">double twentyFour = parser.parseExpression(&quot;2.0 * 3e0 * 4&quot;).getValue(Double.class); // 24.0</span><br><span class="line"></span><br><span class="line">// Division</span><br><span class="line">int minusTwo =  parser.parseExpression(&quot;6 / -3&quot;).getValue(Integer.class); // -2</span><br><span class="line"></span><br><span class="line">double one = parser.parseExpression(&quot;8.0 / 4e0 / 2&quot;).getValue(Double.class); // 1.0</span><br><span class="line"></span><br><span class="line">// Modulus</span><br><span class="line">int three =  parser.parseExpression(&quot;7 % 4&quot;).getValue(Integer.class); // 3</span><br><span class="line"></span><br><span class="line">int one = parser.parseExpression(&quot;8 / 5 % 2&quot;).getValue(Integer.class); // 1</span><br><span class="line"></span><br><span class="line">// Operator precedence</span><br><span class="line">int minusTwentyOne = parser.parseExpression(&quot;1+2-3*8&quot;).getValue(Integer.class); // -21</span><br></pre></td></tr></table></figure>
 
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/MySQL/CentOS7-%E5%AE%89%E8%A3%85-MySQL5-7-%E8%AE%B0%E5%BD%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/MySQL/CentOS7-%E5%AE%89%E8%A3%85-MySQL5-7-%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">CentOS7-安装-MySQL5-7-记录</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-02-12 23:41:00" itemprop="dateCreated datePublished" datetime="2022-02-12T23:41:00+08:00">2022-02-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>734</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p><em>2017年11月</em></p>
-<hr>
-<h3 id="系统版本"><a href="#系统版本" class="headerlink" title="系统版本"></a>系统版本</h3><p>CentOS Linux 7 (Core)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> uname -a</span><br><span class="line">Linux localhost.localdomain 3.10.0-327.el7.x86_64 #1 SMP Thu Nov 19 22:10:57 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="安装MySql的源到系统中"><a href="#安装MySql的源到系统中" class="headerlink" title="安装MySql的源到系统中"></a>安装MySql的源到系统中</h3><p>MySql 5.7</p>
-<p>下载对应版本的源rpm文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -Uvh mysql57-community-release-el7-11.noarch.rpm </span><br><span class="line">warning: mysql57-community-release-el7-11.noarch.rpm: Header V3 DSA/SHA1 Signature, key ID 5072e1f5: NOKEY</span><br><span class="line">Preparing...                          ################################# [100%]</span><br><span class="line">Updating / installing...</span><br><span class="line">   1:mysql57-community-release-el7-11 ################################# [100%]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>默认是启动5.7版本的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> yum repolist all | grep mysql</span><br><span class="line">mysql-cluster-7.5-community/x86_64 MySQL Cluster 7.5 Community    disabled</span><br><span class="line">mysql-cluster-7.5-community-source MySQL Cluster 7.5 Community -  disabled</span><br><span class="line">mysql-cluster-7.6-community/x86_64 MySQL Cluster 7.6 Community    disabled</span><br><span class="line">mysql-cluster-7.6-community-source MySQL Cluster 7.6 Community -  disabled</span><br><span class="line">mysql-connectors-community/x86_64  MySQL Connectors Community     enabled:    42</span><br><span class="line">mysql-connectors-community-source  MySQL Connectors Community - S disabled</span><br><span class="line">mysql-tools-community/x86_64       MySQL Tools Community          enabled:    51</span><br><span class="line">mysql-tools-community-source       MySQL Tools Community - Source disabled</span><br><span class="line">mysql-tools-preview/x86_64         MySQL Tools Preview            disabled</span><br><span class="line">mysql-tools-preview-source         MySQL Tools Preview - Source   disabled</span><br><span class="line">mysql55-community/x86_64           MySQL 5.5 Community Server     disabled</span><br><span class="line">mysql55-community-source           MySQL 5.5 Community Server - S disabled</span><br><span class="line">mysql56-community/x86_64           MySQL 5.6 Community Server     disabled</span><br><span class="line">mysql56-community-source           MySQL 5.6 Community Server - S disabled</span><br><span class="line">mysql57-community/x86_64           MySQL 5.7 Community Server     enabled:   227</span><br><span class="line">mysql57-community-source           MySQL 5.7 Community Server - S disabled</span><br><span class="line">mysql80-community/x86_64           MySQL 8.0 Community Server     disabled</span><br><span class="line">mysql80-community-source           MySQL 8.0 Community Server - S disabled</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install mysql-community-server</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="修改配置文件，调整数据文件存放目录"><a href="#修改配置文件，调整数据文件存放目录" class="headerlink" title="修改配置文件，调整数据文件存放目录"></a>修改配置文件，调整数据文件存放目录</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"></span><br><span class="line">  datadir=/data/mysql/datadir</span><br></pre></td></tr></table></figure>
-
-<p>创建对应的目录，调整权限</p>
-<p>mkdir &#x2F;data&#x2F;mysql&#x2F;datadir</p>
-<p>chown mysql:mysql &#x2F;data&#x2F;mysql</p>
-<p>启动报错</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld.service</span><br><span class="line"></span><br><span class="line">Job for mysqld.service failed because the control process exited with error code. See &quot;systemctl status mysqld.service&quot; and &quot;journalctl -xe&quot; for details.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>日志文件中说是文件权限问题，但没看到是那个文件</p>
-<p>调整一下&#x2F;var&#x2F;lib&#x2F;mysql 目录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> ls -al</span><br><span class="line">total 8</span><br><span class="line">drwxr-x--x.  2 mysql mysql   17 Nov  7 16:27 .</span><br><span class="line">drwxr-xr-x. 27 root  root  4096 Nov  7 16:00 ..</span><br><span class="line">-rw-------.  1 root  root  1024 Nov  7 16:27 .rnd</span><br><span class="line">[root@localhost mysql]# chown mysql:mysql -R /var/lib/mysql</span><br><span class="line">[root@localhost mysql]# ls -al</span><br><span class="line">total 8</span><br><span class="line">drwxr-x--x.  2 mysql mysql   17 Nov  7 16:27 .</span><br><span class="line">drwxr-xr-x. 27 root  root  4096 Nov  7 16:00 ..</span><br><span class="line">-rw-------.  1 mysql mysql 1024 Nov  7 16:27 .rnd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>再启动还是报错</p>
-<p>后来尝试了很多方法之后，把数据目录改回去才能启动</p>
-<p>启动之后获取密码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; sudo grep &#x27;temporary password&#x27; /var/log/mysqld.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2017-11-07T09:10:43.302284Z 1 [Note] A temporary password is generated for root@localhost: -u(qyyu&gt;L2n3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>通过临时密码登录并修改root密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shell&gt; mysql -uroot -p</span><br><span class="line"></span><br><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;Root@666&#x27;;</span><br></pre></td></tr></table></figure>
-
-
-<p>修改了配置后再次测试，还是不行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">datadir=/data/mysql/datadir</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>修改&#x2F;etc&#x2F;selinux&#x2F;config文件中设置SELINUX&#x3D;disabled ，然后重启服务器。</p>
-<p>再次启动可以了</p>
-<p>设置Mysql远程访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &#x27;root&#x27;@&#x27;%&#x27; identified by &#x27;Root@666&#x27; with grant option;</span><br></pre></td></tr></table></figure>
-<p>使授权生效</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#关闭防火墙</span><br><span class="line">systemctl stop firewalld.service</span><br><span class="line"></span><br><span class="line">#关闭开机启动</span><br><span class="line">systemctl disable firewalld.service</span><br></pre></td></tr></table></figure>
-
-<h3 id="数据库导入导出"><a href="#数据库导入导出" class="headerlink" title="数据库导入导出"></a>数据库导入导出</h3><p>先在目标库中创建表</p>
-<p>在目标机器上导出</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -udap -p -h192.168.1.215 dap &gt; dap.sql</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>进入mysql</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql -udap -p</span><br><span class="line"></span><br><span class="line">#切换数据库</span><br><span class="line">use dap;</span><br><span class="line"></span><br><span class="line">#导入数据： </span><br><span class="line">source /data/mysql/215/dap.sql</span><br></pre></td></tr></table></figure>
-
-<p>测试的时候发现部分表，比如user表，permission表等创建不了，换成root用户就好了</p>
-
+<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>可以使用语法#variableName 在表达式中引用变量。使用 StandardEvaluationContext 上的 setVariable 方法设置变量。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Inventor tesla = new Inventor(&quot;Nikola Tesla&quot;, &quot;Serbian&quot;);</span><br><span class="line">StandardEvaluationContext context = new StandardEvaluationContext(tesla);</span><br><span class="line">context.setVariable(&quot;newName&quot;, &quot;Mike Tesla&quot;);</span><br><span class="line"></span><br><span class="line">parser.parseExpression(&quot;Name = #newName&quot;).getValue(context);</span><br><span class="line"></span><br><span class="line">System.out.println(tesla.getName()) // &quot;Mike Tesla&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="this-变量"><a href="#this-变量" class="headerlink" title="#this 变量"></a>#this 变量</h4><p>变量 #this 始终被定义并引用当前评估对象</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h3 id="三元运算符（If-Then-Else）"><a href="#三元运算符（If-Then-Else）" class="headerlink" title="三元运算符（If-Then-Else）"></a>三元运算符（If-Then-Else）</h3>
       
     </div>
 
@@ -2681,8 +875,690 @@
 
 
 
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/Moments%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/Moments%E8%A7%86%E9%A2%91%E4%B8%8D%E6%98%BE%E7%A4%BA%E7%BC%A9%E7%95%A5%E5%9B%BE/" class="post-title-link" itemprop="url">Moments视频不显示缩略图</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-12-07 00:00:00" itemprop="dateCreated datePublished" datetime="2021-12-07T00:00:00+08:00">2021-12-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/" itemprop="url" rel="index"><span itemprop="name">黑群晖</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>243</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>洗白的方式比较麻烦</p>
+<p>安装第三方FFmpeg是最快的解决方法</p>
+<h3 id="添加第三方源"><a href="#添加第三方源" class="headerlink" title="添加第三方源"></a>添加第三方源</h3><h4 id="设置第三方源"><a href="#设置第三方源" class="headerlink" title="设置第三方源"></a>设置第三方源</h4><p>套件中心 —&gt; 设置 —&gt; 常规 —&gt; 选择任何发行者</p>
+<p>套件中心 —&gt; 设置 —&gt; 套件来源 —&gt; 新增</p>
+<ul>
+<li>名称：synocommunity</li>
+<li>位置：<a target="_blank" rel="noopener" href="https://packages.synocommunity.com/">https://packages.synocommunity.com/</a></li>
+</ul>
+<p>如果添加时提示：无效的位置<br>查了下是系统证书过期导致的，更新证书</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt.bak &amp;&amp; sudo curl -Lko /etc/ssl/certs/ca-certificates.crt https://curl.se/ca/cacert.pem</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>几个常用的第三方套件源：  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://spk.520810.xyz:666/">https://spk.520810.xyz:666</a></li>
+<li><a target="_blank" rel="noopener" href="http://packages.synocommunity.com/">http://packages.synocommunity.com</a></li>
+<li><a target="_blank" rel="noopener" href="https://spk.imnks.com/">https://spk.imnks.com/</a></li>
+<li><a target="_blank" rel="noopener" href="https://spk7.imnks.com/?arch=apollolake">https://spk7.imnks.com/?arch=apollolake</a>    (7.0版本的)</li>
+</ul>
+<h4 id="安装第三方ffmpeg"><a href="#安装第三方ffmpeg" class="headerlink" title="安装第三方ffmpeg"></a>安装第三方ffmpeg</h4><p>套件中心 —&gt; 社群 —&gt; 安装ffmpeg</p>
+<h4 id="备份原始ffmpeg、创建第三方ffmpeg软连接"><a href="#备份原始ffmpeg、创建第三方ffmpeg软连接" class="headerlink" title="备份原始ffmpeg、创建第三方ffmpeg软连接"></a>备份原始ffmpeg、创建第三方ffmpeg软连接</h4><p>用ssh工具连接到群晖，切换到root账号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></figure>
+
+<p>备份</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv /usr/bin/ffmpeg /usr/bin/ffmpeg_back</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>创建第三方ffmpeg软连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s /volume1/@appstore/ffmpeg/bin/ffmpeg /usr/bin/ffmpeg</span><br></pre></td></tr></table></figure>
+
+<h4 id="重建Moments索引"><a href="#重建Moments索引" class="headerlink" title="重建Moments索引"></a>重建Moments索引</h4><p>进入Moments套件，设置——常规——重建索引</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/alibaba/Nacos/Springboot%20Nocas%20%E5%90%AF%E5%8A%A8%E5%90%8E%E8%8E%B7%E5%8F%96%E6%B3%A8%E5%86%8C%E7%9A%84IP%E5%92%8C%E7%AB%AF%E5%8F%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/alibaba/Nacos/Springboot%20Nocas%20%E5%90%AF%E5%8A%A8%E5%90%8E%E8%8E%B7%E5%8F%96%E6%B3%A8%E5%86%8C%E7%9A%84IP%E5%92%8C%E7%AB%AF%E5%8F%A3/" class="post-title-link" itemprop="url">Springboot Nocas 启动后获取注册的IP和端口</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-11-18 17:10:00" itemprop="dateCreated datePublished" datetime="2021-11-18T17:10:00+08:00">2021-11-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/alibaba/" itemprop="url" rel="index"><span itemprop="name">alibaba</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/alibaba/Nacos/" itemprop="url" rel="index"><span itemprop="name">Nacos</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>28</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class TestApplicationRunner implements ApplicationRunner &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private NacosDiscoveryProperties nacosDiscoveryProperties;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void run(ApplicationArguments args) throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;启动后运行&quot;);</span><br><span class="line">        System.out.println(nacosDiscoveryProperties.getIp());</span><br><span class="line">        System.out.println(nacosDiscoveryProperties.getPort());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96%E9%BB%98%E8%AE%A4%E4%BD%BF%E7%94%A8%E7%AB%AF%E5%8F%A3%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">群晖默认使用端口说明</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-16 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-16T00:00:00+08:00">2021-10-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/" itemprop="url" rel="index"><span itemprop="name">黑群晖</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>181</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>官方地址：<br><a target="_blank" rel="noopener" href="https://kb.synology.com/en-global/DSM/tutorial/What_network_ports_are_used_by_Synology_services">https://kb.synology.com/en-global/DSM/tutorial/What_network_ports_are_used_by_Synology_services</a></p>
+<h3 id="Web-Applications"><a href="#Web-Applications" class="headerlink" title="Web Applications"></a>Web Applications</h3><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Port Number</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DSM</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>File Station</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<h3 id="File-Transferring"><a href="#File-Transferring" class="headerlink" title="File Transferring"></a>File Transferring</h3><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Port Number</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>AFP</td>
+<td>548</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>CIFS</td>
+<td>smbd: 139 (netbios-ssn), 445 (microsoft-ds)</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td>CIFS</td>
+<td>Nmbd: 137, 138</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>FTP, FTP over SSL, FTP over TLS</td>
+<td>21 (command),20 (data connection in Active Mode), 1025-65535 (data connection in Passive Mode)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>iSCSI</td>
+<td>3260, 3263, 3265</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>NFS</td>
+<td>111, 892, 2049</td>
+<td>TCP&#x2F;UDP</td>
+</tr>
+<tr>
+<td>TFTP</td>
+<td>69</td>
+<td>UDP</td>
+</tr>
+<tr>
+<td>WebDAV, CalDAV</td>
+<td>5005, 5006 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+<h3 id="Mobile-Applications"><a href="#Mobile-Applications" class="headerlink" title="Mobile Applications"></a>Mobile Applications</h3><table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Port Number</th>
+<th>Protocol</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DS audio</td>
+<td>5000, 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DS cam</td>
+<td>5000, 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DS cloud</td>
+<td>6690</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DS file</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DS finder</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DS get</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DS note</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DS photo</td>
+<td>80, 443 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>DS video</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>Synology Drive</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>Synology Moments</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>Synology Photos</td>
+<td>5000 (HTTP), 5001 (HTTPS)</td>
+<td>TCP</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96%20%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96%20%E5%AA%92%E4%BD%93%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">群晖 媒体服务器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-27 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-27T00:00:00+08:00">2021-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/" itemprop="url" rel="index"><span itemprop="name">黑群晖</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>285</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="群晖套件安装设置"><a href="#群晖套件安装设置" class="headerlink" title="群晖套件安装设置"></a>群晖套件安装设置</h3><p>从套件中心安装媒体服务器</p>
+<h4 id="打开媒体服务器进行设置"><a href="#打开媒体服务器进行设置" class="headerlink" title="打开媒体服务器进行设置"></a>打开媒体服务器进行设置</h4><h5 id="常规设置"><a href="#常规设置" class="headerlink" title="常规设置"></a>常规设置</h5><ul>
+<li>DMA选单语言：中文</li>
+<li>SSDP 广告间隔（秒）：92  （之后再改成920）</li>
+<li></li>
+</ul>
+<h5 id="浏览设置"><a href="#浏览设置" class="headerlink" title="浏览设置"></a>浏览设置</h5><ul>
+<li>整合 Video Station 数据库至媒体服务器<br>（这样共享的目录中会多一个Video Station文件夹，默认是：视频、音乐、照片）</li>
+</ul>
+<h5 id="DMA-兼容性"><a href="#DMA-兼容性" class="headerlink" title="DMA 兼容性"></a>DMA 兼容性</h5><p>注意：不要勾选“限制新检测到的UPnP&#x2F;DLNA设备对媒体服务器的访问”</p>
+<p>单击设备列表，查看设备，如果不能访问，尝试改变配置文件类型</p>
+<h4 id="索引文件夹配置"><a href="#索引文件夹配置" class="headerlink" title="索引文件夹配置"></a>索引文件夹配置</h4><p>若要添加更多索引文件夹，请进入：控制面板&gt;索引服务&gt;媒体索引&gt;索引文件夹&gt;创建。<br>文件类型让您决定要包含在索引文件夹中的媒体文件类型。</p>
+<h3 id="客户端使用"><a href="#客户端使用" class="headerlink" title="客户端使用"></a>客户端使用</h3><h4 id="小米电视"><a href="#小米电视" class="headerlink" title="小米电视"></a>小米电视</h4><p>直接打开 高清播放器</p>
+<h4 id="win10"><a href="#win10" class="headerlink" title="win10"></a>win10</h4><ol>
+<li>我的电脑 -&gt; 访问媒体 -&gt; 连接到媒体服务器</li>
+<li>打开Windows Media Player -&gt; 流媒体菜单启用流媒体 -&gt; 左侧其他媒体库中就可以看到了</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96WebDAV%E6%96%B9%E5%BC%8F%E5%A4%96%E7%BD%91%E6%98%A0%E5%B0%84%E7%A3%81%E7%9B%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96WebDAV%E6%96%B9%E5%BC%8F%E5%A4%96%E7%BD%91%E6%98%A0%E5%B0%84%E7%A3%81%E7%9B%98/" class="post-title-link" itemprop="url">群晖WebDAV方式外网映射磁盘</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-27 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-27T00:00:00+08:00">2021-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/" itemprop="url" rel="index"><span itemprop="name">黑群晖</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>411</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>已有公网IP<br>已配置DDNS，IP地址绑定了域名 （阿里云域名）<br>已经设置了ssl证书  （阿里云免费）  </p>
+</blockquote>
+<h3 id="WebDAV"><a href="#WebDAV" class="headerlink" title="WebDAV"></a>WebDAV</h3><p>基于Web的分布式编写和版本控制（WebDAV）是超文本传输协议（HTTP）的扩展，有利于用户间协同编辑和管理存储在万维网服务器文档。  </p>
+<p>WebDAV协议为用户在服务器上创建、更改和移动文档提供了一个框架。WebDAV协议最重要的功能包括维护作者或修改日期的属性、名字空间管理、集合和覆盖保护。维护属性包括创建、删除和查询文件信息等。名字空间管理处理在服务器名称空间内复制和移动网页的能力。集合（Collections）处理各种资源的创建、删除和列举。覆盖保护处理与锁定文件相关的方面。</p>
+<p>许多现代操作系统为WebDAV提供了内置的客户端支持。</p>
+<h3 id="一、配置WebDAV"><a href="#一、配置WebDAV" class="headerlink" title="一、配置WebDAV"></a>一、配置WebDAV</h3><p>群晖按照 WebDAV套件，设置启用HTTPS，端口为5006</p>
+<h3 id="二、路由器配置端口映射"><a href="#二、路由器配置端口映射" class="headerlink" title="二、路由器配置端口映射"></a>二、路由器配置端口映射</h3><p>如将路由器端口 15006 映射到 192.168.1.6（群晖）的 5006端口上</p>
+<h3 id="三、使用RaiDrive软件来映射WebDAV网络磁盘"><a href="#三、使用RaiDrive软件来映射WebDAV网络磁盘" class="headerlink" title="三、使用RaiDrive软件来映射WebDAV网络磁盘"></a>三、使用RaiDrive软件来映射WebDAV网络磁盘</h3><p>安装 RaiDrive 【RaiDrive_1.5.3.1.exe】<br>需要安装 .net FramWork  </p>
+<p>安装完成之后点击 添加 WebDAV</p>
+<p>地址: <a target="_blank" rel="noopener" href="https://xxxxxx.com/">https://xxxxxx.com</a>  端口：15006<br>    path：&#x2F;</p>
+<p>Account填写你的账号和密码</p>
+<hr>
+<hr>
+<hr>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><h4 id="问题1：登录时提示没有权限"><a href="#问题1：登录时提示没有权限" class="headerlink" title="问题1：登录时提示没有权限"></a>问题1：登录时提示没有权限</h4><ul>
+<li>检查用户密码是否错误，用admin账号试试看</li>
+<li>检查群晖的控制面板 -&gt; 权限 -&gt; WebDAV Server  【使用需要登录的账号 允许访问】</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -2704,13 +1580,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">138k</span>
+    <span title="站点总字数">150k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">8:20</span>
+    <span title="站点阅读时长">9:05</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

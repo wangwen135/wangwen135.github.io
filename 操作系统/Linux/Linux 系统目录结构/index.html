@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Linux 系统目录结构&#x2F;bin：bin是Binary的缩写, 这个目录存放着最经常使用的命令。 &#x2F;boot：这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。 &#x2F;dev ：dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。 &#x2F;etc：这个目录用来存放">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 系统目录结构">
+<meta property="og:url" content="https://wangwen135.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%20%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="Linux 系统目录结构&#x2F;bin：bin是Binary的缩写, 这个目录存放着最经常使用的命令。 &#x2F;boot：这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。 &#x2F;dev ：dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。 &#x2F;etc：这个目录用来存放">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-08-29T15:22:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="目录结构">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%20%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%20%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/","path":"操作系统/Linux/Linux 系统目录结构/","title":"Linux 系统目录结构"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Linux 系统目录结构 | 王某某的笔记</title>
+  
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">Linux 系统目录结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#bin%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">&#x2F;bin：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#boot%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">&#x2F;boot：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dev-%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">&#x2F;dev ：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#etc%EF%BC%9A"><span class="nav-number">1.4.</span> <span class="nav-text">&#x2F;etc：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#home%EF%BC%9A"><span class="nav-number">1.5.</span> <span class="nav-text">&#x2F;home：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lib%EF%BC%9A"><span class="nav-number">1.6.</span> <span class="nav-text">&#x2F;lib：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lost-found%EF%BC%9A"><span class="nav-number">1.7.</span> <span class="nav-text">&#x2F;lost+found：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#media%EF%BC%9A"><span class="nav-number">1.8.</span> <span class="nav-text">&#x2F;media：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mnt%EF%BC%9A"><span class="nav-number">1.9.</span> <span class="nav-text">&#x2F;mnt：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#opt%EF%BC%9A"><span class="nav-number">1.10.</span> <span class="nav-text">&#x2F;opt：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proc%EF%BC%9A"><span class="nav-number">1.11.</span> <span class="nav-text">&#x2F;proc：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#root%EF%BC%9A"><span class="nav-number">1.12.</span> <span class="nav-text">&#x2F;root：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sbin%EF%BC%9A"><span class="nav-number">1.13.</span> <span class="nav-text">&#x2F;sbin：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#selinux%EF%BC%9A"><span class="nav-number">1.14.</span> <span class="nav-text">&#x2F;selinux：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#srv%EF%BC%9A"><span class="nav-number">1.15.</span> <span class="nav-text">&#x2F;srv：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sys%EF%BC%9A"><span class="nav-number">1.16.</span> <span class="nav-text">&#x2F;sys：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tmp%EF%BC%9A"><span class="nav-number">1.17.</span> <span class="nav-text">&#x2F;tmp：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr%EF%BC%9A"><span class="nav-number">1.18.</span> <span class="nav-text">&#x2F;usr：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-bin%EF%BC%9A"><span class="nav-number">1.19.</span> <span class="nav-text">&#x2F;usr&#x2F;bin：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-sbin%EF%BC%9A"><span class="nav-number">1.20.</span> <span class="nav-text">&#x2F;usr&#x2F;sbin：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#usr-src%EF%BC%9A"><span class="nav-number">1.21.</span> <span class="nav-text">&#x2F;usr&#x2F;src：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#var%EF%BC%9A"><span class="nav-number">1.22.</span> <span class="nav-text">&#x2F;var：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%20%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Linux 系统目录结构 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux 系统目录结构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-08-29 23:22:00" itemprop="dateCreated datePublished" datetime="2017-08-29T23:22:00+08:00">2017-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>946</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Linux-系统目录结构"><a href="#Linux-系统目录结构" class="headerlink" title="Linux 系统目录结构"></a>Linux 系统目录结构</h1><h2 id="bin："><a href="#bin：" class="headerlink" title="&#x2F;bin："></a>&#x2F;bin：</h2><p>bin是Binary的缩写, 这个目录存放着最经常使用的命令。</p>
+<h2 id="boot："><a href="#boot：" class="headerlink" title="&#x2F;boot："></a>&#x2F;boot：</h2><p>这里存放的是启动Linux时使用的一些核心文件，包括一些连接文件以及镜像文件。</p>
+<h2 id="dev-："><a href="#dev-：" class="headerlink" title="&#x2F;dev ："></a>&#x2F;dev ：</h2><p>dev是Device(设备)的缩写, 该目录下存放的是Linux的外部设备，在Linux中访问设备的方式和访问文件的方式是相同的。</p>
+<h2 id="etc："><a href="#etc：" class="headerlink" title="&#x2F;etc："></a>&#x2F;etc：</h2><p>这个目录用来存放所有的系统管理所需要的配置文件和子目录。</p>
+<h2 id="home："><a href="#home：" class="headerlink" title="&#x2F;home："></a>&#x2F;home：</h2><p>用户的主目录，在Linux中，每个用户都有一个自己的目录，一般该目录名是以用户的账号命名的。</p>
+<h2 id="lib："><a href="#lib：" class="headerlink" title="&#x2F;lib："></a>&#x2F;lib：</h2><p>这个目录里存放着系统最基本的动态连接共享库，其作用类似于Windows里的DLL文件。几乎所有的应用程序都需要用到这些共享库。</p>
+<h2 id="lost-found："><a href="#lost-found：" class="headerlink" title="&#x2F;lost+found："></a>&#x2F;lost+found：</h2><p>这个目录一般情况下是空的，当系统非法关机后，这里就存放了一些文件。</p>
+<h2 id="media："><a href="#media：" class="headerlink" title="&#x2F;media："></a>&#x2F;media：</h2><p>linux系统会自动识别一些设备，例如U盘、光驱等等，当识别后，linux会把识别的设备挂载到这个目录下。</p>
+<h2 id="mnt："><a href="#mnt：" class="headerlink" title="&#x2F;mnt："></a>&#x2F;mnt：</h2><p>系统提供该目录是为了让用户临时挂载别的文件系统的，我们可以将光驱挂载在&#x2F;mnt&#x2F;上，然后进入该目录就可以查看光驱里的内容了。</p>
+<h2 id="opt："><a href="#opt：" class="headerlink" title="&#x2F;opt："></a>&#x2F;opt：</h2><p> 这是给主机额外安装软件所摆放的目录。比如你安装一个ORACLE数据库则就可以放到这个目录下。默认是空的。</p>
+<h2 id="proc："><a href="#proc：" class="headerlink" title="&#x2F;proc："></a>&#x2F;proc：</h2><p>这个目录是一个虚拟的目录，它是系统内存的映射，我们可以通过直接访问这个目录来获取系统信息。<br>这个目录的内容不在硬盘上而是在内存里，我们也可以直接修改里面的某些文件，比如可以通过下面的命令来屏蔽主机的ping命令，使别人无法ping你的机器：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo 1 &gt; /proc/sys/net/ipv4/icmp_echo_ignore_all</span><br></pre></td></tr></table></figure>
+<h2 id="root："><a href="#root：" class="headerlink" title="&#x2F;root："></a>&#x2F;root：</h2><p>该目录为系统管理员，也称作超级权限者的用户主目录。</p>
+<h2 id="sbin："><a href="#sbin：" class="headerlink" title="&#x2F;sbin："></a>&#x2F;sbin：</h2><p>s就是Super User的意思，这里存放的是系统管理员使用的系统管理程序。</p>
+<h2 id="selinux："><a href="#selinux：" class="headerlink" title="&#x2F;selinux："></a>&#x2F;selinux：</h2><p> 这个目录是Redhat&#x2F;CentOS所特有的目录，Selinux是一个安全机制，类似于windows的防火墙，但是这套机制比较复杂，这个目录就是存放selinux相关的文件的。</p>
+<h2 id="srv："><a href="#srv：" class="headerlink" title="&#x2F;srv："></a>&#x2F;srv：</h2><p> 该目录存放一些服务启动之后需要提取的数据。</p>
+<h2 id="sys："><a href="#sys：" class="headerlink" title="&#x2F;sys："></a>&#x2F;sys：</h2><p> 这是linux2.6内核的一个很大的变化。该目录下安装了2.6内核中新出现的一个文件系统 sysfs 。<br>sysfs文件系统集成了下面3种文件系统的信息：针对进程信息的proc文件系统、针对设备的devfs文件系统以及针对伪终端的devpts文件系统。<br>该文件系统是内核设备树的一个直观反映。<br>当一个内核对象被创建的时候，对应的文件和目录也在内核对象子系统中被创建。</p>
+<h2 id="tmp："><a href="#tmp：" class="headerlink" title="&#x2F;tmp："></a>&#x2F;tmp：</h2><p>这个目录是用来存放一些临时文件的。</p>
+<h2 id="usr："><a href="#usr：" class="headerlink" title="&#x2F;usr："></a>&#x2F;usr：</h2><p> 这是一个非常重要的目录，用户的很多应用程序和文件都放在这个目录下，类似与windows下的program files目录。</p>
+<h2 id="usr-bin："><a href="#usr-bin：" class="headerlink" title="&#x2F;usr&#x2F;bin："></a>&#x2F;usr&#x2F;bin：</h2><p>系统用户使用的应用程序。</p>
+<h2 id="usr-sbin："><a href="#usr-sbin：" class="headerlink" title="&#x2F;usr&#x2F;sbin："></a>&#x2F;usr&#x2F;sbin：</h2><p>超级用户使用的比较高级的管理程序和系统守护程序。</p>
+<h2 id="usr-src："><a href="#usr-src：" class="headerlink" title="&#x2F;usr&#x2F;src："></a>&#x2F;usr&#x2F;src：</h2><p>内核源代码默认的放置目录。</p>
+<h2 id="var："><a href="#var：" class="headerlink" title="&#x2F;var："></a>&#x2F;var：</h2><p>这个目录中存放着在不断扩充着的东西，我们习惯将那些经常被修改的目录放在这个目录下。包括各种日志文件。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" rel="tag"># 目录结构</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/MySQL/Mysql%20%E5%8D%87%E7%BA%A7/" rel="prev" title="Mysql 升级">
+                  <i class="fa fa-angle-left"></i> Mysql 升级
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Zookeeper/Curator-%E5%9F%BA%E6%9C%ACAPI-%E6%93%8D%E4%BD%9C/" rel="next" title="Curator 基本API 操作">
+                  Curator 基本API 操作 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">150k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">9:05</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
