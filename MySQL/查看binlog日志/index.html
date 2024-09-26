@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="2018年9月  mysqlbinlog使用mysqlbinlog 命令查看 常用选项：    –start-position&#x3D;953                   起始pos点 –stop-position&#x3D;1437                   结束pos点 –start-datetime&#x3D;”2013-11-29 13:18:54” 起始时间点 –s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查看binlog日志">
+<meta property="og:url" content="https://wangwen135.github.io/MySQL/%E6%9F%A5%E7%9C%8Bbinlog%E6%97%A5%E5%BF%97/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="2018年9月  mysqlbinlog使用mysqlbinlog 命令查看 常用选项：    –start-position&#x3D;953                   起始pos点 –stop-position&#x3D;1437                   结束pos点 –start-datetime&#x3D;”2013-11-29 13:18:54” 起始时间点 –s">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-07T15:41:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/MySQL/%E6%9F%A5%E7%9C%8Bbinlog%E6%97%A5%E5%BF%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/MySQL/%E6%9F%A5%E7%9C%8Bbinlog%E6%97%A5%E5%BF%97/","path":"MySQL/查看binlog日志/","title":"查看binlog日志"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>查看binlog日志 | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#mysqlbinlog"><span class="nav-number">1.</span> <span class="nav-text">mysqlbinlog</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/MySQL/%E6%9F%A5%E7%9C%8Bbinlog%E6%97%A5%E5%BF%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="查看binlog日志 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          查看binlog日志
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-07 23:41:00" itemprop="dateCreated datePublished" datetime="2022-11-07T23:41:00+08:00">2022-11-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>900</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p><em>2018年9月</em></p>
+</blockquote>
+<h3 id="mysqlbinlog"><a href="#mysqlbinlog" class="headerlink" title="mysqlbinlog"></a>mysqlbinlog</h3><p>使用mysqlbinlog 命令查看</p>
+<p>常用选项：  </p>
+<ul>
+<li>–start-position&#x3D;953                   起始pos点</li>
+<li>–stop-position&#x3D;1437                   结束pos点</li>
+<li>–start-datetime&#x3D;”2013-11-29 13:18:54” 起始时间点</li>
+<li>–stop-datetime&#x3D;”2013-11-29 13:21:53”  结束时间点</li>
+</ul>
+<p>如：</p>
+<blockquote>
+<p>进入到binlog目录执行，指定具体的binlog文件名</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 从指定的时间开始查</span><br><span class="line">$ mysqlbinlog mysql-bin.001575 --start-datetime=&quot;2018-09-25 11:25:54&quot;</span><br><span class="line"></span><br><span class="line"># 从指定位置开始查</span><br><span class="line">$ mysqlbinlog mysql-bin.001575 --start-position=16839697</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>默认只能查看到base-64编码的信息<br>如：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># at 22452867</span><br><span class="line">#180925 11:44:02 server id 8  end_log_pos 22452944 CRC32 0xc23d3641     Table_map: `base`.`by_renew_history` mapped to number 182</span><br><span class="line"># at 22452944</span><br><span class="line">#180925 11:44:02 server id 8  end_log_pos 22453106 CRC32 0x7a809e4e     Update_rows: table id 182 flags: STMT_END_F</span><br><span class="line"></span><br><span class="line">BINLOG &#x27;</span><br><span class="line">Aq+pWxMIAAAATQAAANCaVgEAALYAAAAAAAEABGJhc2UAEGJ5X3JlbmV3X2hpc3RvcnkACwMPAw8S</span><br><span class="line">ARIDEgMDB5YAWgAAAAD+B0E2PcI=</span><br><span class="line">Aq+pWx8IAAAAogAAAHKbVgEAALYAAAAAAAEAAgAL/////wD+igAAAA4yMDE4MDcyNTE2MzcyNugD</span><br><span class="line">AAAQMTExMTExMTExMDExMTExNJmgcwlbAZmgcwlbAwAAAJmgcwlaAP6KAAAADjIwMTgwNzI1MTYz</span><br><span class="line">NzI26AMAABAxMTExMTExMTEwMTExMTEzmaBzCVsBmaBzCVsDAAAAmaBzCVpOnoB6</span><br><span class="line">&#x27;/*!*/;</span><br><span class="line"># at 22453106</span><br><span class="line">#180925 11:44:02 server id 8  end_log_pos 22453137 CRC32 0x3787881e     Xid = 8121164</span><br><span class="line">COMMIT/*!*/;</span><br><span class="line">SET @@SESSION.GTID_NEXT= &#x27;AUTOMATIC&#x27; /* added by mysqlbinlog */ /*!*/;</span><br><span class="line">DELIMITER ;</span><br><span class="line"># End of log file</span><br><span class="line">/*!50003 SET COMPLETION_TYPE=@OLD_COMPLETION_TYPE*/;</span><br><span class="line">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=0*/;</span><br></pre></td></tr></table></figure>
+
+<p>此时需要 <strong>–base64-output&#x3D;value</strong> 选项</p>
+<p>此选项确定何时应使用BINLOG语句将事件编码为base-64字符串。该选项具有以下允许值（不区分大小写）:</p>
+<ul>
+<li><p>AUTO （“自动”）或UNSPEC（“未指定”）在必要时自动显示BINLOG语句（即，用于格式描述事件和行事件）。如果没有给出–base64-output选项，则效果与–base64-output &#x3D; AUTO相同。</p>
+</li>
+<li><p>NEVER 不显示BINLOG语句</p>
+</li>
+<li><p>DECODE-ROWS 通过配合–verbose选项将行事件解码并显示为注释的SQL语句。</p>
+</li>
+</ul>
+<hr>
+<p>使用参数–verbose(或-v)，将生成带注释的语句，如果使用两次这个参数(如-v -v)，会生成字段的类型、长度、是否为null等属性信息。</p>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mysqlbinlog -v --base64-output=DECODE-ROWS mysql-bin.001576 --start-datetime=&quot;2018-09-25 13:41:30&quot;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># at 1664232</span><br><span class="line">#180925 13:42:02 server id 8  end_log_pos 1664309 CRC32 0x28bbcc7e      Table_map: `base`.`by_renew_history` mapped to number 182</span><br><span class="line"># at 1664309</span><br><span class="line">#180925 13:42:02 server id 8  end_log_pos 1664471 CRC32 0xca13320e      Update_rows: table id 182 flags: STMT_END_F</span><br><span class="line">### UPDATE `base`.`by_renew_history`</span><br><span class="line">### WHERE</span><br><span class="line">###   @1=138</span><br><span class="line">###   @2=&#x27;20180725163726&#x27;</span><br><span class="line">###   @3=1000</span><br><span class="line">###   @4=&#x27;1111111110111113&#x27;</span><br><span class="line">###   @5=&#x27;2018-07-25 16:37:27&#x27;</span><br><span class="line">###   @6=1</span><br><span class="line">###   @7=&#x27;2018-07-25 16:37:27&#x27;</span><br><span class="line">###   @8=3</span><br><span class="line">###   @9=&#x27;2018-07-25 16:37:26&#x27;</span><br><span class="line">###   @10=NULL</span><br><span class="line">###   @11=NULL</span><br><span class="line">### SET</span><br><span class="line">###   @1=138</span><br><span class="line">###   @2=&#x27;20180725163726&#x27;</span><br><span class="line">###   @3=1000</span><br><span class="line">###   @4=&#x27;1111111110111114&#x27;</span><br><span class="line">###   @5=&#x27;2018-07-25 16:37:27&#x27;</span><br><span class="line">###   @6=1</span><br><span class="line">###   @7=&#x27;2018-07-25 16:37:27&#x27;</span><br><span class="line">###   @8=3</span><br><span class="line">###   @9=&#x27;2018-07-25 16:37:26&#x27;</span><br><span class="line">###   @10=NULL</span><br><span class="line">###   @11=NULL</span><br><span class="line"># at 1664471</span><br><span class="line">#180925 13:42:02 server id 8  end_log_pos 1664502 CRC32 0xb64f6d4f      Xid = 8266920</span><br><span class="line">COMMIT/*!*/;</span><br><span class="line">SET @@SESSION.GTID_NEXT= &#x27;AUTOMATIC&#x27; /* added by mysqlbinlog */ /*!*/;</span><br><span class="line">DELIMITER ;</span><br><span class="line"># End of log file</span><br><span class="line">/*!50003 SET COMPLETION_TYPE=@OLD_COMPLETION_TYPE*/;</span><br><span class="line">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=0*/;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqlbinlog -v -v --base64-output=DECODE-ROWS mysql-bin.001576 --start-datetime=&quot;2018-09-25 13:41:30&quot;</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"># at 1899587</span><br><span class="line">#180925 13:44:02 server id 8  end_log_pos 1899664 CRC32 0x7fff0312      Table_map: `base`.`by_renew_history` mapped to number 182</span><br><span class="line"># at 1899664</span><br><span class="line">#180925 13:44:02 server id 8  end_log_pos 1899826 CRC32 0x5cdb92c1      Update_rows: table id 182 flags: STMT_END_F</span><br><span class="line">### UPDATE `base`.`by_renew_history`</span><br><span class="line">### WHERE</span><br><span class="line">###   @1=138 /* INT meta=0 nullable=0 is_null=0 */</span><br><span class="line">###   @2=&#x27;20180725163726&#x27; /* VARSTRING(150) meta=150 nullable=1 is_null=0 */</span><br><span class="line">###   @3=1000 /* INT meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @4=&#x27;1111111110111114&#x27; /* VARSTRING(90) meta=90 nullable=1 is_null=0 */</span><br><span class="line">###   @5=&#x27;2018-07-25 16:37:27&#x27; /* DATETIME(0) meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @6=1 /* TINYINT meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @7=&#x27;2018-07-25 16:37:27&#x27; /* DATETIME(0) meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @8=3 /* INT meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @9=&#x27;2018-07-25 16:37:26&#x27; /* DATETIME(0) meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @10=NULL /* INT meta=0 nullable=1 is_null=1 */</span><br><span class="line">###   @11=NULL /* INT meta=0 nullable=1 is_null=1 */</span><br><span class="line">### SET</span><br><span class="line">###   @1=138 /* INT meta=0 nullable=0 is_null=0 */</span><br><span class="line">###   @2=&#x27;20180725163726&#x27; /* VARSTRING(150) meta=150 nullable=1 is_null=0 */</span><br><span class="line">###   @3=1000 /* INT meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @4=&#x27;1111111110111113&#x27; /* VARSTRING(90) meta=90 nullable=1 is_null=0 */</span><br><span class="line">###   @5=&#x27;2018-07-25 16:37:27&#x27; /* DATETIME(0) meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @6=1 /* TINYINT meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @7=&#x27;2018-07-25 16:37:27&#x27; /* DATETIME(0) meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @8=3 /* INT meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @9=&#x27;2018-07-25 16:37:26&#x27; /* DATETIME(0) meta=0 nullable=1 is_null=0 */</span><br><span class="line">###   @10=NULL /* INT meta=0 nullable=1 is_null=1 */</span><br><span class="line">###   @11=NULL /* INT meta=0 nullable=1 is_null=1 */</span><br><span class="line"># at 1899826</span><br><span class="line">#180925 13:44:02 server id 8  end_log_pos 1899857 CRC32 0xc1b4c0c7      Xid = 8297691</span><br><span class="line">COMMIT/*!*/;</span><br><span class="line">SET @@SESSION.GTID_NEXT= &#x27;AUTOMATIC&#x27; /* added by mysqlbinlog */ /*!*/;</span><br><span class="line">DELIMITER ;</span><br><span class="line"># End of log file</span><br><span class="line">/*!50003 SET COMPLETION_TYPE=@OLD_COMPLETION_TYPE*/;</span><br><span class="line">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=0*/;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Zookeeper/Curator-%E4%BE%8B%E5%AD%90/" rel="prev" title="Curator-例子">
+                  <i class="fa fa-angle-left"></i> Curator-例子
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Nginx/Nginx-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E8%84%9A%E6%9C%AC/" rel="next" title="Nginx-配置文件自动备份脚本">
+                  Nginx-配置文件自动备份脚本 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

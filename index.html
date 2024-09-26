@@ -1,0 +1,1682 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="王某某的笔记">
+<meta property="og:url" content="https://wangwen135.github.io/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="java">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">王某某的笔记</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/%E4%BD%BF%E7%94%A8%20github%20actions%20%E9%83%A8%E7%BD%B2%20github%20pages/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%8D%9A%E5%AE%A2/Hexo/%E4%BD%BF%E7%94%A8%20github%20actions%20%E9%83%A8%E7%BD%B2%20github%20pages/" class="post-title-link" itemprop="url">使用 github actions 部署 github pages</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-08 00:00:00" itemprop="dateCreated datePublished" datetime="2024-08-08T00:00:00+08:00">2024-08-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>官方的和我实际想要实现的有一点差异，官方的是部署到当前仓库的 GitHub Pages  </p>
+<p>我这边是原来有一个网站，这次又使用Hexo重新做了一个博客，又新建了一个<code>hexo-blog</code>仓库</p>
+<p>我想实现的效果是，往<strong>hexo-blog</strong> 仓库提交Markdown内容之后自动编译，然后将编译后的内容提交到 <strong>wangwen135.github.io</strong>这个仓库</p>
+<hr>
+<h2 id="官方的"><a href="#官方的" class="headerlink" title="官方的"></a>官方的</h2><p>先参考一下官方的文档说明</p>
+<p>官方说明文档：<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/github-pages">https://hexo.io/zh-cn/docs/github-pages</a></p>
+<p><code>.github/workflows/pages.yml</code> 文件内容如下：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span> <span class="comment"># 当推送到 main 分支时触发工作流</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span> <span class="comment"># 工作运行在最新的 Ubuntu 环境中</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v4</span> <span class="comment"># 检出代码</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUB_TOKEN</span> <span class="string">&#125;&#125;</span> <span class="comment"># 使用 GitHub token</span></span><br><span class="line">          <span class="attr">submodules:</span> <span class="string">recursive</span> <span class="comment"># 如果仓库依赖子模块，则递归检出</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">20</span> <span class="comment"># 使用 Node.js 20</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&quot;20&quot;</span> <span class="comment"># 指定 Node.js 版本为 20</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span> <span class="comment"># 缓存 NPM 依赖</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">node_modules</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.OS</span> <span class="string">&#125;&#125;-npm-cache</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span></span><br><span class="line"><span class="string"></span>      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span> <span class="comment"># 安装依赖</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="comment"># 构建项目</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Upload</span> <span class="string">Pages</span> <span class="string">artifact</span> <span class="comment"># 上传构建产物</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/upload-pages-artifact@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">./public</span> <span class="comment"># 指定上传的路径</span></span><br><span class="line">  <span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">needs:</span> <span class="string">build</span> <span class="comment"># 依赖 build 任务</span></span><br><span class="line">    <span class="attr">permissions:</span></span><br><span class="line">      <span class="attr">pages:</span> <span class="string">write</span> <span class="comment"># 给予 GitHub Pages 写权限</span></span><br><span class="line">      <span class="attr">id-token:</span> <span class="string">write</span> <span class="comment"># 给予 ID 令牌写权限</span></span><br><span class="line">    <span class="attr">environment:</span></span><br><span class="line">      <span class="attr">name:</span> <span class="string">github-pages</span></span><br><span class="line">      <span class="attr">url:</span> <span class="string">$&#123;&#123;</span> <span class="string">steps.deployment.outputs.page_url</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span> <span class="comment"># 工作运行在最新的 Ubuntu 环境中</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span> <span class="comment"># 部署到 GitHub Pages</span></span><br><span class="line">        <span class="attr">id:</span> <span class="string">deployment</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/deploy-pages@v4</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这个 GitHub Actions 配置文件用于将编译后的 HTML 文件自动部署到当前仓库的 GitHub Pages。<br>这里加上了一点注释</p>
+</blockquote>
+<hr>
+<h2 id="修改后的"><a href="#修改后的" class="headerlink" title="修改后的"></a>修改后的</h2><h3 id="完整的-GitHub-Actions-工作流-YAML-文件"><a href="#完整的-GitHub-Actions-工作流-YAML-文件" class="headerlink" title="完整的 GitHub Actions 工作流 YAML 文件"></a>完整的 GitHub Actions 工作流 YAML 文件</h3><p><code>.github/workflows/deploy.yml</code> </p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 触发条件：当推送到 main 分支时</span></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span></span><br><span class="line">  <span class="attr">workflow_dispatch:</span> <span class="comment"># 允许手动触发</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="comment"># 检出 hexo-blog 仓库的代码</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">repository</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v4</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 设置 Node.js 环境</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Setup</span> <span class="string">Node.js</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&#x27;20&#x27;</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 缓存 NPM 依赖</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v4</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">~/.npm</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.os</span> <span class="string">&#125;&#125;-node-$&#123;&#123;</span> <span class="string">hashFiles(&#x27;**/package-lock.json&#x27;)</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.os &#125;&#125;-node-</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">      <span class="comment"># 安装依赖</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 构建 Hexo 网站</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span> <span class="string">Hexo</span> <span class="string">site</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line">      <span class="comment"># 部署到 GitHub Pages</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">ACTIONS_DEPLOY_KEY:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.ACTIONS_DEPLOY_KEY</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line"><span class="string">          echo &quot;创建 .ssh 目录&quot;</span></span><br><span class="line"><span class="string">          mkdir -p ~/.ssh</span></span><br><span class="line"><span class="string">          echo &#x27;写入部署密钥到 id_ed25519 文件中&#x27;</span></span><br><span class="line"><span class="string">          echo &quot;$&#123;&#123; secrets.ACTIONS_DEPLOY_KEY &#125;&#125;&quot; &gt; ~/.ssh/id_ed25519</span></span><br><span class="line"><span class="string">          echo &quot;设置私钥文件权限&quot;</span></span><br><span class="line"><span class="string">          chmod 600 ~/.ssh/id_ed25519</span></span><br><span class="line"><span class="string"></span></span><br><span class="line">          <span class="string">cat</span> <span class="string">~/.ssh/id_ed25519</span></span><br><span class="line"></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;添加 GitHub 的 SSH 主机密钥到 known_hosts 文件中&quot;</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line">          </span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;配置 Git 用户信息&quot;</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">&#x27;github-actions[bot]&#x27;</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">&#x27;github-actions[bot]@users.noreply.github.com&#x27;</span></span><br><span class="line">          </span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;克隆 wangwen135.github.io 仓库的 main 分支到 .deploy_repo 目录&quot;</span></span><br><span class="line">          <span class="string">git</span> <span class="string">clone</span> <span class="string">--branch</span> <span class="string">main</span> <span class="string">git@github.com:wangwen135/wangwen135.github.io.git</span> <span class="string">.deploy_repo</span></span><br><span class="line"></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;切换到 .deploy_repo 目录&quot;</span></span><br><span class="line">          <span class="string">cd</span> <span class="string">.deploy_repo</span></span><br><span class="line"></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;更新一下代码&quot;</span></span><br><span class="line">          <span class="string">git</span> <span class="string">pull</span></span><br><span class="line"></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;使用 rsync 将 public 目录中的内容同步到 .deploy_repo 目录&quot;</span></span><br><span class="line">          <span class="string">rsync</span> <span class="string">-av</span> <span class="string">--delete</span> <span class="string">--exclude</span> <span class="string">&#x27;.git&#x27;</span> <span class="string">../public/</span> <span class="string">.</span></span><br><span class="line"></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;添加所有更改&quot;</span></span><br><span class="line">          <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&#x27;提交更改，提交信息为 &quot;Deploy updates&quot;&#x27;</span></span><br><span class="line">          <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;Deploy updates&quot;</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;推送更改到远程仓库的 main 分支&quot;</span></span><br><span class="line">          <span class="string">git</span> <span class="string">push</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>相关步骤上面都有注释</p>
+</blockquote>
+<p>因为要使用git将文件推送到仓库<code>wangwen135.github.io</code> 需要配置ssh key，还需要进行下面的步骤</p>
+<h2 id="配置-Secrets"><a href="#配置-Secrets" class="headerlink" title="配置 Secrets"></a>配置 Secrets</h2><p>在 GitHub Actions 中，Secrets 是一种安全存储和管理敏感信息的方法，例如访问令牌、API 密钥、SSH 密钥等。Secrets 可以在工作流中使用，但不会在日志中显示，确保了敏感信息的安全。</p>
+<h3 id="设置步骤"><a href="#设置步骤" class="headerlink" title="设置步骤"></a>设置步骤</h3><h4 id="生成-SSH-部署密钥"><a href="#生成-SSH-部署密钥" class="headerlink" title="生成 SSH 部署密钥"></a>生成 SSH 部署密钥</h4><p>在本地机器上生成 SSH 密钥对：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C &quot;wangwen135@gmail.com&quot; -f ./id_ed25519</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>按提示操作，将会在当前执行的目录中生成 id_ed25519 和 id_ed25519.pub 两个文件</p>
+</blockquote>
+<h4 id="添加-id-ed25519-到-hexo-blog-的-GitHub-Secrets"><a href="#添加-id-ed25519-到-hexo-blog-的-GitHub-Secrets" class="headerlink" title="添加 id_ed25519 到 hexo-blog 的 GitHub Secrets"></a>添加 id_ed25519 到 hexo-blog 的 GitHub Secrets</h4><p>将生成的私钥 id_ed25519 的内容添加到 hexo-blog 仓库的 GitHub Secrets 中，步骤如下：</p>
+<ul>
+<li>打开 GitHub，进入你的 hexo-blog 仓库。</li>
+<li>点击 “Settings” 选项卡。</li>
+<li>在左侧边栏中，找到并点击 “Secrets and variables” 下的 “Actions”。</li>
+<li>点击 “New repository secret” 按钮。</li>
+<li>在 “Name” 字段中输入 <strong>ACTIONS_DEPLOY_KEY</strong>，在 “Secret” 字段中粘贴 id_ed25519 文件的内容。</li>
+<li>点击 “Add secret” 按钮保存。</li>
+</ul>
+<h4 id="添加-id-ed25519-pub-到目标仓库的部署密钥"><a href="#添加-id-ed25519-pub-到目标仓库的部署密钥" class="headerlink" title="添加 id_ed25519.pub 到目标仓库的部署密钥"></a>添加 id_ed25519.pub 到目标仓库的部署密钥</h4><p>将生成的公钥 id_ed25519.pub 添加到 wangwen135.github.io 仓库的部署密钥中，步骤如下：</p>
+<ul>
+<li>打开 GitHub，进入你的 wangwen135.github.io 仓库。</li>
+<li>点击 “Settings” 选项卡。</li>
+<li>在左侧边栏中，找到并点击 “Deploy keys”。</li>
+<li>点击 “Add deploy key” 按钮。</li>
+<li>在 “Title” 字段中输入一个描述性的名称，例如 “GitHub Actions Deploy Key”。</li>
+<li>在 “Key” 字段中粘贴 id_ed25519.pub 文件的内容。</li>
+<li>确保勾选 “Allow write access” 复选框。</li>
+<li>点击 “Add key” 按钮保存。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/SSH/%E9%80%9A%E8%BF%87ssh%E5%AE%9E%E7%8E%B0socks%E4%BB%A3%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/SSH/%E9%80%9A%E8%BF%87ssh%E5%AE%9E%E7%8E%B0socks%E4%BB%A3%E7%90%86/" class="post-title-link" itemprop="url">通过ssh实现socks代理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-05 22:15:00" itemprop="dateCreated datePublished" datetime="2024-08-05T22:15:00+08:00">2024-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络与安全</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>592</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="通过SSH实现SOCKS代理"><a href="#通过SSH实现SOCKS代理" class="headerlink" title="通过SSH实现SOCKS代理"></a>通过SSH实现SOCKS代理</h2><p>它允许你通过SSH隧道加密你的网络流量，并通过SSH服务器转发</p>
+<h3 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h3><h4 id="安全访问："><a href="#安全访问：" class="headerlink" title="安全访问："></a>安全访问：</h4><p>在不安全的网络环境中，使用SSH隧道可以加密流量并保护隐私。</p>
+<h4 id="绕过地理限制："><a href="#绕过地理限制：" class="headerlink" title="绕过地理限制："></a>绕过地理限制：</h4><p>可以通过SSH隧道访问被地理位置限制的内容。</p>
+<h4 id="测试和调试："><a href="#测试和调试：" class="headerlink" title="测试和调试："></a>测试和调试：</h4><p>开发和测试应用程序时，可以使用SOCKS代理来模拟不同的网络环境。</p>
+<hr>
+<p>设置SSH动态端口转发（SOCKS代理）的步骤如下：</p>
+<h3 id="1-安装SSH客户端"><a href="#1-安装SSH客户端" class="headerlink" title="1. 安装SSH客户端"></a>1. 安装SSH客户端</h3><p>确保你的计算机上安装了SSH客户端。大多数Unix-like系统（如Linux和macOS）都预装了SSH客户端。在Windows上，你可以使用PuTTY或者安装Windows的Linux子系统。</p>
+<blockquote>
+<p>这里用Git Bash 实现</p>
+</blockquote>
+<h3 id="2-连接到SSH服务器"><a href="#2-连接到SSH服务器" class="headerlink" title="2. 连接到SSH服务器"></a>2. 连接到SSH服务器</h3><p>使用以下命令连接到你的SSH服务器，并通过SSH建立SOCKS代理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -D 本地端口 用户名@ssh服务器地址</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这里的本地端口是你希望在本地机器上监听的端口，用于SOCKS代理。用户名和ssh服务器地址是你在SSH服务器上的登录凭证。</p>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ssh -D 8080 user@ssh.example.com</span><br><span class="line"></span><br><span class="line">ssh -D 8080 -N -f user@remote_server_ip</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这个命令会在本地机器上开启一个监听在8080端口的SOCKS代理。</p>
+<p>参数说明：</p>
+<ul>
+<li>-D 8080：指定本地端口8080作为SOCKS代理端口。</li>
+<li>-N：不执行远程命令，只进行端口转发。</li>
+<li>-f：后台运行SSH会话。</li>
+</ul>
+<h3 id="3-配置你的应用程序或浏览器"><a href="#3-配置你的应用程序或浏览器" class="headerlink" title="3. 配置你的应用程序或浏览器"></a>3. 配置你的应用程序或浏览器</h3><p>一旦SSH隧道建立，你需要配置你的应用程序或浏览器使用这个SOCKS代理。</p>
+<h4 id="对于浏览器："><a href="#对于浏览器：" class="headerlink" title="对于浏览器："></a>对于浏览器：</h4><ul>
+<li>在Chrome或Firefox中，你可以安装一个代理扩展，如”Proxy SwitchyOmega”，并设置SOCKS5代理为localhost，端口为8080。</li>
+<li>在其他浏览器中，通常在设置中找到网络或代理设置，并手动配置SOCKS代理。</li>
+</ul>
+<h4 id="对于其他应用程序："><a href="#对于其他应用程序：" class="headerlink" title="对于其他应用程序："></a>对于其他应用程序：</h4><p>查找应用程序的网络设置或代理设置，并配置SOCKS5代理为localhost，端口为8080。</p>
+<h3 id="4-测试连接"><a href="#4-测试连接" class="headerlink" title="4. 测试连接"></a>4. 测试连接</h3><p>现在，当你通过配置了SOCKS代理的应用程序或浏览器访问网络时，所有的流量都应该通过SSH隧道加密并转发。</p>
+<p>如打开你的浏览器访问目标地址</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/SSH/ssh%20%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/SSH/ssh%20%E6%9C%AC%E5%9C%B0%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" class="post-title-link" itemprop="url">ssh 本地端口转发</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-08-05 22:15:00" itemprop="dateCreated datePublished" datetime="2024-08-05T22:15:00+08:00">2024-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络与安全</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>593</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>SSH本地端口转发（Local Port Forwarding）是一种通过SSH隧道将本地计算机的某个端口转发到远程服务器的某个端口的技术。这样，访问本地端口的请求会通过SSH隧道传输到远程服务器，从而实现安全的通信。</p>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><h4 id="访问内网服务："><a href="#访问内网服务：" class="headerlink" title="访问内网服务："></a>访问内网服务：</h4><p>通过SSH隧道访问公司内网或远程服务器上的服务，避免直接暴露服务端口。</p>
+<h4 id="安全传输数据："><a href="#安全传输数据：" class="headerlink" title="安全传输数据："></a>安全传输数据：</h4><p>将本地端口转发到远程服务器上的敏感服务，实现加密传输。</p>
+<h4 id="绕过防火墙："><a href="#绕过防火墙：" class="headerlink" title="绕过防火墙："></a>绕过防火墙：</h4><p>通过SSH隧道绕过防火墙限制访问某些服务。</p>
+<h3 id="配置示例"><a href="#配置示例" class="headerlink" title="配置示例"></a>配置示例</h3><p>假设你有一台远程服务器remote_server_ip，上面运行了一个Web服务，监听在端口80。你希望通过SSH隧道，将本地计算机的端口8080转发到远程服务器的端口80，以便在本地浏览器中访问localhost:8080时能够访问远程服务器的Web服务。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 8080:localhost:80 user@remote_server_ip</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-L 8080:localhost:80：指定本地端口8080转发到远程服务器的localhost:80。</li>
+<li>user@remote_server_ip：SSH登录的用户名和远程服务器的IP地址。</li>
+</ul>
+<p>又比如假设你想访问远程服务器上的MySQL服务，该服务只监听<strong>localhost</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 3306:localhost:3306 user@remote-ssh-server</span><br></pre></td></tr></table></figure>
+<p>这会将本地计算机的3306端口上的所有连接通过remote-ssh-server，转发到其localhost的3306端口。</p>
+<h4 id="步骤如："><a href="#步骤如：" class="headerlink" title="步骤如："></a>步骤如：</h4><ol>
+<li>打开终端：在本地计算机上打开一个终端。</li>
+<li>运行SSH命令：执行上述SSH命令创建隧道。</li>
+<li>访问本地端口：在本地浏览器中访问<a href="http://localhost:8080，这将通过SSH隧道转发到远程服务器的端口80。">http://localhost:8080，这将通过SSH隧道转发到远程服务器的端口80。</a></li>
+</ol>
+<hr>
+<h3 id="更多"><a href="#更多" class="headerlink" title="更多"></a>更多</h3><h4 id="后台运行隧道："><a href="#后台运行隧道：" class="headerlink" title="后台运行隧道："></a>后台运行隧道：</h4><p>使用-f选项将隧道命令放入后台运行。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 8080:localhost:80 -f user@remote_server_ip -N</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>-N：表示不执行远程命令，仅进行端口转发。</li>
+<li>-f：表示后台运行SSH隧道。</li>
+</ul>
+<h4 id="转发到不同的远程主机："><a href="#转发到不同的远程主机：" class="headerlink" title="转发到不同的远程主机："></a>转发到不同的远程主机：</h4><p>如果需要转发到远程服务器能访问到的另一台主机（ssh服务器作为跳板），可以使用远程主机的IP或域名。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -L 8080:target_host:80 user@remote_server_ip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>target_host：远程服务器可以访问的目标主机的IP或域名。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/%E4%BD%BF%E7%94%A8python%E8%84%9A%E6%9C%AC%E4%B8%BAmarkdown%E7%AC%94%E8%AE%B0%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90yaml%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%8D%9A%E5%AE%A2/Hexo/%E4%BD%BF%E7%94%A8python%E8%84%9A%E6%9C%AC%E4%B8%BAmarkdown%E7%AC%94%E8%AE%B0%E6%89%B9%E9%87%8F%E7%94%9F%E6%88%90yaml%E5%A4%B4%E9%83%A8%E4%BF%A1%E6%81%AF/" class="post-title-link" itemprop="url">使用python脚本为markdown笔记批量生成yaml头部信息</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-25 23:11:00" itemprop="dateCreated datePublished" datetime="2024-07-25T23:11:00+08:00">2024-07-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>464</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>为了快速的将其他地方Markdown笔记导入到Hexo中，使用Python脚本为Markdown笔记批量生成YAML头部信息</p>
+<h3 id="整理笔记目录"><a href="#整理笔记目录" class="headerlink" title="整理笔记目录"></a>整理笔记目录</h3><p>比如已经规划好了目录，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">├─开发</span><br><span class="line">│  ├─java</span><br><span class="line">│  │      Java入门.md</span><br><span class="line">│  │      Java数据结构.md </span><br><span class="line">│  │      xxxx.md</span><br><span class="line">│  │</span><br><span class="line">│  ├─Spring</span><br><span class="line">│  │      Spring MVC.md</span><br><span class="line">│  │      Spring AOP.md</span><br><span class="line">│  │      Spring Data.md</span><br><span class="line">│  │</span><br><span class="line">│  └─网络</span><br><span class="line">│          协议.md</span><br><span class="line">│          网络通信.md</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成YAML头部信息要求"><a href="#生成YAML头部信息要求" class="headerlink" title="生成YAML头部信息要求"></a>生成YAML头部信息要求</h3><p>目标是为将目录和下级目录中全部的Markdown文件自动生成YAML头部信息，如在文件：<br><strong>.\博客\Hexo\Hexo安装使用.md</strong><br>的头部添加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hexo安装使用</span><br><span class="line">date: 2024-07-24 23:31</span><br><span class="line">tags: </span><br><span class="line">  - Hexo</span><br><span class="line">categories:</span><br><span class="line">  - [博客, Hexo]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>要求：</p>
+<ul>
+<li>title：为文件名称，不要后缀</li>
+<li>date：随机时间（小于当前时间）</li>
+<li>tags: 为最近一级的目录名称</li>
+<li>categories：为多级目录名称</li>
+</ul>
+<hr>
+<h3 id="Python脚本"><a href="#Python脚本" class="headerlink" title="Python脚本"></a>Python脚本</h3><p>创建Python脚本文件：<strong>add_front_matter.py</strong><br>内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import random</span><br><span class="line">import datetime</span><br><span class="line"></span><br><span class="line">def get_random_date():</span><br><span class="line">    now = datetime.datetime.now()</span><br><span class="line">    random_days = random.randint(1, 365 * 5)  # 过去五年中的随机天数</span><br><span class="line">    random_date = now - datetime.timedelta(days=random_days)</span><br><span class="line">    return random_date.strftime(&#x27;%Y-%m-%d %H:%M&#x27;)</span><br><span class="line"></span><br><span class="line">def add_front_matter(directory):</span><br><span class="line">    for root, _, files in os.walk(directory):</span><br><span class="line">        print(f&quot;Scanning directory: &#123;root&#125;&quot;)</span><br><span class="line">        for file in files:</span><br><span class="line">            if file.endswith(&#x27;.md&#x27;):</span><br><span class="line">                file_path = os.path.join(root, file)</span><br><span class="line">                print(f&quot;Found markdown file: &#123;file_path&#125;&quot;)</span><br><span class="line"></span><br><span class="line">                try:</span><br><span class="line">                    with open(file_path, &#x27;r&#x27;, encoding=&#x27;utf-8&#x27;) as f:</span><br><span class="line">                        content = f.read()</span><br><span class="line">                    </span><br><span class="line">                    title = os.path.splitext(file)[0]</span><br><span class="line">                    date = get_random_date()</span><br><span class="line">                    tags = os.path.basename(root)</span><br><span class="line">                    categories = os.path.relpath(root, directory).split(os.sep)</span><br><span class="line"></span><br><span class="line">                    front_matter = f&#x27;&#x27;&#x27;---</span><br><span class="line">title: &#123;title&#125;</span><br><span class="line">date: &#123;date&#125;</span><br><span class="line">tags: </span><br><span class="line">  - &#123;tags&#125;</span><br><span class="line">categories:</span><br><span class="line">  - [&#123;&#x27;, &#x27;.join(categories)&#125;]</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&#x27;&#x27;&#x27;</span><br><span class="line"></span><br><span class="line">                    new_content = front_matter + content</span><br><span class="line">                    with open(file_path, &#x27;w&#x27;, encoding=&#x27;utf-8&#x27;) as f:</span><br><span class="line">                        f.write(new_content)</span><br><span class="line"></span><br><span class="line">                    print(f&quot;Updated: &#123;file_path&#125;&quot;)</span><br><span class="line">                except Exception as e:</span><br><span class="line">                    print(f&quot;Error updating &#123;file_path&#125;: &#123;e&#125;&quot;)</span><br><span class="line"></span><br><span class="line">if __name__ == &quot;__main__&quot;:</span><br><span class="line">    directory = r&quot;D:\develop\blog\hexo-blog\source\_posts&quot;  # 替换为你的Markdown文件所在目录</span><br><span class="line">    print(f&quot;Starting to update markdown files in: &#123;directory&#125;&quot;)</span><br><span class="line">    add_front_matter(directory)</span><br><span class="line">    print(&quot;Finished updating markdown files.&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="执行脚本更新文件"><a href="#执行脚本更新文件" class="headerlink" title="执行脚本更新文件"></a>执行脚本更新文件</h3><p><strong>注意：将上面脚本中的Markdown文件所在目录替换为你的整理后的笔记目录</strong></p>
+<p>打开终端或命令提示符，导航到脚本所在目录，运行脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">python add_front_matter.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>问题： 时间不好处理，需要自己修改</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">Hexo个性化配置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-25 00:00:00" itemprop="dateCreated datePublished" datetime="2024-07-25T00:00:00+08:00">2024-07-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.6k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="config-yml配置文件说明"><a href="#config-yml配置文件说明" class="headerlink" title="_config.yml配置文件说明"></a>_config.yml配置文件说明</h3><h4 id="站点基本信息"><a href="#站点基本信息" class="headerlink" title="站点基本信息"></a>站点基本信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 站点名称</span><br><span class="line">title: 王某某的笔记</span><br><span class="line"></span><br><span class="line"># 站点副标题</span><br><span class="line">subtitle: 记录我的编程之路</span><br><span class="line"></span><br><span class="line"># 站点描述</span><br><span class="line">description: 这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</span><br><span class="line"></span><br><span class="line"># 作者名称</span><br><span class="line">author: 王某某</span><br><span class="line"></span><br><span class="line"># 站点语言</span><br><span class="line">language: zh-CN</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="站点的-URL-结构"><a href="#站点的-URL-结构" class="headerlink" title="站点的 URL 结构"></a>站点的 URL 结构</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># URL 前缀，例如如果站点部署在子目录下，需要设置此项</span><br><span class="line">root: /</span><br><span class="line"></span><br><span class="line"># 生成文件的目录</span><br><span class="line">public_dir: public</span><br><span class="line"></span><br><span class="line"># Source 文件夹</span><br><span class="line">source_dir: source</span><br><span class="line"></span><br><span class="line"># 默认布局</span><br><span class="line">default_layout: post</span><br><span class="line"></span><br><span class="line"># permalink 配置</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里将permalink:<br>permalink: :title&#x2F;</p>
+</blockquote>
+<h4 id="设置站点的时间格式和时区"><a href="#设置站点的时间格式和时区" class="headerlink" title="设置站点的时间格式和时区"></a>设置站点的时间格式和时区</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 时间格式</span><br><span class="line">date_format: YYYY-MM-DD</span><br><span class="line">time_format: HH:mm:ss</span><br><span class="line"></span><br><span class="line"># 时区设置</span><br><span class="line">timezone: Asia/Shanghai</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="配置站点的分页功能"><a href="#配置站点的分页功能" class="headerlink" title="配置站点的分页功能"></a>配置站点的分页功能</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 每页显示的文章数</span><br><span class="line">per_page: 10</span><br><span class="line"></span><br><span class="line"># 分页路径</span><br><span class="line">pagination_dir: page</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="配置404页面"><a href="#配置404页面" class="headerlink" title="配置404页面"></a>配置404页面</h4><p>在站点根目录创建一个名为404的新文件夹，然后在其中创建一个新页面：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">hexo new page 404</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>确保relative_link已禁用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">relative_link: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>能否将用户重定向到 404 页面取决于网站托管服务商或 Web 服务器的设置，而非 Hexo 的设置。例如，如果您使用 Nginx 作为服务器，您还需要在nginx.conf文件中配置 404 页面。</p>
+</blockquote>
+<hr>
+<h3 id="使用NexT主题"><a href="#使用NexT主题" class="headerlink" title="使用NexT主题"></a>使用NexT主题</h3><p><strong>NexT</strong> 主题</p>
+<p>github地址：<br><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">https://github.com/next-theme/hexo-theme-next</a></p>
+<p>详细安装说明：<br><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/installation.html">https://theme-next.js.org/docs/getting-started/installation.html</a></p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>使用npm安装</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
+<p>或者你可以克隆整个存储库：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">git clone https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>修改：Hexo的 _config.yml 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>默认主题是：landscape</p>
+</blockquote>
+<h4 id="复制主题配置文件"><a href="#复制主题配置文件" class="headerlink" title="复制主题配置文件"></a>复制主题配置文件</h4><p>将主题的配置文件复制到根目录，命名为：_config.next.yml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line"></span><br><span class="line">## npm方式安装则：</span><br><span class="line">cp ./node_modules/hexo-theme-next/_config.yml _config.next.yml</span><br><span class="line"></span><br><span class="line">## git克隆则：</span><br><span class="line">cp ./themes/next/_config.yml _config.next.yml</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后相关配置都是修改 <strong>_config.next.yml</strong> 这个配置文件</p>
+<h4 id="选择方案"><a href="#选择方案" class="headerlink" title="选择方案"></a>选择方案</h4><p>Scheme 是 NexT 支持的一个功能，通过使用 Scheme，NexT 可以为您提供不同的视图。<br>到目前为止，NexT 支持 4 种方案，它们是：</p>
+<ul>
+<li>Muse→ Default Scheme，这是NexT的初始版本。使用黑白色调，主要看起来很干净。</li>
+<li>Mist→ Muse 的更紧凑版本，具有整洁的单列视图。</li>
+<li>Pisces→ 双列方案，像邻居的女儿一样新鲜。</li>
+<li>Gemini→ 看起来像双鱼座，但有明显的带阴影的柱块，看起来更加敏感。</li>
+</ul>
+<p>可以通过编辑来更改方案NexT 配置文件，搜索scheme关键字</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里选Pisces</p>
+</blockquote>
+<h4 id="侧边栏头像设置"><a href="#侧边栏头像设置" class="headerlink" title="侧边栏头像设置"></a>侧边栏头像设置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.jpg</span><br><span class="line">  # If true, the avatar will be displayed in circle.</span><br><span class="line">  rounded: true</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: false</span><br></pre></td></tr></table></figure>
+
+<p>将头像图片avatar.jpg 放到 .&#x2F;source&#x2F;images&#x2F; 目录中</p>
+<h4 id="配置菜单项"><a href="#配置菜单项" class="headerlink" title="配置菜单项"></a>配置菜单项</h4><p>菜单设置项包含 3 个值：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Key: /link/ || icon</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Key→ 是菜单项的名称（home、archives等）。如果在语言中可以找到此菜单的翻译，则将加载此翻译；如果没有，Key则将使用名称。</li>
+<li>分隔符之前的值||（&#x2F;link&#x2F;）→ 是您网站内相对 URL 的目标链接。</li>
+<li>||分隔符 ( ) →后的值icon是 Font Awesome 图标的名称。该图标的名称可以在Font Awesome [<a target="_blank" rel="noopener" href="https://fontawesome.com/search]">https://fontawesome.com/search]</a><br>中找。</li>
+</ul>
+<blockquote>
+<p>默认情况下，所有菜单项均被注释掉，以确保您可以在备用主题配置中覆盖它们。</p>
+</blockquote>
+<p>这里修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br></pre></td></tr></table></figure>
+
+<h4 id="社交链接"><a href="#社交链接" class="headerlink" title="社交链接"></a>社交链接</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 社交链接设置</span><br><span class="line">social:</span><br><span class="line">  GitHub: https://github.com/your-username || fa fa-github</span><br><span class="line">  Weibo: https://weibo.com/your-username || fa fa-weibo</span><br><span class="line">  Zhihu: https://www.zhihu.com/people/your-username || fa fa-zhihu</span><br><span class="line">  Email: mailto:your-email@example.com || fa fa-envelope</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="配置Tags页面"><a href="#配置Tags页面" class="headerlink" title="配置Tags页面"></a>配置Tags页面</h4><p>Next主题默认没有Tags页面，点击左侧菜单“标签”会进入一个404页面<br>只需要增加一个tags页面，将页面类型设置为<strong>tags</strong> 即可</p>
+<p>先增加页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo new page tags</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: D:\code\blog\blog1\source\tags\index.md</span><br></pre></td></tr></table></figure>
+<p>再修改页面 .&#x2F;source&#x2F;tags&#x2F;index.md ，设置类型</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2024-07-24 22:18:58</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p>上面菜单已经配置好了，直接重启看效果</p>
+<h4 id="配置Categories页面"><a href="#配置Categories页面" class="headerlink" title="配置Categories页面"></a>配置Categories页面</h4><p>默认也是没有Categories页面的<br>配置同 tags，type设置为：<strong>categories</strong></p>
+<p>增加页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>页面.&#x2F;source&#x2F;categories&#x2F;index.md 内容修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2024-07-24 22:29:50</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="配置About页面"><a href="#配置About页面" class="headerlink" title="配置About页面"></a>配置About页面</h4><p>categories和tags是系统已经定义好的类型，系统会自动填充内容到里面。<br>about页面就不行了，得自己写</p>
+<p>首先创建页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
+<p>然后再修改页面：.&#x2F;source&#x2F;about&#x2F;index.md<br>内容如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: about</span><br><span class="line">date: 2024-07-22 22:40:20</span><br><span class="line">---</span><br><span class="line">### 关于我</span><br><span class="line">程序员  主要做Java</span><br><span class="line"></span><br><span class="line">----</span><br><span class="line">### 关于本博客</span><br><span class="line">2024年使用Hexo + Next 重建</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="帖子元数据设置"><a href="#帖子元数据设置" class="headerlink" title="帖子元数据设置"></a>帖子元数据设置</h4><p>NexT 支持帖子创建日期、帖子更新日期和帖子类别显示。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Post meta display settings</span><br><span class="line">post_meta:</span><br><span class="line">  item_text: true</span><br><span class="line">  created_at: true</span><br><span class="line">  updated_at:</span><br><span class="line">    enable: false</span><br><span class="line">    another_day: true</span><br><span class="line">  categories: true</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>关闭“更新于”</p>
+</blockquote>
+<h4 id="文章字数统计"><a href="#文章字数统计" class="headerlink" title="文章字数统计"></a>文章字数统计</h4><p>安装：hexo-word-counter</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-word-counter</span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p>Hexo配置（_config.yml）中增加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#文章字数和阅读时间</span><br><span class="line">symbols_count_time:</span><br><span class="line">  # 是否显示文章的字符数</span><br><span class="line">  symbols: true</span><br><span class="line">  # 是否显示文章的预计阅读时间</span><br><span class="line">  time: true</span><br><span class="line">  # 是否显示全部文章的总字符数（站点底部）</span><br><span class="line">  total_symbols: false</span><br><span class="line">  # 是否显示全部文章总阅读时间（站点底部）</span><br><span class="line">  total_time: true</span><br><span class="line">  # AWL 代表 Average Words per Line（每行的平均单词数），用于估算阅读时间。通常用于更精确的阅读时间估算。</span><br><span class="line">  awl: 4</span><br><span class="line">  # WPM 代表 Words Per Minute（每分钟的单词数），用于计算阅读时间。</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
+<p>Next中有默认设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Next默认显示字数和阅读时长  </p>
+</blockquote>
+<h4 id="其他设置"><a href="#其他设置" class="headerlink" title="其他设置"></a>其他设置</h4><blockquote>
+<p>测试时注意：这些设置一般需要重启服务后才能生效</p>
+</blockquote>
+<h5 id="回到顶部"><a href="#回到顶部" class="headerlink" title="回到顶部"></a>回到顶部</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  # 控制“返回顶部”按钮是否启用</span><br><span class="line">  enable: true</span><br><span class="line">  # 控制“返回顶部”按钮是否显示在侧边栏</span><br><span class="line">  sidebar: false</span><br><span class="line">  # 控制“返回顶部”按钮上是否显示滚动百分比标签</span><br><span class="line">  scrollpercent: false</span><br></pre></td></tr></table></figure>
+<h5 id="阅读进度条"><a href="#阅读进度条" class="headerlink" title="阅读进度条"></a>阅读进度条</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reading_progress:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+
+<h5 id="启用书签支持"><a href="#启用书签支持" class="headerlink" title="启用书签支持"></a>启用书签支持</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bookmark:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>用户只需点击页面左上角的书签图标即可保存滚动位置。当他们下次访问你的博客时，他们可以自动恢复到上一次滚动位置。</p>
+</blockquote>
+<h5 id="深色模式"><a href="#深色模式" class="headerlink" title="深色模式"></a>深色模式</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Dark Mode</span><br><span class="line">darkmode: false</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Hexo安装使用</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-24 00:00:00" itemprop="dateCreated datePublished" datetime="2024-07-24T00:00:00+08:00">2024-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>657</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p>
+<p><a target="_blank" rel="noopener" href="https://hexo.io/docs/">https://hexo.io/docs/</a></p>
+<p>Hexo 是一个快速、简洁且高效的博客框架。 Hexo 使用 Markdown（或其他标记语言）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<blockquote>
+<p>使用 Node.js 编写</p>
+</blockquote>
+<h3 id="安装-Node-js-和-git"><a href="#安装-Node-js-和-git" class="headerlink" title="安装 Node.js 和 git"></a>安装 Node.js 和 git</h3><p>Hexo 需要 Node.js 和 npm（Node.js 的包管理器）。你可以从 Node.js 官网 下载并安装最新版本的 Node.js。安装 Node.js 后，npm 会自动随之安装。</p>
+<blockquote>
+<p>Node.js (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</p>
+</blockquote>
+<p>git 正常安装即可</p>
+<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>打开终端或命令提示符，运行以下命令来全局安装 Hexo：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>有点慢，好像需要科学上网<br>可以指定国内镜像：–registry&#x3D;<a target="_blank" rel="noopener" href="https://registry.npmmirror.com/">https://registry.npmmirror.com</a></p>
+</blockquote>
+<h3 id="创建新的-Hexo-博客"><a href="#创建新的-Hexo-博客" class="headerlink" title="创建新的 Hexo 博客"></a>创建新的 Hexo 博客</h3><p>选择一个你希望存放博客的目录，并进入该目录，然后运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+
+<p>这将会在 blog 目录下创建一个新的 Hexo 博客项目。你也可以将 blog 替换为你希望的项目名称。</p>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>进入你的博客目录后，安装项目依赖：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">#或者指定淘宝镜像</span><br><span class="line">npm install --registry=https://registry.npmmirror.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建新的文章"><a href="#创建新的文章" class="headerlink" title="创建新的文章"></a>创建新的文章</h3><p>使用 Hexo 提供的命令来创建新的文章：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;我的第一篇文章&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这会在 source&#x2F;_posts 目录下生成一个新的 Markdown 文件，你可以在这个文件中编写你的文章。</p>
+<h3 id="生成和预览网站"><a href="#生成和预览网站" class="headerlink" title="生成和预览网站"></a>生成和预览网站</h3><p>在生成网站之前，你可以先在本地预览网站：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>然后在浏览器中访问 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> 来查看你的博客。</p>
+<p>当你对博客的内容感到满意时，可以生成静态文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>生成的静态文件会放在 public 目录下。</p>
+<hr>
+<h3 id="部署博客"><a href="#部署博客" class="headerlink" title="部署博客"></a>部署博客</h3><p>Hexo 支持多种部署方式，如 GitHub Pages、Netlify 等。以下是将博客部署到 GitHub Pages 的步骤：</p>
+<ol>
+<li>在 GitHub 上创建一个新的仓库。</li>
+<li>修改 Hexo 配置文件 _config.yml 中的部署设置，添加你的仓库地址。例如：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/你的用户名/你的仓库名.git</span><br><span class="line">  branch: main</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>安装 Hexo 部署插件：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+<li>部署到 GitHub Pages：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<h3 id="配置和主题"><a href="#配置和主题" class="headerlink" title="配置和主题"></a>配置和主题</h3><p>Hexo 的配置文件 _config.yml 可以用来设置网站的基本信息，如标题、描述、作者等。你还可以通过安装和配置主题来改变博客的外观，主题通常放在 themes 目录下。</p>
+<p>要添加新的主题，你可以从 Hexo 官方主题库 下载，然后将其放在 themes 目录下，修改 _config.yml 中的 theme 选项以使用新的主题。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E6%96%87%E7%AB%A0Front-matter%E8%AF%B4%E6%98%8E/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E6%96%87%E7%AB%A0Front-matter%E8%AF%B4%E6%98%8E/" class="post-title-link" itemprop="url">Hexo文章Front-matter说明</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-24 00:00:00" itemprop="dateCreated datePublished" datetime="2024-07-24T00:00:00+08:00">2024-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>374</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/front-matter">https://hexo.io/zh-cn/docs/front-matter</a></p>
+<p>Front-matter 是文件开头的 YAML 或 JSON 代码块，用于配置写作设置。 以 YAML 格式书写时，Front-matter 以三个破折号结束；以 JSON 格式书写时，Front-matter 以三个分号结束。</p>
+<p><strong>YAML</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Hello World</span><br><span class="line">date: 2013/7/13 20:46:25</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<p><strong>JSON</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;title&quot;: &quot;Hello World&quot;,</span><br><span class="line">&quot;date&quot;: &quot;2013/7/13 20:46:25&quot;</span><br><span class="line">;;;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="设置-默认值"><a href="#设置-默认值" class="headerlink" title="设置 &amp; 默认值"></a>设置 &amp; 默认值</h3><table>
+<thead>
+<tr>
+<th>设置</th>
+<th>描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>layout</td>
+<td>布局</td>
+<td>config.default_layout</td>
+</tr>
+<tr>
+<td>title</td>
+<td>标题</td>
+<td>文章的文件名</td>
+</tr>
+<tr>
+<td>date</td>
+<td>建立日期</td>
+<td>文件建立日期</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>更新日期</td>
+<td>文件更新日期</td>
+</tr>
+<tr>
+<td>comments</td>
+<td>开启文章的评论功能</td>
+<td>true</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>标签（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>categories</td>
+<td>分类（不适用于分页）</td>
+<td></td>
+</tr>
+<tr>
+<td>permalink</td>
+<td>覆盖文章的永久链接. 永久链接应该以 &#x2F; 或 .html 结尾</td>
+<td>null</td>
+</tr>
+<tr>
+<td>excerpt</td>
+<td>纯文本的页面摘要。 使用 该插件 来格式化文本</td>
+<td></td>
+</tr>
+<tr>
+<td>disableNunjucks</td>
+<td>启用时禁用 Nunjucks 标签 { {  } }&#x2F;{ %  % } 和 标签插件 的渲染功能</td>
+<td>false</td>
+</tr>
+<tr>
+<td>lang</td>
+<td>设置语言以覆盖 自动检测</td>
+<td>继承自 _config.yml</td>
+</tr>
+<tr>
+<td>published</td>
+<td>文章是否发布</td>
+<td>对于 _posts 下的文章为 true，对于 _draft 下的文章为 false</td>
+</tr>
+</tbody></table>
+<h3 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h3><p>只有文章支持分类和标签。  </p>
+<p>分类按顺序应用于帖子，从而产生分类和子分类的层次结构。标签都定义在相同的层次结构上，因此它们的出现顺序并不重要。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - Sports</span><br><span class="line">  - Baseball</span><br><span class="line">tags:</span><br><span class="line">  - Injury</span><br><span class="line">  - Fight</span><br><span class="line">  - Shocking</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="多级分类"><a href="#多级分类" class="headerlink" title="多级分类"></a>多级分类</h4><p>如创建多个文章，其分类定义如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - [Java, Spring]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - [Java, Spring, Spring MVC]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">  - [Java, SpringBoot]</span><br></pre></td></tr></table></figure>
+
+<p>则展示效果如：<br><img src="https://img.wangwen135.top:23456/note/2024/07/66a1cd3524da0.png" alt="1721879855319.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Redis/Redis%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Redis/Redis%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE%E4%B8%8E%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">Redis集群配置与测试</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-07-22 23:41:00" itemprop="dateCreated datePublished" datetime="2024-07-22T23:41:00+08:00">2024-07-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Redis/" itemprop="url" rel="index"><span itemprop="name">Redis</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.3k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>8 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>环境：<br>系统：CentOS 7<br>Redis： 4.0.1</p>
+</blockquote>
+<p>测试记录，按照操作流程随手记</p>
+<hr>
+<p>创建几个测试目录，在里面放redis.conf文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ll</span><br><span class="line">总用量 1708</span><br><span class="line">drwxr-xr-x 2 root root      23 5月  31 10:30 d6379</span><br><span class="line">drwxr-xr-x 2 root root      23 5月  31 10:31 d6380</span><br><span class="line">drwxr-xr-x 2 root root      23 5月  31 10:32 d6381</span><br><span class="line">drwxr-xr-x 2 root root      23 5月  31 10:32 d6382</span><br><span class="line">drwxr-xr-x 2 root root      23 5月  31 10:32 d6383</span><br><span class="line">drwxr-xr-x 2 root root      23 5月  31 10:32 d6384</span><br><span class="line">drwxr-xr-x 2 root root      23 5月  31 10:33 d6385</span><br></pre></td></tr></table></figure>
+<p>文件内容如下，每个文件的端口不同，最好与目录对应，方便记忆</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">port 7000</span><br><span class="line">cluster-enabled yes</span><br><span class="line">cluster-config-file nodes.conf</span><br><span class="line">cluster-node-timeout 5000</span><br><span class="line">appendonly yes</span><br></pre></td></tr></table></figure>
+
+<p>启动6个redis实例<br>注意要分别进入到每个目录中启动，启动后会自动在目录下创建nodes.conf文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd d6379</span><br><span class="line">/usr/local/redis/bin/redis-server redis.conf </span><br><span class="line"></span><br><span class="line">cd ..</span><br><span class="line">cd d6380</span><br><span class="line">/usr/local/redis/bin/redis-server redis.conf </span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>查看一下进程</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># ps -ef | grep redis</span><br><span class="line">root      9608     1  0 11:10 ?        00:00:00 /usr/local/redis/bin/redis-server 0.0.0.0:6379 [cluster]</span><br><span class="line">root      9615     1  0 11:11 ?        00:00:00 /usr/local/redis/bin/redis-server 0.0.0.0:6380 [cluster]</span><br><span class="line">root      9620     1  0 11:11 ?        00:00:00 /usr/local/redis/bin/redis-server 0.0.0.0:6381 [cluster]</span><br><span class="line">root      9625     1  0 11:12 ?        00:00:00 /usr/local/redis/bin/redis-server 0.0.0.0:6382 [cluster]</span><br><span class="line">root      9630     1  0 11:12 ?        00:00:00 /usr/local/redis/bin/redis-server 0.0.0.0:6383 [cluster]</span><br><span class="line">root      9635     1  0 11:12 ?        00:00:00 /usr/local/redis/bin/redis-server 0.0.0.0:6384 [cluster]</span><br><span class="line">root      9640     1  0 11:12 ?        00:00:00 /usr/local/redis/bin/redis-server 0.0.0.0:6385 [cluster]</span><br></pre></td></tr></table></figure>
+
+<p>使用这些实例来创建集群， 并为每个节点编写配置文件。</p>
+<p>通过使用 Redis 集群命令行工具 redis-trib， 编写节点配置文件的工作可以非常容易地完成：redis-trib 位于 Redis 源码的 src 文件夹中，它是一个 Ruby 程序，这个程序通过向实例发送特殊命令来完成创建新集群，检查集群，或者对集群进行重新分片（reshared）等工作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./redis-trib.rb create --replicas 1 127.0.0.1:6379 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384 127.0.0.1:6385</span><br></pre></td></tr></table></figure>
+
+<p>报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/env: ruby: 没有那个文件或目录</span><br></pre></td></tr></table></figure>
+<p>安装ruby</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install ruby</span><br></pre></td></tr></table></figure>
+
+<p>报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/share/rubygems/rubygems/core_ext/kernel_require.rb:55:in `require&#x27;: cannot load such file -- redis (LoadError)</span><br><span class="line">        from /usr/share/rubygems/rubygems/core_ext/kernel_require.rb:55:in `require&#x27;</span><br><span class="line">        from ./redis-trib.rb:25:in `&lt;main&gt;&#x27;</span><br></pre></td></tr></table></figure>
+<p>使用RubyGems安装ruby脚本所需要的redis包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem install redis</span><br></pre></td></tr></table></figure>
+<p>报错:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Fetching: redis-4.0.1.gem (100%)</span><br><span class="line">ERROR:  Error installing redis:</span><br><span class="line">        redis requires Ruby version &gt;= 2.2.2.</span><br></pre></td></tr></table></figure>
+<p>看了下当前安装的ruby版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># ruby --version</span><br><span class="line">ruby 2.0.0p648 (2015-12-16) [x86_64-linux]</span><br></pre></td></tr></table></figure>
+<p>CentOS7 yum库中ruby的版本只支持到2.0.0，使用RVM（Ruby Version Manager）程序升级Ruby的版本<br>先安装RVM程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">curl -L get.rvm.io | bash -s stable </span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100   194  100   194    0     0    308      0 --:--:-- --:--:-- --:--:--   307</span><br><span class="line">100 24361  100 24361    0     0  12772      0  0:00:01  0:00:01 --:--:-- 89410</span><br><span class="line">Downloading https://github.com/rvm/rvm/archive/1.29.3.tar.gz</span><br><span class="line">Downloading https://github.com/rvm/rvm/releases/download/1.29.3/1.29.3.tar.gz.asc</span><br><span class="line">gpg: 已创建目录‘/root/.gnupg’</span><br><span class="line">gpg: 新的配置文件‘/root/.gnupg/gpg.conf’已建立</span><br><span class="line">gpg: 警告：在‘/root/.gnupg/gpg.conf’里的选项于此次运行期间未被使用</span><br><span class="line">gpg: 钥匙环‘/root/.gnupg/pubring.gpg’已建立</span><br><span class="line">gpg: 于 2017年09月11日 星期一 04时59分21秒 CST 创建的签名，使用 RSA，钥匙号 BF04FF17</span><br><span class="line">gpg: 无法检查签名：没有公钥</span><br><span class="line">Warning, RVM 1.26.0 introduces signed releases and automated check of signatures when GPG software found. Assuming you trust Michal Papis import the mpapis public key (downloading the signatures).</span><br><span class="line"></span><br><span class="line">GPG signature verification failed for &#x27;/usr/local/rvm/archives/rvm-1.29.3.tgz&#x27; - &#x27;https://github.com/rvm/rvm/releases/download/1.29.3/1.29.3.tar.gz.asc&#x27;! Try to install GPG v2 and then fetch the public key:</span><br><span class="line"></span><br><span class="line">    gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3</span><br><span class="line"></span><br><span class="line">or if it fails:</span><br><span class="line"></span><br><span class="line">    command curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -</span><br><span class="line"></span><br><span class="line">the key can be compared with:</span><br><span class="line"></span><br><span class="line">    https://rvm.io/mpapis.asc</span><br><span class="line">    https://keybase.io/mpapis</span><br><span class="line"></span><br><span class="line">NOTE: GPG version 2.1.17 have a bug which cause failures during fetching keys from remote server. Please downgrade or upgrade to newer version (if available) or use the second method described above.</span><br></pre></td></tr></table></figure>
+<p>无法验证签名，按照提示下载公钥</p>
+<blockquote>
+<p>说明：<br><strong>gpg2 –recv-keys</strong> : 该命令从密钥服务器下载一个或多个公钥。每个key-id都是一个密钥ID。该命令需要使用keyserver选项来指定gpg应该从哪个keyserver下载密钥。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># gpg2 --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3</span><br><span class="line">gpg: 下载密钥‘D39DC0E3’，从 hkp 服务器 keys.gnupg.net</span><br><span class="line">gpg: /root/.gnupg/trustdb.gpg：建立了信任度数据库</span><br><span class="line">gpg: 密钥 D39DC0E3：公钥“Michal Papis (RVM signing) &lt;mpapis@gmail.com&gt;”已导入</span><br><span class="line">gpg: 没有找到任何绝对信任的密钥</span><br><span class="line">gpg: 合计被处理的数量：1</span><br><span class="line">gpg:           已导入：1  (RSA: 1)</span><br></pre></td></tr></table></figure>
+<p>再次安装RVM</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">]# curl -L get.rvm.io | bash -s stable </span><br><span class="line">  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current</span><br><span class="line">                                 Dload  Upload   Total   Spent    Left  Speed</span><br><span class="line">100   194  100   194    0     0    303      0 --:--:-- --:--:-- --:--:--   302</span><br><span class="line">100 24361  100 24361    0     0  11395      0  0:00:02  0:00:02 --:--:-- 41430</span><br><span class="line">Downloading https://github.com/rvm/rvm/archive/1.29.3.tar.gz</span><br><span class="line">Downloading https://github.com/rvm/rvm/releases/download/1.29.3/1.29.3.tar.gz.asc</span><br><span class="line">gpg: 于 2017年09月11日 星期一 04时59分21秒 CST 创建的签名，使用 RSA，钥匙号 BF04FF17</span><br><span class="line">gpg: 完好的签名，来自于“Michal Papis (RVM signing) &lt;mpapis@gmail.com&gt;”</span><br><span class="line">gpg:               亦即“Michal Papis &lt;michal.papis@toptal.com&gt;”</span><br><span class="line">gpg:               亦即“[jpeg image of size 5015]”</span><br><span class="line">gpg: 警告：这把密钥未经受信任的签名认证！</span><br><span class="line">gpg:       没有证据表明这个签名属于它所声称的持有者。</span><br><span class="line">主钥指纹： 409B 6B17 96C2 7546 2A17  0311 3804 BB82 D39D C0E3</span><br><span class="line">子钥指纹： 62C9 E5F4 DA30 0D94 AC36  166B E206 C29F BF04 FF17</span><br><span class="line">GPG verified &#x27;/usr/local/rvm/archives/rvm-1.29.3.tgz&#x27;</span><br><span class="line">Creating group &#x27;rvm&#x27;</span><br><span class="line"></span><br><span class="line">Installing RVM to /usr/local/rvm/</span><br><span class="line">Installation of RVM in /usr/local/rvm/ is almost complete:</span><br><span class="line"></span><br><span class="line">  * First you need to add all users that will be using rvm to &#x27;rvm&#x27; group,</span><br><span class="line">    and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.</span><br><span class="line"></span><br><span class="line">  * To start using RVM you need to run `source /etc/profile.d/rvm.sh`</span><br><span class="line">    in all your open shell windows, in rare cases you need to reopen all shell windows.</span><br></pre></td></tr></table></figure>
+<p>设置下环境变量，在查看下rvm版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@wwh214 redis]# source /etc/profile.d/rvm.sh</span><br><span class="line">[root@wwh214 redis]# rvm --version</span><br><span class="line">rvm 1.29.3 (latest) by Michal Papis, Piotr Kuczynski, Wayne E. Seguin [https://rvm.io]</span><br></pre></td></tr></table></figure>
+
+<p>使用RVM升级Ruby版本<br>查看rvm库中已知的ruby版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ rvm list known</span><br><span class="line"># MRI Rubies</span><br><span class="line">[ruby-]1.8.6[-p420]</span><br><span class="line">[ruby-]1.8.7[-head] # security released on head</span><br><span class="line">[ruby-]1.9.1[-p431]</span><br><span class="line">[ruby-]1.9.2[-p330]</span><br><span class="line">[ruby-]1.9.3[-p551]</span><br><span class="line">[ruby-]2.0.0[-p648]</span><br><span class="line">[ruby-]2.1[.10]</span><br><span class="line">[ruby-]2.2[.7]</span><br><span class="line">[ruby-]2.3[.4]</span><br><span class="line">[ruby-]2.4[.1]</span><br><span class="line">ruby-head</span><br></pre></td></tr></table></figure>
+<p>安装2.4版本的ruby</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ rvm install 2.4.1</span><br><span class="line">Searching for binary rubies, this might take some time.</span><br><span class="line">Found remote file https://rvm_io.global.ssl.fastly.net/binaries/centos/7/x86_64/ruby-2.4.1.tar.bz2</span><br><span class="line">Checking requirements for centos.</span><br><span class="line">Installing requirements for centos.</span><br><span class="line">Installing required packages: libffi-devel, readline-devel, sqlite-devel, libyaml-devel............</span><br><span class="line">Requirements installation successful.</span><br><span class="line">ruby-2.4.1 - #configure</span><br><span class="line">ruby-2.4.1 - #download</span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>在查看一下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@wwh214 redis]# rvm list</span><br><span class="line"></span><br><span class="line">rvm rubies</span><br><span class="line"></span><br><span class="line">=* ruby-2.4.1 [ x86_64 ]</span><br><span class="line"></span><br><span class="line"># =&gt; - current</span><br><span class="line"># =* - current &amp;&amp; default</span><br><span class="line">#  * - default</span><br><span class="line"></span><br><span class="line">[root@wwh214 redis]# ruby --version</span><br><span class="line">ruby 2.4.1p111 (2017-03-22 revision 58053) [x86_64-linux]</span><br></pre></td></tr></table></figure>
+<p>之前通过yum安装的ruby并没有在rvm管理中，将其卸载掉</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum remove ruby</span><br></pre></td></tr></table></figure>
+
+<p>再次使用RubyGems安装ruby脚本所需要的redis包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># gem install redis</span><br><span class="line">Fetching: redis-4.0.1.gem (100%)</span><br><span class="line">Successfully installed redis-4.0.1</span><br><span class="line">Parsing documentation for redis-4.0.1</span><br><span class="line">Installing ri documentation for redis-4.0.1</span><br><span class="line">Done installing documentation for redis after 0 seconds</span><br><span class="line">1 gem installed</span><br></pre></td></tr></table></figure>
+
+<p>再次使用命令创建集群</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">./redis-trib.rb create --replicas 1 127.0.0.1:6379 127.0.0.1:6381 127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384 127.0.0.1:6385</span><br><span class="line">&gt;&gt;&gt; Creating cluster</span><br><span class="line">&gt;&gt;&gt; Performing hash slots allocation on 6 nodes...</span><br><span class="line">Using 3 masters:</span><br><span class="line">127.0.0.1:6379</span><br><span class="line">127.0.0.1:6381</span><br><span class="line">127.0.0.1:6382</span><br><span class="line">Adding replica 127.0.0.1:6383 to 127.0.0.1:6379</span><br><span class="line">Adding replica 127.0.0.1:6384 to 127.0.0.1:6381</span><br><span class="line">Adding replica 127.0.0.1:6385 to 127.0.0.1:6382</span><br><span class="line">M: b2ba9914a49563dabdf022c1f8031577e4b30e44 127.0.0.1:6379</span><br><span class="line">   slots:0-5460 (5461 slots) master</span><br><span class="line">M: d38eaf2cf3a5ed2a4d4b0bafcb174748fac009dc 127.0.0.1:6381</span><br><span class="line">   slots:5461-10922 (5462 slots) master</span><br><span class="line">M: b54907e579a7daf1fb7155a4f25f5ae485374636 127.0.0.1:6382</span><br><span class="line">   slots:10923-16383 (5461 slots) master</span><br><span class="line">S: 602191b3b062238e10c1284343b4677b51fd31a3 127.0.0.1:6383</span><br><span class="line">   replicates b2ba9914a49563dabdf022c1f8031577e4b30e44</span><br><span class="line">S: aa4feef4e0c426ead799d4b34288cb3c5b9baa58 127.0.0.1:6384</span><br><span class="line">   replicates d38eaf2cf3a5ed2a4d4b0bafcb174748fac009dc</span><br><span class="line">S: a642a61c228ea354d94c695ca9dcaa048750590e 127.0.0.1:6385</span><br><span class="line">   replicates b54907e579a7daf1fb7155a4f25f5ae485374636</span><br><span class="line">Can I set the above configuration? (type &#x27;yes&#x27; to accept): </span><br></pre></td></tr></table></figure>
+<p>这个命令在这里用于创建一个新的集群, 选项–replicas 1 表示我们希望为集群中的每个主节点创建一个从节点。之后跟着的其他参数则是这个集群实例的地址列表,3个master3个slave，redis-trib 会打印出一份预想中的配置给你看， 如果你觉得没问题的话， 就可以输入 yes ， redis-trib 就会将这份配置应用到集群当中,让各个节点开始互相通讯,最后可以得到如下信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; Nodes configuration updated</span><br><span class="line">&gt;&gt;&gt; Assign a different config epoch to each node</span><br><span class="line">&gt;&gt;&gt; Sending CLUSTER MEET messages to join the cluster</span><br><span class="line">Waiting for the cluster to join...</span><br><span class="line">&gt;&gt;&gt; Performing Cluster Check (using node 127.0.0.1:6379)</span><br><span class="line">M: b2ba9914a49563dabdf022c1f8031577e4b30e44 127.0.0.1:6379</span><br><span class="line">   slots:0-5460 (5461 slots) master</span><br><span class="line">   1 additional replica(s)</span><br><span class="line">S: a642a61c228ea354d94c695ca9dcaa048750590e 127.0.0.1:6385</span><br><span class="line">   slots: (0 slots) slave</span><br><span class="line">   replicates b54907e579a7daf1fb7155a4f25f5ae485374636</span><br><span class="line">S: aa4feef4e0c426ead799d4b34288cb3c5b9baa58 127.0.0.1:6384</span><br><span class="line">   slots: (0 slots) slave</span><br><span class="line">   replicates d38eaf2cf3a5ed2a4d4b0bafcb174748fac009dc</span><br><span class="line">M: d38eaf2cf3a5ed2a4d4b0bafcb174748fac009dc 127.0.0.1:6381</span><br><span class="line">   slots:5461-10922 (5462 slots) master</span><br><span class="line">   1 additional replica(s)</span><br><span class="line">M: b54907e579a7daf1fb7155a4f25f5ae485374636 127.0.0.1:6382</span><br><span class="line">   slots:10923-16383 (5461 slots) master</span><br><span class="line">   1 additional replica(s)</span><br><span class="line">S: 602191b3b062238e10c1284343b4677b51fd31a3 127.0.0.1:6383</span><br><span class="line">   slots: (0 slots) slave</span><br><span class="line">   replicates b2ba9914a49563dabdf022c1f8031577e4b30e44</span><br><span class="line">[OK] All nodes agree about slots configuration.</span><br><span class="line">&gt;&gt;&gt; Check for open slots...</span><br><span class="line">&gt;&gt;&gt; Check slots coverage...</span><br><span class="line">[OK] All 16384 slots covered.</span><br></pre></td></tr></table></figure>
+
+
+<p>再对比一下node.conf配置文件：<br>以d6381目录为例子，redis启动时创建的缺省文件是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">d38eaf2cf3a5ed2a4d4b0bafcb174748fac009dc :0@0 myself,master - 0 0 0 connected</span><br><span class="line">vars currentEpoch 0 lastVoteEpoch 0</span><br></pre></td></tr></table></figure>
+<p>运行脚本之后，文件变成了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">602191b3b062238e10c1284343b4677b51fd31a3 127.0.0.1:6383@16383 slave b2ba9914a49563dabdf022c1f8031577e4b30e44 0 1527749631645 4 connected</span><br><span class="line">d38eaf2cf3a5ed2a4d4b0bafcb174748fac009dc 127.0.0.1:6381@16381 myself,master - 0 1527749631000 2 connected 5461-10922</span><br><span class="line">b54907e579a7daf1fb7155a4f25f5ae485374636 127.0.0.1:6382@16382 master - 0 1527749631144 3 connected 10923-16383</span><br><span class="line">aa4feef4e0c426ead799d4b34288cb3c5b9baa58 127.0.0.1:6384@16384 slave d38eaf2cf3a5ed2a4d4b0bafcb174748fac009dc 0 1527749631244 5 connected</span><br><span class="line">b2ba9914a49563dabdf022c1f8031577e4b30e44 127.0.0.1:6379@16379 master - 0 1527749630140 1 connected 0-5460</span><br><span class="line">a642a61c228ea354d94c695ca9dcaa048750590e 127.0.0.1:6385@16385 slave b54907e579a7daf1fb7155a4f25f5ae485374636 0 1527749631000 6 connected</span><br><span class="line">vars currentEpoch 6 lastVoteEpoch 0</span><br></pre></td></tr></table></figure>
+
+<p>使用redis-cli登录测试一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># /usr/local/redis/bin/redis-cli</span><br><span class="line">127.0.0.1:6379&gt; info</span><br><span class="line">......</span><br><span class="line"># Replication</span><br><span class="line">role:master</span><br><span class="line">connected_slaves:1</span><br><span class="line">slave0:ip=127.0.0.1,port=6383,state=online,offset=742,lag=0</span><br><span class="line">......</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在往集群中某个redis中放入值的时候会计算key的hash所 属的槽，然后再计算槽是不是属于当前实例，如果不是会返回error，并且返回正确的节点地址和端口，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; put aaa aaa</span><br><span class="line">(error) ERR unknown command &#x27;put&#x27;</span><br><span class="line">127.0.0.1:6379&gt; set aaa aaa</span><br><span class="line">(error) MOVED 10439 127.0.0.1:6381</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>而在6381上可以设值成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># /usr/local/redis/bin/redis-cli -p 6381</span><br><span class="line">127.0.0.1:6381&gt; set aaa aaa</span><br><span class="line">OK</span><br><span class="line">127.0.0.1:6381&gt; </span><br></pre></td></tr></table></figure>
+<p>不同的键值对存在不同的节点上，keys * 只会返回当前节点的所有key</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Nginx/Nginx-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%8A%9F%E8%83%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Nginx/Nginx-%E9%85%8D%E7%BD%AE%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E5%8A%9F%E8%83%BD/" class="post-title-link" itemprop="url">Nginx-配置一个文件下载功能</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-05-01 23:41:00" itemprop="dateCreated datePublished" datetime="2024-05-01T23:41:00+08:00">2024-05-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>153</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 443 ssl;</span><br><span class="line">    server_name download.domain.com;</span><br><span class="line">    </span><br><span class="line">    # 证书</span><br><span class="line">    ssl_certificate /etc/letsencrypt/live/domain.com/fullchain.pem;</span><br><span class="line">    ssl_certificate_key /etc/letsencrypt/live/domain.com/privkey.pem;</span><br><span class="line"></span><br><span class="line">    ssl_session_cache shared:SSL:1m;</span><br><span class="line">    ssl_session_timeout 10m;</span><br><span class="line">    ssl_ciphers HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line"></span><br><span class="line">    # 根目录设置为 /www/mnt/downloads</span><br><span class="line">    root /www/mnt/downloads;</span><br><span class="line"></span><br><span class="line">    # 启用目录列表</span><br><span class="line">    location / &#123;</span><br><span class="line">        autoindex on; # 启用目录列表</span><br><span class="line">        autoindex_exact_size off; # 以更人性化的格式显示文件大小</span><br><span class="line">        autoindex_localtime on; # 以服务器本地时间显示文件时间</span><br><span class="line">        charset utf-8; # 设置字符集为 UTF-8</span><br><span class="line">        try_files $uri $uri/ =404; # 确保请求的文件或目录存在，否则返回 404</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 禁止访问上级目录，防止目录遍历攻击</span><br><span class="line">    location ~ /\.\./ &#123;</span><br><span class="line">        deny all;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    # 禁止访问 .ht* 文件</span><br><span class="line">    location ~ /\.ht &#123;</span><br><span class="line">        deny all;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%BA777%E6%97%B6%E7%9A%84%E9%AB%98%E4%BA%AE%E7%BB%BF%E5%BA%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/Linux%E5%8E%BB%E9%99%A4%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90%E4%B8%BA777%E6%97%B6%E7%9A%84%E9%AB%98%E4%BA%AE%E7%BB%BF%E5%BA%95/" class="post-title-link" itemprop="url">Linux去除文件权限为777时的高亮绿底</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-03-11 22:21:00" itemprop="dateCreated datePublished" datetime="2024-03-11T22:21:00+08:00">2024-03-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>225</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>在Linux中，文件或目录权限为777时会显示高亮的绿底，这是因为使用了特定的颜色配置来表示文件权限。可以通过修改终端的颜色配置来去除这种高亮显示。以下是具体步骤：</p>
+<h3 id="修改-bashrc或-zshrc文件："><a href="#修改-bashrc或-zshrc文件：" class="headerlink" title="修改.bashrc或.zshrc文件："></a>修改.bashrc或.zshrc文件：</h3><p>打开你的shell配置文件（例如.bashrc或.zshrc），并添加或修改以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LS_COLORS=&quot;$LS_COLORS:ow=0;34:&quot; # 将ow=0;34:添加到LS_COLORS</span><br><span class="line">export LS_COLORS</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的ow&#x3D;0;34:表示将拥有所有权限的文件的颜色设置为蓝色（你可以根据需要修改颜色代码）。</p>
+</blockquote>
+<h3 id="重新加载配置文件："><a href="#重新加载配置文件：" class="headerlink" title="重新加载配置文件："></a>重新加载配置文件：</h3><p>保存文件后，执行以下命令以重新加载配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br><span class="line"># 或者</span><br><span class="line">source ~/.zshrc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="颜色代码参考："><a href="#颜色代码参考：" class="headerlink" title="颜色代码参考："></a>颜色代码参考：</h3><ul>
+<li>0：默认颜色</li>
+<li>1：加粗</li>
+<li>4：下划线</li>
+<li>31：红色</li>
+<li>32：绿色</li>
+<li>33：黄色</li>
+<li>34：蓝色</li>
+<li>35：紫色</li>
+<li>36：青色</li>
+<li>37：白色</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

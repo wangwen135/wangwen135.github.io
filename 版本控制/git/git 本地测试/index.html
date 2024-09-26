@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="在window平台安装了git之后，想模拟从远程仓库拉取文件推送文件等，测试merge、rebase等 创建本地git仓库随便找一个目录作为 repository 在gitBash 中执行 初始化git仓库的命令，顺便也可以加一个文件 1234567git initvim aaa.txtgit add .git commit -m &quot;add a file&quot;  将仓库中克隆到本地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git 本地测试">
+<meta property="og:url" content="https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/git%20%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="在window平台安装了git之后，想模拟从远程仓库拉取文件推送文件等，测试merge、rebase等 创建本地git仓库随便找一个目录作为 repository 在gitBash 中执行 初始化git仓库的命令，顺便也可以加一个文件 1234567git initvim aaa.txtgit add .git commit -m &quot;add a file&quot;  将仓库中克隆到本地">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-03T15:21:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/git%20%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/git%20%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95/","path":"版本控制/git/git 本地测试/","title":"git 本地测试"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>git 本地测试 | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%9C%AC%E5%9C%B0git%E4%BB%93%E5%BA%93"><span class="nav-number">1.</span> <span class="nav-text">创建本地git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E4%BB%93%E5%BA%93%E4%B8%AD%E5%85%8B%E9%9A%86%E5%88%B0%E6%9C%AC%E5%9C%B0%E5%85%B6%E4%BB%96%E7%9B%AE%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">将仓库中克隆到本地其他目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E4%B9%8B%E5%90%8E%EF%BC%8Cpush%E5%88%B0%E4%BB%93%E5%BA%93%E4%B8%AD"><span class="nav-number">3.</span> <span class="nav-text">修改文件之后，push到仓库中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%93%E4%B8%8D%E8%83%BDpush%E6%97%B6%EF%BC%8C"><span class="nav-number">4.</span> <span class="nav-text">当不能push时，</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/git%20%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="git 本地测试 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git 本地测试
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-11-03 23:21:00" itemprop="dateCreated datePublished" datetime="2020-11-03T23:21:00+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" itemprop="url" rel="index"><span itemprop="name">版本控制</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>411</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>在window平台安装了git之后，想模拟从远程仓库拉取文件推送文件等，测试merge、rebase等</p>
+<h3 id="创建本地git仓库"><a href="#创建本地git仓库" class="headerlink" title="创建本地git仓库"></a>创建本地git仓库</h3><p>随便找一个目录作为 repository</p>
+<p>在gitBash 中执行 初始化git仓库的命令，顺便也可以加一个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line"></span><br><span class="line">vim aaa.txt</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m &quot;add a file&quot;</span><br></pre></td></tr></table></figure>
+
+<h3 id="将仓库中克隆到本地其他目录"><a href="#将仓库中克隆到本地其他目录" class="headerlink" title="将仓库中克隆到本地其他目录"></a>将仓库中克隆到本地其他目录</h3><p>在其他的目录中执行 git clone file:xxxx</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone file file:///d/test/repository/git1/.git/</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="修改文件之后，push到仓库中"><a href="#修改文件之后，push到仓库中" class="headerlink" title="修改文件之后，push到仓库中"></a>修改文件之后，push到仓库中</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br><span class="line"></span><br><span class="line">git checkout -b dev</span><br><span class="line"></span><br><span class="line">vim bbb.txt</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit</span><br><span class="line"></span><br><span class="line">git push</span><br><span class="line"></span><br><span class="line"># 需要指定远程的分支</span><br><span class="line">git push --set-upstream origin dev</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="当不能push时，"><a href="#当不能push时，" class="headerlink" title="当不能push时，"></a>当不能push时，</h3><p>切换到master分支，推一个文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ git push</span><br><span class="line">Enumerating objects: 4, done.</span><br><span class="line">Counting objects: 100% (4/4), done.</span><br><span class="line">Delta compression using up to 12 threads</span><br><span class="line">Compressing objects: 100% (2/2), done.</span><br><span class="line">Writing objects: 100% (3/3), 297 bytes | 297.00 KiB/s, done.</span><br><span class="line">Total 3 (delta 0), reused 0 (delta 0), pack-reused 0</span><br><span class="line">remote: error: refusing to update checked out branch: refs/heads/dev</span><br><span class="line">remote: error: By default, updating the current branch in a non-bare repository</span><br><span class="line">remote: is denied, because it will make the index and work tree inconsistent</span><br><span class="line">remote: with what you pushed, and will require &#x27;git reset --hard&#x27; to match</span><br><span class="line">remote: the work tree to HEAD.</span><br><span class="line">remote:</span><br><span class="line">remote: You can set the &#x27;receive.denyCurrentBranch&#x27; configuration variable</span><br><span class="line">remote: to &#x27;ignore&#x27; or &#x27;warn&#x27; in the remote repository to allow pushing into</span><br><span class="line">remote: its current branch; however, this is not recommended unless you</span><br><span class="line">remote: arranged to update its work tree to match what you pushed in some</span><br><span class="line">remote: other way.</span><br><span class="line">remote:</span><br><span class="line">remote: To squelch this message and still keep the default behaviour, set</span><br><span class="line">remote: &#x27;receive.denyCurrentBranch&#x27; configuration variable to &#x27;refuse&#x27;.</span><br><span class="line">To file:///d/test/repository/git1/.git/</span><br><span class="line"> ! [remote rejected] dev -&gt; dev (branch is currently checked out)</span><br><span class="line">error: failed to push some refs to &#x27;file:///d/test/repository/git1/.git/&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这是由于git默认拒绝了push操作，需要进行设置，可以在服务器（就是本机）执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config receive.denyCurrentBranch ignore</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"># git</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%8A%9E%E5%85%AC%E8%BD%AF%E4%BB%B6/Excel/excel%E4%B8%AD%E5%85%B3%E8%81%94%E5%B7%A5%E4%BD%9C%E8%A1%A8%E5%8C%B9%E9%85%8D%E5%86%85%E5%AE%B9%EF%BC%88vlookup%E5%87%BD%E6%95%B0%EF%BC%89/" rel="prev" title="excel中关联工作表匹配内容（vlookup函数）">
+                  <i class="fa fa-angle-left"></i> excel中关联工作表匹配内容（vlookup函数）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/git%20rebase%20%E6%B5%8B%E8%AF%95/" rel="next" title="git rebase 测试">
+                  git rebase 测试 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

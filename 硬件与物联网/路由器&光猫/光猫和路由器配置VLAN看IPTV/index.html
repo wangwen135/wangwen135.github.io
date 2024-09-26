@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="路由器型号 小米R2D 路由器端口wan 口 编号：4lan 口 编号：0 2 3CPU端口： 5   参考资料https:&#x2F;&#x2F;openwrt.org&#x2F;zh-cn&#x2F;doc&#x2F;uci&#x2F;networkhttps:&#x2F;&#x2F;openwrt.org&#x2F;docs&#x2F;guide-user&#x2F;network&#x2F;vlan&#x2F;switchhttps:&#x2F;&#x2F;openwrt.org&#x2F;zh&#x2F;docs&#x2F;guide-user&#x2F;network&#x2F;v">
+<meta property="og:type" content="article">
+<meta property="og:title" content="光猫和路由器配置VLAN看IPTV">
+<meta property="og:url" content="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8&%E5%85%89%E7%8C%AB/%E5%85%89%E7%8C%AB%E5%92%8C%E8%B7%AF%E7%94%B1%E5%99%A8%E9%85%8D%E7%BD%AEVLAN%E7%9C%8BIPTV/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="路由器型号 小米R2D 路由器端口wan 口 编号：4lan 口 编号：0 2 3CPU端口： 5   参考资料https:&#x2F;&#x2F;openwrt.org&#x2F;zh-cn&#x2F;doc&#x2F;uci&#x2F;networkhttps:&#x2F;&#x2F;openwrt.org&#x2F;docs&#x2F;guide-user&#x2F;network&#x2F;vlan&#x2F;switchhttps:&#x2F;&#x2F;openwrt.org&#x2F;zh&#x2F;docs&#x2F;guide-user&#x2F;network&#x2F;v">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-05-25T15:41:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="路由器&amp;光猫">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8&%E5%85%89%E7%8C%AB/%E5%85%89%E7%8C%AB%E5%92%8C%E8%B7%AF%E7%94%B1%E5%99%A8%E9%85%8D%E7%BD%AEVLAN%E7%9C%8BIPTV/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8&%E5%85%89%E7%8C%AB/%E5%85%89%E7%8C%AB%E5%92%8C%E8%B7%AF%E7%94%B1%E5%99%A8%E9%85%8D%E7%BD%AEVLAN%E7%9C%8BIPTV/","path":"硬件与物联网/路由器&光猫/光猫和路由器配置VLAN看IPTV/","title":"光猫和路由器配置VLAN看IPTV"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>光猫和路由器配置VLAN看IPTV | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E7%AB%AF%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">路由器端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">2.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">相关资料</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E6%9D%A5%E7%9A%84"><span class="nav-number">3.1.</span> <span class="nav-text">原来的</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%90%8E"><span class="nav-number">3.2.</span> <span class="nav-text">修改后</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8robocfg-%E9%85%8D%E7%BD%AEVLAN"><span class="nav-number"></span> <span class="nav-text">使用robocfg 配置VLAN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E8%AF%B4%E6%98%8E"><span class="nav-number">1.</span> <span class="nav-text">工具说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">复制文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E7%8E%B0%E6%9C%89VLAN%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">查看现有VLAN配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E9%85%8D%E7%BD%AEVLAN"><span class="nav-number">4.</span> <span class="nav-text">重新配置VLAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E7%8C%AB%E9%85%8D%E7%BD%AE"><span class="nav-number">5.</span> <span class="nav-text">光猫配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEVLAN%E7%BB%91%E5%AE%9A"><span class="nav-number">5.1.</span> <span class="nav-text">配置VLAN绑定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%89%A7%E8%A1%8C"><span class="nav-number">6.</span> <span class="nav-text">开机自动执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E8%BF%9E%E6%8E%A5%E5%85%89%E7%8C%AB"><span class="nav-number">7.</span> <span class="nav-text">路由器连接光猫</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8&%E5%85%89%E7%8C%AB/%E5%85%89%E7%8C%AB%E5%92%8C%E8%B7%AF%E7%94%B1%E5%99%A8%E9%85%8D%E7%BD%AEVLAN%E7%9C%8BIPTV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="光猫和路由器配置VLAN看IPTV | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          光猫和路由器配置VLAN看IPTV
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-25 23:41:00" itemprop="dateCreated datePublished" datetime="2020-05-25T23:41:00+08:00">2020-05-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8-%E5%85%89%E7%8C%AB/" itemprop="url" rel="index"><span itemprop="name">路由器&光猫</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><strong>路由器型号 小米R2D</strong></p>
+<h3 id="路由器端口"><a href="#路由器端口" class="headerlink" title="路由器端口"></a>路由器端口</h3><p>wan 口 编号：4<br>lan 口 编号：0 2 3<br>CPU端口： 5 </p>
+<hr>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://openwrt.org/zh-cn/doc/uci/network">https://openwrt.org/zh-cn/doc/uci/network</a><br><a target="_blank" rel="noopener" href="https://openwrt.org/docs/guide-user/network/vlan/switch">https://openwrt.org/docs/guide-user/network/vlan/switch</a><br><a target="_blank" rel="noopener" href="https://openwrt.org/zh/docs/guide-user/network/vlan/switch_configuration">https://openwrt.org/zh/docs/guide-user/network/vlan/switch_configuration</a></p>
+<h3 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h3><p>一般来说，0、1、2、3是路由器LAN口，4是路由器WAN口，5表示CPU，而5*表示这个接口是trunk</p>
+<p>使用“ *”和“ u”分别表示PVID和未标记的端口（因为它们具有隐式标记的CPU端口，因此需要使用“ u”来取消标记） ）。</p>
+<p>在端口上收到的未标记的数据包将被定向到默认端口VLAN（通常称为PVID）。需要一个单独的config switch_port部分来设置默认端口VLAN<br>虚拟局域网。</p>
+<p>小米是定制的openwrt系统，采用的是博通闭源驱动，因此vlan设置不能采用openwrt的设定方式，必须采用类似于dd-wr闭源驱动nvram set方式才能使vlan生效。具体是修改&#x2F;etc&#x2F;config&#x2F;misc，将相应的vlanXports参数修改成&#x2F;etc&#x2F;config&#x2F;network里面的port端口号，甚至需要修改&#x2F;etc&#x2F;init.d&#x2F;boot里面的nvram vlan配置参数，然后reboot，重启，新的vlan端口充当wan才能生效</p>
+<hr>
+<h4 id="原来的"><a href="#原来的" class="headerlink" title="原来的"></a>原来的</h4><table>
+<thead>
+<tr>
+<th>端口编号</th>
+<th>5</th>
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>物理接口</td>
+<td>CPU (eth0)</td>
+<td>LAN 1</td>
+<td>LAN 2</td>
+<td>LAN 3</td>
+<td>WAN</td>
+</tr>
+<tr>
+<td>VLAN ID 1 (eth0_1)</td>
+<td>已标记</td>
+<td>未标记</td>
+<td>未标记</td>
+<td>未标记</td>
+<td>禁用</td>
+</tr>
+<tr>
+<td>VLAN ID 2 (eth0_2)</td>
+<td>已标记</td>
+<td>禁用</td>
+<td>禁用</td>
+<td>禁用</td>
+<td>未标记</td>
+</tr>
+</tbody></table>
+<h4 id="修改后"><a href="#修改后" class="headerlink" title="修改后"></a>修改后</h4><table>
+<thead>
+<tr>
+<th>端口编号</th>
+<th>5</th>
+<th>0</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>物理接口</td>
+<td>CPU (eth0)</td>
+<td>LAN 1</td>
+<td>LAN 2</td>
+<td>LAN 3</td>
+<td>WAN</td>
+</tr>
+<tr>
+<td>VLAN ID 1 (eth0_1)</td>
+<td>已标记</td>
+<td>未标记</td>
+<td>未标记</td>
+<td>禁用</td>
+<td>禁用</td>
+</tr>
+<tr>
+<td>VLAN ID 2 (eth0_2)</td>
+<td>已标记</td>
+<td>禁用</td>
+<td>禁用</td>
+<td>禁用</td>
+<td>已标记（Internet）</td>
+</tr>
+<tr>
+<td>VLAN ID 3 (eth0_3)</td>
+<td>已标记</td>
+<td>禁用</td>
+<td>禁用</td>
+<td>未标记</td>
+<td>已标记 （IPTV）</td>
+</tr>
+</tbody></table>
+<p><strong>LAN3口直接连接机顶盒</strong></p>
+<blockquote>
+<p>这个没有测试，因为下面这个更简单</p>
+</blockquote>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<hr>
+<h2 id="使用robocfg-配置VLAN"><a href="#使用robocfg-配置VLAN" class="headerlink" title="使用robocfg 配置VLAN"></a>使用robocfg 配置VLAN</h2><blockquote>
+<p>上面配置比较麻烦，还是下载一个 robocfg工具，通过工具来进行配置</p>
+</blockquote>
+<p>下载地址：<br><a target="_blank" rel="noopener" href="https://www.right.com.cn/forum/forum.php?mod=viewthread&tid=334441&page=1">https://www.right.com.cn/forum/forum.php?mod=viewthread&amp;tid=334441&amp;page=1</a></p>
+<blockquote>
+<p>就是按照这个弄的</p>
+</blockquote>
+<h3 id="工具说明"><a href="#工具说明" class="headerlink" title="工具说明"></a>工具说明</h3><p>Broadcom BCM5325&#x2F;535x&#x2F;536x&#x2F;5311x switch configuration utility</p>
+<p>其实这个CPU是 CPU BCM4709C</p>
+<h3 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h3><p>先弄到路由器的硬盘上</p>
+<p>为了之后使用方便，再复制文件到&#x2F;usr&#x2F;bin目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /userdisk/data/ftp/robocfg /usr/bin/</span><br><span class="line">cp: can&#x27;t create &#x27;/usr/bin/robocfg&#x27;: Read-only file system</span><br></pre></td></tr></table></figure>
+<p>报错，提示是只读的</p>
+<p>以读写方式重新挂载根目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -o remount rw /</span><br></pre></td></tr></table></figure>
+
+<p>然后再复制就可以了</p>
+<p>加上执行权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x robocfg</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="查看现有VLAN配置"><a href="#查看现有VLAN配置" class="headerlink" title="查看现有VLAN配置"></a>查看现有VLAN配置</h3><p>robocfg show</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># ./robocfg show</span><br><span class="line">Switch: enabled </span><br><span class="line">Port 0:   DOWN enabled stp: none vlan: 1 jumbo: off mac: 00:00:00:00:00:00</span><br><span class="line">Port 1:   DOWN enabled stp: none vlan: 1 jumbo: off mac: 00:00:00:00:00:00</span><br><span class="line">Port 2: 1000FD enabled stp: none vlan: 1 jumbo: off mac: ec:00:00:d4:00:xx</span><br><span class="line">Port 3:   DOWN enabled stp: none vlan: 1 jumbo: off mac: d4:00:00:c1:00:xx</span><br><span class="line">Port 4: 1000FD enabled stp: none vlan: 2 jumbo: off mac: 00:00:01:00:00:xx</span><br><span class="line">Port 8:   DOWN enabled stp: none vlan: 1 jumbo: off mac: 00:00:00:00:00:00</span><br><span class="line">VLANs: BCM5301x enabled mac_check mac_hash</span><br><span class="line">   1: vlan1: 0 2 3 5t</span><br><span class="line">   2: vlan2: 4 5t</span><br></pre></td></tr></table></figure>
+
+<h3 id="重新配置VLAN"><a href="#重新配置VLAN" class="headerlink" title="重新配置VLAN"></a>重新配置VLAN</h3><p>多插拔两次就可以确定 物理网卡 与 port 0 1 2 3 4 的对应关系了</p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>物理端口</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Port 0</td>
+<td>LAN 口 1</td>
+</tr>
+<tr>
+<td>Port 2</td>
+<td>LAN 口 2</td>
+</tr>
+<tr>
+<td>Port 3</td>
+<td>LAN 口 3</td>
+</tr>
+<tr>
+<td>Port 4</td>
+<td>WAN 口</td>
+</tr>
+<tr>
+<td>Port 5</td>
+<td>CPU端口</td>
+</tr>
+</tbody></table>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">robocfg vlan 3 ports &quot;3 4t&quot;</span><br></pre></td></tr></table></figure>
+
+<p>配置之后</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">root@XiaoQiang:~# robocfg vlan 3 ports &quot;3 4t&quot;</span><br><span class="line">root@XiaoQiang:~# robocfg show</span><br><span class="line">Switch: enabled </span><br><span class="line">Port 0: 1000FD enabled stp: none vlan: 1 jumbo: off mac: xx:xx:xx:xx:40:75</span><br><span class="line">Port 1:   DOWN enabled stp: none vlan: 1 jumbo: off mac: 00:00:00:00:00:00</span><br><span class="line">Port 2:   DOWN enabled stp: none vlan: 1 jumbo: off mac: xx:xx:xx:xx:40:75</span><br><span class="line">Port 3:   DOWN enabled stp: none vlan: 3 jumbo: off mac: xx:xx:xx:xx:d0:4f</span><br><span class="line">Port 4: 1000FD enabled stp: none vlan: 2 jumbo: off mac: 00:xx:xx:xx:xx:58</span><br><span class="line">Port 8:   DOWN enabled stp: none vlan: 1 jumbo: off mac: 00:00:00:00:00:00</span><br><span class="line">VLANs: BCM5301x enabled mac_check mac_hash</span><br><span class="line">   1: vlan1: 0 2 3 5t</span><br><span class="line">   2: vlan2: 4 5t</span><br><span class="line">   3: vlan3: 3 4t</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="光猫配置"><a href="#光猫配置" class="headerlink" title="光猫配置"></a>光猫配置</h3><p>取消 Internet 和 IPTV 连接的端口绑定，使用VLAN绑定</p>
+<p>默认的 Internet 是没有VLAN的，IPTV默认有两个VLAN：45 和 47 </p>
+<h4 id="配置VLAN绑定"><a href="#配置VLAN绑定" class="headerlink" title="配置VLAN绑定"></a>配置VLAN绑定</h4><p>用户侧Vlan ID 为上面定义的 3，Wan口Vlan ID 就填写IPTV的Vlan ID</p>
+<blockquote>
+<p>选千兆口</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>用户侧Vlan</th>
+<th>WAN侧Vlan</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>IPTV 单播</td>
+<td>3</td>
+<td>45</td>
+</tr>
+<tr>
+<td>IPTV 组播</td>
+<td>3</td>
+<td>47</td>
+</tr>
+</tbody></table>
+<h3 id="开机自动执行"><a href="#开机自动执行" class="headerlink" title="开机自动执行"></a>开机自动执行</h3><p>将上面的命令写入 &#x2F;etc&#x2F;rc.local 文件中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">......</span><br><span class="line">robocfg vlan 3 ports &quot;3 4t&quot;</span><br><span class="line">exit 0</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="路由器连接光猫"><a href="#路由器连接光猫" class="headerlink" title="路由器连接光猫"></a>路由器连接光猫</h3><p>将路由器的3号lan口与机顶盒用网线连接即可</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>看4K 高清不卡顿，比wifi稳定，wifi卡是因为干扰太多，弱电箱的位置不好，弱电箱有金属屏蔽了信号，导致看4K高清时偶尔会卡顿，wifi的带宽其实是足够了，机顶盒的网口也是百兆的，wifi还有300兆</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8-%E5%85%89%E7%8C%AB/" rel="tag"># 路由器&光猫</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE%E5%8C%85%E6%B5%81%E8%BD%AC/" rel="prev" title="网络通信过程中的数据包流转">
+                  <i class="fa fa-angle-left"></i> 网络通信过程中的数据包流转
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/ARP%20%E4%B8%8E%20RARP%20%E5%8D%8F%E8%AE%AE/" rel="next" title="ARP 与 RARP 协议">
+                  ARP 与 RARP 协议 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

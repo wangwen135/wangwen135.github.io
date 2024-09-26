@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Multi-fields Reindex1. 先获取索引1get http:&#x2F;&#x2F;192.168.1.51:9200&#x2F;xxd&#x2F;_mapping&#x2F;p1   得到一个JSON，修改这个JSON   官方文档地址：https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;en&#x2F;elasticsearch&#x2F;reference&#x2F;current&#x2F;indices-get-mapping.html 2. 修改索引官">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Multi-fields Reindex">
+<meta property="og:url" content="https://wangwen135.github.io/Elasticsearch/Multi-fields%20Reindex/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="Multi-fields Reindex1. 先获取索引1get http:&#x2F;&#x2F;192.168.1.51:9200&#x2F;xxd&#x2F;_mapping&#x2F;p1   得到一个JSON，修改这个JSON   官方文档地址：https:&#x2F;&#x2F;www.elastic.co&#x2F;guide&#x2F;en&#x2F;elasticsearch&#x2F;reference&#x2F;current&#x2F;indices-get-mapping.html 2. 修改索引官">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-04-25T02:35:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Elasticsearch">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/Elasticsearch/Multi-fields%20Reindex/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/Elasticsearch/Multi-fields%20Reindex/","path":"Elasticsearch/Multi-fields Reindex/","title":"Multi-fields Reindex"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Multi-fields Reindex | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Multi-fields-Reindex"><span class="nav-number">1.</span> <span class="nav-text">Multi-fields Reindex</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%85%88%E8%8E%B7%E5%8F%96%E7%B4%A2%E5%BC%95"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. 先获取索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E4%BF%AE%E6%94%B9%E7%B4%A2%E5%BC%95"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. 修改索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84%E7%B1%BB%E5%9E%8B%E5%88%B0%E7%B4%A2%E5%BC%95%E4%B8%AD"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. 添加新的类型到索引中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E9%80%9A%E8%BF%87get%E9%AA%8C%E8%AF%81%E6%96%B0%E5%88%9B%E5%BB%BA%E7%9A%84%E7%B4%A2%E5%BC%95"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4. 通过get验证新创建的索引</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Reindex-API"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5. Reindex API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E6%B5%8B%E8%AF%95"><span class="nav-number">1.0.0.6.</span> <span class="nav-text">6. 测试</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Elasticsearch/Multi-fields%20Reindex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Multi-fields Reindex | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Multi-fields Reindex
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-04-25 10:35:00" itemprop="dateCreated datePublished" datetime="2017-04-25T10:35:00+08:00">2017-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>361</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Multi-fields-Reindex"><a href="#Multi-fields-Reindex" class="headerlink" title="Multi-fields Reindex"></a>Multi-fields Reindex</h1><h4 id="1-先获取索引"><a href="#1-先获取索引" class="headerlink" title="1. 先获取索引"></a>1. 先获取索引</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get http://192.168.1.51:9200/xxd/_mapping/p1  </span><br></pre></td></tr></table></figure>
+<p>得到一个JSON，修改这个JSON  </p>
+<p>官方文档地址：<br><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-get-mapping.html</a></p>
+<h4 id="2-修改索引"><a href="#2-修改索引" class="headerlink" title="2. 修改索引"></a>2. 修改索引</h4><p>官网的例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">PUT my_index</span><br><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;my_type&quot;: &#123;</span><br><span class="line">      &quot;properties&quot;: &#123;</span><br><span class="line">        &quot;city&quot;: &#123;</span><br><span class="line">          &quot;type&quot;: &quot;text&quot;,</span><br><span class="line">          &quot;fields&quot;: &#123;</span><br><span class="line">            &quot;raw&quot;: &#123; </span><br><span class="line">              &quot;type&quot;:  &quot;keyword&quot;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果直接照上面的改会报错：no handler for type [keyword] declared on field [raw]<br>keyword是ES 5中的一个新类型，ES 2.X不支持<br>这里实际上修改为：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"> &quot;currentCompany&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;string&quot;,</span><br><span class="line">    &quot;fields&quot;: &#123;</span><br><span class="line">      &quot;raw&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;string&quot;,</span><br><span class="line">        &quot;index&quot;: &quot;not_analyzed&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">&quot;headline&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;string&quot;,</span><br><span class="line">    &quot;fields&quot;: &#123;</span><br><span class="line">      &quot;raw&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;string&quot;,</span><br><span class="line">        &quot;index&quot;: &quot;not_analyzed&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">&quot;industry&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;string&quot;,</span><br><span class="line">    &quot;fields&quot;: &#123;</span><br><span class="line">      &quot;raw&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;string&quot;,</span><br><span class="line">        &quot;index&quot;: &quot;not_analyzed&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  </span><br><span class="line">  &quot;location&quot;: &#123;</span><br><span class="line">    &quot;type&quot;: &quot;string&quot;,</span><br><span class="line">    &quot;fields&quot;: &#123;</span><br><span class="line">      &quot;raw&quot;: &#123;</span><br><span class="line">        &quot;type&quot;: &quot;string&quot;,</span><br><span class="line">        &quot;index&quot;: &quot;not_analyzed&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>删掉第一级别的&#x3D;&#x3D;xxd&#x3D;&#x3D; ，保留如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;p1&quot;: &#123;</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-添加新的类型到索引中"><a href="#3-添加新的类型到索引中" class="headerlink" title="3. 添加新的类型到索引中"></a>3. 添加新的类型到索引中</h4><p>根据上面修改的JSON创建一个新的类型  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">put http://192.168.1.51:9200/xxd2</span><br><span class="line">&#123;</span><br><span class="line">  &quot;mappings&quot;: &#123;</span><br><span class="line">    &quot;p1&quot;: &#123;</span><br><span class="line">      &quot;properties&quot;: &#123;</span><br><span class="line">      ......</span><br></pre></td></tr></table></figure>
+
+<p>官方文档地址：<br><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-put-mapping.html</a></p>
+<h4 id="4-通过get验证新创建的索引"><a href="#4-通过get验证新创建的索引" class="headerlink" title="4. 通过get验证新创建的索引"></a>4. 通过get验证新创建的索引</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">get http://192.168.1.51:9200/xxd2/_mapping/p1  </span><br></pre></td></tr></table></figure>
+
+<h4 id="5-Reindex-API"><a href="#5-Reindex-API" class="headerlink" title="5. Reindex API"></a>5. Reindex API</h4><p>官网地址：<br><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#docs-reindex">https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html#docs-reindex</a><br>reindex API是新的，应该仍然被认为是实验性的。 API可能以不向后兼容的方式更改。<br>重建索引不会尝试设置目标索引。它不复制源索引的设置。您应该在运行_reindex操作之前设置目标索引，包括设置映射，分片计数，副本等。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST http://192.168.1.51:9200/_reindex</span><br><span class="line">&#123;</span><br><span class="line">  &quot;source&quot;: &#123;</span><br><span class="line">    &quot;index&quot;: &quot;xxd&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;dest&quot;: &#123;</span><br><span class="line">    &quot;index&quot;: &quot;xxd2&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-测试"><a href="#6-测试" class="headerlink" title="6. 测试"></a>6. 测试</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">POST http://192.168.1.51:9200/xxd2/p1/_search?search_type=count </span><br><span class="line">&#123;</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;colors&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;location.raw&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Elasticsearch/ES%E5%85%A8%E6%96%87%E6%A3%80%E7%B4%A2%20%E9%AB%98%E4%BA%AE/" rel="prev" title="ES全文检索 高亮">
+                  <i class="fa fa-angle-left"></i> ES全文检索 高亮
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Elasticsearch/%E4%B8%8EElasticsearch%E4%BA%A4%E4%BA%92/" rel="next" title="与Elasticsearch交互">
+                  与Elasticsearch交互 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

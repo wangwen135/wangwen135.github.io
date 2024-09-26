@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="简单记录一下，大概明白什么是IPV6  IPV6出现原因2019 年 11 月 25 日已分配完公网 IPv4 地址，以后就没有多余地址可以分配了。短期内可以使用 NAT 技术进行缓解。长期来看，还是要用 128 位的 IPv6 地址替代 32 位的 IPv4 地址，IPv6 有 3.4×10^38 个可用地址，多得不得了，可以满足未来 IP 地址的需求。 IPV4表示32 位的 IPv4 地址">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IPv6">
+<meta property="og:url" content="https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/IPv6/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="简单记录一下，大概明白什么是IPV6  IPV6出现原因2019 年 11 月 25 日已分配完公网 IPv4 地址，以后就没有多余地址可以分配了。短期内可以使用 NAT 技术进行缓解。长期来看，还是要用 128 位的 IPv6 地址替代 32 位的 IPv4 地址，IPv6 有 3.4×10^38 个可用地址，多得不得了，可以满足未来 IP 地址的需求。 IPV4表示32 位的 IPv4 地址">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-08-16T16:00:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="IP">
+<meta property="article:tag" content="IPv6">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/IPv6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/IPv6/","path":"网络与安全/网络/IPv6/","title":"IPv6"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>IPv6 | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#IPV6%E5%87%BA%E7%8E%B0%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.</span> <span class="nav-text">IPV6出现原因</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPV4%E8%A1%A8%E7%A4%BA"><span class="nav-number">2.</span> <span class="nav-text">IPV4表示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv6-%E5%9C%B0%E5%9D%80%E8%A1%A8%E7%A4%BA"><span class="nav-number">3.</span> <span class="nav-text">IPv6 地址表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E5%8C%96%E8%A1%A8%E8%BE%BE"><span class="nav-number">3.1.</span> <span class="nav-text">简化表达</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E6%AE%B5%E8%A1%A8%E7%A4%BA"><span class="nav-number">3.2.</span> <span class="nav-text">网段表示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPv6-%E5%9C%B0%E5%9D%80%E7%B1%BB%E5%9E%8B"><span class="nav-number">4.</span> <span class="nav-text">IPv6 地址类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%A8%E7%90%83%E5%8D%95%E6%92%AD%E5%9C%B0%E5%9D%80"><span class="nav-number">4.1.</span> <span class="nav-text">全球单播地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%94%AF%E4%B8%80%E6%9C%AC%E5%9C%B0%E5%9C%B0%E5%9D%80"><span class="nav-number">4.2.</span> <span class="nav-text">唯一本地地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E8%B7%AF%E6%9C%AC%E5%9C%B0%E5%9C%B0%E5%9D%80"><span class="nav-number">4.3.</span> <span class="nav-text">链路本地地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%AA%E6%8C%87%E5%AE%9A%E5%9C%B0%E5%9D%80"><span class="nav-number">4.4.</span> <span class="nav-text">未指定地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%9E%E7%8E%AF%E5%9C%B0%E5%9D%80"><span class="nav-number">4.5.</span> <span class="nav-text">回环地址</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%BF%E9%97%AEIPV6%E5%9C%B0%E5%9D%80"><span class="nav-number">5.</span> <span class="nav-text">访问IPV6地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPV6%E5%9C%B0%E5%9D%80%E5%88%86%E9%85%8D"><span class="nav-number">6.</span> <span class="nav-text">IPV6地址分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#IPv6-%E4%B8%8B%E7%9A%84%E7%A7%81%E6%9C%89%E7%BD%91%E7%BB%9C%E4%B8%8E-ULA"><span class="nav-number">6.1.</span> <span class="nav-text">IPv6 下的私有网络与 ULA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E9%80%9A%E5%91%8A%E6%9C%8D%E5%8A%A1"><span class="nav-number">6.2.</span> <span class="nav-text">路由通告服务</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NDP"><span class="nav-number">7.</span> <span class="nav-text">NDP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IPV6-%E8%B7%AF%E7%94%B1"><span class="nav-number">8.</span> <span class="nav-text">IPV6 路由</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ICMPV6%E4%BB%A3%E6%9B%BFIPV4%E4%B8%AD%E7%9A%84ARP%E8%BF%9B%E8%A1%8CIPv6%E7%9A%84MAC%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90"><span class="nav-number">8.1.</span> <span class="nav-text">ICMPV6代替IPV4中的ARP进行IPv6的MAC地址解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPV4%E9%80%9A%E8%BF%87ARP%E5%B9%BF%E6%92%AD%E6%9D%A5%E8%8E%B7%E5%8F%96%E7%9B%AE%E6%A0%87%E7%9A%84mac%E5%9C%B0%E5%9D%80"><span class="nav-number">8.2.</span> <span class="nav-text">IPV4通过ARP广播来获取目标的mac地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IPV6%E9%80%9A%E8%BF%87ICMPv6%E5%AE%9E%E7%8E%B0"><span class="nav-number">8.3.</span> <span class="nav-text">IPV6通过ICMPv6实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6to4"><span class="nav-number">9.</span> <span class="nav-text">6to4</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E6%98%AF%E5%90%A6%E6%94%AF%E6%8C%81IPV6"><span class="nav-number">10.</span> <span class="nav-text">验证是否支持IPV6</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BF%E9%97%AEIPV6%E5%9C%B0%E5%9D%80-1"><span class="nav-number">10.1.</span> <span class="nav-text">访问IPV6地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ping-%E6%B5%8B%E8%AF%95"><span class="nav-number">10.2.</span> <span class="nav-text">ping 测试</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95"><span class="nav-number">10.2.1.</span> <span class="nav-text">在线测试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#curl-%E6%B5%8B%E8%AF%95"><span class="nav-number">10.3.</span> <span class="nav-text">curl 测试</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95%E5%9C%B0%E5%9D%80"><span class="nav-number">10.3.1.</span> <span class="nav-text">在线测试地址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E9%80%9F%E5%BA%A6"><span class="nav-number">10.4.</span> <span class="nav-text">测试速度</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/IPv6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="IPv6 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          IPv6
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-17 00:00:00" itemprop="dateCreated datePublished" datetime="2022-08-17T00:00:00+08:00">2022-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络与安全</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>简单记录一下，大概明白什么是IPV6</p>
+</blockquote>
+<h3 id="IPV6出现原因"><a href="#IPV6出现原因" class="headerlink" title="IPV6出现原因"></a>IPV6出现原因</h3><p>2019 年 11 月 25 日已分配完公网 IPv4 地址，以后就没有多余地址可以分配了。短期内可以使用 NAT 技术进行缓解。长期来看，还是要用 128 位的 IPv6 地址替代 32 位的 IPv4 地址，IPv6 有 3.4×10^38 个可用地址，多得不得了，可以满足未来 IP 地址的需求。</p>
+<h3 id="IPV4表示"><a href="#IPV4表示" class="headerlink" title="IPV4表示"></a>IPV4表示</h3><p>32 位的 IPv4 地址，分隔成 4 个 8 位段，每 8 位段的值在 0 ~ 255 之间，每个 8 位段之间用 “ . ” 分开，这就是 “ 点分十进制表示法 ” 。举个栗子：</p>
+<blockquote>
+<p>192.168.0.1</p>
+</blockquote>
+<h3 id="IPv6-地址表示"><a href="#IPv6-地址表示" class="headerlink" title="IPv6 地址表示"></a>IPv6 地址表示</h3><p>从 IPv4 到 IPv6 最显著的变化就是网络地址的长度，IPv6 地址为 128 位长度，<br>是 IPv4 地址的 4 倍，如果用点分十进制表示法，那么会有 16 个八位组，地址过于冗长。<br>为了使用方便， 使用十六进制表示法，分隔成 8 个 16 位段，每 16 位段的值在 0000 ~ FFFF 的十六进制数之间，每个 16 位段之间用 “ : ” 分开。<br>共 32 个十六进制数，通常写做<strong>8</strong>组每组<strong>4</strong>个十六进制的形式。</p>
+<p>例如：</p>
+<blockquote>
+<p>2001:1111:0100:000a:0000:00bc:2500:0a0b<br>2001:0db8:85a3:08d3:1319:8a2e:0370:7344</p>
+</blockquote>
+<h4 id="简化表达"><a href="#简化表达" class="headerlink" title="简化表达"></a>简化表达</h4><p>但是 IPv6 地址还是太长，不方便记忆，看着都头晕，也不方便书写，毫无规律可言。于是就有了两条简化规则。第一条规则是：</p>
+<p><strong>1. 每组十六进制数中开头的 0 可以省略</strong><br>上面的 IPv6 地址可以写成：2001:1111:100:a:0:bc:2500:a0b</p>
+<blockquote>
+<p>开头的 0 才能省略，末尾的 0 是不能省略的</p>
+</blockquote>
+<p><strong>2. 由全 0 组成的连续的 16 位段可以用一对冒号 “ :: ” 表示</strong></p>
+<p>如果四个数字都是零，则可以被省略<br> 2001:0db8:85a3:0000:1319:8a2e:0370:7344<br>等同于<br> 2001:0db8:85a3::1319:8a2e:0370:7344  </p>
+<p>如果因为省略而出现了两个以上的冒号的话，可以压缩为一个，但这种零压缩在地址中只能出现一次。</p>
+<ul>
+<li>2001:0DB8:0000:0000:0000:0000:1428:57ab</li>
+<li>2001:0DB8:0000:0000:0000::1428:57ab</li>
+<li>2001:0DB8:0:0:0:0:1428:57ab</li>
+<li>2001:0DB8:0::0:1428:57ab</li>
+<li>2001:0DB8::1428:57ab</li>
+</ul>
+<h4 id="网段表示"><a href="#网段表示" class="headerlink" title="网段表示"></a>网段表示</h4><p>IPv4 的网段地址可以用子网掩码表示，还可以用斜线法表示。IPv6 只能用斜线法表示网段地址，即在 IPv6 地址后面加上一个斜线 “ &#x2F; ” ，后面加上一个十进制的数字，来表示前面多少位是网络位。网络位是 64 位的 IPv6 地址表示如下：</p>
+<p>3001:2222:333:aa:bc::707:9900&#x2F;64<br>对应的网段地址是：<br>3001:2222:333:aa::&#x2F;64  </p>
+<blockquote>
+<p>全是 0 的 IPv6 地址可以写成一对冒号。当网络位是 0 位时，表示默认地址。<br>::&#x2F;0</p>
+</blockquote>
+<h3 id="IPv6-地址类型"><a href="#IPv6-地址类型" class="headerlink" title="IPv6 地址类型"></a>IPv6 地址类型</h3><blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://posts.careerengine.us/p/6191e1c1f1e7b34fdab033c3">https://posts.careerengine.us/p/6191e1c1f1e7b34fdab033c3</a></p>
+</blockquote>
+<p>IPv6 地址根据使用范围和功能，分为三种类型：</p>
+<ul>
+<li>单播（ Unicast ）</li>
+<li>任意播（ Anycast ）</li>
+<li>组播（ Multicast ）</li>
+</ul>
+<p>对比 IPv4 ，<strong>IPv6 地址中没有广播地址</strong>，但是有一个包含全部节点的组播地址，跟 IPv4 中的广播地址功能相同。<br>其中单播地址又细分为<strong>全球单播地址</strong>、<strong>唯一本地地址</strong>和<strong>链路本地地址</strong>等。</p>
+<h4 id="全球单播地址"><a href="#全球单播地址" class="headerlink" title="全球单播地址"></a>全球单播地址</h4><p>单播地址表示单台设备的地址。<strong>全球单播地址</strong>是指这个单播地址是全球唯一的。也就是说，全球单播地址是可以在公网使用、全网可路由的 IPv6 地址，类似于 IPv4 的公网 IP 地址。全球单播 IPv6 地址是由 Internet 地址授权委员会（ IANA ）分配给地区 Internet 注册机构（ RIR ），再由 RIR 分配给 Internet 服务提供商（ ISP ）。<br>IANA 分配 128 位的 IPv6 地址时，同 IPv4 一样，也是分配一个网段，即网络&#x2F;子网位，不会分配 128 位的地址。IPv6 单播地址的通用格式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">【3位】【45位 全球路由前缀】【16位 子网ID】【64位 接口ID】</span><br></pre></td></tr></table></figure>
+
+<p>全球单播 IPv6 地址的前 3 位固定为 001 ；第 4 ~ 48  位的这 45 位由地址分配机构分配；48 位之后的 16 位是网络划分子网位，称为子网 ID ；剩余的 64 位 IPv6 地址就是主机位，但是叫做接口 ID（ Interface ID ）。因为一台主机可以有几个接口，用 IPv6 地址表示主机的一个接口更准确，而不是表示一台主机。同时，一个接口可以有多个 IPv6 地址，还可以有一个 IPv4 地址，接口 ID 只是这个接口的几个标识符之一。</p>
+<p>IANA 和 RIR 把长度 &#x2F;32 或 &#x2F;35 的 IPv6 前缀分配给本地 Internet 注册机构（ LIR ）。LIR 通常是大型的 ISP ，LIR 分配前缀长度 &#x2F;48 的 IPv6 地址给各个客户。也有一些例外，会分配不同长度的前缀：</p>
+<ul>
+<li>如果一个客户非常庞大，那么可以分配一个长度小于 &#x2F;48 的前缀。</li>
+<li>如果有且仅有一个子网需要地址，那么可以分配一个长度是 &#x2F;64 的前缀。</li>
+<li>如果有且仅有一台设备需要地址，那么可以分配一个长度是 &#x2F;128 的前缀。</li>
+</ul>
+<h4 id="唯一本地地址"><a href="#唯一本地地址" class="headerlink" title="唯一本地地址"></a>唯一本地地址</h4><p>虽然 IPv6 地址非常充足，但是 IANA 还是分配了一段可以在私有网络使用的私有 IP 地址空间。这种可以自行使用而不用申请的单播 IPv6 地址叫做唯一本地地址。唯一本地地址只能在私有网络使用，不能在全球路由，不同的私网可以复用这类地址。它的作用和范围跟 IPv4 的私有 IP 地址相同。</p>
+<p>唯一本地地址的第 8 位比较特殊。第 8 位为 0 时，未定义，也就是说，FC00::&#x2F;8 这个 IPv6 地址前缀属于保留的地址空间。目前私有网络使用的 IPv6 地址是以 11111101 开头的，即前缀为 FD00::&#x2F;8 的 IPv6 地址。</p>
+<h4 id="链路本地地址"><a href="#链路本地地址" class="headerlink" title="链路本地地址"></a>链路本地地址</h4><p>IPv6 的链路本地地址（ Link-Local Address ），是 IPv4 地址中没有的类型，是 IPv6 新定义的地址类型。</p>
+<p>链路本地地址是只在链路内有效的地址。启动 IPv6 时，网络接口会自动配置这样的一个 IPv6 地址，就可以直接和同一链路上的其它设备通信。因为链路本地地址只在链路本地有效，所以这些数据包不会被发送到其它链路上。<br>链路本地地址的前 10 位固定是 1111111010 ，之后的 54 位固定为 0 ，最后 64 位是接口 ID 。也就是说，链路本地地址的前缀为 FE80::&#x2F;10 。</p>
+<p>如果链路本地地址的前 64 位都是相同的，那么接口如何使用 64 位的接口 ID 进行标识，才能确保链路本地地址在链路中不会出现 IP 地址冲突呢？答案是接口使用自己的物理 MAC 地址来填充接口 ID 字段。理论上接口的 MAC 地址是唯一的，因此通过 MAC 地址生成的接口 ID 和链路本地地址也是唯一的。</p>
+<p>把 MAC 地址转换成接口 ID ，使用 MAC-to-EUI64 转换法。简单的讲，就是使用接口的 48 位 MAC 地址，在 MAC 地址中间，也就是 OUI 后面，插入一个固定的十六进制数 0xFFFE ，并把第 7 位的 U&#x2F;L （全局&#x2F;本地）位设置为 1 ，这样就转换为一个 64 位的接口 ID 。</p>
+<h4 id="未指定地址"><a href="#未指定地址" class="headerlink" title="未指定地址"></a>未指定地址</h4><p>未指定地址是 128 位全为 0 的前缀地址，简写成 ::&#x2F;128 ，相当于 IPv4 中的 0.0.0.0&#x2F;32 。这个地址不能分配给接口使用，只有当 IPv6 设备还没获取到地址时，才将未指定地址作为数据包的源 IPv6 地址。</p>
+<h4 id="回环地址"><a href="#回环地址" class="headerlink" title="回环地址"></a>回环地址</h4><p>回环地址是前 127 位全为 0 ，最后一位是 1 的 128 位前缀地址，简写成 ::1&#x2F;128 ，相当于 IPv4 中的回环地址 127.0.0.1&#x2F;8 。回环地址表示节点自己，不能分配给接口使用。只要设备的协议栈状态正常，设备就可以收到发送给回环地址的数据包。</p>
+<h3 id="访问IPV6地址"><a href="#访问IPV6地址" class="headerlink" title="访问IPV6地址"></a>访问IPV6地址</h3><p>使用URL方式访问IPv6地址时候，要在IPv6地址前后分别加“[”和“]”，这个不仅仅适用于Java，它本身是RFC2732定义的国际标准格式。</p>
+<p>比如下面是个包含IPv6的http URL的例子http:&#x2F;&#x2F;[FEDC:BA98:7654:3210:FEDC:BA98:7654:3210]:80&#x2F;index.html</p>
+<h3 id="IPV6地址分配"><a href="#IPV6地址分配" class="headerlink" title="IPV6地址分配"></a>IPV6地址分配</h3><h4 id="IPv6-下的私有网络与-ULA"><a href="#IPv6-下的私有网络与-ULA" class="headerlink" title="IPv6 下的私有网络与 ULA"></a>IPv6 下的私有网络与 ULA</h4><p>IPv6 时代，ISP 依然会为普通用户提供“动态” IPv6 地址：每次接入网络时，ISP 会重新分配一个 IPv6 地址前缀，这就使得用户侧所有终端的地址发生变化。如果你的终端设备之间有内部互联，这可能会造成服务中断。我们不希望自己运行的网络受制于 ISP ！</p>
+<p>解决方法自然是：<strong>给你的局域网分配一个 IPv6 的内网地址段吧。</strong> 当然我不是让你重新使用 NAT。当然 IPv6 依然支持 NAT，如果你愿意，可以为你的终端分配内网 IPv6 地址，然后在网关处部署 NAT66，你就又重新再次回到了 NAT 时代。不过通常而言，NAT66 是没有必要的，而且使用 NAT 技术还会造成非常明显的性能损失。</p>
+<p>在 IPv6 网络下，可以为每一个网络接口分配多个 IPv6 地址。你可以为你局域网的设备同时分配公网和内网地址，使你的设备同时接入内外两张网。</p>
+<p>IPv6 提供一段称为 Unique Local Address （ ULA ）的地址段fc00::&#x2F;7，包含fc00::&#x2F;8和fd00::&#x2F;8两部分：目前fc00::&#x2F;8的使用还没有定义，我们不去管它；fd00::&#x2F;8可以被自由使用。fd00::&#x2F;8是一个十分巨大的地址段，你可以从中挑选一个&#x2F;48的子段分配给你的局域网。RFC 4193建议使用随机生成的方法，使每个局域网的地址段都不同（这也是 ULA 名字的由来），从而避免局域网合并时地址冲突的麻烦。当然这主要是针对企业而讲的，家庭使用的话随机生成还是挑个好记的自己斟酌。如果要随机生成，Google 一下ULA generator有真相。</p>
+<p>有了 ULA，你的设备在内部互访时可以直接使用固定的 ULA，和外部互访时则使用公网地址。只要保证你的路由表正确就可以：默认路由使用公网地址作为出口，ULA 地址段使用 ULA 作为出口。如果出现问题，检查一下你的 Router Advertisement 和 DHCPv6 服务的设置吧。</p>
+<h4 id="路由通告服务"><a href="#路由通告服务" class="headerlink" title="路由通告服务"></a>路由通告服务</h4><p>在Openwrt中看到的</p>
+<hr>
+<h3 id="NDP"><a href="#NDP" class="headerlink" title="NDP"></a>NDP</h3><p>IPv6 的邻居发现协议（ NDP ）相当于 IPv4 的 ARP 、ICMP 的路由器发现和 ICMP 的重定向，还可以发现网络中使用的 IPv6 地址前缀等参数，并实现地址自动配置等。IPv6 协议通过 NDP 功能实现即插即用特性：</p>
+<ul>
+<li><strong>路由器发现（Router Discovery）</strong>：当一个节点接入到 IPv6 链路时，它可以发现链路上的路由器，而不需要借助使用 DHCP 。</li>
+<li><strong>前缀发现（Prefix Discovery）</strong>：当一个节点接入到 IPv6 链路时，它能够发现链路的前缀。</li>
+<li><strong>参数发现（Parameter Discovery）</strong>：节点能够发现所在链路的参数，像链路的 MTU 和跳数限制等。</li>
+<li><strong>地址自动配置（Address Autoconfiguration）</strong>：节点能够自动配置，不需要使用 DHCP 。</li>
+<li><strong>地址解析（Address Resolution）</strong>：节点不需要通过 ARP 就能够获取链路上其它节点的 MAC 地址。</li>
+<li><strong>下一跳确定（Next-Hop Determination）</strong>： 能够确定到达目的节点的下一跳链路层节点，或者所在链路的目的节点，或是到达目的节点的路由器。</li>
+<li><strong>邻居不可达检测（ Neighbor Unreachability Detection）</strong>： 节点上能够检测到链路上的邻居何时不可达，邻居有可能是主机，也可能是路由器。</li>
+<li><strong>地址冲突检测（Duplicate Address Detection）</strong>： 节点能够检测到要使用的地址是否已经被其它节点占用。</li>
+<li><strong>重定向（Redirect）</strong>：对于非连接的目的节点，路由器能够通知主机存在更好的下一跳路由。</li>
+</ul>
+<h3 id="IPV6-路由"><a href="#IPV6-路由" class="headerlink" title="IPV6 路由"></a>IPV6 路由</h3><blockquote>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_7658423/1339259">https://blog.51cto.com/u_7658423/1339259</a></p>
+</blockquote>
+<h4 id="ICMPV6代替IPV4中的ARP进行IPv6的MAC地址解析"><a href="#ICMPV6代替IPV4中的ARP进行IPv6的MAC地址解析" class="headerlink" title="ICMPV6代替IPV4中的ARP进行IPv6的MAC地址解析"></a>ICMPV6代替IPV4中的ARP进行IPv6的MAC地址解析</h4><p>无论是IPv4还是IPv6的以太网环境，当一台主机需要访问另一台主机时，不只是单纯地依靠IP地址，还必须得依靠MAC地址。比如：主机192.168.1.2通过命令ping去访问主机 192.168.1.1或者一个运行IPv6的主机FEC0::21E:68FF:FEA0:4879通过命令ping另一台IPv6的主机FEC0::0000:4CFF:FE4F:4F50，在这个ping会话的过程中，最关键的是通过MAC地址去实现数据的交互，换而言之，源主机必须获得目标主机的IP地址与MAC地址。无论这些主机是运行IPv4还是IPv6。所以需要一种方式，在知道目标计算机IP地址的情况下去解析目标的MAC地址。并把这个IP地址与MAC对应的关系存储在一张缓存表里面，以便在通信的过程中快速对目标MAC地址进行查找。</p>
+<h4 id="IPV4通过ARP广播来获取目标的mac地址"><a href="#IPV4通过ARP广播来获取目标的mac地址" class="headerlink" title="IPV4通过ARP广播来获取目标的mac地址"></a>IPV4通过ARP广播来获取目标的mac地址</h4><p>在传统的IPv4网络中，主机通过ARP协议解析目标IP地址与目标MAC地址的对应关系。而ARP协议主要通过广播的方式来实现</p>
+<h4 id="IPV6通过ICMPv6实现"><a href="#IPV6通过ICMPv6实现" class="headerlink" title="IPV6通过ICMPv6实现"></a>IPV6通过ICMPv6实现</h4><p>在IPv6网络中，对目标MAC地址的发现不再是通过ARP协议来完成。因为IPv6放弃了广播的使用，在IPv6的网络环境中已经不存在广播这个概念了，而ARP地址解析协议是基于广播进行工作的，所以对于IPv6的网络环境而言，ARP协议被永远的放弃。取而代之的是ICMPv6的邻居请求消息（ICMPv6消息类型135）、邻居公告消息（ICMPv6消息类型136）来完成对MAC地址的解析。在这个过程中需要使用一个请求节点组播地址（FF02::1FFxx:xxxx）</p>
+<h3 id="6to4"><a href="#6to4" class="headerlink" title="6to4"></a>6to4</h3><p>在 IPv6 地址的环境中使用 IPv4 地址，需要用到转换技术，把 IPv4 地址转换成 IPv6 地址。比如 6to4 技术就是将 IPv4 地址转换成 16 进制数，再嵌入到 IPv6 地址的最后 32 位。</p>
+<hr>
+<h3 id="验证是否支持IPV6"><a href="#验证是否支持IPV6" class="headerlink" title="验证是否支持IPV6"></a>验证是否支持IPV6</h3><p><a target="_blank" rel="noopener" href="http://test-ipv6.com/">http://test-ipv6.com/</a></p>
+<p><a target="_blank" rel="noopener" href="https://ipv6-test.com/">https://ipv6-test.com/</a></p>
+<p><a target="_blank" rel="noopener" href="http://ipv6.baidu.com/">http://ipv6.baidu.com</a></p>
+<h4 id="访问IPV6地址-1"><a href="#访问IPV6地址-1" class="headerlink" title="访问IPV6地址"></a>访问IPV6地址</h4><p>直接用IPv6的地址打开，在地址栏输入：<br>[2400:da00:2::29]</p>
+<h4 id="ping-测试"><a href="#ping-测试" class="headerlink" title="ping 测试"></a>ping 测试</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -6 240e:386:924:f4e1::c47</span><br></pre></td></tr></table></figure>
+
+<h5 id="在线测试"><a href="#在线测试" class="headerlink" title="在线测试"></a>在线测试</h5><p><a target="_blank" rel="noopener" href="http://www.ipv6now.com.au/pingme.php">http://www.ipv6now.com.au/pingme.php</a></p>
+<h4 id="curl-测试"><a href="#curl-测试" class="headerlink" title="curl 测试"></a>curl 测试</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -g [240e:386:924:f4e1:fe67:3f72:5318:a114]</span><br><span class="line"></span><br><span class="line">curl -g -v [240e:386:924:f4e1:fe67:3f72:5318:a114]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用 -g 参数  </li>
+<li>使用方括号[] 将ipv6地址括起来</li>
+<li>使用 -v 参数 查看具体请求与返回信息</li>
+</ul>
+<blockquote>
+<p>直接访问目标机器的对应接口，不需要在路由器上做端口映射什么的<br>注意查看防火墙策略，开发80和443端口</p>
+</blockquote>
+<h5 id="在线测试地址"><a href="#在线测试地址" class="headerlink" title="在线测试地址"></a>在线测试地址</h5><p><a target="_blank" rel="noopener" href="https://8gwifi.org/curlfunctions.jsp">https://8gwifi.org/curlfunctions.jsp</a></p>
+<h4 id="测试速度"><a href="#测试速度" class="headerlink" title="测试速度"></a>测试速度</h4><p><a target="_blank" rel="noopener" href="http://speed.neu6.edu.cn/">http://speed.neu6.edu.cn/</a> </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IP/" rel="tag"># IP</a>
+              <a href="/tags/IPv6/" rel="tag"># IPv6</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Zookeeper/Curator-%E5%9F%BA%E6%9C%ACAPI-%E6%93%8D%E4%BD%9C/" rel="prev" title="Curator-基本API-操作">
+                  <i class="fa fa-angle-left"></i> Curator-基本API-操作
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Zookeeper/Curator-%E4%BE%8B%E5%AD%90/" rel="next" title="Curator-例子">
+                  Curator-例子 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

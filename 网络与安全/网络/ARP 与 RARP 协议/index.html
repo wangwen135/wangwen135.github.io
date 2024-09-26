@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="ARP协议地址解析协议，即ARP（Address Resolution Protocol），是根据IP地址获取物理地址的一个TCP&#x2F;IP协议。主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。 RARP协议反向地址转">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ARP 与 RARP 协议">
+<meta property="og:url" content="https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/ARP%20%E4%B8%8E%20RARP%20%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="ARP协议地址解析协议，即ARP（Address Resolution Protocol），是根据IP地址获取物理地址的一个TCP&#x2F;IP协议。主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。 RARP协议反向地址转">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-02T16:00:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="网络">
+<meta property="article:tag" content="RAP">
+<meta property="article:tag" content="Wireshark">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/ARP%20%E4%B8%8E%20RARP%20%E5%8D%8F%E8%AE%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/ARP%20%E4%B8%8E%20RARP%20%E5%8D%8F%E8%AE%AE/","path":"网络与安全/网络/ARP 与 RARP 协议/","title":"ARP 与 RARP 协议"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ARP 与 RARP 协议 | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP%E5%8D%8F%E8%AE%AE"><span class="nav-number">1.</span> <span class="nav-text">ARP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RARP%E5%8D%8F%E8%AE%AE"><span class="nav-number">2.</span> <span class="nav-text">RARP协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%BF%99%E4%B8%AA"><span class="nav-number">3.</span> <span class="nav-text">为什么需要这个</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP-%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="nav-number">4.</span> <span class="nav-text">ARP 数据包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP-%E5%91%BD%E4%BB%A4%E8%AF%B4%E6%98%8E"><span class="nav-number">5.</span> <span class="nav-text">ARP 命令说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#windows"><span class="nav-number">5.0.1.</span> <span class="nav-text">windows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#linux"><span class="nav-number">5.0.2.</span> <span class="nav-text">linux</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">6.</span> <span class="nav-text">测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ping%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%B1%80%E5%9F%9F%E7%BD%91%E6%9C%BA%E5%99%A8"><span class="nav-number">6.1.</span> <span class="nav-text">ping不存在的局域网机器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#wireshark-%E6%8A%93%E5%8C%85"><span class="nav-number">6.1.1.</span> <span class="nav-text">wireshark 抓包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">6.1.2.</span> <span class="nav-text">结论</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0%E9%9D%99%E6%80%81arp%E6%98%A0%E5%B0%84%E5%90%8E%E5%86%8Dping"><span class="nav-number">6.2.</span> <span class="nav-text">添加静态arp映射后再ping</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#wireshark-%E6%8A%93%E5%8C%85-1"><span class="nav-number">6.2.1.</span> <span class="nav-text">wireshark 抓包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA%EF%BC%9A"><span class="nav-number">6.2.2.</span> <span class="nav-text">结论：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E7%BD%91%E5%85%B3Mac%EF%BC%8C%E8%AE%A9%E6%9C%AC%E6%9C%BA%E6%97%A0%E6%B3%95%E4%B8%8A%E7%BD%91"><span class="nav-number">6.3.</span> <span class="nav-text">修改网关Mac，让本机无法上网</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%89%BE%E7%BD%91%E5%85%B3%E5%9C%B0%E5%9D%80"><span class="nav-number">6.3.1.</span> <span class="nav-text">找网关地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%A5%E7%BD%91%E5%85%B3%E7%9C%9F%E5%AE%9E%E7%9A%84Mac%E5%9C%B0%E5%9D%80"><span class="nav-number">6.3.2.</span> <span class="nav-text">查网关真实的Mac地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%9C%AC%E5%9C%B0arp%E7%BC%93%E5%AD%98%E4%B8%AD%E7%9A%84%E7%BD%91%E5%85%B3Mac%E5%9C%B0%E5%9D%80"><span class="nav-number">6.3.3.</span> <span class="nav-text">修改本地arp缓存中的网关Mac地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%BC%E8%87%B4%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%E6%9C%AC%E6%9C%BA%E4%B8%8D%E8%83%BD%E5%86%8D%E4%B8%8A%E7%BD%91%E4%BA%86%EF%BC%8C%E4%BD%86%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE%E6%AD%A3%E5%B8%B8"><span class="nav-number">6.3.4.</span> <span class="nav-text">导致的结果是本机不能再上网了，但局域网访问正常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%98%E5%8E%9F%E7%BD%91%E5%85%B3%E5%AF%B9%E5%BA%94%E7%9A%84mac%E5%9C%B0%E5%9D%80"><span class="nav-number">6.3.5.</span> <span class="nav-text">还原网关对应的mac地址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%EF%BC%9A"><span class="nav-number">6.3.5.1.</span> <span class="nav-text">查看：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%EF%BC%9A"><span class="nav-number">6.3.5.2.</span> <span class="nav-text">删除：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP%E6%AC%BA%E9%AA%97"><span class="nav-number">7.</span> <span class="nav-text">ARP欺骗</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%AC%BA%E9%AA%97%E8%B7%AF%E7%94%B1%E5%99%A8"><span class="nav-number">7.1.</span> <span class="nav-text">一、欺骗路由器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%AC%BA%E9%AA%97%E5%B1%80%E5%9F%9F%E7%BD%91%E5%86%85%E7%9A%84%E6%9C%BA%E5%99%A8"><span class="nav-number">7.2.</span> <span class="nav-text">二、欺骗局域网内的机器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARP%E6%AC%BA%E9%AA%97%E6%B5%8B%E8%AF%95"><span class="nav-number">8.</span> <span class="nav-text">ARP欺骗测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%8F%91%E5%8C%85%E5%B7%A5%E5%85%B7"><span class="nav-number">8.1.</span> <span class="nav-text">使用发包工具</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">9.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%B1%80%E5%9F%9F%E7%BD%91%E6%9F%90IP%E5%AF%B9%E5%BA%94%E7%9A%84Mac"><span class="nav-number">9.1.</span> <span class="nav-text">获取局域网某IP对应的Mac</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E5%B1%80%E5%9F%9F%E7%BD%91%E4%B8%AA%E4%B8%AD%E6%9F%90%E4%B8%AAIP%E6%98%AF%E5%90%A6%E8%A2%AB%E5%8D%A0%E7%94%A8"><span class="nav-number">9.2.</span> <span class="nav-text">测试局域网个中某个IP是否被占用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wireshark"><span class="nav-number">9.3.</span> <span class="nav-text">wireshark</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/ARP%20%E4%B8%8E%20RARP%20%E5%8D%8F%E8%AE%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ARP 与 RARP 协议 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ARP 与 RARP 协议
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-06-03 00:00:00" itemprop="dateCreated datePublished" datetime="2020-06-03T00:00:00+08:00">2020-06-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">网络与安全</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index"><span itemprop="name">网络</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h2><p>地址解析协议，即ARP（Address Resolution Protocol），是根据IP地址获取物理地址的一个TCP&#x2F;IP协议。<br>主机发送信息时将包含目标IP地址的ARP请求广播到局域网络上的所有主机，并接收返回消息，以此确定目标的物理地址；收到返回消息后将该IP地址和物理地址存入本机ARP缓存中并保留一定时间，下次请求时直接查询ARP缓存以节约资源。</p>
+<h2 id="RARP协议"><a href="#RARP协议" class="headerlink" title="RARP协议"></a>RARP协议</h2><p>反向地址转换协议（RARP）是局域网的物理机器从网关服务器的ARP表或者缓存上根据MAC地址请求IP地址的协议，其功能与地址解析协议相反。与ARP相比，RARP的工作流程也相反。首先是查询主机向网路送出一个RARP Request广播封包，向别的主机查询自己的IP地址。这时候网络上的RARP服务器就会将发送端的IP地址用RARP Reply封包回应给查询者，这样查询主机就获得自己的IP地址了。</p>
+<h2 id="为什么需要这个"><a href="#为什么需要这个" class="headerlink" title="为什么需要这个"></a>为什么需要这个</h2><p>数据包在物理链路上传输 以太网帧 需要目的地的物理地址（MAC）<br>通过ARP协议来获取同一个网络内的机器的IP地址和Mac的对应关系，为上层协议提供支持，因为上层协议使用IP地址进行通信。</p>
+<ul>
+<li>局域网内的IP地址（通过子网掩码计算）之间的通信，就可以理解为设备（MAC）对设备（MAC）之间的通信</li>
+<li>跨局域网的通信就是设备(MAC)对 网关（MAC）之间的通信</li>
+</ul>
+<h2 id="ARP-数据包"><a href="#ARP-数据包" class="headerlink" title="ARP 数据包"></a>ARP 数据包</h2><p><strong>Wireshark 抓包</strong> </p>
+<p>ARP 广播请求 （由192.168.1.88 发起的广播请求，询问谁的IP是192.168.1.1）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4595	296.111634	Giga-Byt_18:04:4a	Broadcast	ARP	42	Who has 192.168.1.1? Tell 192.168.1.88</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>内容如下：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Frame 4595: 42 bytes on wire (336 bits), 42 bytes captured (336 bits) on interface 0</span><br><span class="line">Ethernet II, Src: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a), Dst: Broadcast (ff:ff:ff:ff:ff:ff)</span><br><span class="line">    Destination: Broadcast (ff:ff:ff:ff:ff:ff)</span><br><span class="line">    Source: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a)</span><br><span class="line">    Type: ARP (0x0806)</span><br><span class="line">Address Resolution Protocol (request)</span><br><span class="line">    Hardware type: Ethernet (1)</span><br><span class="line">    Protocol type: IPv4 (0x0800)</span><br><span class="line">    Hardware size: 6</span><br><span class="line">    Protocol size: 4</span><br><span class="line">    Opcode: request (1)</span><br><span class="line">    Sender MAC address: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a)</span><br><span class="line">    Sender IP address: 192.168.1.88</span><br><span class="line">    Target MAC address: 00:00:00_00:00:00 (00:00:00:00:00:00)</span><br><span class="line">    Target IP address: 192.168.1.1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ARP 应答 （192.168.1.1 直接应答 192.168.1.88，告知其Mac地址）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4596	296.111872	NewH3CTe_95:65:a9	Giga-Byt_18:04:4a	ARP	60	192.168.1.1 is at 04:40:a9:95:65:a9</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>内容如下：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Frame 4596: 60 bytes on wire (480 bits), 60 bytes captured (480 bits) on interface 0</span><br><span class="line">Ethernet II, Src: NewH3CTe_95:65:a9 (04:40:a9:95:65:a9), Dst: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a)</span><br><span class="line">    Destination: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a)</span><br><span class="line">    Source: NewH3CTe_95:65:a9 (04:40:a9:95:65:a9)</span><br><span class="line">    Type: ARP (0x0806)</span><br><span class="line">    Padding: 000000000000000000000000000000000000</span><br><span class="line">Address Resolution Protocol (reply)</span><br><span class="line">    Hardware type: Ethernet (1)</span><br><span class="line">    Protocol type: IPv4 (0x0800)</span><br><span class="line">    Hardware size: 6</span><br><span class="line">    Protocol size: 4</span><br><span class="line">    Opcode: reply (2)</span><br><span class="line">    Sender MAC address: NewH3CTe_95:65:a9 (04:40:a9:95:65:a9)</span><br><span class="line">    Sender IP address: 192.168.1.1</span><br><span class="line">    Target MAC address: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a)</span><br><span class="line">    Target IP address: 192.168.1.88</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>其他收到该广播的机器判断【192.168.1.1】不是自己的IP，直接丢弃</p>
+<h2 id="ARP-命令说明"><a href="#ARP-命令说明" class="headerlink" title="ARP 命令说明"></a>ARP 命令说明</h2><h4 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">显示和修改地址解析协议(ARP)使用的“IP 到物理”地址转换表。</span><br><span class="line"></span><br><span class="line">ARP -s inet_addr eth_addr [if_addr]</span><br><span class="line">ARP -d inet_addr [if_addr]</span><br><span class="line">ARP -a [inet_addr] [-N if_addr] [-v]</span><br><span class="line"></span><br><span class="line">  -a            通过询问当前协议数据，显示当前 ARP 项。</span><br><span class="line">                如果指定 inet_addr，则只显示指定计算机</span><br><span class="line">                的 IP 地址和物理地址。如果不止一个网络</span><br><span class="line">                接口使用 ARP，则显示每个 ARP 表的项。</span><br><span class="line">  -g            与 -a 相同。</span><br><span class="line">  -v            在详细模式下显示当前 ARP 项。所有无效项</span><br><span class="line">                和环回接口上的项都将显示。</span><br><span class="line">  inet_addr     指定 Internet 地址。</span><br><span class="line">  -N if_addr    显示 if_addr 指定的网络接口的 ARP 项。</span><br><span class="line">  -d            删除 inet_addr 指定的主机。inet_addr 可</span><br><span class="line">                以是通配符 *，以删除所有主机。</span><br><span class="line">  -s            添加主机并且将 Internet 地址 inet_addr</span><br><span class="line">                与物理地址 eth_addr 相关联。物理地址是用</span><br><span class="line">                连字符分隔的 6 个十六进制字节。该项是永久的。</span><br><span class="line">  eth_addr      指定物理地址。</span><br><span class="line">  if_addr       如果存在，此项指定地址转换表应修改的接口</span><br><span class="line">                的 Internet 地址。如果不存在，则使用第一</span><br><span class="line">                个适用的接口。</span><br><span class="line">示例:</span><br><span class="line">  &gt; arp -s 157.55.85.212   00-aa-00-62-c6-09.... 添加静态项。</span><br><span class="line">  &gt; arp -a                                  .... 显示 ARP 表。</span><br></pre></td></tr></table></figure>
+
+<h4 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># man arp</span><br><span class="line">ARP(8)                     Linux Programmer’s Manual                    ARP(8)</span><br><span class="line">NAME</span><br><span class="line">       arp - manipulate the system ARP cache</span><br><span class="line">SYNOPSIS</span><br><span class="line">       arp [-evn] [-H type] [-i if] -a [hostname]</span><br><span class="line">       arp [-v] [-i if] -d hostname [pub]</span><br><span class="line">       arp [-v] [-H type] [-i if] -s hostname hw_addr [temp]</span><br><span class="line">       arp [-v] [-H type] [-i if] -s hostname hw_addr [netmask nm] pub</span><br><span class="line">       arp [-v] [-H type] [-i if] -Ds hostname ifa [netmask nm] pub</span><br><span class="line">       arp [-vnD] [-H type] [-i if] -f [filename]</span><br><span class="line">NOTE</span><br><span class="line">       This program is obsolete. For replacement check ip neighbor.</span><br><span class="line">DESCRIPTION</span><br><span class="line">       Arp  manipulates the kernel’s ARP cache in various ways.  The primary options are clearing an address mapping entry and manually setting up one.  For debugging purposes, the arp pro-</span><br><span class="line">       gram also allows a complete dump of the ARP cache.</span><br><span class="line">......</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="ping不存在的局域网机器"><a href="#ping不存在的局域网机器" class="headerlink" title="ping不存在的局域网机器"></a>ping不存在的局域网机器</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># cmd</span><br><span class="line">C:\Users\Administrator&gt;ping 192.168.1.111</span><br><span class="line"></span><br><span class="line">正在 Ping 192.168.1.111 具有 32 字节的数据:</span><br><span class="line">来自 192.168.1.88 的回复: 无法访问目标主机。</span><br><span class="line">来自 192.168.1.88 的回复: 无法访问目标主机。</span><br><span class="line">来自 192.168.1.88 的回复: 无法访问目标主机。</span><br><span class="line">来自 192.168.1.88 的回复: 无法访问目标主机。</span><br><span class="line"></span><br><span class="line">192.168.1.111 的 Ping 统计信息:</span><br><span class="line">    数据包: 已发送 = 4，已接收 = 4，丢失 = 0 (0% 丢失)，</span><br></pre></td></tr></table></figure>
+<h4 id="wireshark-抓包"><a href="#wireshark-抓包" class="headerlink" title="wireshark 抓包"></a>wireshark 抓包</h4><blockquote>
+<p>过滤条件：arp.dst.proto_ipv4&#x3D;&#x3D;192.168.1.111 or icmp</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2910	206.611909	Giga-Byt_18:04:4a	Broadcast	ARP	42	Who has 192.168.1.111? Tell 192.168.1.88</span><br><span class="line">2917	207.570302	Giga-Byt_18:04:4a	Broadcast	ARP	42	Who has 192.168.1.111? Tell 192.168.1.88</span><br><span class="line">2924	208.570334	Giga-Byt_18:04:4a	Broadcast	ARP	42	Who has 192.168.1.111? Tell 192.168.1.88</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>只有arp请求</p>
+<h4 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h4><p>可以看到只会发送ARP请求，且ARP请求没有获得响应，此时无法获取ping的目的地，故不会发送ping（ICMP）请求<br>且错误显示为：<strong>“无法访问目标主机”</strong></p>
+<h3 id="添加静态arp映射后再ping"><a href="#添加静态arp映射后再ping" class="headerlink" title="添加静态arp映射后再ping"></a>添加静态arp映射后再ping</h3><p>先添加IP对MAC的映射关系</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -s 192.168.1.111 00-2b-3c-f0-ff-ff</span><br></pre></td></tr></table></figure>
+<p>用 arp -a 查看结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;arp -a</span><br><span class="line"></span><br><span class="line">接口: 192.168.1.88 --- 0xb</span><br><span class="line">  Internet 地址         物理地址              类型</span><br><span class="line">  192.168.1.1           04-40-a9-95-65-a9     动态</span><br><span class="line">  192.168.1.111          00-2b-3c-f0-ff-ff     静态</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>ping 测试 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;ping 192.168.1.111</span><br><span class="line"></span><br><span class="line">正在 Ping 192.168.1.111 具有 32 字节的数据:</span><br><span class="line">请求超时。</span><br><span class="line">请求超时。</span><br><span class="line">请求超时。</span><br><span class="line">请求超时。</span><br><span class="line"></span><br><span class="line">192.168.1.111 的 Ping 统计信息:</span><br><span class="line">    数据包: 已发送 = 4，已接收 = 0，丢失 = 4 (100% 丢失)，</span><br></pre></td></tr></table></figure>
+
+<h4 id="wireshark-抓包-1"><a href="#wireshark-抓包-1" class="headerlink" title="wireshark 抓包"></a>wireshark 抓包</h4><blockquote>
+<p>过滤条件：arp.dst.proto_ipv4&#x3D;&#x3D;192.168.1.111 or icmp</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">275	19.179418	192.168.1.88	192.168.1.111	ICMP	74	Echo (ping) request  id=0x0001, seq=26/6656, ttl=64 (no response found!)</span><br><span class="line">315	23.681918	192.168.1.88	192.168.1.111	ICMP	74	Echo (ping) request  id=0x0001, seq=27/6912, ttl=64 (no response found!)</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>只有ping</p>
+<p><strong>数据报详情：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Frame 315: 74 bytes on wire (592 bits), 74 bytes captured (592 bits) on interface 0</span><br><span class="line">Ethernet II, Src: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a), Dst: 00:2b:3c:f0:ff:ff (00:2b:3c:f0:ff:ff)</span><br><span class="line">    Destination: 00:2b:3c:f0:ff:ff (00:2b:3c:f0:ff:ff)</span><br><span class="line">    Source: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a)</span><br><span class="line">    Type: IPv4 (0x0800)</span><br><span class="line">Internet Protocol Version 4, Src: 192.168.1.88, Dst: 192.168.1.111</span><br><span class="line">Internet Control Message Protocol</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h4><p>当本地的Arp缓存中有IP地址和Mac地址的对应关系时，会直接往目标地址发送数据报，从以太网帧中可以看到目的地Mac就是我们设置的Mac。<br>此时不会再发送ARP请求，直接发送了Ping请求，且错误显示为：<strong>“请求超时”</strong></p>
+<h3 id="修改网关Mac，让本机无法上网"><a href="#修改网关Mac，让本机无法上网" class="headerlink" title="修改网关Mac，让本机无法上网"></a>修改网关Mac，让本机无法上网</h3><h4 id="找网关地址"><a href="#找网关地址" class="headerlink" title="找网关地址"></a>找网关地址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;ipconfig</span><br><span class="line"></span><br><span class="line">以太网适配器 本地连接:</span><br><span class="line"></span><br><span class="line">   连接特定的 DNS 后缀 . . . . . . . :</span><br><span class="line">   IPv4 地址 . . . . . . . . . . . . : 192.168.1.88</span><br><span class="line">   子网掩码  . . . . . . . . . . . . : 255.255.255.0</span><br><span class="line">   默认网关. . . . . . . . . . . . . : 192.168.1.1</span><br></pre></td></tr></table></figure>
+
+<h4 id="查网关真实的Mac地址"><a href="#查网关真实的Mac地址" class="headerlink" title="查网关真实的Mac地址"></a>查网关真实的Mac地址</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;arp -a | findstr 192.168.1.1</span><br><span class="line">  192.168.1.1           04-40-a9-95-66-a9     动态</span><br><span class="line">  192.168.1.111         00-2b-3c-f0-ff-ff     静态</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改本地arp缓存中的网关Mac地址"><a href="#修改本地arp缓存中的网关Mac地址" class="headerlink" title="修改本地arp缓存中的网关Mac地址"></a>修改本地arp缓存中的网关Mac地址</h4><p>这里修改 192.168.1.1 的Mac地址<br><strong>arp 命令修改失败：拒绝访问</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">arp -d 192.168.1.1</span><br><span class="line">arp -s 192.168.1.1 00-2b-3c-f0-ff-f1 192.168.1.88</span><br><span class="line">ARP 项添加失败: 拒绝访问。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>改用netsh命令修改 </p>
+<ol>
+<li>先找本地网卡的 Idx，这里是：11<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">netsh i i show in</span><br><span class="line"></span><br><span class="line">Idx     Met         MTU          状态                名称</span><br><span class="line">---  ----------  ----------  ------------  ---------------------------</span><br><span class="line">  1          50  4294967295  connected     Loopback Pseudo-Interface 1</span><br><span class="line"> 11          10        1500  connected     本地连接</span><br><span class="line"> 16          30        1500  connected     Npcap Loopback Adapter</span><br></pre></td></tr></table></figure></li>
+<li>使用如下命令修改本地Mac地址缓存<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">netsh -c &quot;i i&quot; add neighbors 11 &quot;网关IP&quot; &quot;Mac地址&quot;  -- 这里11是idx号。</span><br><span class="line"></span><br><span class="line">netsh -c &quot;i i&quot; add neighbors 11 &quot;192.168.1.1&quot; &quot;00-2b-3c-f0-ff-f1&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>验证修改结果<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">arp -a</span><br><span class="line"></span><br><span class="line">C:\Users\Administrator&gt;arp -a</span><br><span class="line"></span><br><span class="line">接口: 192.168.1.88 --- 0xb</span><br><span class="line">  Internet 地址         物理地址              类型</span><br><span class="line">  192.168.1.1           00-2b-3c-f0-ff-f1     静态</span><br><span class="line">  192.168.1.171         d4-5d-df-01-32-f0     动态</span><br><span class="line">......</span><br><span class="line">......</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="导致的结果是本机不能再上网了，但局域网访问正常"><a href="#导致的结果是本机不能再上网了，但局域网访问正常" class="headerlink" title="导致的结果是本机不能再上网了，但局域网访问正常"></a>导致的结果是本机不能再上网了，但局域网访问正常</h4><p>比如在浏览器中访问百度</p>
+<p>使用wireshar 抓包</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 这里先进行DNS解析</span><br><span class="line"></span><br><span class="line">6	0.783394	192.168.1.88	114.114.114.114	DNS	73	Standard query 0x341b A www.baidu.com</span><br><span class="line"></span><br><span class="line"># 可以看到直接将数据包发送到了我们上面配置的假Mac地址： 00-2b-3c-f0-ff-f1 </span><br><span class="line"></span><br><span class="line">Frame 6: 73 bytes on wire (584 bits), 73 bytes captured (584 bits) on interface 0</span><br><span class="line">Ethernet II, Src: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a), Dst: 00:2b:3c:f0:ff:f1 (00:2b:3c:f0:ff:f1)</span><br><span class="line">    Destination: 00:2b:3c:f0:ff:f1 (00:2b:3c:f0:ff:f1)</span><br><span class="line">    Source: Giga-Byt_18:04:4a (e0:d5:5e:18:04:4a)</span><br><span class="line">    Type: IPv4 (0x0800)</span><br><span class="line">Internet Protocol Version 4, Src: 192.168.1.88, Dst: 114.114.114.114</span><br><span class="line">User Datagram Protocol, Src Port: 64752, Dst Port: 53</span><br><span class="line">Domain Name System (query)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="还原网关对应的mac地址"><a href="#还原网关对应的mac地址" class="headerlink" title="还原网关对应的mac地址"></a>还原网关对应的mac地址</h4><p>使用netsh 命令设置之后，再用 <code>arp -d 192.168.1.1</code>命令删除，在重启之前是可以上网的，下次重启网关的mac地址还将是错误的</p>
+<h5 id="查看："><a href="#查看：" class="headerlink" title="查看："></a>查看：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">netsh -c &quot;i i&quot; show neighbors 11</span><br><span class="line"></span><br><span class="line">C:\Users\Administrator&gt;netsh -c &quot;i i&quot; show neighbors 11</span><br><span class="line"></span><br><span class="line">接口 11: 本地连接</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Internet 地址                                 物理地址           类型</span><br><span class="line">--------------------------------------------  -----------------  -----------</span><br><span class="line">192.168.1.1                                   00-2b-3c-f0-ff-f1  永久</span><br><span class="line">192.168.1.11                                  00-0c-29-47-fd-8d  停滞</span><br><span class="line">192.168.1.63                                  00-00-00-00-00-00  无法访问</span><br><span class="line">192.168.1.92                                  00-00-00-00-00-00  无法访问</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h5 id="删除："><a href="#删除：" class="headerlink" title="删除："></a>删除：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netsh -c &quot;i i&quot; delete neighbors 11</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>需要使用上面的命令删除，完了之后就会变成 “可以访问”</p>
+<hr>
+<h2 id="ARP欺骗"><a href="#ARP欺骗" class="headerlink" title="ARP欺骗"></a>ARP欺骗</h2><p>ARP欺骗可以分成两种情况：</p>
+<h3 id="一、欺骗路由器"><a href="#一、欺骗路由器" class="headerlink" title="一、欺骗路由器"></a>一、欺骗路由器</h3><p>发送一系列错误的内网MAC地址给路由器，并按照一定的频率不断进行，使真实的地址信息无法通过更新保存在路由器中，结果路由器的所有数据只能发送给错误的MAC地址，造成正常PC无法收到信息。</p>
+<h3 id="二、欺骗局域网内的机器"><a href="#二、欺骗局域网内的机器" class="headerlink" title="二、欺骗局域网内的机器"></a>二、欺骗局域网内的机器</h3><p>不停发送错误的网关Mac到局域网的机器中，让局域网内的机器建立错误的绑定关系，让局域网内的机器不能正确的将数据包发送到网关设备，导致PC不能上网。</p>
+<h2 id="ARP欺骗测试"><a href="#ARP欺骗测试" class="headerlink" title="ARP欺骗测试"></a>ARP欺骗测试</h2><h3 id="使用发包工具"><a href="#使用发包工具" class="headerlink" title="使用发包工具"></a>使用发包工具</h3><p>……<br>有时间再试试<br>……</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="获取局域网某IP对应的Mac"><a href="#获取局域网某IP对应的Mac" class="headerlink" title="获取局域网某IP对应的Mac"></a>获取局域网某IP对应的Mac</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; arping 192.168.1.88</span><br><span class="line">ARPING 192.168.1.88 from 192.168.1.216 eth0</span><br><span class="line">Unicast reply from 192.168.1.88 [E0:D5:5E:18:04:4A]  1.767ms</span><br><span class="line">Unicast reply from 192.168.1.88 [E0:D5:5E:18:04:4A]  1.312ms</span><br><span class="line">Unicast reply from 192.168.1.88 [E0:D5:5E:18:04:4A]  1.635ms</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试局域网个中某个IP是否被占用"><a href="#测试局域网个中某个IP是否被占用" class="headerlink" title="测试局域网个中某个IP是否被占用"></a>测试局域网个中某个IP是否被占用</h3><p>返回值为1表示已被使用，0表示没有被使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@RD-WEBSERVER-03 ~]# arping -D 192.168.1.163 -w 5  </span><br><span class="line">ARPING 192.168.1.163 from 0.0.0.0 eth0</span><br><span class="line">Sent 6 probes (6 broadcast(s))</span><br><span class="line">Received 0 response(s)</span><br><span class="line"></span><br><span class="line">[root@RD-WEBSERVER-03 ~]# arping -D 192.168.1.88 -w 5   </span><br><span class="line">ARPING 192.168.1.88 from 0.0.0.0 eth0</span><br><span class="line">Unicast reply from 192.168.1.88 [E0:D5:5E:18:04:4A]  1.848ms</span><br><span class="line">Sent 1 probes (1 broadcast(s))</span><br><span class="line">Received 1 response(s)</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="wireshark"><a href="#wireshark" class="headerlink" title="wireshark"></a>wireshark</h3><p>过滤目的地址<br>arp.dst.proto_ipv4&#x3D;&#x3D;192.168.1.214</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag"># 网络</a>
+              <a href="/tags/RAP/" rel="tag"># RAP</a>
+              <a href="/tags/Wireshark/" rel="tag"># Wireshark</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E8%B7%AF%E7%94%B1%E5%99%A8&%E5%85%89%E7%8C%AB/%E5%85%89%E7%8C%AB%E5%92%8C%E8%B7%AF%E7%94%B1%E5%99%A8%E9%85%8D%E7%BD%AEVLAN%E7%9C%8BIPTV/" rel="prev" title="光猫和路由器配置VLAN看IPTV">
+                  <i class="fa fa-angle-left"></i> 光猫和路由器配置VLAN看IPTV
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/MySQL/Mysql-%E5%8D%87%E7%BA%A7/" rel="next" title="Mysql-升级">
+                  Mysql-升级 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="问题以及解决步骤记录由于启动的问题导致了集群状态为 yellow 出现分片UNASSIGNED (应该是所谓的出现了脑裂) 关闭主节点后，重新选择了之前的主节点之后，数据没这么乱，稍微好点 部分分片一直处于INITIALIZING，并且分片不均衡，节点1上之前有分片1 、 3 、4，现在变成了分片 2 12345678910111213141516curl -s &quot;http:&#x2F;&#x2F;node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES集群 分片UNASSIGNED">
+<meta property="og:url" content="https://wangwen135.github.io/Elasticsearch/ES%E9%9B%86%E7%BE%A4%20%E5%88%86%E7%89%87UNASSIGNED/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="问题以及解决步骤记录由于启动的问题导致了集群状态为 yellow 出现分片UNASSIGNED (应该是所谓的出现了脑裂) 关闭主节点后，重新选择了之前的主节点之后，数据没这么乱，稍微好点 部分分片一直处于INITIALIZING，并且分片不均衡，节点1上之前有分片1 、 3 、4，现在变成了分片 2 12345678910111213141516curl -s &quot;http:&#x2F;&#x2F;node">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-30T08:06:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Elasticsearch">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/Elasticsearch/ES%E9%9B%86%E7%BE%A4%20%E5%88%86%E7%89%87UNASSIGNED/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/Elasticsearch/ES%E9%9B%86%E7%BE%A4%20%E5%88%86%E7%89%87UNASSIGNED/","path":"Elasticsearch/ES集群 分片UNASSIGNED/","title":"ES集群 分片UNASSIGNED"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ES集群 分片UNASSIGNED | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%AD%A5%E9%AA%A4%E8%AE%B0%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">问题以及解决步骤记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%952"><span class="nav-number">2.</span> <span class="nav-text">处理方法2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">其他资料</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Elasticsearch/ES%E9%9B%86%E7%BE%A4%20%E5%88%86%E7%89%87UNASSIGNED/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ES集群 分片UNASSIGNED | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ES集群 分片UNASSIGNED
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-03-30 16:06:00" itemprop="dateCreated datePublished" datetime="2018-03-30T16:06:00+08:00">2018-03-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="问题以及解决步骤记录"><a href="#问题以及解决步骤记录" class="headerlink" title="问题以及解决步骤记录"></a>问题以及解决步骤记录</h2><p>由于启动的问题导致了集群状态为 yellow</p>
+<p>出现分片UNASSIGNED</p>
+<p>(应该是所谓的出现了脑裂)</p>
+<p>关闭主节点后，重新选择了之前的主节点之后，数据没这么乱，稍微好点</p>
+<p>部分分片一直处于INITIALIZING，并且分片不均衡，节点1上之前有分片1 、 3 、4，现在变成了分片 2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">curl -s &quot;http://node3:9205/_cat/shards&quot; </span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">downloads          1 p STARTED      641603  24.2gb 192.168.1.92 node-2 </span><br><span class="line">downloads          1 r INITIALIZING                192.168.1.93 node-3 </span><br><span class="line">downloads          2 r INITIALIZING                192.168.1.92 node-2 </span><br><span class="line">downloads          2 p STARTED      641049  26.5gb 192.168.1.93 node-3 </span><br><span class="line">downloads          3 r INITIALIZING                192.168.1.91 node-1 </span><br><span class="line">downloads          3 p STARTED      639813  26.3gb 192.168.1.93 node-3 </span><br><span class="line">downloads          4 r INITIALIZING                192.168.1.91 node-1 </span><br><span class="line">downloads          4 p STARTED      642036  26.1gb 192.168.1.93 node-3 </span><br><span class="line">downloads          0 r INITIALIZING                192.168.1.92 node-2 </span><br><span class="line">downloads          0 p STARTED      640368  25.6gb 192.168.1.93 node-3 </span><br><span class="line">...</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>使用下面的命令关闭分片复制</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -XPUT &#x27;node3:9205/downloads/_settings&#x27; -d &#x27;&#123;</span><br><span class="line">    &quot;index&quot;: &#123;</span><br><span class="line">       &quot;number_of_replicas&quot;: &quot;0&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;acknowledged&quot;:true&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此时节点状态变成绿色，之前节点上的备份分片被删除，查看数据文件<br>(目录：&#x2F;data&#x2F;dap&#x2F;es&#x2F;data&#x2F;dap_es&#x2F;nodes&#x2F;0&#x2F;indices&#x2F;downloads)<br>之前：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 downloads]# du -h --max-dept=1</span><br><span class="line">27G     ./1</span><br><span class="line">27G     ./3</span><br><span class="line">27G     ./4</span><br><span class="line">8.0K    ./_state</span><br><span class="line">16K     ./2</span><br><span class="line">80G     .</span><br></pre></td></tr></table></figure>
+<p>之后：<br>可以看到删除了之前的分片数据，并重新迁移分片数据，数据文件慢慢变大</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@node1 downloads]# du -h --max-dept=1</span><br><span class="line">8.0K    ./_state</span><br><span class="line">13G     ./0</span><br><span class="line">13G     .</span><br></pre></td></tr></table></figure>
+
+<p>此时状态为：RELOCATING </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">curl -s &quot;http://node3:9205/_cat/shards&quot; </span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">downloads          1 p STARTED    641603  24.2gb 192.168.1.92 node-2                                               </span><br><span class="line">downloads          2 p RELOCATING 641049  26.5gb 192.168.1.93 node-3 -&gt; 192.168.1.92 MNskHyFsQfC0PixAx-3hBQ node-2 </span><br><span class="line">downloads          3 p STARTED    639813  26.3gb 192.168.1.93 node-3                                               </span><br><span class="line">downloads          4 p STARTED    642036  26.1gb 192.168.1.93 node-3                                               </span><br><span class="line">downloads          0 p RELOCATING 640368  25.6gb 192.168.1.93 node-3 -&gt; 192.168.1.91 pkjX2YIbTnm3A49re8COPg node-1 </span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ES将逐个分片进行迁移</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">downloads          1 p STARTED    641603  24.2gb 192.168.1.92 node-2                                               </span><br><span class="line">downloads          2 p RELOCATING 641049  26.5gb 192.168.1.93 node-3 -&gt; 192.168.1.92 MNskHyFsQfC0PixAx-3hBQ node-2 </span><br><span class="line">downloads          3 p STARTED    639813  26.3gb 192.168.1.93 node-3                                               </span><br><span class="line">downloads          4 p STARTED    642036  26.1gb 192.168.1.93 node-3                                               </span><br><span class="line">downloads          0 p STARTED    640368  25.6gb 192.168.1.91 node-1</span><br></pre></td></tr></table></figure>
+<p>可以看到节点1已经迁移完成</p>
+<p>等待迁移完成</p>
+<p>此时在ES的head插件上可以看到全部变成绿色了，之前迁移的分片的紫色的</p>
+<p>再将复制分片数改为1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -XPUT &#x27;node3:9205/downloads/_settings&#x27; -d &#x27;&#123;</span><br><span class="line">    &quot;index&quot;: &#123;</span><br><span class="line">       &quot;number_of_replicas&quot;: &quot;1&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>返回</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;acknowledged&quot;:true&#125;</span><br></pre></td></tr></table></figure>
+<p>查看状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">curl -s &quot;http://node3:9205/_cat/shards&quot;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">downloads          1 p STARTED      641603  24.2gb 192.168.1.92 node-2 </span><br><span class="line">downloads          1 r INITIALIZING                192.168.1.91 node-1 </span><br><span class="line">downloads          2 p STARTED      641049  26.5gb 192.168.1.92 node-2 </span><br><span class="line">downloads          2 r INITIALIZING                192.168.1.93 node-3 </span><br><span class="line">downloads          3 r INITIALIZING                192.168.1.92 node-2 </span><br><span class="line">downloads          3 p STARTED      639813  26.3gb 192.168.1.93 node-3 </span><br><span class="line">downloads          4 r INITIALIZING                192.168.1.91 node-1 </span><br><span class="line">downloads          4 p STARTED      642036  26.1gb 192.168.1.93 node-3 </span><br><span class="line">downloads          0 p STARTED      640368  25.6gb 192.168.1.91 node-1 </span><br><span class="line">downloads          0 r INITIALIZING                192.168.1.93 node-3 </span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>系统将再次变成yellow状态</p>
+<p>再查看数据文件，可以看到备份的数据文件再增长</p>
+<p>完了之后就变成绿色状态了</p>
+<hr>
+<hr>
+<h2 id="处理方法2"><a href="#处理方法2" class="headerlink" title="处理方法2"></a>处理方法2</h2><p>另外一种处理方式，当出现UNASSIGNED，强行指定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s &quot;http://node3:9205/_cat/shards&quot; | grep UNASSIGNED</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &#x27;node3:9205/_cluster/reroute&#x27; -d &#x27;&#123;</span><br><span class="line">    &quot;commands&quot; : [ &#123;</span><br><span class="line">          &quot;allocate&quot; : &#123;</span><br><span class="line">              &quot;index&quot; : &quot;downloads&quot;,</span><br><span class="line">              &quot;shard&quot; : 4,</span><br><span class="line">              &quot;node&quot; : &quot;node-1&quot;,</span><br><span class="line">              &quot;allow_primary&quot; : true</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>5.0 之后的ES 改成了 <strong>allocate_replica</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;commands&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;allocate_replica&quot;: &#123;</span><br><span class="line">        &quot;index&quot;: &quot;mail_store&quot;,</span><br><span class="line">        &quot;shard&quot;: 1,</span><br><span class="line">        &quot;node&quot;: &quot;slave2&quot;,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>将未分配的副本分片分配给节点</p>
+</blockquote>
+<p><strong>注意如果主分片也未分配，则需要先分配主分片</strong></p>
+<p>将主分片分配给包含陈旧副本的节点</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;commands&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;allocate_stale_primary&quot;: &#123;</span><br><span class="line">        &quot;index&quot;: &quot;mail_store&quot;,</span><br><span class="line">        &quot;shard&quot;: 1,</span><br><span class="line">        &quot;node&quot;: &quot;slave2&quot;,</span><br><span class="line">        &quot;accept_data_loss&quot;: true</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>使用此命令可能会导致所提供的分片ID发生数据丢失。如果稍后具有良好数据副本的节点重新加入群集，则该数据将被使用此命令强制分配的旧副本数据覆盖。为确保这些影响得到充分理解，该命令需要accept_data_loss明确设置专用字段才能true使其工作。</p>
+</blockquote>
+<p>还有一个命令是：<strong>allocate_empty_primary</strong></p>
+<blockquote>
+<p>将空主分片分配给节点。<br>使用此命令会导致索引到此分片中的所有数据（如果它先前已启动）完全丢失。如果稍后具有数据副本的节点重新加入群集，则该数据将被删除！为确保这些影响得到充分理解，该命令需要accept_data_loss明确设置专用字段才能true使其工作。</p>
+</blockquote>
+<hr>
+<hr>
+<h2 id="其他资料"><a href="#其他资料" class="headerlink" title="其他资料"></a>其他资料</h2><p>动态设置es索引副本数量  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -XPUT &#x27;http://node3:9200/xxindex/_settings&#x27; -d &#x27;&#123;  </span><br><span class="line">   &quot;number_of_replicas&quot; : 2  </span><br><span class="line">&#125;&#x27; </span><br></pre></td></tr></table></figure>
+<p>设置es不自动分配分片  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -XPUT &#x27;http://node3:9200/xxindex/_settings&#x27; -d &#x27;&#123;  </span><br><span class="line">   &quot;cluster.routing.allocation.disable_allocation&quot; : true  </span><br><span class="line">&#125;&#x27; </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要先关闭索引</p>
+</blockquote>
+<p>手动移动分片  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &quot;http://node3:9200/_cluster/reroute&#x27; -d  &#x27;&#123;  </span><br><span class="line">   &quot;commands&quot; : [&#123;  </span><br><span class="line">        &quot;move&quot; : &#123;  </span><br><span class="line">            &quot;index&quot; : &quot;xlog&quot;,  </span><br><span class="line">            &quot;shard&quot; : 0,  </span><br><span class="line">            &quot;from_node&quot; : &quot;es-0&quot;,  </span><br><span class="line">            &quot;to_node&quot; : &quot;es-3&quot;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;]  </span><br><span class="line">&#125;&#x27; </span><br></pre></td></tr></table></figure>
+<p>手动分配分片</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &quot;http://node3:9200/_cluster/reroute&#x27; -d  &#x27;&#123;  </span><br><span class="line">   &quot;commands&quot; : [&#123;  </span><br><span class="line">        &quot;allocate&quot; : &#123;  </span><br><span class="line">            &quot;index&quot; : &quot;.kibana&quot;,  </span><br><span class="line">            &quot;shard&quot; : 0,  </span><br><span class="line">            &quot;node&quot; : &quot;es-2&quot;,  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;]  </span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>取消分配</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">curl -XPOST &quot;http://ESnode:9200/_cluster/reroute&quot; -d &#x27;&#123;</span><br><span class="line">  &quot;commands&quot; : [ &#123;</span><br><span class="line">      &quot;cancel&quot; : &#123;</span><br><span class="line">          &quot;index&quot; : &quot;ops&quot;,</span><br><span class="line">          &quot;shard&quot; : 0,</span><br><span class="line">          &quot;node&quot; : &quot;es_node_one&quot;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125; ]</span><br><span class="line">  &#125;&#x27;</span><br></pre></td></tr></table></figure>
+<p>主分片和启动状态下的分片不能取消</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%AE%89%E5%85%A8/%E4%BB%A3%E7%90%86/I2P%20%E9%9A%90%E5%BD%A2%E7%BD%91%E9%A1%B9%E7%9B%AE/" rel="prev" title="I2P 隐形网项目">
+                  <i class="fa fa-angle-left"></i> I2P 隐形网项目
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Elasticsearch/ES%20%E8%B0%83%E6%95%B4%E5%88%86%E7%89%87%E5%92%8C%E5%89%AF%E6%9C%AC%E6%95%B0/" rel="next" title="ES 调整分片和副本数">
+                  ES 调整分片和副本数 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

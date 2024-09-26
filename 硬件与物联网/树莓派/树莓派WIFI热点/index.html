@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1. 安装配置DNSmasq DNSmasq是一个小巧且方便地用于配置DNS和DHCP的工具，适用于小型网络，它提供了DNS功能和可选择的DHCP功能。它服务那些只在本地适用的域名，这些域名是不会在全球的DNS服务器中出现的。DHCP服务器和DNS服务器结合，并且允许DHCP分配的地址能在DNS中正常解析，而这些DHCP分配的地址和相关命令可以配置到每台主机中，也可以配置到一台核心设备中（比如路由">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派WIFI热点">
+<meta property="og:url" content="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BEWIFI%E7%83%AD%E7%82%B9/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="1. 安装配置DNSmasq DNSmasq是一个小巧且方便地用于配置DNS和DHCP的工具，适用于小型网络，它提供了DNS功能和可选择的DHCP功能。它服务那些只在本地适用的域名，这些域名是不会在全球的DNS服务器中出现的。DHCP服务器和DNS服务器结合，并且允许DHCP分配的地址能在DNS中正常解析，而这些DHCP分配的地址和相关命令可以配置到每台主机中，也可以配置到一台核心设备中（比如路由">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-02-11T16:00:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="树莓派">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BEWIFI%E7%83%AD%E7%82%B9/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BEWIFI%E7%83%AD%E7%82%B9/","path":"硬件与物联网/树莓派/树莓派WIFI热点/","title":"树莓派WIFI热点"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>树莓派WIFI热点 | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEDNSmasq"><span class="nav-number">1.</span> <span class="nav-text">1. 安装配置DNSmasq</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85hostapd"><span class="nav-number">2.</span> <span class="nav-text">2. 安装hostapd</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%85%8D%E7%BD%AE%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.</span> <span class="nav-text">3. 配置接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%90%AF%E5%8A%A8hostapd"><span class="nav-number">4.</span> <span class="nav-text">4 启动hostapd</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E6%96%B0%E4%BD%BF%E7%94%A8wifi%E8%BF%9E%E6%8E%A5%E7%BD%91%E7%BB%9C"><span class="nav-number"></span> <span class="nav-text">重新使用wifi连接网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E4%B8%8B%E9%9D%A2%E7%9A%84%E6%B2%A1%E6%9C%89%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">（下面的没有测试）</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BEWIFI%E7%83%AD%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="树莓派WIFI热点 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          树莓派WIFI热点
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-02-12 00:00:00" itemprop="dateCreated datePublished" datetime="2017-02-12T00:00:00+08:00">2017-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/" itemprop="url" rel="index"><span itemprop="name">树莓派</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>812</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="1-安装配置DNSmasq"><a href="#1-安装配置DNSmasq" class="headerlink" title="1. 安装配置DNSmasq"></a>1. 安装配置DNSmasq</h3><blockquote>
+<p>DNSmasq是一个小巧且方便地用于配置DNS和DHCP的工具，适用于小型网络，它提供了DNS功能和可选择的DHCP功能。它服务那些只在本地适用的域名，这些域名是不会在全球的DNS服务器中出现的。DHCP服务器和DNS服务器结合，并且允许DHCP分配的地址能在DNS中正常解析，而这些DHCP分配的地址和相关命令可以配置到每台主机中，也可以配置到一台核心设备中（比如路由器），DNSmasq支持静态和动态两种DHCP配置方式。</p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install dnsmasq</span><br></pre></td></tr></table></figure>
+
+<p><strong>配置</strong><br>修改&#x2F;etc&#x2F;dnsmasq.conf文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/dnsmasq.conf</span><br></pre></td></tr></table></figure>
+<p>这个文件配置比较大，但是都注释了<br>这里指定一下接口，配置一下dhcp分配的ip范围，在末尾加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface=wlan0</span><br><span class="line">dhcp-range=192.168.0.100,192.168.0.120,255.255.255.0,12h</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如需要指定DNS解析，再加上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addn-hosts=/etc/dnsmasq.hosts  </span><br></pre></td></tr></table></figure>
+<p>然后创建&#x2F;etc&#x2F;dnsmasq.hosts 文件，这里复制hosts文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/hosts /etc/dnsmasq.hosts</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后按照需要改内容，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.0.1 raspberrypi</span><br></pre></td></tr></table></figure>
+
+<p>默认开机启动<br>可以查看一下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status dnsmasq</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装hostapd"><a href="#2-安装hostapd" class="headerlink" title="2. 安装hostapd"></a>2. 安装hostapd</h3><blockquote>
+<p>hostapd 是一个用户态用于AP和认证服务器的守护进程。<br>它实现了IEEE 802.11相关的接入管理，IEEE 802.1X&#x2F;WPA&#x2F;WPA2&#x2F;EAP 认证, RADIUS客户端，EAP服务器和RADIUS 认证服务器。Linux下支持的驱动有：Host AP，madwifi，基于mac80211的驱动。</p>
+</blockquote>
+<p><strong>安装</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install hostapd </span><br></pre></td></tr></table></figure>
+
+<p><strong>配置</strong><br>创建 &#x2F;etc&#x2F;hostapd&#x2F;hostapd.conf </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#sudo vi /etc/hostapd/hostapd.conf</span><br></pre></td></tr></table></figure>
+<p>填入以下内容：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface=wlan0</span><br><span class="line">hw_mode=g</span><br><span class="line">channel=10</span><br><span class="line">auth_algs=1</span><br><span class="line">wpa=2</span><br><span class="line">wpa_key_mgmt=WPA-PSK</span><br><span class="line">wpa_pairwise=CCMP</span><br><span class="line">rsn_pairwise=CCMP</span><br><span class="line"></span><br><span class="line">ssid=rp3</span><br><span class="line">wpa_passphrase=123456789</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-配置接口"><a href="#3-配置接口" class="headerlink" title="3. 配置接口"></a>3. 配置接口</h3><p>将无线接口wlan0的IP配置成静态地址  </p>
+<ol>
+<li><p>dhcpcd不再管理wlan0,避免设置冲突  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sudo vi /etc/dhcpcd.conf</span><br></pre></td></tr></table></figure>
+<p>禁用wlan0接口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">denyinterfaces wlan0</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>给wlan0配置固定IP<br>修改 &#x2F;etc&#x2F;network&#x2F;interfaces 文件成如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">allow-hotplug wlan0</span><br><span class="line">#iface wlan0 inet dhcp</span><br><span class="line">#    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</span><br><span class="line">iface wlan0 inet static</span><br><span class="line">    address 192.168.0.1</span><br><span class="line">    netmask 255.255.255.0</span><br><span class="line">    network 192.168.0.0</span><br><span class="line">    broadcast 192.168.0.255</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>重启相关服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo service dhcpcd restart</span><br><span class="line"></span><br><span class="line">sudo ifdown wlan0</span><br><span class="line"></span><br><span class="line">sudo ifup wlan0</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="4-启动hostapd"><a href="#4-启动hostapd" class="headerlink" title="4 启动hostapd"></a>4 启动hostapd</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hostapd -B /etc/hostapd/hostapd.conf &amp; &gt; /dev/null 2&gt;&amp;1</span><br></pre></td></tr></table></figure>
+<p>如果没有问题，并且手机等设备可以连接</p>
+<p>修改配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/default/hostapd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">##将##</span><br><span class="line">#DAEMON_CONF=&quot;&quot;  </span><br><span class="line"></span><br><span class="line">##修改为##</span><br><span class="line">DAEMON_CONF=&quot;/etc/hostapd/hostapd.conf&quot;</span><br></pre></td></tr></table></figure>
+<p>设置为开机启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable hostapd</span><br><span class="line"></span><br><span class="line">#查看状态</span><br><span class="line">sudo systemctl status hostapd</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<hr>
+<h2 id="重新使用wifi连接网络"><a href="#重新使用wifi连接网络" class="headerlink" title="重新使用wifi连接网络"></a>重新使用wifi连接网络</h2><p>停掉两个服务的自启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl disable dnsmasq</span><br><span class="line"></span><br><span class="line">sudo systemctl disable hostapd</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>关闭两个服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stop dnsmasq</span><br><span class="line"></span><br><span class="line">sudo systemctl stop hostapd</span><br></pre></td></tr></table></figure>
+
+
+<p>启动wlan0接口的dhcpcd服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/dhcpcd.conf</span><br><span class="line"></span><br><span class="line">#注释掉如下：</span><br><span class="line">#denyinterfaces wlan0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>修改为获取动态IP<br>修改 &#x2F;etc&#x2F;network&#x2F;interfaces 文件成如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">allow-hotplug wlan0</span><br><span class="line">iface wlan0 inet dhcp</span><br><span class="line">    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf</span><br><span class="line"></span><br><span class="line">#iface wlan0 inet static</span><br><span class="line">#    address 192.168.0.1</span><br><span class="line">#    netmask 255.255.255.0</span><br><span class="line">#    network 192.168.0.0</span><br><span class="line">#    broadcast 192.168.0.255</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>重启相关服务和网卡</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo service dhcpcd restart</span><br><span class="line"></span><br><span class="line">sudo ifdown wlan0</span><br><span class="line"></span><br><span class="line">sudo ifup wlan0</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<hr>
+<h2 id="（下面的没有测试）"><a href="#（下面的没有测试）" class="headerlink" title="（下面的没有测试）"></a><strong>（下面的没有测试）</strong></h2><p>配置NAT<br>– 这先不弄，觉得没有必要转发  </p>
+<p>修改&#x2F;etc&#x2F;sysctl.conf，更改（如果有这一行，把#号去掉就行）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.ip_forward=1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#替换命令</span><br><span class="line">sudo sed -i &#x27;s/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g&#x27; /etc/sysctl.conf</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>通过iptables做NAT转发：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span><br><span class="line">sudo iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT</span><br><span class="line">sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" rel="tag"># 树莓派</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Apache/Apache%20HTTP%20Server/" rel="prev" title="Apache HTTP Server">
+                  <i class="fa fa-angle-left"></i> Apache HTTP Server
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Maven/Maven%E5%B1%9E%E6%80%A7%EF%BC%88properties%EF%BC%89/" rel="next" title="Maven属性（properties）">
+                  Maven属性（properties） <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

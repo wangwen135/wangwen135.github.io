@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="王某某瞎编于 2018年3月20日 SeleniumSelenium 是 ThoughtWorks 提供的一个强大的基于浏览器的开源自动化测试工具。Selenium 是一个用于 Web 应用程序测试的工具，测试直接自动运行在浏览器中，就像真正的用户在手工操作一样。支持的浏览器包括 IE、Chrome 和 Firefox 等。这个工具的主要功能包括：测试与浏览器的兼容性 - 测试您的应用程序看是否能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Selenium-与-ChromeDriver">
+<meta property="og:url" content="https://wangwen135.github.io/Selenium/Selenium-%E4%B8%8E-ChromeDriver/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="王某某瞎编于 2018年3月20日 SeleniumSelenium 是 ThoughtWorks 提供的一个强大的基于浏览器的开源自动化测试工具。Selenium 是一个用于 Web 应用程序测试的工具，测试直接自动运行在浏览器中，就像真正的用户在手工操作一样。支持的浏览器包括 IE、Chrome 和 Firefox 等。这个工具的主要功能包括：测试与浏览器的兼容性 - 测试您的应用程序看是否能">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-15T15:41:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Selenium">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/Selenium/Selenium-%E4%B8%8E-ChromeDriver/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/Selenium/Selenium-%E4%B8%8E-ChromeDriver/","path":"Selenium/Selenium-与-ChromeDriver/","title":"Selenium-与-ChromeDriver"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Selenium-与-ChromeDriver | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Selenium"><span class="nav-number">1.</span> <span class="nav-text">Selenium</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Webdriver"><span class="nav-number">2.</span> <span class="nav-text">Webdriver</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E8%80%85%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-number">2.1.</span> <span class="nav-text">两者的差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Selenium-IDE"><span class="nav-number">2.2.</span> <span class="nav-text">Selenium IDE</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ChromeDriver-WebDriver-for-Chrome"><span class="nav-number">3.</span> <span class="nav-text">ChromeDriver - WebDriver for Chrome</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AB%98%E6%95%88%E4%BD%BF%E7%94%A8"><span class="nav-number">5.</span> <span class="nav-text">高效使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E4%BD%BF%E7%94%A8ChromeDriverService"><span class="nav-number">5.0.1.</span> <span class="nav-text">1. 使用ChromeDriverService</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%9C%A8%E8%BF%90%E8%A1%8C%E6%B5%8B%E8%AF%95%E4%B9%8B%E5%89%8D%E5%8D%95%E7%8B%AC%E5%90%AF%E5%8A%A8ChromeDriver%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%8C%E5%B9%B6%E4%BD%BF%E7%94%A8Remote-WebDriver%E8%BF%9E%E6%8E%A5%E5%88%B0%E5%AE%83"><span class="nav-number">5.0.2.</span> <span class="nav-text">2. 在运行测试之前单独启动ChromeDriver服务器，并使用Remote WebDriver连接到它</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Selenium/Selenium-%E4%B8%8E-ChromeDriver/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Selenium-与-ChromeDriver | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Selenium-与-ChromeDriver
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-15 23:41:00" itemprop="dateCreated datePublished" datetime="2020-02-15T23:41:00+08:00">2020-02-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Selenium/" itemprop="url" rel="index"><span itemprop="name">Selenium</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>7 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><em>王某某瞎编于 2018年3月20日</em></p>
+<h2 id="Selenium"><a href="#Selenium" class="headerlink" title="Selenium"></a>Selenium</h2><p>Selenium 是 ThoughtWorks 提供的一个强大的基于浏览器的开源自动化测试工具。<br>Selenium 是一个用于 Web 应用程序测试的工具，测试直接自动运行在浏览器中，就像真正的用户在手工操作一样。支持的浏览器包括 IE、Chrome 和 Firefox 等。这个工具的主要功能包括：测试与浏览器的兼容性 - 测试您的应用程序看是否能够很好地工作在不同浏览器和操作系统之上；测试系统功能 - 创建回归测试检验软件功能和用户需求；支持自动录制动作，和自动生成 .NET、Perl、Python、Ruby 和 Java 等不同语言的测试脚本。  </p>
+<p>Selenium 1 (又叫 Selenium RC 或 Remote Control)</p>
+<h2 id="Webdriver"><a href="#Webdriver" class="headerlink" title="Webdriver"></a>Webdriver</h2><p>Selenium 2，又名 WebDriver，它的主要新功能是集成了 Selenium 1.0 以及 WebDriver， 是两个项目的合并，既兼容  Selenium API 也支持 WebDriver API。  </p>
+<p>WebDriver 曾经是 Selenium 的竞争对手（最开始是google的一个人弄的，主要用于避免在JavaScript的沙箱环境里存在的各种限制），他主要是通过利用浏览器原生API的方式来操控浏览器执行各种动作（还包括系统级别的调用来模拟用户输入）。</p>
+<p>Selenium WebDriver 就是对浏览器提供的原生API进行封装，使其成为一套更加面向对象的Selenium WebDriver API。<br>使用这套API可以操控浏览器的开启、关闭，打开网页，操作界面元素，控制Cookie，还可以操作浏览器截屏、安装插件、设置代理、配置证书等。由于使用的原生API，其速度与稳定性都会好很多。但浏览器厂商各不相同，提供的驱动各异（ChromeDriver、FirefoxDriver(xpi插件)、InternetExplorerDriver(exe)等），API也会有差异（好像都走JSON Wire Protocol，并且向W3C标准靠拢）。Selenium 对不同厂商的各个驱动进行了封装，如：selenium-chrome-driver、selenium-edge-driver、selenium-firefox-driver等。<br>还包括了对移动应用进行测试的AndroidDriver和iOS WebDriver，以及一个基于HtmlUnit的无界面实现HtmlUnitDriver。</p>
+<p>WebDriver API可以通过Python、Ruby、Java和C#访问</p>
+<p>WebDriver是一个用来进行复杂重复的web自动化测试的工具。意在提供一种比Selenium1.0更简单易学，有利于维护的API。它没有和任何测试框架进行绑定，所以他可以很好的在单元测试和main方法中调用。一旦创建好一个Selenium工程，你马上会发现WebDriver和其他类库一样：它是完全独立的，你可以直接使用而不需要考虑其他配置，这个Selenium RC是截然相反的。</p>
+<h3 id="两者的差异"><a href="#两者的差异" class="headerlink" title="两者的差异"></a>两者的差异</h3><ul>
+<li>对于所有类型的浏览器Selenium- RC都是使用的同一种方法：<br>当浏览器启动时，向其中注入javascript，从而使用这些js来驱动浏览器中的AUT(Application Under Test)。  </li>
+<li>WebDriver并没有使用这种技术，它是通过调用浏览器原生的自动化API直接驱动浏览器。</li>
+</ul>
+<h3 id="Selenium-IDE"><a href="#Selenium-IDE" class="headerlink" title="Selenium IDE"></a>Selenium IDE</h3><p>Selenium IDE (集成开发环境) 是一个创建测试脚本的原型工具。它是一个 Firefox 插件，提供创建自动化测试的建议接口。Selenium IDE 有一个记录功能，能记录用户的操作，并且能选择多种语言把它们导出到一个可重用的脚本中用于后续执行。</p>
+<hr>
+<h2 id="ChromeDriver-WebDriver-for-Chrome"><a href="#ChromeDriver-WebDriver-for-Chrome" class="headerlink" title="ChromeDriver - WebDriver for Chrome"></a>ChromeDriver - WebDriver for Chrome</h2><p>WebDriver是一个开源工具，用于在许多浏览器上自动测试webapps。它提供了导航到网页，用户输入，JavaScript执行等功能。ChromeDriver是一个独立的服务，它为 Chromium 实现 WebDriver 的 JsonWireProtocol 协议。 </p>
+<p>目前正在实现并转向W3C标准。 ChromeDriver适用于Android版Chrome和桌面版Chrome（Mac，Linux，Windows和ChromeOS）。</p>
+<p>官网地址：<br><a target="_blank" rel="noopener" href="https://sites.google.com/a/chromium.org/chromedriver/home">https://sites.google.com/a/chromium.org/chromedriver/home</a></p>
+<p>ChromeDriver 是 google 为网站开发人员提供的自动化测试接口，它是 <strong>selenium2</strong> 和 <strong>chrome浏览器</strong> 进行通信的桥梁。selenium 通过一套协议（JsonWireProtocol ：<a target="_blank" rel="noopener" href="https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol%EF%BC%89%E5%92%8C">https://github.com/SeleniumHQ/selenium/wiki/JsonWireProtocol）和</a> ChromeDriver 进行通信，selenium 实质上是对这套协议的底层封装，同时提供外部 WebDriver 的上层调用类库。 </p>
+<p><strong>大概的工作流程：</strong></p>
+<p>在代码中 new ChromeDriver() 时，selenium会随机挑选一个端口调用chromedriver程序，调用成功后 chromedriver 会在指定的端口启动一个服务（会有一个进程）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;tasklist | find &quot;chromedriver&quot;</span><br><span class="line">chromedriver.exe              7848 Console                    1     13,740 K</span><br></pre></td></tr></table></figure>
+<p>selenium 中使用 apache 的 commons-exec 来运行 chromedriver.exe 启动 ChromeDriver 服务<br>直接在控制台运行 chromedriver.exe 时，默认端口是9515</p>
+<p>selenium 通过指定的端口和约定的协议来和 ChromeDriver 进行通信，一个ChromeDriver可用管理多个chrome。<br><em>（具体细节可以看看协议部分，ChromeDriver如何控制chrome可能需要去看源码~~）</em></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;tasklist | find &quot;chrome&quot;</span><br><span class="line">chromedriver.exe             14692 Console                    1     14,888 K</span><br><span class="line">chrome.exe                   20952 Console                    1     72,204 K</span><br><span class="line">chrome.exe                    7288 Console                    1      9,052 K</span><br><span class="line">chrome.exe                   15524 Console                    1     10,000 K</span><br><span class="line">chrome.exe                   13036 Console                    1     96,028 K</span><br><span class="line">chrome.exe                   11836 Console                    1     29,836 K</span><br><span class="line">chrome.exe                    2788 Console                    1     59,876 K </span><br></pre></td></tr></table></figure>
+<p>selenium 中多个 WebDriver 实例对应一个 chromedriver 进程，一个 chromedriver 进程管理多个 chrome 进程。<br>一个 WebDriver 实例对应一个浏览器窗口。</p>
+<p>在代码中直接 new ChromeDriver() 将会启动一个 chromedriver 进程<br>使用 RemoteWebDriver 则只会连接到 chromedriver 服务，不会启动一个新的进程，连接不上会报错。<br>不管哪种方式都会打开一个浏览器窗口。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WebDriver driver = new RemoteWebDriver(new URL(&quot;http://127.0.0.1:9515&quot;), DesiredCapabilities.chrome());</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>官方指导页面</p>
+<p><a target="_blank" rel="noopener" href="https://sites.google.com/a/chromium.org/chromedriver/getting-started">https://sites.google.com/a/chromium.org/chromedriver/getting-started</a></p>
+<p>基于java</p>
+<ol>
+<li><p>创建Maven项目<br>引入相关依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.7.1&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>确保Chromium &#x2F; Google Chrome安装在认可的位置</p>
+</li>
+</ol>
+<p>ChromeDriver希望您将Chrome安装在您平台的默认位置。您还可以强制ChromeDriver通过设置特殊功能来使用自定义位置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ChromeOptions options = new ChromeOptions();</span><br><span class="line">options.setBinary(&quot;/path/to/other/chrome/binary&quot;);</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>下载与你安装的chrome对应的chromedriver</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>chromedriver 版本</th>
+<th>chrome 版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ChromeDriver 2.36</td>
+<td>Chrome v63-65</td>
+</tr>
+<tr>
+<td>ChromeDriver 2.35</td>
+<td>Chrome v62-64</td>
+</tr>
+<tr>
+<td>ChromeDriver 2.34</td>
+<td>Chrome v61-63</td>
+</tr>
+<tr>
+<td>ChromeDriver 2.33</td>
+<td>Chrome v60-62</td>
+</tr>
+</tbody></table>
+<p><em>（这里随便复制了几个）</em><br>下载地址：<br><a target="_blank" rel="noopener" href="https://sites.google.com/a/chromium.org/chromedriver/downloads">https://sites.google.com/a/chromium.org/chromedriver/downloads</a></p>
+<ol start="3">
+<li>指定ChromeDriver所在位置，可以通过两种方法指定：</li>
+</ol>
+<ul>
+<li><p>通过配置ChromeDriver.exe位置到path环境变量</p>
+</li>
+<li><p>通过设置<strong>webdriver.chrome.driver</strong> 系统属性实现-</p>
+</li>
+</ul>
+<ol start="4">
+<li>创建一个新的ChromeDriver的实例，并调用get方法打开页面</li>
+</ol>
+<p>代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import org.openqa.selenium.WebDriver;</span><br><span class="line">import org.openqa.selenium.chrome.ChromeDriver;</span><br><span class="line"></span><br><span class="line">public class BaseTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 设置ChromeDriver的路径</span><br><span class="line">        System.setProperty(&quot;webdriver.chrome.driver&quot;, &quot;C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe&quot;);</span><br><span class="line"></span><br><span class="line">        WebDriver driver = new ChromeDriver();</span><br><span class="line"></span><br><span class="line">        driver.get(&quot;http://www.baidu.com/&quot;);</span><br><span class="line">        </span><br><span class="line">        //driver.quit();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行这段代码将打开一个浏览器窗口，并访问百度<br>同时浏览器上将显示：Chrome 正受到自动测试软件的控制</p>
+<p>代码执行完成后chrome并不会关闭，需要调用 driver.quit(); 才能关闭浏览器窗口。</p>
+<p>打开百度并进行搜索：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">        // 如果不设置将搜索环境变量</span><br><span class="line">        System.setProperty(&quot;webdriver.chrome.driver&quot;, &quot;C:\\Program Files (x86)\\Google\\Chrome\\Application\\chromedriver.exe&quot;);</span><br><span class="line"></span><br><span class="line">        WebDriver driver = new ChromeDriver();</span><br><span class="line">        driver.get(&quot;http://www.baidu.com/&quot;);</span><br><span class="line"></span><br><span class="line">        Thread.sleep(3000);</span><br><span class="line"></span><br><span class="line">        WebElement searchBox = driver.findElement(By.id(&quot;kw&quot;));</span><br><span class="line"></span><br><span class="line">        searchBox.sendKeys(&quot;ChromeDriver&quot;);</span><br><span class="line">        searchBox.submit();</span><br><span class="line"></span><br><span class="line">        Thread.sleep(3000);</span><br><span class="line">        driver.quit();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="高效使用"><a href="#高效使用" class="headerlink" title="高效使用"></a>高效使用</h2><p>ChromeDriver 启动ChromeDriver服务器进程，并在调用退出时终止它。<br>在大型测试时每个测试都会创建一个ChromeDriver实例，这将会浪费大量时间。有两种方法可以解决这个问题：</p>
+<h4 id="1-使用ChromeDriverService"><a href="#1-使用ChromeDriverService" class="headerlink" title="1. 使用ChromeDriverService"></a>1. 使用ChromeDriverService</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(BlockJUnit4ClassRunner.class)</span><br><span class="line">public class ChromeTest extends TestCase &#123;</span><br><span class="line"></span><br><span class="line">  private static ChromeDriverService service;</span><br><span class="line">  private WebDriver driver;</span><br><span class="line"></span><br><span class="line">  @BeforeClass</span><br><span class="line">  public static void createAndStartService() &#123;</span><br><span class="line">    service = new ChromeDriverService.Builder()</span><br><span class="line">        .usingDriverExecutable(new File(&quot;path/to/my/chromedriver&quot;))</span><br><span class="line">        .usingAnyFreePort()</span><br><span class="line">        .build();</span><br><span class="line">    service.start();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @AfterClass</span><br><span class="line">  public static void createAndStopService() &#123;</span><br><span class="line">    service.stop();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Before</span><br><span class="line">  public void createDriver() &#123;</span><br><span class="line">    driver = new RemoteWebDriver(service.getUrl(),</span><br><span class="line">        DesiredCapabilities.chrome());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @After</span><br><span class="line">  public void quitDriver() &#123;</span><br><span class="line">    driver.quit();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Test</span><br><span class="line">  public void testGoogleSearch() &#123;</span><br><span class="line">    driver.get(&quot;http://www.google.com&quot;);</span><br><span class="line">    // rest of the test...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="2-在运行测试之前单独启动ChromeDriver服务器，并使用Remote-WebDriver连接到它"><a href="#2-在运行测试之前单独启动ChromeDriver服务器，并使用Remote-WebDriver连接到它" class="headerlink" title="2. 在运行测试之前单独启动ChromeDriver服务器，并使用Remote WebDriver连接到它"></a>2. 在运行测试之前单独启动ChromeDriver服务器，并使用Remote WebDriver连接到它</h4><p>在控制台执行chromedriver（如果没有添加环境变量的话需要到对应目录下执行）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">F:\temp&gt;chromedriver</span><br><span class="line">Starting ChromeDriver 2.37.543627 (63642262d9fb93fb4ab52398be4286d844092a5e) on port 9515</span><br><span class="line">Only local connections are allowed.</span><br></pre></td></tr></table></figure>
+
+<p>Java 代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) throws MalformedURLException &#123;</span><br><span class="line">    WebDriver driver = new RemoteWebDriver(new URL(&quot;http://127.0.0.1:9515&quot;), DesiredCapabilities.chrome());</span><br><span class="line"></span><br><span class="line">    driver.get(&quot;http://www.baidu.com&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Selenium/" rel="tag"># Selenium</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Redis/Spring-Data-Redis/" rel="prev" title="Spring-Data-Redis">
+                  <i class="fa fa-angle-left"></i> Spring-Data-Redis
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Redis/Redis%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/" rel="next" title="Redis基本命令">
+                  Redis基本命令 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="配置hadoop，主要是配置core-site.xml，hdfs-site.xml，mapred-site.xml，yarn-site.xml三个配置文件，默认下来，这些配置文件都是空的，所以很难知道这些配置文件有哪些配置可以生效，需要去Apache的官网中找对应版本的默认配置文件。YARN是新一代的MapReduce，又叫：MapReduce 2.0 (MRv2)。 官网地址https:&#x2F;&#x2F;ha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop默认配置">
+<meta property="og:url" content="https://wangwen135.github.io/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="配置hadoop，主要是配置core-site.xml，hdfs-site.xml，mapred-site.xml，yarn-site.xml三个配置文件，默认下来，这些配置文件都是空的，所以很难知道这些配置文件有哪些配置可以生效，需要去Apache的官网中找对应版本的默认配置文件。YARN是新一代的MapReduce，又叫：MapReduce 2.0 (MRv2)。 官网地址https:&#x2F;&#x2F;ha">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-09-14T05:21:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="Hdfs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE/","path":"大数据/Hadoop/Hadoop默认配置/","title":"Hadoop默认配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hadoop默认配置 | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E7%BD%91%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text">官网地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-72%E7%89%88%E6%9C%AC%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">2.72版本默认配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#core"><span class="nav-number">2.1.</span> <span class="nav-text">core</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hdfs"><span class="nav-number">2.2.</span> <span class="nav-text">hdfs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mapreduce"><span class="nav-number">2.3.</span> <span class="nav-text">mapreduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#yarn"><span class="nav-number">2.4.</span> <span class="nav-text">yarn</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">常用的端口配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HDFS%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.1.</span> <span class="nav-text">HDFS端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MR%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.2.</span> <span class="nav-text">MR端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%AB%AF%E5%8F%A3"><span class="nav-number">3.3.</span> <span class="nav-text">其他端口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E7%BE%A4%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="nav-number">3.4.</span> <span class="nav-text">集群目录配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%85%8D%E7%BD%AE"><span class="nav-number">3.5.</span> <span class="nav-text">其他配置</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hadoop默认配置 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hadoop默认配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-14 13:21:00" itemprop="dateCreated datePublished" datetime="2016-09-14T13:21:00+08:00">2016-09-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>828</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>配置hadoop，主要是配置core-site.xml，hdfs-site.xml，mapred-site.xml，yarn-site.xml三个配置文件，默认下来，这些配置文件都是空的，所以很难知道这些配置文件有哪些配置可以生效，需要去Apache的官网中找对应版本的默认配置文件。YARN是新一代的MapReduce，又叫：MapReduce 2.0 (MRv2)。</p>
+<h3 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h3><p><a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/">https://hadoop.apache.org/docs/</a><br>里面有各个版本的文档</p>
+<h3 id="2-72版本默认配置"><a href="#2-72版本默认配置" class="headerlink" title="2.72版本默认配置"></a>2.72版本默认配置</h3><h4 id="core"><a href="#core" class="headerlink" title="core"></a>core</h4><p><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/core-default.xml">http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/core-default.xml</a></p>
+<h4 id="hdfs"><a href="#hdfs" class="headerlink" title="hdfs"></a>hdfs</h4><p><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml">http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml</a></p>
+<h4 id="mapreduce"><a href="#mapreduce" class="headerlink" title="mapreduce"></a>mapreduce</h4><p><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.2/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml">http://hadoop.apache.org/docs/r2.7.2/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml</a></p>
+<h4 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h4><p><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-common/yarn-default.xml">http://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-common/yarn-default.xml</a></p>
+<h3 id="常用的端口配置"><a href="#常用的端口配置" class="headerlink" title="常用的端口配置"></a>常用的端口配置</h3><p>网上复制的，没有经过验证</p>
+<h4 id="HDFS端口"><a href="#HDFS端口" class="headerlink" title="HDFS端口"></a>HDFS端口</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认</th>
+<th>配置文件</th>
+<th>例子值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>fs.default.name</td>
+<td>namenode RPC交互端口</td>
+<td>8020</td>
+<td>core-site.xml</td>
+<td>hdfs:&#x2F;&#x2F;master:8020&#x2F;</td>
+</tr>
+<tr>
+<td>dfs.http.address</td>
+<td>NameNode web管理端口</td>
+<td>50070</td>
+<td>hdfs-site.xml</td>
+<td>0.0.0.0:50070</td>
+</tr>
+<tr>
+<td>dfs.datanode.address</td>
+<td>datanode　控制端口</td>
+<td>50010</td>
+<td>hdfs-site.xml</td>
+<td>0.0.0.0:50010</td>
+</tr>
+<tr>
+<td>dfs.datanode.ipc.address</td>
+<td>datanode的RPC服务器地址和端口</td>
+<td>50020</td>
+<td>hdfs-site.xml</td>
+<td>0.0.0.0:50020</td>
+</tr>
+<tr>
+<td>dfs.datanode.http.address</td>
+<td>datanode的HTTP服务器和端口</td>
+<td>50075</td>
+<td>hdfs-site.xml</td>
+<td>0.0.0.0:50075</td>
+</tr>
+</tbody></table>
+<h4 id="MR端口"><a href="#MR端口" class="headerlink" title="MR端口"></a>MR端口</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认</th>
+<th>配置文件</th>
+<th>例子值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mapred.job.tracker</td>
+<td>job tracker交互端口</td>
+<td>8021</td>
+<td>mapred-site.xml</td>
+<td>hdfs:&#x2F;&#x2F;master:8021&#x2F;</td>
+</tr>
+<tr>
+<td>mapred.job.tracker.http.address</td>
+<td>job tracker的web管理端口</td>
+<td>50030</td>
+<td>mapred-site.xml</td>
+<td>0.0.0.0:50030</td>
+</tr>
+<tr>
+<td>mapred.task.tracker.http.address</td>
+<td>task tracker的HTTP端口</td>
+<td>50060</td>
+<td>mapred-site.xml</td>
+<td>0.0.0.0:50060</td>
+</tr>
+</tbody></table>
+<h4 id="其他端口"><a href="#其他端口" class="headerlink" title="其他端口"></a>其他端口</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认</th>
+<th>配置文件</th>
+<th>例子值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dfs.secondary.http.address</td>
+<td>secondary</td>
+<td>NameNode web管理端口</td>
+<td>50090</td>
+<td>hdfs-site.xml</td>
+</tr>
+</tbody></table>
+<h4 id="集群目录配置"><a href="#集群目录配置" class="headerlink" title="集群目录配置"></a>集群目录配置</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认</th>
+<th>配置文件</th>
+<th>例子值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dfs.name.dir</td>
+<td>name node的元数据,以,号隔开,hdfs会把元数据冗余复制到这些目录，一般这些目录是不同的块设备，不存在的目录会被忽略掉</td>
+<td>{hadoop.tmp.dir}&#x2F;dfs&#x2F;name</td>
+<td>hdfs-site.xm</td>
+<td>&#x2F;hadoop&#x2F;hdfs&#x2F;name</td>
+</tr>
+<tr>
+<td>dfs.name.edits.dir</td>
+<td>node node的事务文件存储的目录,以,号隔开,hdfs会把事务文件冗余复制到这些目录，一般这些目录是不同的块设备，不存在的目录会被忽略掉</td>
+<td>${dfs.name.dir}</td>
+<td>hdfs-site.xm</td>
+<td>${dfs.name.dir}</td>
+</tr>
+<tr>
+<td>fs.checkpoint.dir</td>
+<td>secondary NameNode的元数据以,号隔开,hdfs会把元数据冗余复制到这些目录，一般这些目录是不同的块设备，不存在的目录会被忽略掉</td>
+<td>${hadoop.tmp.dir}&#x2F;dfs&#x2F;namesecondary</td>
+<td>core-site.xml</td>
+<td>&#x2F;hadoop&#x2F;hdfs&#x2F;namesecondary</td>
+</tr>
+<tr>
+<td>fs.checkpoint.edits.dir</td>
+<td>secondary NameNode的事务文件存储的目录,以,号隔开,hdfs会把事务文件冗余复制到这些目录</td>
+<td>${fs.checkpoint.dir}</td>
+<td>core-site.xml</td>
+<td>${fs.checkpoint.dir}</td>
+</tr>
+<tr>
+<td>hadoop.tmp.dir</td>
+<td>临时目录,其他临时目录的父目录</td>
+<td>&#x2F;tmp&#x2F;hadoop-${user.name}</td>
+<td>core-site.xml</td>
+<td>&#x2F;hadoop&#x2F;tmp&#x2F;hadoop-${user.name}</td>
+</tr>
+<tr>
+<td>dfs.data.dir</td>
+<td>data node的数据目录,以,号隔开,hdfs会把数据存在这些目录下，一般这些目录是不同的块设备，不存在的目录会被忽略掉</td>
+<td>${hadoop.tmp.dir}&#x2F;dfs&#x2F;data</td>
+<td>hdfs-site.xm</td>
+<td>&#x2F;hadoop&#x2F;hdfs&#x2F;data1&#x2F;data,<br>&#x2F;hadoop&#x2F;hdfs&#x2F;data2&#x2F;data</td>
+</tr>
+<tr>
+<td>mapred.local.dir</td>
+<td>MapReduce产生的中间数据存放目录,以,号隔开,hdfs会把数据存在这些目录下，一般这些目录是不同的块设备，不存在的目录会被忽略掉</td>
+<td>${hadoop.tmp.dir}&#x2F;mapred&#x2F;local</td>
+<td>mapred-site.xml</td>
+<td>&#x2F;hadoop&#x2F;hdfs&#x2F;data1&#x2F;mapred&#x2F;local,<br>&#x2F;hadoop&#x2F;hdfs&#x2F;data2&#x2F;mapred&#x2F;local</td>
+</tr>
+<tr>
+<td>mapred.system.dir</td>
+<td>MapReduce的控制文件</td>
+<td>${hadoop.tmp.dir}&#x2F;mapred&#x2F;system</td>
+<td>mapred-site.xml</td>
+<td>&#x2F;hadoop&#x2F;hdfs&#x2F;data1&#x2F;system</td>
+</tr>
+</tbody></table>
+<h4 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+<th>默认</th>
+<th>配置文件</th>
+<th>例子值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>dfs.support.append</td>
+<td>支持文件append，主要是支持hbase</td>
+<td>false</td>
+<td>hdfs-site.xml</td>
+<td>true</td>
+</tr>
+<tr>
+<td>dfs.replication</td>
+<td>文件复制的副本数，如果创建时不指定这个参数，就使用这个默认值作为复制的副本数</td>
+<td>3</td>
+<td>hdfs-site.xml</td>
+<td>2</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+              <a href="/tags/Hdfs/" rel="tag"># Hdfs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%202.7.2%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/" rel="prev" title="Hadoop 2.7.2 安装配置">
+                  <i class="fa fa-angle-left"></i> Hadoop 2.7.2 安装配置
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%E4%BD%BF%E7%94%A8/" rel="next" title="Hadoop使用">
+                  Hadoop使用 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

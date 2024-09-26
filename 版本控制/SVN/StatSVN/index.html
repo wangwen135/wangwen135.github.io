@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="StatSVN介绍StatSVN是一个Java写的开源代码统计程序，从statCVS移植而来，能够从Subversion版本库中取得信息，然后生成描述项目开发的各种表格和图表。比如：代码行数的时间线；针对每个开发者的代码行数；开发者的活跃程度；开发者最近所提交的；文件数量；平均文件大小；最大文件；哪个文件是修改最多次数的；目录大小；带有文件数量和代码行数的Repository tree。StatS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="StatSVN">
+<meta property="og:url" content="https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/SVN/StatSVN/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="StatSVN介绍StatSVN是一个Java写的开源代码统计程序，从statCVS移植而来，能够从Subversion版本库中取得信息，然后生成描述项目开发的各种表格和图表。比如：代码行数的时间线；针对每个开发者的代码行数；开发者的活跃程度；开发者最近所提交的；文件数量；平均文件大小；最大文件；哪个文件是修改最多次数的；目录大小；带有文件数量和代码行数的Repository tree。StatS">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-05-05T07:35:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="SVN">
+<meta property="article:tag" content="StatSVN">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/SVN/StatSVN/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/SVN/StatSVN/","path":"版本控制/SVN/StatSVN/","title":"StatSVN"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>StatSVN | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#StatSVN%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">StatSVN介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StatSVN-%E4%BD%BF%E7%94%A8%E6%9D%A1%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">StatSVN 使用条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#StatSVN-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">StatSVN 使用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#checkout-%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95"><span class="nav-number">3.1.</span> <span class="nav-text">checkout 工作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90log%E6%96%87%E4%BB%B6"><span class="nav-number">3.2.</span> <span class="nav-text">生成log文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8StatSVN%E7%BB%9F%E8%AE%A1SVN%E4%B8%AD%E7%9A%84%E4%BB%A3%E7%A0%81%E9%87%8F"><span class="nav-number">3.3.</span> <span class="nav-text">使用StatSVN统计SVN中的代码量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.4.</span> <span class="nav-text">命令介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E9%99%85%E4%B8%8A%E4%BD%BF%E7%94%A8%E7%9A%84SH%E8%84%9A%E6%9C%AC"><span class="nav-number">4.</span> <span class="nav-text">实际上使用的SH脚本</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/SVN/StatSVN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="StatSVN | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          StatSVN
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-05-05 15:35:00" itemprop="dateCreated datePublished" datetime="2017-05-05T15:35:00+08:00">2017-05-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" itemprop="url" rel="index"><span itemprop="name">版本控制</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/SVN/" itemprop="url" rel="index"><span itemprop="name">SVN</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>720</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="StatSVN介绍"><a href="#StatSVN介绍" class="headerlink" title="StatSVN介绍"></a>StatSVN介绍</h2><p>StatSVN是一个Java写的开源代码统计程序，从statCVS移植而来，能够从Subversion版本库中取得信息，然后生成描述项目开发的各种表格和图表。比如：代码行数的时间线；针对每个开发者的代码行数；开发者的活跃程度；开发者最近所提交的；文件数量；平均文件大小；最大文件；哪个文件是修改最多次数的；目录大小；带有文件数量和代码行数的Repository tree。StatSVN当前版本能够生成一组包括表格与图表的静态HTML文档。</p>
+<h2 id="StatSVN-使用条件"><a href="#StatSVN-使用条件" class="headerlink" title="StatSVN 使用条件"></a>StatSVN 使用条件</h2><p>如前所述，StatSVN是一个Java写的开源代码统计程序，是从Subversion版本库中取得信息的，所以使用StatSVN有两个限制。</p>
+<ol>
+<li>需要安装Java的运行环境（Java Runtime Environment）</li>
+<li>需要使用svn客户端，必须保证本机的svn客户端命令可用</li>
+</ol>
+<h2 id="StatSVN-使用方法"><a href="#StatSVN-使用方法" class="headerlink" title="StatSVN 使用方法"></a>StatSVN 使用方法</h2><p>使用之前需要先下载StatSVN：<a target="_blank" rel="noopener" href="http://www.statsvn.org/downloads.html">http://www.statsvn.org/downloads.html</a></p>
+<h3 id="checkout-工作目录"><a href="#checkout-工作目录" class="headerlink" title="checkout 工作目录"></a>checkout 工作目录</h3><p>将需要统计的svn路径下的代码checkout到本地工作目录里，版本可以自由选择，如果你要统计某个版本下的代码量checkout出对应的版本即可，如果需要统计最近的版本时的代码量，checkout最新版本。</p>
+<h3 id="生成log文件"><a href="#生成log文件" class="headerlink" title="生成log文件"></a>生成log文件</h3><p>使用StatSVN统计代码量时需要使用log文件，生成log文件方法：</p>
+<p>命令行下进入工作目录后：svn log -v –xml &gt; logfile.log</p>
+<h3 id="使用StatSVN统计SVN中的代码量"><a href="#使用StatSVN统计SVN中的代码量" class="headerlink" title="使用StatSVN统计SVN中的代码量"></a>使用StatSVN统计SVN中的代码量</h3><p>将下载好的StatSVN解压，得到statsvn.jar文件,在命令行里执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar statsvn.jar C:\project\logfile.log C:\project</span><br></pre></td></tr></table></figure>
+<p>这里的C:\project\logfile.log是前一步生成的log文件，C:\project是工作目录。</p>
+<p>执行完后，就在当前目录下生成了对应的html结果文档。</p>
+<h3 id="命令介绍"><a href="#命令介绍" class="headerlink" title="命令介绍"></a>命令介绍</h3><p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -jar statsvn.jar [options] &lt;logfile&gt; &lt;checked-out-module&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;logfile&gt;</span><br></pre></td></tr></table></figure>
+<p>为前一步中生成的svn log文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;checked-out-module&gt;</span><br></pre></td></tr></table></figure>
+<p>为checkout工作拷贝目录，注意两个参数都要列出正确的全路径，否则会提示错误如logfile.log找不到等等</p>
+<h2 id="实际上使用的SH脚本"><a href="#实际上使用的SH脚本" class="headerlink" title="实际上使用的SH脚本"></a>实际上使用的SH脚本</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">#</span><br><span class="line"># 用于统计深暗项目的代码情况</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">#进入SVN检出目录</span><br><span class="line">cd /data/statsvn/project/xxx/xxx-parent</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#SVN更新</span><br><span class="line">svn update</span><br><span class="line"></span><br><span class="line">#生成log文件</span><br><span class="line">svn log -v --xml &gt; ../xxx-svn.log</span><br><span class="line"></span><br><span class="line">#/data/statsvn/project/xxx/xxx-svn.log</span><br><span class="line">#/data/statsvn/statsvn-0.7.0/statsvn.jar</span><br><span class="line"></span><br><span class="line">#进入到输出目录</span><br><span class="line">cd /data/statsvn/report/xxx</span><br><span class="line"></span><br><span class="line">#删除全部内容</span><br><span class="line">rm -rf *</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#生成html文件</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#全部后台相关</span><br><span class="line">#java -jar /data/statsvn/statsvn-0.7.0/statsvn.jar /data/statsvn/project/xxx/xxx-svn.log /data/statsvn/project/xxx/xxx-parent -include **/*.java:**/*.xml:**/*.properties:**/*.conf</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#包括前后台的</span><br><span class="line">java -jar /data/statsvn/statsvn-0.7.0/statsvn.jar /data/statsvn/project/xxx/xxx-svn.log /data/statsvn/project/xxx/xxx-parent -exclude **/jquery*.js:**/bootstrap*.css:**/bootstrap*.js:**/d3.*:**/echarts.*:**</span><br><span class="line">/webapp/fonts/*</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>配合Apache，将该脚本定时执行就能得到最新的统计结果</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SVN/" rel="tag"># SVN</a>
+              <a href="/tags/StatSVN/" rel="tag"># StatSVN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Elasticsearch/Elasticsearch%20JDBC%20%E5%AF%BC%E5%85%A5%E5%99%A8/" rel="prev" title="Elasticsearch JDBC 导入器">
+                  <i class="fa fa-angle-left"></i> Elasticsearch JDBC 导入器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Elasticsearch/Elasticsearch%20HTTP%20API/" rel="next" title="Elasticsearch HTTP API">
+                  Elasticsearch HTTP API <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

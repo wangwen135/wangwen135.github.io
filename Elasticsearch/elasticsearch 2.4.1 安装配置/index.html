@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="https:&#x2F;&#x2F;www.elastic.co&#x2F;products&#x2F;elasticsearch 验证环境： Elasticsearch 2.4.1CentOS Linux release 7.2.1511 (Core) 安装YUM安装下载并安装公钥rpm –import https:&#x2F;&#x2F;packages.elastic.co&#x2F;GPG-KEY-elasticsearch 在目录 &#x2F;etc&amp;#x">
+<meta property="og:type" content="article">
+<meta property="og:title" content="elasticsearch 2.4.1 安装配置">
+<meta property="og:url" content="https://wangwen135.github.io/Elasticsearch/elasticsearch%202.4.1%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="https:&#x2F;&#x2F;www.elastic.co&#x2F;products&#x2F;elasticsearch 验证环境： Elasticsearch 2.4.1CentOS Linux release 7.2.1511 (Core) 安装YUM安装下载并安装公钥rpm –import https:&#x2F;&#x2F;packages.elastic.co&#x2F;GPG-KEY-elasticsearch 在目录 &#x2F;etc&amp;#x">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2017-03-04T16:00:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Elasticsearch">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/Elasticsearch/elasticsearch%202.4.1%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/Elasticsearch/elasticsearch%202.4.1%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/","path":"Elasticsearch/elasticsearch 2.4.1 安装配置/","title":"elasticsearch 2.4.1 安装配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>elasticsearch 2.4.1 安装配置 | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#YUM%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">YUM安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">解压安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#elasticsearch-head"><span class="nav-number">3.1.</span> <span class="nav-text">elasticsearch-head</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Kibana-4-6-1"><span class="nav-number">3.2.</span> <span class="nav-text">Kibana 4.6.1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Marvel-2-0"><span class="nav-number">3.3.</span> <span class="nav-text">Marvel 2.0+</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8"><span class="nav-number">4.</span> <span class="nav-text">启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEElasticSearch%E4%BD%BF%E7%94%A8%E5%86%85%E5%AD%98"><span class="nav-number">6.</span> <span class="nav-text">配置ElasticSearch使用内存</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Elasticsearch/elasticsearch%202.4.1%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="elasticsearch 2.4.1 安装配置 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          elasticsearch 2.4.1 安装配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-03-05 00:00:00" itemprop="dateCreated datePublished" datetime="2017-03-05T00:00:00+08:00">2017-03-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><a target="_blank" rel="noopener" href="https://www.elastic.co/products/elasticsearch">https://www.elastic.co/products/elasticsearch</a></p>
+<p>验证环境：</p>
+<p><strong>Elasticsearch 2.4.1</strong><br><strong>CentOS Linux release 7.2.1511 (Core)</strong></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="YUM安装"><a href="#YUM安装" class="headerlink" title="YUM安装"></a>YUM安装</h3><p>下载并安装公钥<br>rpm –import <a target="_blank" rel="noopener" href="https://packages.elastic.co/GPG-KEY-elasticsearch">https://packages.elastic.co/GPG-KEY-elasticsearch</a></p>
+<p>在目录 &#x2F;etc&#x2F;yum.repos.d&#x2F; 下添加一个文件 elasticsearch.repo   内容如下：</p>
+<pre><code>[elasticsearch-2.x]
+name=Elasticsearch repository for 2.x packages
+baseurl=https://packages.elastic.co/elasticsearch/2.x/centos
+gpgcheck=1
+gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+</code></pre>
+<p>安装：</p>
+<pre><code>yum install elasticsearch
+</code></pre>
+<p>开机启动：</p>
+<pre><code>sudo /bin/systemctl daemon-reload
+sudo /bin/systemctl enable elasticsearch.service
+</code></pre>
+<h3 id="解压安装"><a href="#解压安装" class="headerlink" title="解压安装"></a>解压安装</h3><p>去官网下载合适的tar包<br><a target="_blank" rel="noopener" href="https://www.elastic.co/downloads/elasticsearch">https://www.elastic.co/downloads/elasticsearch</a></p>
+<pre><code># crul 下载
+curl -O https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.1/elasticsearch-2.4.1.tar.gz
+# ---------------------------------------------------
+# wget 下载
+# 如果没有wget需要先安装
+yum install wget
+
+## 下载
+wget https://download.elastic.co/elasticsearch/release/org/elasticsearch/distribution/tar/elasticsearch/2.4.1/elasticsearch-2.4.1.tar.gz
+
+## 解压
+tar -xvf elasticsearch-2.4.1.tar.gz 
+</code></pre>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>修改配置文件config&#x2F;elasticsearch.yml</p>
+<pre><code># ---------------------------------- Cluster -----------------------------------
+#配置集群名称
+cluster.name: wwh_es_cluster
+
+# ------------------------------------ Node ------------------------------------
+#配置节点名称，不同节点名字需要不同
+node.name: node-213
+
+# ----------------------------------- Paths ------------------------------------
+# Path to directory where to store the data (separate multiple locations by comma):
+#
+# path.data: /path/to/data
+#
+# Path to log files:
+#
+# path.logs: /path/to/logs
+
+# ---------------------------------- Network -----------------------------------
+# Set the bind address to a specific IP (IPv4 or IPv6):
+
+network.host: 192.168.1.213
+
+# Set a custom port for HTTP:
+#
+# http.port: 9200
+#
+
+# --------------------------------- Discovery ----------------------------------
+#集群中可以作为master节点的初始列表，通过这些节点来自动发现新加入集群的节点
+discovery.zen.ping.unicast.hosts: [&quot;wwh213&quot;, &quot;wwh214&quot;]
+
+#其他的根据需要来配置
+</code></pre>
+<hr>
+<p>复制到其他机器（可以安装完其他的再一起复制）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp -r elasticsearch-2.4.1 wwh214:/data/es/</span><br><span class="line">scp -r elasticsearch-2.4.1 wwh215:/data/es/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>然后修改为不同的节点名称</strong></p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><h3 id="elasticsearch-head"><a href="#elasticsearch-head" class="headerlink" title="elasticsearch-head"></a>elasticsearch-head</h3><p>ElasticSearch-Head 是一个与Elastic集群（Cluster）相交互的Web前台。<br>ES-Head的主要作用</p>
+<ul>
+<li>它展现ES集群的拓扑结构，并且可以通过它来进行索引（Index）和节点（Node）级别的操作</li>
+<li>它提供一组针对集群的查询API，并将结果以json和表格形式返回</li>
+<li>它提供一些快捷菜单，用以展现集群的各种状态</li>
+</ul>
+<p>官网地址：<br><a target="_blank" rel="noopener" href="https://github.com/mobz/elasticsearch-head">https://github.com/mobz/elasticsearch-head</a><br><a target="_blank" rel="noopener" href="http://mobz.github.io/elasticsearch-head/">http://mobz.github.io/elasticsearch-head/</a></p>
+<p>安装：</p>
+<pre><code>bin/plugin -install mobz/elasticsearch-head
+
+or
+
+bin/plugin install mobz/elasticsearch-head
+</code></pre>
+<p>访问地址：<br><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_plugin/head/">http://192.168.1.213:9200/_plugin/head/</a></p>
+<h3 id="Kibana-4-6-1"><a href="#Kibana-4-6-1" class="headerlink" title="Kibana 4.6.1"></a>Kibana 4.6.1</h3><p>Kibana是一个开源的数据可视化平台，使您可以通过惊艳、强大的图形结合定制的仪表板，帮助您对数据进行分析与数据进行交互。<br>Kibana 4.6.1 与Elasticsearch 2.4.x.兼容<br>Kibana也可以使用apt或yum安装<br><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/kibana/4.6/setup.html#setup-repositories">https://www.elastic.co/guide/en/kibana/4.6/setup.html#setup-repositories</a></p>
+<p>安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 下载</span><br><span class="line">wget https://download.elastic.co/kibana/kibana/kibana-4.6.1-linux-x86_64.tar.gz</span><br><span class="line"></span><br><span class="line"># 解压</span><br><span class="line">tar -xvf kibana-4.6.1-linux-x86_64.tar.gz </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>编辑 config&#x2F;kibana.yml 文件</p>
+<pre><code>#设置elasticsearch.url 指向 Elasticsearch 实例  
+
+elasticsearch.url: &quot;http://192.168.1.213:9200&quot;
+</code></pre>
+<p>运行 .&#x2F;bin&#x2F;kibana 启动<br>在浏览器中打开：<br><a target="_blank" rel="noopener" href="http://192.168.1.213:5601/">http://192.168.1.213:5601</a></p>
+<h3 id="Marvel-2-0"><a href="#Marvel-2-0" class="headerlink" title="Marvel 2.0+"></a>Marvel 2.0+</h3><p>Marvel是Elasticsearch的图形化监控客户端，可以用来查看当前的各项状态。优化您的Elasticsearch性能和快速诊断问题的工具。</p>
+<p><em>现在的elasticsearch 更改了插件安装方式，marvel是在kibana里安装的，而不是在elasticsearch里安装的，elasticsearch里安装的只是marvel-agent.</em></p>
+<p><em>Marvel 2.0+ 兼容最新版本的Elasticsearch 和 Kibana</em><br><em>Marvel 1.3 兼容 Elasticsearch 1.0 - 1.7</em></p>
+<p>官网地址：<br><a target="_blank" rel="noopener" href="https://www.elastic.co/products/marvel">https://www.elastic.co/products/marvel</a><br><a target="_blank" rel="noopener" href="https://www.elastic.co/downloads/marvel">https://www.elastic.co/downloads/marvel</a></p>
+<p>安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#安装 Marvel 到 Elasticsearch 中</span><br><span class="line"># 这个license只有30天的有效期，之后需要升级</span><br><span class="line"></span><br><span class="line">./plugin install license</span><br><span class="line">./plugin install marvel-agent</span><br><span class="line"></span><br><span class="line">#安装 Marvel 到 Kibana 中</span><br><span class="line"></span><br><span class="line">bin/kibana plugin --install elasticsearch/marvel/latest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>启动 Elasticsearch 和 Kibana<br>访问： <a target="_blank" rel="noopener" href="http://192.168.1.213:5601/app/marvel">http://192.168.1.213:5601/app/marvel</a></p>
+<hr>
+<p>需要在每台机器上都安装</p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p><strong>不能直接以root用户进行启动</strong><br><strong>修改用户之后需要注意权限问题</strong><br>添加用户并修改权限</p>
+<pre><code>#添加用户
+adduser es  
+
+#修改权限
+chown -R es:es elasticsearch-2.4.1
+
+su es
+</code></pre>
+<p>或者指定 -Des.insecure.allow.root&#x3D;true</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># -d参数表示在后台启动</span><br><span class="line">bin/elasticsearch -d</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看端口是否启动</p>
+<pre><code>netstat -an | grep 9200
+tcp6       0      0 ::1:9200                :::*                    LISTEN     
+tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN    
+
+netstat -an | grep 9300
+tcp6       0      0 ::1:9300                :::*                    LISTEN     
+tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN  
+</code></pre>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>通过命令</p>
+<pre><code>curl -X GET http://192.168.1.213:9200/
+</code></pre>
+<p>如果安装了 elasticsearch-head 直接在浏览器中打开：<br><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_plugin/head/">http://192.168.1.213:9200/_plugin/head/</a></p>
+<hr>
+<h2 id="配置ElasticSearch使用内存"><a href="#配置ElasticSearch使用内存" class="headerlink" title="配置ElasticSearch使用内存"></a>配置ElasticSearch使用内存</h2><p>编辑文件：<br>$ES_HOME&#x2F;bin&#x2F;elasticsearch.in.sh</p>
+<pre><code>if [ &quot;x$ES_MIN_MEM&quot; = &quot;x&quot; ]; then
+    ES_MIN_MEM=10g  //最小内存，根据机器内存来定
+fi
+if [ &quot;x$ES_MAX_MEM&quot; = &quot;x&quot; ]; then
+    ES_MAX_MEM=36g  //最大内存，根据机器内存来定，最好不要超过机器物理内存的50%
+fi
+</code></pre>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BE%E8%AE%BE%E7%BD%AEHDMI%E5%88%86%E8%BE%A8%E7%8E%87/" rel="prev" title="树莓派设置HDMI分辨率">
+                  <i class="fa fa-angle-left"></i> 树莓派设置HDMI分辨率
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E6%A0%91%E8%8E%93%E6%B4%BE/%E6%A0%91%E8%8E%93%E6%B4%BE%E9%BA%A6%E5%85%8B%E9%A3%8E%E6%91%84%E5%83%8F%E5%A4%B4%E6%B5%8B%E8%AF%95/" rel="next" title="树莓派麦克风摄像头测试">
+                  树莓派麦克风摄像头测试 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

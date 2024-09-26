@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="官网地址：http:&#x2F;&#x2F;hadoop.apache.org&#x2F; 各个版本文档地址：http:&#x2F;&#x2F;hadoop.apache.org&#x2F;docs&#x2F; 1、环境版本信息CentOS Linux release 7.2.1511 (Core)Hadoop 2.7.2java version “1.7.0_80”   &#x2F;etc&#x2F;hosts 123192.168.1.213    wwh213">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop 2.7.2 安装配置">
+<meta property="og:url" content="https://wangwen135.github.io/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%202.7.2%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="官网地址：http:&#x2F;&#x2F;hadoop.apache.org&#x2F; 各个版本文档地址：http:&#x2F;&#x2F;hadoop.apache.org&#x2F;docs&#x2F; 1、环境版本信息CentOS Linux release 7.2.1511 (Core)Hadoop 2.7.2java version “1.7.0_80”   &#x2F;etc&#x2F;hosts 123192.168.1.213    wwh213">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-09-13T14:11:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="Hdfs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%202.7.2%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%202.7.2%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/","path":"大数据/Hadoop/Hadoop 2.7.2 安装配置/","title":"Hadoop 2.7.2 安装配置"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hadoop 2.7.2 安装配置 | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">1、环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81%E5%88%9B%E5%BB%BAhadoop%E7%94%A8%E6%88%B7"><span class="nav-number">2.</span> <span class="nav-text">2、创建hadoop用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81SSH%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">3、SSH免密码登录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4%E3%80%81%E5%AE%89%E8%A3%85JDK"><span class="nav-number">4.</span> <span class="nav-text">4、安装JDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5%E3%80%81%E5%AE%89%E8%A3%85Hadoop-2-7-2"><span class="nav-number">5.</span> <span class="nav-text">5、安装Hadoop 2.7.2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6%E3%80%81%E5%90%AF%E5%8A%A8-Hadoop"><span class="nav-number">6.</span> <span class="nav-text">6、启动 Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Web%E8%AE%BF%E9%97%AE"><span class="nav-number">6.0.1.</span> <span class="nav-text">Web访问</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#All-Applications"><span class="nav-number">6.0.1.1.</span> <span class="nav-text">All Applications</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HDFS"><span class="nav-number">6.0.1.2.</span> <span class="nav-text">HDFS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Map-Reduce"><span class="nav-number">6.0.1.3.</span> <span class="nav-text">Map&#x2F;Reduce</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%202.7.2%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hadoop 2.7.2 安装配置 | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hadoop 2.7.2 安装配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-13 22:11:00" itemprop="dateCreated datePublished" datetime="2016-09-13T22:11:00+08:00">2016-09-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>官网地址：<br><a target="_blank" rel="noopener" href="http://hadoop.apache.org/">http://hadoop.apache.org/</a></p>
+<p>各个版本文档地址：<br><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/">http://hadoop.apache.org/docs/</a></p>
+<h2 id="1、环境"><a href="#1、环境" class="headerlink" title="1、环境"></a>1、环境</h2><p><strong>版本信息</strong><br>CentOS Linux release 7.2.1511 (Core)<br>Hadoop 2.7.2<br>java version “1.7.0_80”  </p>
+<p><strong>&#x2F;etc&#x2F;hosts</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.213    wwh213</span><br><span class="line">192.168.1.214    wwh214</span><br><span class="line">192.168.1.215    wwh215</span><br></pre></td></tr></table></figure>
+<p>确保各个主机都能正确解析主机名和IP</p>
+<blockquote>
+<p><em><strong>注意：</strong></em>&#x2F;etc&#x2F;hosts 中配置节点与IP时需要注意，不要配置如：“127.0.0.1 master” 这样的，会导致无法绑定正确的IP  </p>
+</blockquote>
+<p><strong>集群结构</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Master    192.168.1.213    wwh213  </span><br><span class="line">Slave1    192.168.1.214    wwh214  </span><br><span class="line">Slave2    192.168.1.215    wwh215</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、创建hadoop用户"><a href="#2、创建hadoop用户" class="headerlink" title="2、创建hadoop用户"></a>2、创建hadoop用户</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#创建hadoop用户</span><br><span class="line">adduser hadoop</span><br><span class="line"></span><br><span class="line">#修改密码</span><br><span class="line">passwd hadoop</span><br></pre></td></tr></table></figure>
+<p>以下操作都在hadoop用户下进行，注意目录权限。</p>
+<h2 id="3、SSH免密码登录"><a href="#3、SSH免密码登录" class="headerlink" title="3、SSH免密码登录"></a>3、SSH免密码登录</h2><blockquote>
+<p>无密码登陆是指通过证书认证的方式进行登陆，使用<strong>公私钥</strong>认证的方式来进行ssh登录。<br><strong>公私钥</strong>认证方式简单的解释：首先在客户端上创建一对公私钥<br>公钥文件：<del>&#x2F;.ssh&#x2F;id_rsa.pub<br>私钥文件：</del>&#x2F;.ssh&#x2F;id_rsa<br>然后把公钥添加到服务器上的（~&#x2F;.ssh&#x2F;authorized_keys）文件里面，自己保留好私钥。<br>登录时客户端会向服务器请求使用密匙进行安全验证并发送公钥到服务端，服务端会对比公钥如果匹配成功服务端会生成一个随机数然后用该公钥加密再发给客户端，客户端通过私钥解密后发给服务端进行确认。</p>
+</blockquote>
+<p>受信任的远程主机公钥会保存到 ~&#x2F;.ssh&#x2F;known_hosts文件中</p>
+<p>Hadoop需要通过SSH登录到各个节点进行操作，每台服务器都生成公钥，再合并到authorized_keys  </p>
+<p>***&#x3D;&#x3D;注意&#x3D;&#x3D;<em>：authorized_keys的权限要是600</em>*</p>
+<ol>
+<li>CentOS默认没有启动ssh无密登录，去掉&#x2F;etc&#x2F;ssh&#x2F;sshd_config其中两行的注释，每台服务器都要设置<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br></pre></td></tr></table></figure></li>
+<li>输入命令，<strong>ssh-keygen -t rsa</strong>，生成key，都不输入密码，一直回车，就会在~&#x2F;.ssh文件夹生成<blockquote>
+<p><strong>id_rsa</strong>    私钥<br><strong>id_rsa.pub</strong>    公钥</p>
+</blockquote>
+</li>
+</ol>
+<p>在每台服务器都生成一次</p>
+<ol start="3">
+<li><p>合并全部的公钥到一个authorized_keys文件，在Master服务器，进入~&#x2F;.ssh目录，通过SSH命令合并</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#cat id_rsa.pub&gt;&gt; authorized_keys</span><br><span class="line">#使公钥添加到known_hosts中</span><br><span class="line">ssh hadoop@wwh213 cat ~/.ssh/id_rsa.pub&gt;&gt; authorized_keys</span><br><span class="line"></span><br><span class="line">ssh hadoop@wwh214 cat ~/.ssh/id_rsa.pub&gt;&gt; authorized_keys</span><br><span class="line"></span><br><span class="line">ssh hadoop@wwh215 cat ~/.ssh/id_rsa.pub&gt;&gt; authorized_keys</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>把Master服务器的<strong>authorized_keys</strong>、<strong>known_hosts</strong>复制到Slave服务器的~&#x2F;.ssh目录  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">scp authorized_keys known_hosts hadoop@wwh214:~/.ssh/</span><br><span class="line"></span><br><span class="line">scp authorized_keys known_hosts hadoop@wwh215:~/.ssh/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>完成之后 ssh wwh214、ssh wwh215就不需要输入密码了</p>
+</li>
+</ol>
+<h2 id="4、安装JDK"><a href="#4、安装JDK" class="headerlink" title="4、安装JDK"></a>4、安装JDK</h2><p>Hadoop 2.7已经不再支持JDK6了，需要JDK7+</p>
+<p><em><strong>之前已经安装过JDK了，下面是一个例子</strong></em></p>
+<ol>
+<li>下载“jdk-7u80-linux-x64.gz”，放到&#x2F;data&#x2F;java目录下  </li>
+<li>解压缩<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-7u79-linux-x64.gz  </span><br></pre></td></tr></table></figure></li>
+<li>编辑&#x2F;etc&#x2F;profile，加上：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/data/java/jdk1.7.0_80</span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin </span><br></pre></td></tr></table></figure></li>
+<li>使配置生效，输入命令：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure></li>
+<li>进行测试<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><em><strong>或者直接下载 jdk-7u<version>-linux-x64.rpm 以root用户进行安装，将安装到&#x2F;usr&#x2F;java 目录中</strong></em></p>
+<h2 id="5、安装Hadoop-2-7-2"><a href="#5、安装Hadoop-2-7-2" class="headerlink" title="5、安装Hadoop 2.7.2"></a>5、安装Hadoop 2.7.2</h2><p>只需要在Master服务器解压配置好，再复制到Slave服务器  </p>
+<p>配置hadoop，主要是配置<strong>core-site.xml</strong>，<strong>hdfs-site.xml</strong>，<strong>mapred-site.xml</strong>，<strong>yarn-site.xml</strong> 几个配置文件，默认这些配置文件都是空的，由于版本差异很难知道这些配置文件有哪些配置可以生效，需要去Apache的官网中找对应版本的默认配置文件。  </p>
+<p><strong>官网文档地址：</strong>  </p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.2/">http://hadoop.apache.org/docs/r2.7.2/</a></p>
+</blockquote>
+<hr>
+<ol>
+<li><p>下载 hadoop-2.7.2.tar.gz ，放到&#x2F;data&#x2F;hadoop目录下  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget http://archive.apache.org/dist/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz</span><br><span class="line"></span><br><span class="line">wget http://apache.fayea.com/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz</span><br></pre></td></tr></table></figure></li>
+<li><p>解压  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf hadoop-2.7.2.tar.gz</span><br></pre></td></tr></table></figure></li>
+<li><p>在&#x2F;data&#x2F;hadoop目录下创建数据存放的文件夹  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir tmp</span><br><span class="line">mkdir hdfs</span><br><span class="line">mkdir hdfs/data</span><br><span class="line">mkdir hdfs/name</span><br></pre></td></tr></table></figure></li>
+<li><p>配置JAVA_HOME<br>修改&#x2F;data&#x2F;hadoop&#x2F;hadoop-2.7.2&#x2F;etc&#x2F;hadoop目录下hadoop-env.sh、yarn-env.sh的JAVA_HOME  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/data/java/jdk1.7.0_80</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果环境变量配置好了也可以不用配置，默认是：export JAVA_HOME&#x3D;${JAVA_HOME}<br>看启动时的提示</p>
+</blockquote>
+</li>
+<li><p>配置&#x2F;data&#x2F;hadoop&#x2F;hadoop-2.7.2&#x2F;etc&#x2F;hadoop目录下的core-site.xml<br><strong>官方默认的配置文件</strong><br><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/core-default.xml">http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-common/core-default.xml</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;fs.defaultFS&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;hdfs://192.168.1.213:9000&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;file:/data/hadoop/tmp&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;io.file.buffer.size&lt;/name&gt;</span><br><span class="line">        &lt;!-- 缺省值是4096 --&gt;</span><br><span class="line">        &lt;value&gt;131072&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>配置&#x2F;data&#x2F;hadoop&#x2F;hadoop-2.7.2&#x2F;etc&#x2F;hadoop目录下的hdfs-site.xml<br><strong>官方默认的配置文件</strong><br><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml">http://hadoop.apache.org/docs/r2.7.2/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;file:/data/hadoop/hdfs/name&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;file:/data/hadoop/hdfs/data&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">        &lt;!-- 缺省值是3 --&gt;</span><br><span class="line">        &lt;value&gt;2&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 关闭权限检查 --&gt;    </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;dfs.permissions.enabled&lt;/name&gt;</span><br><span class="line">        &lt;!-- 缺省值是true --&gt;</span><br><span class="line">        &lt;value&gt;false&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    </span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置&#x2F;data&#x2F;hadoop&#x2F;hadoop-2.7.2&#x2F;etc&#x2F;hadoop目录下的mapred-site.xml<br><strong>官方默认的配置文件</strong><br><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.2/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml">http://hadoop.apache.org/docs/r2.7.2/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;</span><br><span class="line">        &lt;!-- 缺省值是：0.0.0.0:10020 --&gt;</span><br><span class="line">        &lt;value&gt;192.168.1.213:10020&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;</span><br><span class="line">        &lt;!-- 缺省值是：0.0.0.0:19888 --&gt;</span><br><span class="line">        &lt;value&gt;192.168.1.213:19888&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置&#x2F;data&#x2F;hadoop&#x2F;hadoop-2.7.2&#x2F;etc&#x2F;hadoop目录下的yarn-site.xml<br><strong>官方默认的配置文件</strong><br><a target="_blank" rel="noopener" href="http://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-common/yarn-default.xml">http://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-common/yarn-default.xml</a>  </p>
+<blockquote>
+<p>YARN：新一代的MapReduce。  MapReduce 2.0 (MRv2)</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property&gt;</span><br><span class="line">        &lt;name&gt;yarn.resourcemanager.hostname&lt;/name&gt;</span><br><span class="line">        &lt;!-- 缺省值是：0.0.0.0 --&gt;</span><br><span class="line">        &lt;value&gt;192.168.1.213&lt;/value&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置&#x2F;data&#x2F;hadoop&#x2F;hadoop-2.7.2&#x2F;etc&#x2F;hadoop目录下的slaves，删除默认的localhost，增加2个从节点<br><em>如果配置主节点的IP的话就是既当 NameNode 又当 DataNode</em>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">192.168.1.213</span><br><span class="line">192.168.1.214</span><br><span class="line">192.168.1.215</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将配置好的Hadoop复制到各个节点对应位置上，通过scp传送</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp -r /data/hadoop wwh214:/data/</span><br><span class="line">scp -r /data/hadoop wwh215:/data/</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="6、启动-Hadoop"><a href="#6、启动-Hadoop" class="headerlink" title="6、启动 Hadoop"></a>6、启动 Hadoop</h2><p>在Master服务器启动hadoop，从节点会自动启动，进入&#x2F;data&#x2F;hadoop&#x2F;hadoop-2.7.2目录  </p>
+<p>(1)初始化，输入命令  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/hdfs namenode -format</span><br></pre></td></tr></table></figure>
+
+<p>(2)全部启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-all.sh</span><br></pre></td></tr></table></figure>
+
+<p>也可以分开启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sbin/start-dfs.sh</span><br><span class="line">sbin/start-yarn.sh</span><br></pre></td></tr></table></figure>
+
+<p>(3)停止的话，输入命令  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sbin/stop-all.sh</span><br></pre></td></tr></table></figure>
+
+<p>也可以分开停止</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sbin/stop-dfs.sh</span><br><span class="line">sbin/stop-yarn.sh</span><br></pre></td></tr></table></figure>
+
+
+<p>(4)输入命令，jps，可以看到相关信息</p>
+<h4 id="Web访问"><a href="#Web访问" class="headerlink" title="Web访问"></a>Web访问</h4><p>要先开放端口或者直接关闭防火墙  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service  </span><br></pre></td></tr></table></figure>
+
+<h5 id="All-Applications"><a href="#All-Applications" class="headerlink" title="All Applications"></a>All Applications</h5><p><a target="_blank" rel="noopener" href="http://192.168.1.213:8088/">http://192.168.1.213:8088/</a>  </p>
+<h5 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h5><p><a target="_blank" rel="noopener" href="http://192.168.1.213:50070/">http://192.168.1.213:50070/</a>  </p>
+<h5 id="Map-Reduce"><a href="#Map-Reduce" class="headerlink" title="Map&#x2F;Reduce"></a>Map&#x2F;Reduce</h5><p><a target="_blank" rel="noopener" href="http://192.168.1.213:50030/">http://192.168.1.213:50030/</a>  </p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+              <a href="/tags/Hdfs/" rel="tag"># Hdfs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Maven/Maven/" rel="prev" title="Maven">
+                  <i class="fa fa-angle-left"></i> Maven
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/Hadoop%E9%BB%98%E8%AE%A4%E9%85%8D%E7%BD%AE/" rel="next" title="Hadoop默认配置">
+                  Hadoop默认配置 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

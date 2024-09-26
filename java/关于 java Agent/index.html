@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangwen135.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="参考资料instrument 规范  https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;api&#x2F;java&#x2F;lang&#x2F;instrument&#x2F;package-summary.html?is-external&#x3D;true  Class VirtualMachine  https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;jdk&#x2F;api&#x2F;attach&#x2F;spec">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 java Agent">
+<meta property="og:url" content="https://wangwen135.github.io/java/%E5%85%B3%E4%BA%8E%20java%20Agent/index.html">
+<meta property="og:site_name" content="王某某的笔记">
+<meta property="og:description" content="参考资料instrument 规范  https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;api&#x2F;java&#x2F;lang&#x2F;instrument&#x2F;package-summary.html?is-external&#x3D;true  Class VirtualMachine  https:&#x2F;&#x2F;docs.oracle.com&#x2F;javase&#x2F;8&#x2F;docs&#x2F;jdk&#x2F;api&#x2F;attach&#x2F;spec">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-05-15T04:01:00.000Z">
+<meta property="article:author" content="王某某">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Java Agent">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangwen135.github.io/java/%E5%85%B3%E4%BA%8E%20java%20Agent/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://wangwen135.github.io/java/%E5%85%B3%E4%BA%8E%20java%20Agent/","path":"java/关于 java Agent/","title":"关于 java Agent"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>关于 java Agent | 王某某的笔记</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">王某某的笔记</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录我的编程之路</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#java-agent-%E5%AE%9E%E7%8E%B0"><span class="nav-number">2.</span> <span class="nav-text">java agent 实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%EF%BC%9A%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.1.</span> <span class="nav-text">一：命令行接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%EF%BC%9A%E5%9C%A8%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%90%AF%E5%8A%A8%E4%B9%8B%E5%90%8E%E5%86%8D%E5%90%AF%E5%8A%A8%E4%BB%A3%E7%90%86"><span class="nav-number">2.2.</span> <span class="nav-text">二：在虚拟机启动之后再启动代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Manifest-%E5%B1%9E%E6%80%A7%E8%AF%B4%E6%98%8E"><span class="nav-number">2.3.</span> <span class="nav-text">Manifest 属性说明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E7%B1%BB%E8%AF%B4%E6%98%8E"><span class="nav-number">3.</span> <span class="nav-text">相关类说明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VirtualMachine"><span class="nav-number">3.1.</span> <span class="nav-text">VirtualMachine</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ClassFileTransformer"><span class="nav-number">3.2.</span> <span class="nav-text">ClassFileTransformer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Instrumentation"><span class="nav-number">3.3.</span> <span class="nav-text">Instrumentation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.4.</span> <span class="nav-text">示例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pom-%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-number">3.4.1.</span> <span class="nav-text">pom 文件示例：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#manifest%E6%96%87%E4%BB%B6%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-number">3.4.2.</span> <span class="nav-text">manifest文件示例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E4%BE%8B%E5%AD%90"><span class="nav-number">4.</span> <span class="nav-text">代码例子</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="王某某"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">王某某</p>
+  <div class="site-description" itemprop="description">这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">158</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">121</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/wangwen135" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.jianshu.com/u/66c41e72644b" title="简  书 → https:&#x2F;&#x2F;www.jianshu.com&#x2F;u&#x2F;66c41e72644b" rel="noopener me" target="_blank"><i class="fa fa-link fa-fw"></i>简  书</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:wangwen135@gmail.com" title="E-Mail → mailto:wangwen135@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/wangwen135" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;wangwen135" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/java/%E5%85%B3%E4%BA%8E%20java%20Agent/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="关于 java Agent | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于 java Agent
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-05-15 12:01:00" itemprop="dateCreated datePublished" datetime="2019-05-15T12:01:00+08:00">2019-05-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><strong>instrument 规范</strong></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/package-summary.html?is-external=true">https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/package-summary.html?is-external=true</a></p>
+</blockquote>
+<p><strong>Class VirtualMachine</strong></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/jdk/api/attach/spec/com/sun/tools/attach/VirtualMachine.html#loadAgent-java.lang.String-">https://docs.oracle.com/javase/8/docs/jdk/api/attach/spec/com/sun/tools/attach/VirtualMachine.html#loadAgent-java.lang.String-</a></p>
+</blockquote>
+<p><strong>Interface ClassFileTransformer</strong></p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/ClassFileTransformer.html">https://docs.oracle.com/javase/8/docs/api/java/lang/instrument/ClassFileTransformer.html</a></p>
+</blockquote>
+<hr>
+<h3 id="java-agent-实现"><a href="#java-agent-实现" class="headerlink" title="java agent 实现"></a>java agent 实现</h3><p>代理需要编译成jar包的方式来运行，JAR文件manifest中的属性指定将加载哪个代理类来启动代理。</p>
+<p>有下面两种方式可以启动一个agent</p>
+<h4 id="一：命令行接口"><a href="#一：命令行接口" class="headerlink" title="一：命令行接口"></a>一：命令行接口</h4><p>程序没有启动时可以通过在命令行上指定javaagent的方式来启动代理</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-javaagent:jarpath[=options]</span><br><span class="line"></span><br><span class="line">#如：</span><br><span class="line">java -javaagent:xxx-agent.jar -cp xxx.jar com.wwh.xxxx</span><br></pre></td></tr></table></figure>
+
+<p>通过命令行的方式可以指定<strong>多个</strong>代理，并且支持参数。初始化Java虚拟机(JVM)之后，将按照指定代理的顺序调用每个premain方法，然后调用真正的应用程序main方法。每个premain方法必须返回，以便继续启动程序。</p>
+<p>agent Jar包中的manifest文件必须包含Premain-Class， 指向代理的入口类，这个类中包含了一个公共静态的premain方法</p>
+<p>premain 方法有两种签名，虚拟机会尝试先运行下面这个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void premain(String agentArgs, Instrumentation inst);</span><br></pre></td></tr></table></figure>
+<p>如果没有会尝试调用下面这个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void premain(String agentArgs);</span><br></pre></td></tr></table></figure>
+<p>当使用命令行选项启动代理时，不会调用agentmain方法。</p>
+<p>代理类将由系统类加载器加载(参见ClassLoader.getSystemClassLoader)。这是类加载器，它通常加载包含应用程序主方法的类。premain方法将在与应用程序main方法相同的安全性和类加载器规则下运行。对于代理premain方法可以做什么，没有建模限制。application main可以做的任何事情，包括创建线程，都是合法的。</p>
+<p>每个代理都通过agentArgs参数传递其代理选项。代理选项作为单个字符串传递，任何额外的解析都应该由代理本身执行。</p>
+<h4 id="二：在虚拟机启动之后再启动代理"><a href="#二：在虚拟机启动之后再启动代理" class="headerlink" title="二：在虚拟机启动之后再启动代理"></a>二：在虚拟机启动之后再启动代理</h4><p>程序已经启动后可以通过VirtualMachine 来加载启动代理，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">VirtualMachine vm = VirtualMachine.attach(&quot;2177&quot;);</span><br><span class="line">vm.loadAgent(jar);</span><br><span class="line">vm.detach();</span><br></pre></td></tr></table></figure>
+
+<p>注意：  </p>
+<ol>
+<li>代理JAR的manifest中必须包含属性 Agent-Class。此属性的值是代理类的名称。  </li>
+<li>代理类必须实现一个公共静态的 agentmain  方法，如下所示。</li>
+</ol>
+<p>启动代理时先尝试运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void agentmain(String agentArgs, Instrumentation inst);</span><br></pre></td></tr></table></figure>
+<p>找不到再尝试运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static void agentmain(String agentArgs);</span><br></pre></td></tr></table></figure>
+
+<p>agentmain方法不能阻塞，这个类同用可以拥有 premain  方法，不过并不会被调用</p>
+<p>参数通过如下方式指定：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vm.loadAgent(jar, options);</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="Manifest-属性说明"><a href="#Manifest-属性说明" class="headerlink" title="Manifest 属性说明"></a>Manifest 属性说明</h4><p>代理JAR文件定义了以下清单属性:</p>
+<ol>
+<li><strong>Premain-Class</strong>  此属性指定代理类，也就是包含premain方法的类。如果该属性不存在，JVM将中止。注意这是一个类名，而不是文件名或路径。</li>
+<li><strong>Agent-Class</strong>  指定代理类，支持在VM启动后启动代理的机制，包含了agentmain 方法的类，如果该属性不存在，则代理将不会启动。注意这是一个类名，而不是文件名或路径。</li>
+<li><strong>Boot-Class-Path</strong> 引导类装入器要搜索的路径列表</li>
+<li><strong>Can-Redefine-Classes</strong> 布尔值( true 或 false ，不区分大小写)。代理是否可以重新定义类。此属性是可选的，默认为false。</li>
+<li><strong>Can-Retransform-Classes</strong> 布尔值( true 或 false ，不区分大小写)。代理是否可以重新转换类。此属性是可选的，默认为false。</li>
+<li><strong>Can-Set-Native-Method-Prefix</strong> 布尔值( true 或 false ，不区分大小写)。代理是否可以设置本地方法前缀。此属性是可选的，默认为false。</li>
+</ol>
+<p>代理JAR文件可同时具有清单中的Premain-Class和Agent-Class属性。当使用-javaagent选项在命令行上启动代理时，执行Premain-Class属性指定的<br>代理类，而Agent-Class属性将被忽略。类似地，如果代理在VM启动之后再启动，则执行Agent-Class属性指定的代理类，而忽略Premain-Class属性的值。</p>
+<hr>
+<h3 id="相关类说明"><a href="#相关类说明" class="headerlink" title="相关类说明"></a>相关类说明</h3><p>几个关键类和接口</p>
+<h4 id="VirtualMachine"><a href="#VirtualMachine" class="headerlink" title="VirtualMachine"></a>VirtualMachine</h4><p>表示一个java虚拟机<br>VirtualMachine表示已附加到的Java虚拟机。它所附加的Java虚拟机有时称为目标虚拟机或目标VM。应用程序(通常是managemet控制台或分析器之类的工具)使用虚拟机将代理加载到目标VM中。例如，用Java语言编写的分析器工具可能附加到正在运行的应用程序，并加载其分析器代理来分析正在运行的应用程序。</p>
+<p>通过调用带有标识目标虚拟机的标识符的attach方法来获得虚拟机。标识符依赖于实现，但在每个Java虚拟机都在自己的操作系统进程中运行的环境中，标识符通常是进程标识符(或pid)。另外，通过使用从list方法返回的虚拟机描述符列表中获得的VirtualMachineDescriptor调用attach方法来获得虚拟机实例。一旦获得对虚拟机的引用，就使用loadAgent、loadAgentLibrary和loadAgentPath方法将代理加载到目标虚拟机中。loadAgent方法用于加载用Java语言编写并部署在JAR文件中的代理。loadAgentLibrary和loadAgentPath方法用于加载部署在动态库或静态链接到VM并使用JVM工具接口的代理。</p>
+<p>除了加载代理之外，虚拟机还提供对目标VM中的系统属性的读访问。这在某些环境中非常有用，比如java。home、os.name或os。arch用于构造将加载到目标VM的代理的路径。</p>
+<p>一个启动jmx的例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// attach to target VM</span><br><span class="line">VirtualMachine vm = VirtualMachine.attach(&quot;2177&quot;);</span><br><span class="line"></span><br><span class="line">// start management agent</span><br><span class="line">Properties props = new Properties();</span><br><span class="line">props.put(&quot;com.sun.management.jmxremote.port&quot;, &quot;5000&quot;);</span><br><span class="line">vm.startManagementAgent(props);</span><br><span class="line"></span><br><span class="line">// detach</span><br><span class="line">vm.detach();</span><br></pre></td></tr></table></figure>
+<p>虚拟机对于多个并发线程的使用是安全的。</p>
+<h4 id="ClassFileTransformer"><a href="#ClassFileTransformer" class="headerlink" title="ClassFileTransformer"></a>ClassFileTransformer</h4><p>代理提供此接口的实现，以便转换类文件。转换发生在JVM定义类之前。</p>
+<p>一个代理提供者需要实现：ClassFileTransformer 接口，来转变class文件，这个接口有一个方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">byte[]</span><br><span class="line">transform(  ClassLoader         loader,</span><br><span class="line">            String              className,</span><br><span class="line">            Class&lt;?&gt;            classBeingRedefined,</span><br><span class="line">            ProtectionDomain    protectionDomain,</span><br><span class="line">            byte[]              classfileBuffer)</span><br><span class="line">    throws IllegalClassFormatException;</span><br></pre></td></tr></table></figure>
+
+<p>此方法的实现可以转换提供的类文件并返回一个新的替换类文件</p>
+<p>一旦向addTransformer注册了一个transformer，每个新的类定义和每个类重定义都会调用这个transformer。每个类重新转换时也将调用具有重新转换能力的转换器。<br>对新类定义的请求是用  ClassLoader.defineClass 或本地调用触发的。<br>对类的重定义请求是通过 Instrumentation.redefineClasses 或本地调用触发的。<br>对类重新转换的请求是通过 Instrumentation.retransformClasses 或本地调用触发的。<br>在处理请求期间，在类文件字节被验证或应用之前调用转换器。<br>当有多个转换器时，转换由链接转换调用组成。也就是说，一个转换调用返回的字节数组将成为下一个调用的输入(通过classfileBuffer参数)。</p>
+<p>关于transform输入的classfileBuffer参数：<br>如果实现方法确定不需要转换，则返回null。否则，它应该创建一个新的byte[]数组，将输入classfileBuffer连同所有所需的转换复制到其中，并返回新数组。不能修改输入classfileBuffer。</p>
+<p>在重新转换和重新定义的情况下，转换器必须支持重新定义语义:如果转换器在初始定义期间更改的类稍后被重新转换或重新定义，转换器必须确保第二个类输出类文件是第一个输出类文件的合法重新定义。</p>
+<p>如果transformer抛出异常(它没有捕获异常)，后续的transformer仍然会被调用，并且负载、重新定义或重新转换仍然会被尝试。因此，抛出异常的效果与返回null相同。为了防止在transformer代码中生成未检查异常时出现意外行为，transformer可以捕获Throwable。如果转换器认为classFileBuffer不代表一个有效格式化的类文件，它应该抛出一个IllegalClassFormatException;而这与返回null具有相同的效果。它有助于记录或调试格式错误。</p>
+<p><strong>参数说明：</strong>  </p>
+<ol>
+<li>loader   要转换的类的定义类加载器，如果是bootstrap loader则为空</li>
+<li>className  类名的内部形式为Java虚拟机规范中定义的完全限定类名和接口名。例如：”java&#x2F;util&#x2F;List”。</li>
+<li>classBeingRedefined  如果这是由重新定义或重新转换触发的，则这个类存在重新定义或重新转换，否则为null。</li>
+<li>protectionDomain 正在定义或重新定义的类的保护域</li>
+<li>classfileBuffer 类文件格式的输入字节缓冲区-<strong>不能修改</strong></li>
+</ol>
+<p><strong>返回：</strong><br>格式良好的类文件缓冲区(转换的结果)，如果没有执行转换，则为null。</p>
+<h4 id="Instrumentation"><a href="#Instrumentation" class="headerlink" title="Instrumentation"></a>Instrumentation</h4><p>该类提供测试Java编程语言代码所需的服务。插装是将字节码添加到方法中，以便收集工具使用的数据。由于这些更改纯粹是附加的，所以这些工具不会修改应用程序状态或行为。此类良性工具的例子包括监视代理、分析器、覆盖率分析器和事件日志记录器。</p>
+<p>获取Instrumentation  接口实例有两种方法:  </p>
+<ol>
+<li>当JVM以指示代理类的方式启动时。在这种情况下，将一个插装实例传递给代理类的premain方法。</li>
+<li>当JVM在启动后的某个时候提供启动代理的机制时。在这种情况下，将一个插装实例传递给代理代码的agentmain方法。</li>
+</ol>
+<p>一旦代理获得一个Instrumentation 实例，代理可以在任何时候调用该实例上的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Instrumentation.addTransformer(new Transformer(), true);  </span><br></pre></td></tr></table></figure>
+<p>第二个参数表示是否可以重新转换已经定义好了的类<br>对于启动后再附加agent的方式，如果想要改变已经加载了的类，需要设置为true</p>
+<p>并且注意修改manifest文件中的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Can-Retransform-Classes: true</span><br></pre></td></tr></table></figure>
+
+<p>否则会报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adding retransformable transformers is not supported in this environment</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><h5 id="pom-文件示例："><a href="#pom-文件示例：" class="headerlink" title="pom 文件示例："></a>pom 文件示例：</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">	&lt;dependency&gt;</span><br><span class="line">		&lt;groupId&gt;jdk.tools&lt;/groupId&gt;</span><br><span class="line">		&lt;artifactId&gt;jdk.tools&lt;/artifactId&gt;</span><br><span class="line">		&lt;version&gt;1.8&lt;/version&gt;</span><br><span class="line">		&lt;scope&gt;system&lt;/scope&gt;</span><br><span class="line">		&lt;systemPath&gt;$&#123;JAVA_HOME&#125;/lib/tools.jar&lt;/systemPath&gt;</span><br><span class="line">	&lt;/dependency&gt;</span><br><span class="line">&lt;/dependencies&gt;</span><br><span class="line"></span><br><span class="line">&lt;build&gt;</span><br><span class="line">	&lt;plugins&gt;</span><br><span class="line">		&lt;plugin&gt;</span><br><span class="line">			&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;</span><br><span class="line">			&lt;configuration&gt;</span><br><span class="line">				&lt;archive&gt;</span><br><span class="line">					&lt;manifest&gt;</span><br><span class="line">						&lt;addClasspath&gt;true&lt;/addClasspath&gt;</span><br><span class="line">					&lt;/manifest&gt;</span><br><span class="line">					&lt;manifestEntries&gt;</span><br><span class="line">						&lt;!-- 参数方式启动agent需要这个 --&gt;</span><br><span class="line">						&lt;Premain-Class&gt;</span><br><span class="line">							com.wwh.agentmain.AgentMain</span><br><span class="line">						&lt;/Premain-Class&gt;</span><br><span class="line"></span><br><span class="line">						&lt;!-- 启动后附加启动agent需要这个 --&gt;</span><br><span class="line">						&lt;Agent-Class&gt;</span><br><span class="line">							com.wwh.agentmain.AgentMain</span><br><span class="line">						&lt;/Agent-Class&gt;</span><br><span class="line"></span><br><span class="line">						&lt;!-- 是否可以重新转换类 --&gt;</span><br><span class="line">						&lt;Can-Retransform-Classes&gt;</span><br><span class="line">							true</span><br><span class="line">						&lt;/Can-Retransform-Classes&gt;</span><br><span class="line"></span><br><span class="line">						&lt;!-- 是否可以重新定义类 --&gt;</span><br><span class="line">						&lt;Can-Redefine-Classes&gt;</span><br><span class="line">							true</span><br><span class="line">						&lt;/Can-Redefine-Classes&gt;</span><br><span class="line"></span><br><span class="line">					&lt;/manifestEntries&gt;</span><br><span class="line">				&lt;/archive&gt;</span><br><span class="line">			&lt;/configuration&gt;</span><br><span class="line">		&lt;/plugin&gt;</span><br><span class="line">	&lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br></pre></td></tr></table></figure>
+
+<h5 id="manifest文件示例："><a href="#manifest文件示例：" class="headerlink" title="manifest文件示例："></a>manifest文件示例：</h5><p>META-INF&#x2F;MANIFEST.MF</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Manifest-Version: 1.0</span><br><span class="line">Premain-Class: com.wwh.agentmain.AgentMain</span><br><span class="line">Archiver-Version: Plexus Archiver</span><br><span class="line">Built-By: Administrator</span><br><span class="line">Agent-Class: com.wwh.agentmain.AgentMain</span><br><span class="line">Can-Redefine-Classes: true</span><br><span class="line">Can-Retransform-Classes: true</span><br><span class="line">Created-By: Apache Maven 3.5.3</span><br><span class="line">Build-Jdk: 1.8.0_151</span><br></pre></td></tr></table></figure>
+
+
+<hr>
+<h3 id="代码例子"><a href="#代码例子" class="headerlink" title="代码例子"></a>代码例子</h3><p><a target="_blank" rel="noopener" href="https://github.com/wangwen135/java-agent-test">https://github.com/wangwen135/java-agent-test</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/Java-Agent/" rel="tag"># Java Agent</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/Maven/maven%20%E6%89%93%E5%8C%85%20cannot%20access%20%E9%97%AE%E9%A2%98/" rel="prev" title="maven 打包 cannot access 问题">
+                  <i class="fa fa-angle-left"></i> maven 打包 cannot access 问题
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/java/java%E7%A8%8B%E5%BA%8FClassLoad%E5%8A%A0%E5%AF%86%E7%9A%84%E9%80%9A%E7%94%A8%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95/" rel="next" title="java程序ClassLoad加密的通用破解方法">
+                  java程序ClassLoad加密的通用破解方法 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">王某某</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">138k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">8:20</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
