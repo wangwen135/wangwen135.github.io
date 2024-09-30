@@ -40,8 +40,6 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -49,7 +47,15 @@
 
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MBG120GJ9P');
+</script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -127,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -169,6 +175,156 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/git%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/git%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">git相关配置</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-04-26 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-26T00:00:00+08:00">2018-04-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" itemprop="url" rel="index"><span itemprop="name">版本控制</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>632</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="gitconfig-文件"><a href="#gitconfig-文件" class="headerlink" title=".gitconfig 文件"></a>.gitconfig 文件</h3><p>Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 显示当前的Git配置</span><br><span class="line">$ git config --list</span><br><span class="line"></span><br><span class="line"># 编辑Git配置文件</span><br><span class="line">$ git config -e [--global]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="设置提交代码时的用户信息"><a href="#设置提交代码时的用户信息" class="headerlink" title="设置提交代码时的用户信息"></a>设置提交代码时的用户信息</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git config [--global] user.name &quot;[name]&quot;</span><br><span class="line">$ git config [--global] user.email &quot;[email address]&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;wwh&quot;</span><br><span class="line">git config --global user.email &quot;wangwen135@163.com&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="自动转换回车换行的问题"><a href="#自动转换回车换行的问题" class="headerlink" title="自动转换回车换行的问题"></a>自动转换回车换行的问题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
+<p>通过全局设置将其关闭，默认是关闭的</p>
+<h3 id="建议使用UTF-8编码，和Unix-风格的界定符"><a href="#建议使用UTF-8编码，和Unix-风格的界定符" class="headerlink" title="建议使用UTF-8编码，和Unix 风格的界定符"></a>建议使用UTF-8编码，和Unix 风格的界定符</h3><p>Eclipse 上的配置方法：</p>
+<blockquote>
+<p>windows –&gt; preferences –&gt; general –&gt; Workspace</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Text file encoding = UTF-8</span><br><span class="line"></span><br><span class="line">New text file line delimiter = Unix</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="git-bash-下log-中文乱码的问题"><a href="#git-bash-下log-中文乱码的问题" class="headerlink" title="git bash 下log 中文乱码的问题"></a>git bash 下log 中文乱码的问题</h3><p>在窗口上右键 &gt; Option &gt; Text &gt; zh_CN &gt; UTF-8</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global gui.encoding utf-8</span><br><span class="line">git config --global i18n.commitencoding utf-8</span><br><span class="line">git config --global i18n.logoutputencoding utf-8</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置了sshkey-还是需要输入密码的问题"><a href="#配置了sshkey-还是需要输入密码的问题" class="headerlink" title="配置了sshkey 还是需要输入密码的问题"></a>配置了sshkey 还是需要输入密码的问题</h3><p>检查项目的 .git&#x2F;config 文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">        url = 192.168.1.91:/data/git/dap.git</span><br></pre></td></tr></table></figure>
+<p>修改为使用git协议：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;origin&quot;]</span><br><span class="line">        url = git@192.168.1.91:/data/git/dap.git</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="使用HTTP协议时自动记住用户名密码"><a href="#使用HTTP协议时自动记住用户名密码" class="headerlink" title="使用HTTP协议时自动记住用户名密码"></a>使用HTTP协议时自动记住用户名密码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br><span class="line"></span><br><span class="line"># </span><br><span class="line"># 会在 .gitconfig 文件下增加以下内容：</span><br><span class="line">[credential]</span><br><span class="line">        helper = store</span><br></pre></td></tr></table></figure>
+<p>会在home文件下生成 .git-credentials 文件（如无法自动创建需要手动创建），第一次输入完之后就会记录下来</p>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://wwh:123456@220.231.228.87%3a8100</span><br><span class="line"></span><br><span class="line"># 格式</span><br><span class="line"># https://&#123;username&#125;:&#123;password&#125;@github.com</span><br></pre></td></tr></table></figure>
+
+<h3 id="生成ssh-key"><a href="#生成ssh-key" class="headerlink" title="生成ssh key"></a>生成ssh key</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;wangwen135@163.com&quot;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<hr>
+<h3 id="差异比较工具（用开发工具吧，这个不好使）"><a href="#差异比较工具（用开发工具吧，这个不好使）" class="headerlink" title="差异比较工具（用开发工具吧，这个不好使）"></a>差异比较工具（用开发工具吧，这个不好使）</h3><p>在合并代码的是经常会出现冲突，此时就需要一个解决冲突的图形画工具</p>
+<p>二进制文件一般没法合并，直接选择使用哪边的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout - -ours a.file</span><br><span class="line">或者</span><br><span class="line">$ git checkout - -theirs a.file</span><br></pre></td></tr></table></figure>
+
+<h4 id="git-mergetool"><a href="#git-mergetool" class="headerlink" title="git mergetool"></a>git mergetool</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git mergetool</span><br><span class="line"></span><br><span class="line">This message is displayed because &#x27;merge.tool&#x27; is not configured.</span><br><span class="line">See &#x27;git mergetool --tool-help&#x27; or &#x27;git help config&#x27; for more details.</span><br><span class="line">&#x27;git mergetool&#x27; will now attempt to use one of the following tools:</span><br><span class="line">opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare emerge vimdiff</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这里安装 kdiff3<br><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/kdiff3/files/">https://sourceforge.net/projects/kdiff3/files/</a></p>
+<p>配置 <strong>mergetool.kdiff3.path</strong> 来设置kdif3的绝对路径</p>
+<blockquote>
+<p>如果将 <strong>kdiff3</strong> 添加到Path中，则不需要配置</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global mergetool.kdiff3.path &quot;D:/Program Files/KDiff3/kdiff3.exe&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>配置全局默认的merge tool 为 kdiff3</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git config --global merge.tool kdiff3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#退出后询问</span><br><span class="line">git config --global mergetool.kdiff3.trustExitCode false</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#让git mergetool不再生成备份文件(*.orig)  </span><br><span class="line">git config --global mergetool.keepBackup false</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在有冲突时候使用 git mergetool</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Administrator@wwh MINGW64 /d/git/tmp/sample (wwh|MERGING)</span><br><span class="line">$ git mergetool</span><br><span class="line">Merging:</span><br><span class="line">merger.txt</span><br><span class="line"></span><br><span class="line">Normal merge conflict for &#x27;merger.txt&#x27;:</span><br><span class="line">  &#123;local&#125;: modified file</span><br><span class="line">  &#123;remote&#125;: modified file</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="git-difftool"><a href="#git-difftool" class="headerlink" title="git difftool"></a>git difftool</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git config --global diff.guitool kdiff3</span><br><span class="line">git config --global difftool.kdiff3.path &quot;D:/Program Files/KDiff3/kdiff3.exe&quot;</span><br><span class="line">git config --global difftool.kdiff3.trustExitCode false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1465,105 +1621,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E8%84%9A%E6%9C%AC/bat/bat%20%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E9%80%92%E5%BD%92%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E8%84%9A%E6%9C%AC/bat/bat%20%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E9%80%92%E5%BD%92%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">bat 在目录下递归循环执行命令</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-02-15 12:01:00" itemprop="dateCreated datePublished" datetime="2018-02-15T12:01:00+08:00">2018-02-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%84%9A%E6%9C%AC/bat/" itemprop="url" rel="index"><span itemprop="name">bat</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>289</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 想用bat 做一个递归清理文件</span><br><span class="line">rem 目前就是递归执行一下 maven的清理命令</span><br><span class="line">rem 语法真的是渣</span><br><span class="line"></span><br><span class="line">rem echo 当前盘符：%~d0</span><br><span class="line">rem echo 当前盘符和路径：%~dp0</span><br><span class="line">rem echo 当前批处理全路径：%~f0</span><br><span class="line">rem echo 当前盘符和路径的短文件名格式：%~sdp0</span><br><span class="line">rem echo 当前CMD默认目录：%cd%</span><br><span class="line"></span><br><span class="line">echo ************************************</span><br><span class="line">echo ************ 清理数据 **************</span><br><span class="line">echo ************************************</span><br><span class="line"></span><br><span class="line">IF &quot;%1&quot;==&quot;&quot; (</span><br><span class="line">  echo 清理目录:%cd%</span><br><span class="line">  set prodir=%cd%</span><br><span class="line">) ELSE (</span><br><span class="line">  echo 当前参数参数是：[%1]</span><br><span class="line">  echo 清理目录：%1</span><br><span class="line">  set prodir=%1</span><br><span class="line">  if exist %1/ (</span><br><span class="line">	cd %1</span><br><span class="line">  ) else (</span><br><span class="line">  	echo 目录:[%1]不存在，即将退出！</span><br><span class="line">	pause</span><br><span class="line">	exit</span><br><span class="line">  )</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">rem echo 路径：</span><br><span class="line">rem chdir</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for /D %%s in (*) do (</span><br><span class="line">  </span><br><span class="line">  echo 当前循环的值是:%%s</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  REM 跳过git目录</span><br><span class="line"> </span><br><span class="line">  IF %%s==.git (</span><br><span class="line">	echo 这是一个git目录，跳过</span><br><span class="line">	</span><br><span class="line">  ) ELSE (</span><br><span class="line">	  echo 进入目录:%%s</span><br><span class="line">	  cd %%s	  </span><br><span class="line">	  REM echo 判断pom文件是否存在</span><br><span class="line">	  REM dir</span><br><span class="line">	  </span><br><span class="line">	   IF EXIST pom.xml (</span><br><span class="line">		 echo 存在pom文件，开始执行清理命令...</span><br><span class="line">		 </span><br><span class="line">		 mvn clean</span><br><span class="line">		 </span><br><span class="line">		 @echo off</span><br><span class="line">		 </span><br><span class="line">	   ) ELSE (</span><br><span class="line">		 echo 不存在pom文件，进入下一层目录</span><br><span class="line">		 REM goto BB</span><br><span class="line">		 REM call %~f0 %cd%</span><br><span class="line">		 call %~f0</span><br><span class="line">		 </span><br><span class="line">		 echo 子目录处理完成</span><br><span class="line">		 </span><br><span class="line">	   )</span><br><span class="line">	  </span><br><span class="line">	  echo 退出目录:%%s</span><br><span class="line">	  </span><br><span class="line">	  cd .. </span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  echo 本次循环结束，循环值是：%%s</span><br><span class="line">  echo ============================================================</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">echo 执行完成</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/11/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/13/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1593,7 +1650,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:05</span>
+    <span title="站点阅读时长">9:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

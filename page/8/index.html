@@ -40,8 +40,6 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -49,7 +47,15 @@
 
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MBG120GJ9P');
+</script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -127,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -169,6 +175,116 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/centos7%20%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/centos7%20%E5%AE%89%E8%A3%85%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E7%9A%84git/" class="post-title-link" itemprop="url">centos7 安装最新版本的git</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-21 16:10:00" itemprop="dateCreated datePublished" datetime="2020-05-21T16:10:00+08:00">2020-05-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" itemprop="url" rel="index"><span itemprop="name">版本控制</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/git/" itemprop="url" rel="index"><span itemprop="name">git</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>254</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="1-最新git源码下载地址："><a href="#1-最新git源码下载地址：" class="headerlink" title="1 最新git源码下载地址："></a>1 最新git源码下载地址：</h3><p><a target="_blank" rel="noopener" href="https://github.com/git/git/releases">https://github.com/git/git/releases</a><br><a target="_blank" rel="noopener" href="https://www.kernel.org/pub/software/scm/git/">https://www.kernel.org/pub/software/scm/git/</a><br>可以手动下载下来在上传到服务器上面</p>
+<h3 id="2-移除旧版本git"><a href="#2-移除旧版本git" class="headerlink" title="2 移除旧版本git"></a>2 移除旧版本git</h3><p>centos自带Git，7.x版本自带git 1.8.3.1（应该是，也可能不是），<br>安装新版本之前需要使用yun remove git卸载（安装后卸载也可以）。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@Git ~]# git --version    ## 查看自带的版本</span><br><span class="line">git version 1.8.3.1</span><br><span class="line">[root@Git ~]# yum remove git   ## 移除原来的版本</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-安装所需软件包"><a href="#3-安装所需软件包" class="headerlink" title="3 安装所需软件包"></a>3 安装所需软件包</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@Git ~]# yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel </span><br><span class="line">[root@Git ~]# yum install gcc-c++ perl-ExtUtils-MakeMaker</span><br></pre></td></tr></table></figure>
+<h3 id="4-下载-安装"><a href="#4-下载-安装" class="headerlink" title="4 下载&amp;安装"></a>4 下载&amp;安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@Git ~]# cd /usr/src</span><br><span class="line">[root@Git ~]# wget https://www.kernel.org/pub/software/scm/git/git-2.7.3.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-解压"><a href="#5-解压" class="headerlink" title="5 解压"></a>5 解压</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@Git ~]# tar xf git-2.7.3.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-配置编译安装"><a href="#6-配置编译安装" class="headerlink" title="6 配置编译安装"></a>6 配置编译安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@Git ~]# cd git-2.7.3</span><br><span class="line">[root@Git ~]# make configure</span><br><span class="line">[root@Git ~]# ./configure --prefix=/usr/local/git ##配置目录</span><br><span class="line">[root@Git ~]# make profix=/usr/local/git</span><br><span class="line">[root@Git ~]# make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-加入环境变量"><a href="#7-加入环境变量" class="headerlink" title="7 加入环境变量"></a>7 加入环境变量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@Git ~]# echo &quot;export PATH=$PATH:/usr/local/git/bin&quot; &gt;&gt; /etc/profile</span><br><span class="line">[root@Git ~]# source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-检查版本"><a href="#8-检查版本" class="headerlink" title="8 检查版本"></a>8 检查版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@Git git-2.7.3]# git --version </span><br><span class="line">git version 2.7.3</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1444,105 +1560,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E8%84%9A%E6%9C%AC/shell/%E5%BA%94%E7%94%A8%E5%90%AF%E5%81%9C%E8%84%9A%E6%9C%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E8%84%9A%E6%9C%AC/shell/%E5%BA%94%E7%94%A8%E5%90%AF%E5%81%9C%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">应用启停脚本</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-08-27 19:53:00" itemprop="dateCreated datePublished" datetime="2019-08-27T19:53:00+08:00">2019-08-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%84%9A%E6%9C%AC/shell/" itemprop="url" rel="index"><span itemprop="name">shell</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>187</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>以SpringBoot 应用为例子</p>
-<h3 id="startup-sh"><a href="#startup-sh" class="headerlink" title="startup.sh"></a>startup.sh</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">#</span><br><span class="line"># linux 下的启动脚本</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">#进入脚本目录</span><br><span class="line">cd `dirname $0`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 启动程序</span><br><span class="line">nohup java -Dspring.profiles.active=test -jar wwh-test-1.0-SNAPSHOT.jar &gt; wwh-test.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="shutdown-sh"><a href="#shutdown-sh" class="headerlink" title="shutdown.sh"></a>shutdown.sh</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 设置jar包名称通配符</span><br><span class="line">jar_pattern=&quot;wwh-test.*.jar&quot;</span><br><span class="line"></span><br><span class="line"># 查找正在运行的jar包的进程ID</span><br><span class="line">pids=$(ps -ef | grep &quot;$jar_pattern&quot; | grep -v grep | awk &#x27;&#123;print $2&#125;&#x27;)</span><br><span class="line"></span><br><span class="line"># 如果找到正在运行的进程，就停止它</span><br><span class="line">if [ -n &quot;$pids&quot; ]; then</span><br><span class="line">    echo &quot;正在停止匹配 $jar_pattern 的进程...&quot;</span><br><span class="line">    for pid in $pids; do</span><br><span class="line">        echo &quot;停止进程 $pid&quot;</span><br><span class="line">        kill -15 &quot;$pid&quot;</span><br><span class="line">    done</span><br><span class="line"></span><br><span class="line">    # 循环检查进程是否已经停止</span><br><span class="line">    for pid in $pids; do</span><br><span class="line">        while kill -0 &quot;$pid&quot; &gt;/dev/null 2&gt;&amp;1; do</span><br><span class="line">            echo -n &quot;.&quot;</span><br><span class="line">            sleep 1</span><br><span class="line">        done</span><br><span class="line">        echo &quot;进程 $pid 已停止.&quot;</span><br><span class="line">    done</span><br><span class="line"></span><br><span class="line">    echo &quot;所有进程已停止.&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;未找到匹配 $jar_pattern 的进程.&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1572,7 +1589,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:05</span>
+    <span title="站点阅读时长">9:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

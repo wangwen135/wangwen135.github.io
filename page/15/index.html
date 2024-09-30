@@ -40,8 +40,6 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -49,7 +47,15 @@
 
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MBG120GJ9P');
+</script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -127,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -169,6 +175,167 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Elasticsearch/Elasticsearch%20HTTP%20API/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Elasticsearch/Elasticsearch%20HTTP%20API/" class="post-title-link" itemprop="url">Elasticsearch HTTP API</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-05-15 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-15T00:00:00+08:00">2017-05-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>580</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Elasticsearch-HTTP-API"><a href="#Elasticsearch-HTTP-API" class="headerlink" title="Elasticsearch HTTP API"></a>Elasticsearch HTTP API</h1><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html</a></p>
+<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><h3 id="Index-API"><a href="#Index-API" class="headerlink" title="Index API"></a>Index API</h3><p>添加或更新JSON文档到指定的索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -XPUT &#x27;http://192.168.1.213:9200/twitter/tweet/1&#x27; -d &#x27;&#123;</span><br><span class="line">    &quot;user&quot; : &quot;kimchy&quot;,</span><br><span class="line">    &quot;post_date&quot; : &quot;2009-11-15T14:12:12&quot;,</span><br><span class="line">    &quot;message&quot; : &quot;trying out Elasticsearch&quot;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Get-API"><a href="#Get-API" class="headerlink" title="Get API"></a>Get API</h3><p>从索引中获取JSON文档根据ID</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/twitter/tweet/1&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Delete-API"><a href="#Delete-API" class="headerlink" title="Delete API"></a>Delete API</h3><p>从索引中删除JSON文档根据ID</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XDELETE &#x27;http://192.168.1.213:9200/twitter/tweet/1&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><p>请求体查询  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/twitter/tweet/_search&#x27; -d &#x27;&#123;</span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;term&quot; : &#123; &quot;user&quot; : &quot;kimchy&quot; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>URI查询</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/twitter/tweet/_search?q=user:kimchy&#x27;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Query-DSL"><a href="#Query-DSL" class="headerlink" title="Query DSL"></a>Query DSL</h4><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html#query-dsl">https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html#query-dsl</a></p>
+<p>Elasticsearch提供了基于JSON来定义查询完整的查询DSL。查询DSL看作查询的AST，由两种类型的子句：</p>
+<ul>
+<li>叶查询子句<blockquote>
+<p>叶查询子句寻找一个特定的值在某一特定领域，如匹配(match)，期限(term)或范围(range)查询。这些查询可以自行使用。</p>
+</blockquote>
+</li>
+<li>复合查询子句<blockquote>
+<p>复合查询包含其他叶查询或复合的查询，并用于多个查询以逻辑方式（如 bool 或 dis_max 查询）结合，或者改变它们的行为（如 not 或 constant_score 查询）</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h4><p>取出现次数最多的前20个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST http://192.168.1.91:9200/_search?search_type=count </span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;topLocation&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;location.raw&quot;,</span><br><span class="line">        &quot;size&quot;: 20</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="查询结果高亮"><a href="#查询结果高亮" class="headerlink" title="查询结果高亮"></a>查询结果高亮</h5><p>只有针对字段查询的时候才会高亮，对 <strong>_all</strong> 进行查询时是不会高亮的。  </p>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">      &quot;commandReply&quot;: &quot;USER ftpuser&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;highlight&quot;: &#123;</span><br><span class="line">    &quot;fields&quot;: &#123;</span><br><span class="line">      &quot;commandReply&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">...</span><br><span class="line">    &quot;frontNodeId&quot;: 0,</span><br><span class="line">    &quot;routeIp&quot;: &quot;192.168.1.1&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;highlight&quot;: &#123;</span><br><span class="line">    &quot;commandReply&quot;: [</span><br><span class="line">        &quot;220 (vsFTPd 3.0.2) &lt;em&gt;USER&lt;/em&gt; &lt;em&gt;ftpuser&lt;/em&gt; 331 Please specify the password. PASS &lt;em&gt;ftpuser&lt;/em&gt; 230 Login&quot;</span><br><span class="line">        ,</span><br><span class="line">        &quot; successful. ### ### Login successful UserName: &lt;em&gt;ftpuser&lt;/em&gt; Password: &lt;em&gt;ftpuser&lt;/em&gt; ### SYST 215 UNIX Type: L8&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><h3 id="Cluster-Health"><a href="#Cluster-Health" class="headerlink" title="Cluster Health"></a>Cluster Health</h3><p>获取简单的集群状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/_cluster/health?pretty=true&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>该API还可以针对一个或多个索引执行以只获得指定索引的健康状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/_cluster/health/wwh_test?pretty&#x27;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Cluster-State"><a href="#Cluster-State" class="headerlink" title="Cluster State"></a>Cluster State</h3><p>群集状态API允许获得整个集群的综合状态信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/_cluster/state&#x27;</span><br><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/_cluster/stats?human&amp;pretty&#x27;</span><br><span class="line"></span><br><span class="line">#过滤</span><br><span class="line">curl -XGET &#x27;http://localhost:9200/_cluster/state/&#123;metrics&#125;/&#123;indices&#125;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Cat-API"><a href="#Cat-API" class="headerlink" title="Cat API"></a>Cat API</h2><ul>
+<li>查看主节点</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_cat/master?v">http://192.168.1.213:9200/_cat/master?v</a></p>
+<p>curl ‘192.168.1.213:9200&#x2F;_cat&#x2F;master?v’</p>
+<ul>
+<li>查看集群是否健康</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_cat/health?v">http://192.168.1.213:9200/_cat/health?v</a></p>
+<p>curl ‘192.168.1.213:9200&#x2F;_cat&#x2F;health?v’</p>
+<ul>
+<li>查看节点列表</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_cat/nodes?v">http://192.168.1.213:9200/_cat/nodes?v</a></p>
+<p>curl ‘192.168.1.213:9200&#x2F;_cat&#x2F;nodes?v’</p>
+<ul>
+<li>列出所有索引</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_cat/indices?v">http://192.168.1.213:9200/_cat/indices?v</a></p>
+<p>curl ‘192.168.1.213:9200&#x2F;_cat&#x2F;indices?v’</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1193,293 +1360,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Maven/Nexus%E7%A7%81%E6%9C%8D%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Maven/Nexus%E7%A7%81%E6%9C%8D%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">Nexus私服搭建与使用</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2017-04-19 23:41:00" itemprop="dateCreated datePublished" datetime="2017-04-19T23:41:00+08:00">2017-04-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Maven/" itemprop="url" rel="index"><span itemprop="name">Maven</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>2.3k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>8 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="私服（存储库管理器）"><a href="#私服（存储库管理器）" class="headerlink" title="私服（存储库管理器）"></a>私服（存储库管理器）</h2><p>存储库管理器是专用于管理二进制组件存储库的服务器应用程序。<br>对于Maven的大量使用，使用存储库管理器被认为是必不可少的最佳实践。</p>
-<h3 id="搭建私服的目的"><a href="#搭建私服的目的" class="headerlink" title="搭建私服的目的"></a>搭建私服的目的</h3><ul>
-<li>充当公共Maven存储库的专用代理服务器</li>
-<li>提供存储库作为您的Maven项目输出的部署目标</li>
-</ul>
-<h3 id="特点和好处"><a href="#特点和好处" class="headerlink" title="特点和好处"></a>特点和好处</h3><ul>
-<li>大大减少了从远程存储库下载的次数，节省了时间和带宽，从而提高了构建性能</li>
-<li>由于减少了对外部存储库的依赖，提高了构建稳定性</li>
-<li>与远程SNAPSHOT存储库交互的性能提高</li>
-<li>控制消耗和提供的伪镜像的能力</li>
-<li>将构建输出暴露给其他项目和开发人员等消费者，以及质量保证或运营团队甚至客户</li>
-<li>提供了一个有效的平台来交换组织内外的二进制工件，而无需从源代码构建工件</li>
-</ul>
-<h2 id="NEXUS-私服搭建"><a href="#NEXUS-私服搭建" class="headerlink" title="NEXUS 私服搭建"></a>NEXUS 私服搭建</h2><p><strong>NEXUS OSS 是我们常用的私服软件</strong></p>
-<p>Nexus是一个强大的Maven存储库管理器，它极大地简化了自己内部仓库的维护和外部仓库的访问。<br>利用Nexus你可以只在一个地方就能够完全控制访问和部署在你所维护仓库中的每个Artifact。</p>
-<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://sonatype-download.global.ssl.fastly.net/nexus/oss/nexus-2.13.0-01-bundle.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h3 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h3><p>nexus 不建议以root用户运行<br>新添加一个用户：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useradd nexus</span><br><span class="line"></span><br><span class="line">passwd nexus</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>切换到nexus用户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf nexus-2.13.0-01-bundle.tar.gz</span><br></pre></td></tr></table></figure>
-
-<p>解压后会在同级目录中，出现两个文件夹：<code>nexus-2.13.0-01</code>和<code>sonatype-work</code>，前者包含了nexus的运行环境和应用程序，后者包含了你自己的配置和数据。  </p>
-<p><strong>关于目录：</strong><br><code>sonatype-work/nexus/storage/central</code> : 用于放置maven从中央仓库中下载下来的项目<br>pom.xml中配置到的相关jar包  </p>
-<blockquote>
-<p><strong>注意</strong>：nexus默认的jar包存储位置是:<code>sonatype-work/nexus/storage/central</code>由于Central仓库占用存储较大,所以要注意存储位置。</p>
-</blockquote>
-<p><code>sonatype-work/nexus/storage/thirdparty</code> : 用于放置自己手动上传的第三方jar包  </p>
-<p><code>sonatype-work/nexus/storage/releases</code> : 用于放置项目deploy后的发布版  </p>
-<h3 id="运行测试"><a href="#运行测试" class="headerlink" title="运行测试"></a>运行测试</h3><p>进入目录 nexus-2.13.0-01<br>输入nexus可以看到提示</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/nexus</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Usage: bin&#x2F;nexus { console | start | stop | restart | status | dump }</p>
-</blockquote>
-<p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/nexus start</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Starting Nexus OSS…<br>Started Nexus OSS.</p>
-</blockquote>
-<p>查看控制台：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/nexus console</span><br></pre></td></tr></table></figure>
-
-<p>访问地址：<a target="_blank" rel="noopener" href="http://192.168.1.250:8081/nexus">http://192.168.1.250:8081/nexus</a>  </p>
-<p>登录默认账号&#x2F;密码 &#x3D;&#x3D;admin&#x2F;admin123&#x3D;&#x3D;</p>
-<h3 id="设置开机启动"><a href="#设置开机启动" class="headerlink" title="设置开机启动"></a>设置开机启动</h3><p>复制nexus 到&#x2F;etc&#x2F;init.d&#x2F;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp bin/nexus /etc/init.d/</span><br></pre></td></tr></table></figure>
-<p>修改文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">vi  /etc/init.d/nexus</span><br><span class="line"></span><br><span class="line">#修改下面两个配置</span><br><span class="line"></span><br><span class="line">#修改为解压缩的目录</span><br><span class="line">NEXUS_HOME=&quot;/xxxx/nexus/nexus-2.13.0-01&quot;</span><br><span class="line"></span><br><span class="line">RUN_AS_USER=nexus</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>添加服务并设置为开机启动</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add nexus</span><br><span class="line">chkconfig nexus on</span><br><span class="line"></span><br><span class="line">systemctl start nexus</span><br><span class="line"></span><br><span class="line">systemctl status nexus</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><h4 id="1-下载索引"><a href="#1-下载索引" class="headerlink" title="1. 下载索引"></a>1. 下载索引</h4><p>打开 Repositories 将列表中所有Type为proxy 的项目的 Configuration 中的 Download Remote Indexes 设置为<em>True</em><br>然后在Central 仓库上右键然后点击 Repair Index 下载中心仓库的索引文件，若干时间后，可以点击下边的 Browse Index 即可看见下载的索引文件<br>可以通过左侧到任务调度查看任务</p>
-<h4 id="2-关于部署"><a href="#2-关于部署" class="headerlink" title="2. 关于部署"></a>2. 关于部署</h4><p>将Releases仓库的Deployment Policy设置为<em>Allow ReDeploy</em><br>设置 deployment 账户密码<br>左侧Security –&gt; Users –&gt; deployment –&gt; 右键Set Password</p>
-<h4 id="3-使用阿里云的maven镜像库"><a href="#3-使用阿里云的maven镜像库" class="headerlink" title="3. 使用阿里云的maven镜像库"></a>3. 使用阿里云的maven镜像库</h4><p>在 Repositories 中增加一个 proxy</p>
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th>value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Repository ID</td>
-<td>Aliyun-mavne</td>
-</tr>
-<tr>
-<td>Repository Name</td>
-<td>Aliyun</td>
-</tr>
-<tr>
-<td>Repository type</td>
-<td>proxy</td>
-</tr>
-<tr>
-<td>Provider</td>
-<td>Maven2</td>
-</tr>
-<tr>
-<td>Format</td>
-<td>maven2</td>
-</tr>
-<tr>
-<td>Repository Policy</td>
-<td>Release</td>
-</tr>
-<tr>
-<td>Remote Storage Location</td>
-<td><a target="_blank" rel="noopener" href="https://maven.aliyun.com/repository/public/">https://maven.aliyun.com/repository/public/</a></td>
-</tr>
-<tr>
-<td>Download Remote Indexes</td>
-<td>True</td>
-</tr>
-<tr>
-<td>Auto Blocking Enabled</td>
-<td>True</td>
-</tr>
-<tr>
-<td>File Content Validation</td>
-<td>True</td>
-</tr>
-<tr>
-<td>Checksum Policy</td>
-<td>Warn</td>
-</tr>
-<tr>
-<td>Allow File Browsing</td>
-<td>True</td>
-</tr>
-<tr>
-<td>Include in Search</td>
-<td>True</td>
-</tr>
-<tr>
-<td>Publish URL</td>
-<td>True</td>
-</tr>
-</tbody></table>
-<h4 id="4-Public-Repositories"><a href="#4-Public-Repositories" class="headerlink" title="4. Public Repositories"></a>4. Public Repositories</h4><p>public repository默认包含本地仓库的Releases, snapshots和3rd party以及代理仓库的Maven Central. 你可以在Configuration配置页添加其他仓库到这个仓库组。<br>请注意，“Ordered Group Repositories”中列出的存储库库 顺序 很重要。当存储库管理器在组中搜索构建时，它将返回第一个匹配项。  </p>
-<blockquote>
-<p>建议将添加的阿里云maven镜像移动到 Central 前面<br>一般顺序为：Release、Snapshot、3rd party、Aliyun、Central</p>
-</blockquote>
-<hr>
-<hr>
-<h2 id="项目中使用NEXUS私服"><a href="#项目中使用NEXUS私服" class="headerlink" title="项目中使用NEXUS私服"></a>项目中使用NEXUS私服</h2><p>两种方式：</p>
-<ol>
-<li>在项目的POM文件中配置</li>
-<li>在全局的setting文件中配置</li>
-</ol>
-<h3 id="项目POM配置使用Nexus"><a href="#项目POM配置使用Nexus" class="headerlink" title="项目POM配置使用Nexus"></a>项目POM配置使用Nexus</h3><p>在项目的 pom.xml 中配置私库地址，pom.xml 的下面添加：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"> &lt;!-- 仓库地址 --&gt;</span><br><span class="line">&lt;repositories&gt;</span><br><span class="line">	&lt;repository&gt;</span><br><span class="line">		&lt;id&gt;nexus&lt;/id&gt;</span><br><span class="line">		&lt;name&gt;Nexus Repository&lt;/name&gt;</span><br><span class="line">		&lt;url&gt;http://192.168.19.250:8081/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">		&lt;releases&gt;</span><br><span class="line">			&lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">		&lt;/releases&gt;</span><br><span class="line">		&lt;snapshots&gt;</span><br><span class="line">			&lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">		&lt;/snapshots&gt;</span><br><span class="line">	&lt;/repository&gt;</span><br><span class="line">&lt;/repositories&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 插件地址 --&gt;</span><br><span class="line">&lt;pluginRepositories&gt;</span><br><span class="line">	&lt;pluginRepository&gt;</span><br><span class="line">		&lt;id&gt;nexus&lt;/id&gt;</span><br><span class="line">		&lt;name&gt;Nexus Plugin Repository&lt;/name&gt;</span><br><span class="line">		&lt;url&gt;http://192.168.1.250:8081/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">		&lt;releases&gt;</span><br><span class="line">			&lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">		&lt;/releases&gt;</span><br><span class="line">		&lt;snapshots&gt;</span><br><span class="line">			&lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">		&lt;/snapshots&gt;	</span><br><span class="line">	&lt;/pluginRepository&gt;</span><br><span class="line">&lt;/pluginRepositories&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- 打包发布 --&gt;</span><br><span class="line">&lt;distributionManagement&gt;</span><br><span class="line">	&lt;repository&gt;</span><br><span class="line">		&lt;id&gt;releases&lt;/id&gt;</span><br><span class="line">		&lt;url&gt;http://192.168.19.250:8081/nexus/content/repositories/releases&lt;/url&gt;</span><br><span class="line">	&lt;/repository&gt;</span><br><span class="line">	&lt;snapshotRepository&gt;</span><br><span class="line">		&lt;id&gt;snapshots&lt;/id&gt;</span><br><span class="line">		&lt;url&gt;http://192.168.19.250:8081/nexus/content/repositories/snapshots&lt;/url&gt;</span><br><span class="line">	&lt;/snapshotRepository&gt;</span><br><span class="line">&lt;/distributionManagement&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如要部署构建到nexus，需在maven 的settings.xml文件中添加认证信息<br>默认位置在：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;maven.home&#125;/conf/settings.xml  </span><br><span class="line">$&#123;user.home&#125;/.m2/settings.xml  </span><br></pre></td></tr></table></figure>
-<p>两边配置文件中的ID要对得上</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;servers&gt;</span><br><span class="line">    &lt;server&gt;</span><br><span class="line">    	&lt;id&gt;releases&lt;/id&gt;</span><br><span class="line">    	&lt;username&gt;deployment&lt;/username&gt;</span><br><span class="line">    	&lt;password&gt;123456&lt;/password&gt;&lt;!--这个密码就是你设置的密码--&gt;</span><br><span class="line">    &lt;/server&gt;</span><br><span class="line">    &lt;server&gt;</span><br><span class="line">    	&lt;id&gt;snapshots&lt;/id&gt;</span><br><span class="line">    	&lt;username&gt;deployment&lt;/username&gt;</span><br><span class="line">    	&lt;password&gt;123456&lt;/password&gt;</span><br><span class="line">    &lt;/server&gt;</span><br><span class="line">&lt;/servers&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Maven的Setting文件配置使用Nexus"><a href="#Maven的Setting文件配置使用Nexus" class="headerlink" title="Maven的Setting文件配置使用Nexus"></a>Maven的Setting文件配置使用Nexus</h3><p>为避免在每个项目中重复进行配置，可以将上面的配置写在Setting.xml中  </p>
-<blockquote>
-<p>settings.xml并不直接支持上面的两个元素，需要利用 profile，然后用activeProfiles来自动激活这个profile，以提供用户全局范围的仓库配置。</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;profiles&gt;	    </span><br><span class="line">	&lt;profile&gt;</span><br><span class="line">		&lt;id&gt;dev&lt;/id&gt;</span><br><span class="line">		&lt;repositories&gt;</span><br><span class="line">			&lt;repository&gt;</span><br><span class="line">				&lt;id&gt;nexus&lt;/id&gt;  &lt;!-- 如取名为central可覆盖超级POM中央仓库的配置，最佳实践是这里随便配，然后mirrorOf * --&gt;</span><br><span class="line">				&lt;url&gt;http://192.168.1.250:8081/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">				&lt;releases&gt;</span><br><span class="line">					&lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">				&lt;/releases&gt;</span><br><span class="line">				&lt;snapshots&gt;</span><br><span class="line">					&lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">				&lt;/snapshots&gt;</span><br><span class="line">			&lt;/repository&gt;</span><br><span class="line">		&lt;/repositories&gt;</span><br><span class="line">		&lt;pluginRepositories&gt;</span><br><span class="line">			&lt;pluginRepository&gt;</span><br><span class="line">				&lt;id&gt;nexus&lt;/id&gt;</span><br><span class="line">				&lt;url&gt;http://192.168.1.250:8081/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">				&lt;releases&gt;</span><br><span class="line">					&lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">				&lt;/releases&gt;</span><br><span class="line">				&lt;snapshots&gt;</span><br><span class="line">					&lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">				&lt;/snapshots&gt;</span><br><span class="line">			&lt;/pluginRepository&gt;</span><br><span class="line">		&lt;/pluginRepositories&gt;</span><br><span class="line">	&lt;/profile&gt;  </span><br><span class="line">&lt;/profiles&gt;</span><br></pre></td></tr></table></figure>
-<p>激活配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;activeProfiles&gt;  </span><br><span class="line">	&lt;activeProfile&gt;dev&lt;/activeProfile&gt;</span><br><span class="line">&lt;/activeProfiles&gt;  </span><br></pre></td></tr></table></figure>
-
-<p>此外还可以在命令上用**-p**参数激活此配置文件，例如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -Pdev ...</span><br></pre></td></tr></table></figure>
-
-<h4 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h4><p>Maven会优先使用其他仓库，最后再使用中央仓库。（简单测试了一下）</p>
-<p>当Maven需要下载或发布快照版本构件时它会先检查配置的其他仓库，最后再检查central看是否支持该类型的构件，得到正面的答复之后再向相应的仓库发起请求， 如果配置了镜像则根据镜像匹配规则转发。</p>
-<p>如果配置了镜像那仓库的URL已经无关紧要，因为所有的请求都会通过镜像访问。  </p>
-<p>如果将仓库和插件仓库的ID都为配置为central，可覆盖超级POM中央仓库的配置，并开启快照版本的支持等。    </p>
-<h3 id="使用镜像"><a href="#使用镜像" class="headerlink" title="使用镜像"></a>使用镜像</h3><p>如果你的地理位置附近有一个速度更快的central镜像，或者你想覆盖central仓库配置，或者你想为所有POM使用唯一的一个远程仓库（这个远程仓库代理所有必要的其它仓库），你可以使用settings.xml中的mirror配置。</p>
-<p><strong>使用镜像的原因：</strong></p>
-<ol>
-<li>网上有了一个地理位置更近，速度更快的镜像</li>
-<li>使用自己内部存储替换特定的存储，从而更换的控制它</li>
-<li>运行了存储库管理软件以向镜像提供本地缓存，而需要使用其URL</li>
-</ol>
-<p>配置用某个镜像覆盖Maven自带的central</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirrors&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">      &lt;id&gt;other-mirror&lt;/id&gt;</span><br><span class="line">      &lt;name&gt;Other Mirror Repository&lt;/name&gt;</span><br><span class="line">      &lt;url&gt;https://other-mirror.repo.other-company.com/maven2&lt;/url&gt;</span><br><span class="line">      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">&lt;/mirrors&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>将mirrorOf配置为central</p>
-</blockquote>
-<p>将mirrorOf设置为 * 对所有请求强制使用单个存储库，这个存储库必须包含所有所需的构件，或者能够将请求代理到其他存储库。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirrors&gt;</span><br><span class="line">  &lt;mirror&gt;</span><br><span class="line">    &lt;id&gt;nexus&lt;/id&gt;</span><br><span class="line">    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;name&gt;Mirror all&lt;/name&gt;</span><br><span class="line">    &lt;url&gt;http://192.168.1.91:8081/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">  &lt;/mirror&gt;</span><br><span class="line">&lt;/mirrors&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>所有的请求都将通过私服，包括下载之外的请求</p>
-</blockquote>
-<hr>
-<hr>
-<h3 id="最佳实践"><a href="#最佳实践" class="headerlink" title="最佳实践"></a>最佳实践</h3><p>配置镜像</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">    &lt;id&gt;nexus&lt;/id&gt;</span><br><span class="line">    &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;</span><br><span class="line">    &lt;url&gt;http://nexus.xxx.com:8081/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
-<p>profile中配置repository</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;profiles&gt;</span><br><span class="line">	&lt;profile&gt;</span><br><span class="line">    	&lt;id&gt;nexus&lt;/id&gt;</span><br><span class="line">    	&lt;repositories&gt;</span><br><span class="line">            &lt;repository&gt;</span><br><span class="line">                &lt;id&gt;nexus&lt;/id&gt;</span><br><span class="line">                &lt;url&gt;http://nexus&lt;/url&gt;&lt;!--地址随意--&gt;</span><br><span class="line">                &lt;releases&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/releases&gt;</span><br><span class="line">                &lt;snapshots&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/snapshots&gt;</span><br><span class="line">            &lt;/repository&gt;</span><br><span class="line">        &lt;/repositories&gt;</span><br><span class="line">        &lt;pluginRepositories&gt;</span><br><span class="line">            &lt;pluginRepository&gt;</span><br><span class="line">                &lt;id&gt;nexus&lt;/id&gt;</span><br><span class="line">                &lt;url&gt;http://nexus&lt;/url&gt;</span><br><span class="line">                &lt;releases&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/releases&gt;</span><br><span class="line">                &lt;snapshots&gt;&lt;enabled&gt;true&lt;/enabled&gt;&lt;/snapshots&gt;</span><br><span class="line">            &lt;/pluginRepository&gt;</span><br><span class="line">        &lt;/pluginRepositories&gt;</span><br><span class="line">    &lt;/profile&gt;</span><br><span class="line">  &lt;/profiles&gt;</span><br></pre></td></tr></table></figure>
-<p>激活profile</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;activeProfiles&gt;</span><br><span class="line">  &lt;activeProfile&gt;nexus&lt;/activeProfile&gt;</span><br><span class="line">&lt;/activeProfiles&gt;</span><br></pre></td></tr></table></figure>
-
-
-<hr>
-<hr>
-<h2 id="Nexus其他配置"><a href="#Nexus其他配置" class="headerlink" title="Nexus其他配置"></a>Nexus其他配置</h2><h3 id="任务调度"><a href="#任务调度" class="headerlink" title="任务调度"></a>任务调度</h3><p>左侧导航栏“Administration”中选择“Scheduled Tasks”<br>可以打开任务调度面板，在面板中可以看到当前正在运行的任务<br>添加任务：ADD –&gt; 选择任务类型 –&gt; 配置运行方式  </p>
-<p>运行方式：  </p>
-<blockquote>
-<p>每天<br>每周<br>手动等</p>
-</blockquote>
-<p>任务类型:  </p>
-<blockquote>
-<p>download indexes 为代理仓库下载远程索引<br>清空缓存<br>发布索引<br>重建索引<br>reindex repositories 编纂索引<br>删除快照构件  </p>
-</blockquote>
-<hr>
-<hr>
-<h2 id="访问授权问题"><a href="#访问授权问题" class="headerlink" title="访问授权问题"></a>访问授权问题</h2><p>当 Nexus 关闭匿名访问时可进行如下配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">关闭镜像</span><br><span class="line"></span><br><span class="line">覆盖中央仓库配置：</span><br><span class="line">profile -&gt; id(xxx) -&gt; repositories -&gt; repository </span><br><span class="line"> id 配置为：central</span><br><span class="line"> url 配置为：私服地址</span><br><span class="line"></span><br><span class="line">激活配置：</span><br><span class="line">activeProfiles -&gt; activeProfile(xxx)</span><br><span class="line"></span><br><span class="line">配置用户名密码：</span><br><span class="line">&lt;servers&gt;</span><br><span class="line">    &lt;server&gt;</span><br><span class="line">    	&lt;id&gt;central&lt;/id&gt;</span><br><span class="line">    	&lt;username&gt;admin&lt;/username&gt;</span><br><span class="line">    	&lt;password&gt;123456&lt;/password&gt;</span><br><span class="line">    &lt;/server&gt;</span><br><span class="line">&lt;/servers&gt;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/14/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/16/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1509,7 +1389,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:05</span>
+    <span title="站点阅读时长">9:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

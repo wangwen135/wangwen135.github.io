@@ -40,8 +40,6 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -49,7 +47,15 @@
 
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MBG120GJ9P');
+</script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -127,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -169,6 +175,105 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E8%84%9A%E6%9C%AC/shell/%E5%BA%94%E7%94%A8%E5%90%AF%E5%81%9C%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E8%84%9A%E6%9C%AC/shell/%E5%BA%94%E7%94%A8%E5%90%AF%E5%81%9C%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">应用启停脚本</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-08-27 19:53:00" itemprop="dateCreated datePublished" datetime="2019-08-27T19:53:00+08:00">2019-08-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%84%9A%E6%9C%AC/shell/" itemprop="url" rel="index"><span itemprop="name">shell</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>187</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>以SpringBoot 应用为例子</p>
+<h3 id="startup-sh"><a href="#startup-sh" class="headerlink" title="startup.sh"></a>startup.sh</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">#</span><br><span class="line"># linux 下的启动脚本</span><br><span class="line">#</span><br><span class="line"></span><br><span class="line">#进入脚本目录</span><br><span class="line">cd `dirname $0`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 启动程序</span><br><span class="line">nohup java -Dspring.profiles.active=test -jar wwh-test-1.0-SNAPSHOT.jar &gt; wwh-test.out 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="shutdown-sh"><a href="#shutdown-sh" class="headerlink" title="shutdown.sh"></a>shutdown.sh</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 设置jar包名称通配符</span><br><span class="line">jar_pattern=&quot;wwh-test.*.jar&quot;</span><br><span class="line"></span><br><span class="line"># 查找正在运行的jar包的进程ID</span><br><span class="line">pids=$(ps -ef | grep &quot;$jar_pattern&quot; | grep -v grep | awk &#x27;&#123;print $2&#125;&#x27;)</span><br><span class="line"></span><br><span class="line"># 如果找到正在运行的进程，就停止它</span><br><span class="line">if [ -n &quot;$pids&quot; ]; then</span><br><span class="line">    echo &quot;正在停止匹配 $jar_pattern 的进程...&quot;</span><br><span class="line">    for pid in $pids; do</span><br><span class="line">        echo &quot;停止进程 $pid&quot;</span><br><span class="line">        kill -15 &quot;$pid&quot;</span><br><span class="line">    done</span><br><span class="line"></span><br><span class="line">    # 循环检查进程是否已经停止</span><br><span class="line">    for pid in $pids; do</span><br><span class="line">        while kill -0 &quot;$pid&quot; &gt;/dev/null 2&gt;&amp;1; do</span><br><span class="line">            echo -n &quot;.&quot;</span><br><span class="line">            sleep 1</span><br><span class="line">        done</span><br><span class="line">        echo &quot;进程 $pid 已停止.&quot;</span><br><span class="line">    done</span><br><span class="line"></span><br><span class="line">    echo &quot;所有进程已停止.&quot;</span><br><span class="line">else</span><br><span class="line">    echo &quot;未找到匹配 $jar_pattern 的进程.&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1411,123 +1516,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E8%84%9A%E6%9C%AC/bat/%E4%B8%80%E4%BA%9B%E5%AE%9E%E7%94%A8%E7%9A%84bat%E8%84%9A%E6%9C%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E8%84%9A%E6%9C%AC/bat/%E4%B8%80%E4%BA%9B%E5%AE%9E%E7%94%A8%E7%9A%84bat%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">一些实用的bat脚本</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2018-09-27 09:31:00" itemprop="dateCreated datePublished" datetime="2018-09-27T09:31:00+08:00">2018-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%84%9A%E6%9C%AC/bat/" itemprop="url" rel="index"><span itemprop="name">bat</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>289</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>在windows 和 linux的命令行来回切换，经常敲错命令，如：ls、pwd、grep 等</p>
-<p>通过写bat的办法让windows支持这几个常用命令</p>
-<p>找一个目录，将其添加到环境变量中，在目录中新建几个bat文件，如下：</p>
-<h3 id="ll-bat"><a href="#ll-bat" class="headerlink" title="ll.bat"></a>ll.bat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">REM 显示一个目录中的文件和子目录</span><br><span class="line">dir</span><br></pre></td></tr></table></figure>
-
-<h3 id="pwd-bat"><a href="#pwd-bat" class="headerlink" title="pwd.bat"></a>pwd.bat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">REM 显示当前目录的名称或将其更改。</span><br><span class="line">chdir</span><br></pre></td></tr></table></figure>
-
-<h3 id="ls-bat"><a href="#ls-bat" class="headerlink" title="ls.bat"></a>ls.bat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">REM 显示一个目录中的文件和子目录 /W 用宽列表格式</span><br><span class="line"></span><br><span class="line">dir /W</span><br></pre></td></tr></table></figure>
-
-<h3 id="grep-bat"><a href="#grep-bat" class="headerlink" title="grep.bat"></a>grep.bat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">REM 模拟grep</span><br><span class="line">REM 在文件中搜索字符串。</span><br><span class="line">REM FIND [/V] [/C] [/N] [/I] [/OFF[LINE]] &quot;string&quot; [[drive:][path]filename[ ...]]</span><br><span class="line">REM /I  搜索字符串时忽略大小写。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">find /I &quot;%1&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="clear-bat"><a href="#clear-bat" class="headerlink" title="clear.bat"></a>clear.bat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">REM 清除屏幕</span><br><span class="line"></span><br><span class="line">cls</span><br></pre></td></tr></table></figure>
-
-<h3 id="checksum-bat"><a href="#checksum-bat" class="headerlink" title="checksum.bat"></a>checksum.bat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@echo OFF</span><br><span class="line">:LOOP</span><br><span class="line">    set index=%1</span><br><span class="line">    if %index%! == ! goto END</span><br><span class="line">    echo.</span><br><span class="line">    echo File   : %index%</span><br><span class="line">    echo.</span><br><span class="line">    set /p=&quot;MD5    : &quot;&lt;nul</span><br><span class="line">    certutil -hashfile &quot;%index%&quot; MD5|findstr /V &quot;MD5&quot;|findstr /V &quot;CertUtil&quot;</span><br><span class="line">    set /p=&quot;SHA1   : &quot;&lt;nul</span><br><span class="line">    certutil -hashfile &quot;%index%&quot; SHA1|findstr /V &quot;SHA1&quot;|findstr /V &quot;CertUtil&quot;</span><br><span class="line">    set /p=&quot;SHA256 : &quot;&lt;nul</span><br><span class="line">    certutil -hashfile &quot;%index%&quot; SHA256|findstr /V &quot;SHA256&quot;|findstr /V &quot;CertUtil&quot;</span><br><span class="line">    shift</span><br><span class="line">    goto LOOP</span><br><span class="line">:END</span><br><span class="line">echo.</span><br></pre></td></tr></table></figure>
-
-<h3 id="exp-bat"><a href="#exp-bat" class="headerlink" title="exp.bat"></a>exp.bat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">REM 资源管理器打开当前目录</span><br><span class="line"></span><br><span class="line">explorer /select=%cd%</span><br></pre></td></tr></table></figure>
-
-<h3 id="sp-bat"><a href="#sp-bat" class="headerlink" title="sp.bat"></a>sp.bat</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">REM 打开windows截图工具</span><br><span class="line"></span><br><span class="line">start snippingtool</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>win10快捷键 win + shift + s</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1557,7 +1545,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:05</span>
+    <span title="站点阅读时长">9:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

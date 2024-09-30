@@ -40,8 +40,6 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -49,7 +47,15 @@
 
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MBG120GJ9P');
+</script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -127,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -169,6 +175,129 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/Spring%20Data%20Hbase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/Spring%20Data%20Hbase/" class="post-title-link" itemprop="url">Spring Data Hbase</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2016-09-23 22:32:00" itemprop="dateCreated datePublished" datetime="2016-09-23T22:32:00+08:00">2016-09-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/HBase/" itemprop="url" rel="index"><span itemprop="name">HBase</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>545</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p><a target="_blank" rel="noopener" href="https://docs.spring.io/spring-hadoop/docs/current/reference/html/springandhadoop-hbase.html">https://docs.spring.io/spring-hadoop/docs/current/reference/html/springandhadoop-hbase.html</a></p>
+<p>通过hbase-configuration命名空间元素（或其支持HbaseConfigurationFactoryBean）为HBase提供基本配置。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- default bean id is &#x27;hbaseConfiguration&#x27; that uses the existing &#x27;hadoopCconfiguration&#x27; object --&gt;</span><br><span class="line">&lt;hdp:hbase-configuration configuration-ref=&quot;hadoopCconfiguration&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>配置连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- delete associated connections but do not stop the proxies --&gt;</span><br><span class="line">&lt;hdp:hbase-configuration stop-proxy=&quot;false&quot; delete-connection=&quot;true&quot;&gt;</span><br><span class="line">  foo=bar</span><br><span class="line">  property=value</span><br><span class="line">&lt;/hdp:hbase-configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- specify ZooKeeper host/port --&gt;</span><br><span class="line">&lt;hdp:hbase-configuration zk-quorum=&quot;$&#123;hbase.host&#125;&quot; zk-port=&quot;$&#123;hbase.port&#125;&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>属性和配置文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;hdp:hbase-configuration properties-ref=&quot;some-props-bean&quot; properties-location=&quot;classpath:/conf/testing/hbase.properties&quot;/&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>核心HbaseTemplate–一个与HBase交互的高层次抽象。该模板需要HBase配置，一旦设置，该模板就是线程安全的，并且可以同时在多个实例中重用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// default HBase configuration</span><br><span class="line">&lt;hdp:hbase-configuration/&gt;</span><br><span class="line"></span><br><span class="line">// wire hbase configuration (using default name &#x27;hbaseConfiguration&#x27;) into the template</span><br><span class="line">&lt;bean id=&quot;htemplate&quot; class=&quot;org.springframework.data.hadoop.hbase.HbaseTemplate&quot; p:configuration-ref=&quot;hbaseConfiguration&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>使用例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// writing to &#x27;MyTable&#x27;</span><br><span class="line">template.execute(&quot;MyTable&quot;, new TableCallback&lt;Object&gt;() &#123;</span><br><span class="line">  @Override</span><br><span class="line">  public Object doInTable(HTable table) throws Throwable &#123;</span><br><span class="line">    Put p = new Put(Bytes.toBytes(&quot;SomeRow&quot;));</span><br><span class="line">    p.add(Bytes.toBytes(&quot;SomeColumn&quot;), Bytes.toBytes(&quot;SomeQualifier&quot;), Bytes.toBytes(&quot;AValue&quot;));</span><br><span class="line">    table.put(p);</span><br><span class="line">    return null;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// read each row from &#x27;MyTable&#x27;</span><br><span class="line">List&lt;String&gt; rows = template.find(&quot;MyTable&quot;, &quot;SomeColumn&quot;, new RowMapper&lt;String&gt;() &#123;</span><br><span class="line">  @Override</span><br><span class="line">  public String mapRow(Result result, int rowNum) throws Exception &#123;</span><br><span class="line">    return result.toString();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
+
+
+<p>配置文件例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;hdp:configuration id=&quot;hadoopConfiguration&quot;&gt;</span><br><span class="line">      fs.defaultFS=$&#123;spring.hadoop.fsUri&#125;</span><br><span class="line">      &lt;!-- hadoop.tmp.dir=/tmp/hadoop --&gt;</span><br><span class="line">  &lt;/hdp:configuration&gt;</span><br><span class="line"></span><br><span class="line">  &lt;hdp:file-system id=&quot;hadoopFs&quot; configuration-ref=&quot;hadoopConfiguration&quot; /&gt;</span><br><span class="line"></span><br><span class="line">  &lt;hdp:hbase-configuration id=&quot;hbaseConfiguration&quot; configuration-ref=&quot;hadoopConfiguration&quot; zk-quorum=&quot;$&#123;hbase.zk.host&#125;&quot; zk-port=&quot;$&#123;hbase.zk.port&#125;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">  &lt;bean id=&quot;hbaseTemplate&quot; class=&quot;org.springframework.data.hadoop.hbase.HbaseTemplate&quot;&gt;</span><br><span class="line">      &lt;property name=&quot;configuration&quot; ref=&quot;hbaseConfiguration&quot; /&gt;</span><br><span class="line">  &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">  &lt;!-- 配置一个connectionfactory使用原生的API --&gt;</span><br><span class="line">  &lt;bean id=&#x27;hbaseConnection&#x27; class=&#x27;org.apache.hadoop.hbase.client.ConnectionFactory&#x27; factory-method=&quot;createConnection&quot; destroy-method=&quot;close&quot;&gt;</span><br><span class="line">      &lt;constructor-arg index=&quot;0&quot; ref=&quot;hbaseConfiguration&quot; /&gt;</span><br><span class="line">  &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>Connection 说明：</strong><br>创建连接是一个重量级操作。连接实现是线程安全的，因此客户端可以创建一个连接，并与不同的线程共享它。Table和Admin实例是轻量级的，并且不是线程安全的。通常，每个客户端应用程序都实例化一个连接，每个线程都将获得自己的Table实例。不推荐使用Table和Admin的缓存或池。</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">@Component</span><br><span class="line">public class IconTableInit implements InitializingBean &#123;</span><br><span class="line"></span><br><span class="line">    private static Logger logger = LoggerFactory.getLogger(IconTableInit.class);</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private Connection connection;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void afterPropertiesSet() throws Exception &#123;</span><br><span class="line">        // 如果表不存在则创建表</span><br><span class="line">        Admin admin = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            admin = connection.getAdmin();</span><br><span class="line">            if (!admin.tableExists(TableName.valueOf(TABLE_NAME))) &#123;</span><br><span class="line"></span><br><span class="line">                logger.info(&quot;HBase中不存在&#123;&#125;表！&quot;, TABLE_NAME);</span><br><span class="line"></span><br><span class="line">                HTableDescriptor tableDescriptor = new HTableDescriptor(TableName.valueOf(TABLE_NAME));</span><br><span class="line">                HColumnDescriptor columnDescriptor = new HColumnDescriptor(CF_INFO_B);</span><br><span class="line">                tableDescriptor.addFamily(columnDescriptor);</span><br><span class="line">                admin.createTable(tableDescriptor);</span><br><span class="line"></span><br><span class="line">                logger.info(&quot;&#123;&#125;表创建成功！&quot;, TABLE_NAME);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            logger.error(&quot;系统启动时检查icon表是否创建异常！&quot;, e);</span><br><span class="line">            throw new GeneralException(&quot;#####  系统启动时连接HBase出现异常！ #####&quot;);</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            if (admin != null) &#123;</span><br><span class="line">                admin.close();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1933,7 +2062,7 @@ realm = /var/svn/svnrepos  #认证空间名，版本库所在目录
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:05</span>
+    <span title="站点阅读时长">9:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

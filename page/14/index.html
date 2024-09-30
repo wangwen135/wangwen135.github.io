@@ -40,8 +40,6 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -49,7 +47,15 @@
 
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MBG120GJ9P');
+</script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -127,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -169,6 +175,148 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/MySQL/CentOS%207%20%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%20MySQL%205.7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/MySQL/CentOS%207%20%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%20MySQL%205.7/" class="post-title-link" itemprop="url">CentOS 7 离线安装 MySQL 5.7</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-07T00:00:00+08:00">2017-09-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>726</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <ol>
+<li><p>确定系统版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br><span class="line"></span><br><span class="line"># CentOS Linux release 7.2.1511 (Core) </span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>下载对应版本的包<br>包含依赖的捆绑包，如：<br>MySQL-5.6.35-1.el7.x86_64.rpm-bundle.tar<br>mysql-5.7.17-1.el7.x86_64.rpm-bundle.tar  </p>
+</li>
+<li><p>卸载MariaDB<br>MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可。开发这个分支的原因之一是：甲骨文公司收购了MySQL后，有将MySQL闭源的潜在风险，因此社区采用分支的方式来避开这个风险。MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。<br><strong>查看当前安装的mariadb包</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mariadb</span><br><span class="line"></span><br><span class="line">mariadb-devel-5.5.50-1.el7_2.x86_64</span><br><span class="line">mariadb-libs-5.5.50-1.el7_2.x86_64</span><br><span class="line"></span><br><span class="line">#卸载 mariadb</span><br><span class="line"></span><br><span class="line">rpm -e mariadb-devel-5.5.50-1.el7_2.x86_64</span><br><span class="line">#强制卸载</span><br><span class="line">rpm -e --nodeps mariadb-libs-5.5.50-1.el7_2.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建用户<br>安装之前先添加mysql用户组及mysql用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql  </span><br><span class="line">  </span><br><span class="line">useradd -r -g mysql mysql  </span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>安装<br><strong>这里安装的是 MySQL 5.7</strong></p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> rpm -ivh mysql-community-common-5.7.17-1.el7.x86_64.rpm</span><br><span class="line">警告：mysql-community-common-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-common-5.7.17-1.e################################# [100%]</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-libs-5.7.17-1.el7.x86_64.rpm</span><br><span class="line">警告：mysql-community-libs-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-libs-5.7.17-1.el7################################# [100%]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-client-5.7.17-1.el7.x86_64.rpm</span><br><span class="line">警告：mysql-community-client-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-client-5.7.17-1.e################################# [100%]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-server-5.7.17-1.el7.x86_64.rpm</span><br><span class="line">警告：mysql-community-server-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-server-5.7.17-1.e################################# [100%]</span><br></pre></td></tr></table></figure>
+
+
+<ol start="5">
+<li><p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>登录<br>找到临时密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;temporary password&#x27; /var/log/mysqld.log  </span><br><span class="line"></span><br><span class="line">2017-02-10T15:48:22.225974Z 1 [Note] A temporary password is generated for root@localhost: H7k#D;u;&amp;aK(</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>登录成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> mysql -uroot -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 6</span><br><span class="line">Server version: 5.7.17</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type &#x27;help;&#x27; or &#x27;\h&#x27; for help. Type &#x27;\c&#x27; to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; </span><br></pre></td></tr></table></figure>
+
+<ol start="7">
+<li>修改密码<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;root&#x27;;  </span><br></pre></td></tr></table></figure>
+一般来说这个密码是属于一个弱强度密码，mysql不会接收这个密码，并产生下面的报错信息： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>降低Mysql的密码检验强度：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password_policy=0;  </span><br></pre></td></tr></table></figure>
+<p>这个设置下会只检查长度，默认长度为8，也就是是说密码长度至少为8.<br>要查看这个长度的值，可以这样做：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @@validate_password_length;  </span><br></pre></td></tr></table></figure>
+<p>修改密码长度：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password_length=1;</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以修改密码了</p>
+<ol start="8">
+<li>设置Mysql远程访问<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &#x27;root&#x27;@&#x27;%&#x27; identified by &#x27;root&#x27; with grant option;</span><br></pre></td></tr></table></figure>
+使授权生效<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -2573,167 +2721,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Elasticsearch/Elasticsearch%20HTTP%20API/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/Elasticsearch/Elasticsearch%20HTTP%20API/" class="post-title-link" itemprop="url">Elasticsearch HTTP API</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2017-05-15 00:00:00" itemprop="dateCreated datePublished" datetime="2017-05-15T00:00:00+08:00">2017-05-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Elasticsearch/" itemprop="url" rel="index"><span itemprop="name">Elasticsearch</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>580</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Elasticsearch-HTTP-API"><a href="#Elasticsearch-HTTP-API" class="headerlink" title="Elasticsearch HTTP API"></a>Elasticsearch HTTP API</h1><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html">https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html</a></p>
-<h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><h3 id="Index-API"><a href="#Index-API" class="headerlink" title="Index API"></a>Index API</h3><p>添加或更新JSON文档到指定的索引</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -XPUT &#x27;http://192.168.1.213:9200/twitter/tweet/1&#x27; -d &#x27;&#123;</span><br><span class="line">    &quot;user&quot; : &quot;kimchy&quot;,</span><br><span class="line">    &quot;post_date&quot; : &quot;2009-11-15T14:12:12&quot;,</span><br><span class="line">    &quot;message&quot; : &quot;trying out Elasticsearch&quot;</span><br><span class="line">&#125;&#x27;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Get-API"><a href="#Get-API" class="headerlink" title="Get API"></a>Get API</h3><p>从索引中获取JSON文档根据ID</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/twitter/tweet/1&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="Delete-API"><a href="#Delete-API" class="headerlink" title="Delete API"></a>Delete API</h3><p>从索引中删除JSON文档根据ID</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -XDELETE &#x27;http://192.168.1.213:9200/twitter/tweet/1&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><p>请求体查询  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/twitter/tweet/_search&#x27; -d &#x27;&#123;</span><br><span class="line">    &quot;query&quot; : &#123;</span><br><span class="line">        &quot;term&quot; : &#123; &quot;user&quot; : &quot;kimchy&quot; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>URI查询</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/twitter/tweet/_search?q=user:kimchy&#x27;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Query-DSL"><a href="#Query-DSL" class="headerlink" title="Query DSL"></a>Query DSL</h4><p><a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html#query-dsl">https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl.html#query-dsl</a></p>
-<p>Elasticsearch提供了基于JSON来定义查询完整的查询DSL。查询DSL看作查询的AST，由两种类型的子句：</p>
-<ul>
-<li>叶查询子句<blockquote>
-<p>叶查询子句寻找一个特定的值在某一特定领域，如匹配(match)，期限(term)或范围(range)查询。这些查询可以自行使用。</p>
-</blockquote>
-</li>
-<li>复合查询子句<blockquote>
-<p>复合查询包含其他叶查询或复合的查询，并用于多个查询以逻辑方式（如 bool 或 dis_max 查询）结合，或者改变它们的行为（如 not 或 constant_score 查询）</p>
-</blockquote>
-</li>
-</ul>
-<h4 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h4><p>取出现次数最多的前20个</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST http://192.168.1.91:9200/_search?search_type=count </span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;aggs&quot;: &#123;</span><br><span class="line">    &quot;topLocation&quot;: &#123;</span><br><span class="line">      &quot;terms&quot;: &#123;</span><br><span class="line">        &quot;field&quot;: &quot;location.raw&quot;,</span><br><span class="line">        &quot;size&quot;: 20</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h5 id="查询结果高亮"><a href="#查询结果高亮" class="headerlink" title="查询结果高亮"></a>查询结果高亮</h5><p>只有针对字段查询的时候才会高亮，对 <strong>_all</strong> 进行查询时是不会高亮的。  </p>
-<p>如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;query&quot;: &#123;</span><br><span class="line">    &quot;match&quot;: &#123;</span><br><span class="line">      &quot;commandReply&quot;: &quot;USER ftpuser&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;highlight&quot;: &#123;</span><br><span class="line">    &quot;fields&quot;: &#123;</span><br><span class="line">      &quot;commandReply&quot;: &#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>结果：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">...</span><br><span class="line">    &quot;frontNodeId&quot;: 0,</span><br><span class="line">    &quot;routeIp&quot;: &quot;192.168.1.1&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br><span class="line">&quot;highlight&quot;: &#123;</span><br><span class="line">    &quot;commandReply&quot;: [</span><br><span class="line">        &quot;220 (vsFTPd 3.0.2) &lt;em&gt;USER&lt;/em&gt; &lt;em&gt;ftpuser&lt;/em&gt; 331 Please specify the password. PASS &lt;em&gt;ftpuser&lt;/em&gt; 230 Login&quot;</span><br><span class="line">        ,</span><br><span class="line">        &quot; successful. ### ### Login successful UserName: &lt;em&gt;ftpuser&lt;/em&gt; Password: &lt;em&gt;ftpuser&lt;/em&gt; ### SYST 215 UNIX Type: L8&quot;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><h3 id="Cluster-Health"><a href="#Cluster-Health" class="headerlink" title="Cluster Health"></a>Cluster Health</h3><p>获取简单的集群状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/_cluster/health?pretty=true&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>该API还可以针对一个或多个索引执行以只获得指定索引的健康状态</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/_cluster/health/wwh_test?pretty&#x27;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Cluster-State"><a href="#Cluster-State" class="headerlink" title="Cluster State"></a>Cluster State</h3><p>群集状态API允许获得整个集群的综合状态信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/_cluster/state&#x27;</span><br><span class="line">curl -XGET &#x27;http://192.168.1.213:9200/_cluster/stats?human&amp;pretty&#x27;</span><br><span class="line"></span><br><span class="line">#过滤</span><br><span class="line">curl -XGET &#x27;http://localhost:9200/_cluster/state/&#123;metrics&#125;/&#123;indices&#125;&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="Cat-API"><a href="#Cat-API" class="headerlink" title="Cat API"></a>Cat API</h2><ul>
-<li>查看主节点</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_cat/master?v">http://192.168.1.213:9200/_cat/master?v</a></p>
-<p>curl ‘192.168.1.213:9200&#x2F;_cat&#x2F;master?v’</p>
-<ul>
-<li>查看集群是否健康</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_cat/health?v">http://192.168.1.213:9200/_cat/health?v</a></p>
-<p>curl ‘192.168.1.213:9200&#x2F;_cat&#x2F;health?v’</p>
-<ul>
-<li>查看节点列表</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_cat/nodes?v">http://192.168.1.213:9200/_cat/nodes?v</a></p>
-<p>curl ‘192.168.1.213:9200&#x2F;_cat&#x2F;nodes?v’</p>
-<ul>
-<li>列出所有索引</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="http://192.168.1.213:9200/_cat/indices?v">http://192.168.1.213:9200/_cat/indices?v</a></p>
-<p>curl ‘192.168.1.213:9200&#x2F;_cat&#x2F;indices?v’</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -2763,7 +2750,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:05</span>
+    <span title="站点阅读时长">9:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

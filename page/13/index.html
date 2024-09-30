@@ -40,8 +40,6 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -49,7 +47,15 @@
 
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MBG120GJ9P');
+</script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -127,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -169,6 +175,105 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E8%84%9A%E6%9C%AC/bat/bat%20%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E9%80%92%E5%BD%92%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E8%84%9A%E6%9C%AC/bat/bat%20%E5%9C%A8%E7%9B%AE%E5%BD%95%E4%B8%8B%E9%80%92%E5%BD%92%E5%BE%AA%E7%8E%AF%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">bat 在目录下递归循环执行命令</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2018-02-15 12:01:00" itemprop="dateCreated datePublished" datetime="2018-02-15T12:01:00+08:00">2018-02-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%84%9A%E6%9C%AC/bat/" itemprop="url" rel="index"><span itemprop="name">bat</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>289</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line"></span><br><span class="line">rem 想用bat 做一个递归清理文件</span><br><span class="line">rem 目前就是递归执行一下 maven的清理命令</span><br><span class="line">rem 语法真的是渣</span><br><span class="line"></span><br><span class="line">rem echo 当前盘符：%~d0</span><br><span class="line">rem echo 当前盘符和路径：%~dp0</span><br><span class="line">rem echo 当前批处理全路径：%~f0</span><br><span class="line">rem echo 当前盘符和路径的短文件名格式：%~sdp0</span><br><span class="line">rem echo 当前CMD默认目录：%cd%</span><br><span class="line"></span><br><span class="line">echo ************************************</span><br><span class="line">echo ************ 清理数据 **************</span><br><span class="line">echo ************************************</span><br><span class="line"></span><br><span class="line">IF &quot;%1&quot;==&quot;&quot; (</span><br><span class="line">  echo 清理目录:%cd%</span><br><span class="line">  set prodir=%cd%</span><br><span class="line">) ELSE (</span><br><span class="line">  echo 当前参数参数是：[%1]</span><br><span class="line">  echo 清理目录：%1</span><br><span class="line">  set prodir=%1</span><br><span class="line">  if exist %1/ (</span><br><span class="line">	cd %1</span><br><span class="line">  ) else (</span><br><span class="line">  	echo 目录:[%1]不存在，即将退出！</span><br><span class="line">	pause</span><br><span class="line">	exit</span><br><span class="line">  )</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">rem echo 路径：</span><br><span class="line">rem chdir</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">for /D %%s in (*) do (</span><br><span class="line">  </span><br><span class="line">  echo 当前循环的值是:%%s</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  REM 跳过git目录</span><br><span class="line"> </span><br><span class="line">  IF %%s==.git (</span><br><span class="line">	echo 这是一个git目录，跳过</span><br><span class="line">	</span><br><span class="line">  ) ELSE (</span><br><span class="line">	  echo 进入目录:%%s</span><br><span class="line">	  cd %%s	  </span><br><span class="line">	  REM echo 判断pom文件是否存在</span><br><span class="line">	  REM dir</span><br><span class="line">	  </span><br><span class="line">	   IF EXIST pom.xml (</span><br><span class="line">		 echo 存在pom文件，开始执行清理命令...</span><br><span class="line">		 </span><br><span class="line">		 mvn clean</span><br><span class="line">		 </span><br><span class="line">		 @echo off</span><br><span class="line">		 </span><br><span class="line">	   ) ELSE (</span><br><span class="line">		 echo 不存在pom文件，进入下一层目录</span><br><span class="line">		 REM goto BB</span><br><span class="line">		 REM call %~f0 %cd%</span><br><span class="line">		 call %~f0</span><br><span class="line">		 </span><br><span class="line">		 echo 子目录处理完成</span><br><span class="line">		 </span><br><span class="line">	   )</span><br><span class="line">	  </span><br><span class="line">	  echo 退出目录:%%s</span><br><span class="line">	  </span><br><span class="line">	  cd .. </span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line">  echo 本次循环结束，循环值是：%%s</span><br><span class="line">  echo ============================================================</span><br><span class="line"></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">echo 执行完成</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1112,137 +1217,6 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/MySQL/CentOS%207%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%205.6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/MySQL/CentOS%207%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%205.6/" class="post-title-link" itemprop="url">CentOS 7 安装配置MySQL 5.6</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2017-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-11-07T00:00:00+08:00">2017-11-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>361</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>CentOS7的yum源中默认好像是没有mysql的。为了解决这个问题，我们要先下载mysql的repo源。</p>
-<p><strong>MySQL Yum Repository</strong><br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a></p>
-<h3 id="1-下载mysql的repo源"><a href="#1-下载mysql的repo源" class="headerlink" title="1. 下载mysql的repo源"></a>1. 下载mysql的repo源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-安装mysql-community-release-el7-5-noarch-rpm包"><a href="#2-安装mysql-community-release-el7-5-noarch-rpm包" class="headerlink" title="2. 安装mysql-community-release-el7-5.noarch.rpm包"></a>2. 安装mysql-community-release-el7-5.noarch.rpm包</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p>安装这个包后，会获得两个mysql的yum repo源：  </p>
-<blockquote>
-<p>&#x2F;etc&#x2F;yum.repos.d&#x2F;mysql-community.repo<br>&#x2F;etc&#x2F;yum.repos.d&#x2F;mysql-community-source.repo  </p>
-</blockquote>
-<h3 id="3-安装mysql"><a href="#3-安装mysql" class="headerlink" title="3. 安装mysql"></a>3. 安装mysql</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install mysql-server</span><br></pre></td></tr></table></figure>
-<p>根据步骤安装就可以了，不过安装完成后，没有密码，需要重置密码。</p>
-<h3 id="4-启动"><a href="#4-启动" class="headerlink" title="4. 启动"></a>4. 启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-重置密码"><a href="#5-重置密码" class="headerlink" title="5. 重置密码"></a>5. 重置密码</h3><p>重置密码前，首先要登录</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br></pre></td></tr></table></figure>
-<p>登录时有可能报这样的错：<br>ERROR 2002 (HY000): Can‘t connect to local MySQL server through socket ‘&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql.sock‘<br>原因是&#x2F;var&#x2F;lib&#x2F;mysql的访问权限问题。下面的命令把&#x2F;var&#x2F;lib&#x2F;mysql的拥有者改为当前用户：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R openscanner:openscanner /var/lib/mysql</span><br></pre></td></tr></table></figure>
-<p>然后，重启服务：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure>
-<p>接下来登录重置密码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root</span><br><span class="line">mysql &gt; use mysql;</span><br><span class="line">mysql &gt; update user set password=password(&#x27;root&#x27;) where user=&#x27;root&#x27;;</span><br><span class="line">mysql &gt; exit;</span><br></pre></td></tr></table></figure>
-
-<p>设置Mysql远程访问</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &#x27;root&#x27;@&#x27;%&#x27; identified by &#x27;root&#x27; with grant option;</span><br></pre></td></tr></table></figure>
-<p>使授权生效</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-开放3306端口"><a href="#6-开放3306端口" class="headerlink" title="6. 开放3306端口"></a>6. 开放3306端口</h3><p><strong>CentOS 7  默认已经不适用这个防火墙了！</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
-<p>添加以下内容：</p>
-<blockquote>
-<p>-A INPUT -p tcp -m state –state NEW -m tcp –dport 3306 -j ACCEPT</p>
-</blockquote>
-<p>保存后重启防火墙：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service iptables restart</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="7-设置开机启动"><a href="#7-设置开机启动" class="headerlink" title="7. 设置开机启动"></a>7. 设置开机启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --list</span><br><span class="line"></span><br><span class="line">systemctl status mysqld</span><br><span class="line"></span><br><span class="line">systemctl is-enabled mysqld</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/MySQL/CentOS%207%20%E5%AE%89%E8%A3%85MySQL%205.7%20%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1369,6 +1343,137 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql -udap -p</span><br><span class="line"></span><br><span class="line">#切换数据库</span><br><span class="line">use dap;</span><br><span class="line"></span><br><span class="line">#导入数据： </span><br><span class="line">source /data/mysql/215/dap.sql</span><br></pre></td></tr></table></figure>
 
 <p>测试的时候发现部分表，比如user表，permission表等创建不了，换成root用户就好了</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/MySQL/CentOS%207%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%205.6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/MySQL/CentOS%207%20%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEMySQL%205.6/" class="post-title-link" itemprop="url">CentOS 7 安装配置MySQL 5.6</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2017-11-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-11-07T00:00:00+08:00">2017-11-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>361</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>CentOS7的yum源中默认好像是没有mysql的。为了解决这个问题，我们要先下载mysql的repo源。</p>
+<p><strong>MySQL Yum Repository</strong><br><a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/repo/yum/">https://dev.mysql.com/downloads/repo/yum/</a></p>
+<h3 id="1-下载mysql的repo源"><a href="#1-下载mysql的repo源" class="headerlink" title="1. 下载mysql的repo源"></a>1. 下载mysql的repo源</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-安装mysql-community-release-el7-5-noarch-rpm包"><a href="#2-安装mysql-community-release-el7-5-noarch-rpm包" class="headerlink" title="2. 安装mysql-community-release-el7-5.noarch.rpm包"></a>2. 安装mysql-community-release-el7-5.noarch.rpm包</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>安装这个包后，会获得两个mysql的yum repo源：  </p>
+<blockquote>
+<p>&#x2F;etc&#x2F;yum.repos.d&#x2F;mysql-community.repo<br>&#x2F;etc&#x2F;yum.repos.d&#x2F;mysql-community-source.repo  </p>
+</blockquote>
+<h3 id="3-安装mysql"><a href="#3-安装mysql" class="headerlink" title="3. 安装mysql"></a>3. 安装mysql</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install mysql-server</span><br></pre></td></tr></table></figure>
+<p>根据步骤安装就可以了，不过安装完成后，没有密码，需要重置密码。</p>
+<h3 id="4-启动"><a href="#4-启动" class="headerlink" title="4. 启动"></a>4. 启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld start</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-重置密码"><a href="#5-重置密码" class="headerlink" title="5. 重置密码"></a>5. 重置密码</h3><p>重置密码前，首先要登录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root</span><br></pre></td></tr></table></figure>
+<p>登录时有可能报这样的错：<br>ERROR 2002 (HY000): Can‘t connect to local MySQL server through socket ‘&#x2F;var&#x2F;lib&#x2F;mysql&#x2F;mysql.sock‘<br>原因是&#x2F;var&#x2F;lib&#x2F;mysql的访问权限问题。下面的命令把&#x2F;var&#x2F;lib&#x2F;mysql的拥有者改为当前用户：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R openscanner:openscanner /var/lib/mysql</span><br></pre></td></tr></table></figure>
+<p>然后，重启服务：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure>
+<p>接下来登录重置密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -u root</span><br><span class="line">mysql &gt; use mysql;</span><br><span class="line">mysql &gt; update user set password=password(&#x27;root&#x27;) where user=&#x27;root&#x27;;</span><br><span class="line">mysql &gt; exit;</span><br></pre></td></tr></table></figure>
+
+<p>设置Mysql远程访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &#x27;root&#x27;@&#x27;%&#x27; identified by &#x27;root&#x27; with grant option;</span><br></pre></td></tr></table></figure>
+<p>使授权生效</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-开放3306端口"><a href="#6-开放3306端口" class="headerlink" title="6. 开放3306端口"></a>6. 开放3306端口</h3><p><strong>CentOS 7  默认已经不适用这个防火墙了！</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+<p>添加以下内容：</p>
+<blockquote>
+<p>-A INPUT -p tcp -m state –state NEW -m tcp –dport 3306 -j ACCEPT</p>
+</blockquote>
+<p>保存后重启防火墙：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service iptables restart</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="7-设置开机启动"><a href="#7-设置开机启动" class="headerlink" title="7. 设置开机启动"></a>7. 设置开机启动</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --list</span><br><span class="line"></span><br><span class="line">systemctl status mysqld</span><br><span class="line"></span><br><span class="line">systemctl is-enabled mysqld</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -1538,148 +1643,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/MySQL/CentOS%207%20%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%20MySQL%205.7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/MySQL/CentOS%207%20%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%20MySQL%205.7/" class="post-title-link" itemprop="url">CentOS 7 离线安装 MySQL 5.7</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2017-09-07 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-07T00:00:00+08:00">2017-09-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>726</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <ol>
-<li><p>确定系统版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/redhat-release</span><br><span class="line"></span><br><span class="line"># CentOS Linux release 7.2.1511 (Core) </span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>下载对应版本的包<br>包含依赖的捆绑包，如：<br>MySQL-5.6.35-1.el7.x86_64.rpm-bundle.tar<br>mysql-5.7.17-1.el7.x86_64.rpm-bundle.tar  </p>
-</li>
-<li><p>卸载MariaDB<br>MariaDB数据库管理系统是MySQL的一个分支，主要由开源社区在维护，采用GPL授权许可。开发这个分支的原因之一是：甲骨文公司收购了MySQL后，有将MySQL闭源的潜在风险，因此社区采用分支的方式来避开这个风险。MariaDB的目的是完全兼容MySQL，包括API和命令行，使之能轻松成为MySQL的代替品。<br><strong>查看当前安装的mariadb包</strong>  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep mariadb</span><br><span class="line"></span><br><span class="line">mariadb-devel-5.5.50-1.el7_2.x86_64</span><br><span class="line">mariadb-libs-5.5.50-1.el7_2.x86_64</span><br><span class="line"></span><br><span class="line">#卸载 mariadb</span><br><span class="line"></span><br><span class="line">rpm -e mariadb-devel-5.5.50-1.el7_2.x86_64</span><br><span class="line">#强制卸载</span><br><span class="line">rpm -e --nodeps mariadb-libs-5.5.50-1.el7_2.x86_64</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建用户<br>安装之前先添加mysql用户组及mysql用户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql  </span><br><span class="line">  </span><br><span class="line">useradd -r -g mysql mysql  </span><br></pre></td></tr></table></figure>
-
-</li>
-<li><p>安装<br><strong>这里安装的是 MySQL 5.7</strong></p>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> rpm -ivh mysql-community-common-5.7.17-1.el7.x86_64.rpm</span><br><span class="line">警告：mysql-community-common-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-common-5.7.17-1.e################################# [100%]</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-libs-5.7.17-1.el7.x86_64.rpm</span><br><span class="line">警告：mysql-community-libs-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-libs-5.7.17-1.el7################################# [100%]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-client-5.7.17-1.el7.x86_64.rpm</span><br><span class="line">警告：mysql-community-client-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-client-5.7.17-1.e################################# [100%]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-server-5.7.17-1.el7.x86_64.rpm</span><br><span class="line">警告：mysql-community-server-5.7.17-1.el7.x86_64.rpm: 头V3 DSA/SHA1 Signature, 密钥 ID 5072e1f5: NOKEY</span><br><span class="line">准备中...                          ################################# [100%]</span><br><span class="line">正在升级/安装...</span><br><span class="line">   1:mysql-community-server-5.7.17-1.e################################# [100%]</span><br></pre></td></tr></table></figure>
-
-
-<ol start="5">
-<li><p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>登录<br>找到临时密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grep &#x27;temporary password&#x27; /var/log/mysqld.log  </span><br><span class="line"></span><br><span class="line">2017-02-10T15:48:22.225974Z 1 [Note] A temporary password is generated for root@localhost: H7k#D;u;&amp;aK(</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>登录成功</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> mysql -uroot -p</span><br><span class="line">Enter password: </span><br><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 6</span><br><span class="line">Server version: 5.7.17</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type &#x27;help;&#x27; or &#x27;\h&#x27; for help. Type &#x27;\c&#x27; to clear the current input statement.</span><br><span class="line"></span><br><span class="line">mysql&gt; </span><br></pre></td></tr></table></figure>
-
-<ol start="7">
-<li>修改密码<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;root&#x27;;  </span><br></pre></td></tr></table></figure>
-一般来说这个密码是属于一个弱强度密码，mysql不会接收这个密码，并产生下面的报错信息： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1819 (HY000): Your password does not satisfy the current policy requirements</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>降低Mysql的密码检验强度：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password_policy=0;  </span><br></pre></td></tr></table></figure>
-<p>这个设置下会只检查长度，默认长度为8，也就是是说密码长度至少为8.<br>要查看这个长度的值，可以这样做：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @@validate_password_length;  </span><br></pre></td></tr></table></figure>
-<p>修改密码长度：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global validate_password_length=1;</span><br></pre></td></tr></table></figure>
-
-<p>然后就可以修改密码了</p>
-<ol start="8">
-<li>设置Mysql远程访问<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant all privileges on *.* to &#x27;root&#x27;@&#x27;%&#x27; identified by &#x27;root&#x27; with grant option;</span><br></pre></td></tr></table></figure>
-使授权生效<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/12/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/14/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1709,7 +1672,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:05</span>
+    <span title="站点阅读时长">9:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

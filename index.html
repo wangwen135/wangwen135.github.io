@@ -40,8 +40,6 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -49,7 +47,15 @@
 
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MBG120GJ9P');
+</script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -127,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -169,6 +175,144 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E9%85%8D%E7%BD%AEGoogle%20Analytics/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E9%85%8D%E7%BD%AEGoogle%20Analytics/" class="post-title-link" itemprop="url">Hexo配置Google Analytics</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-09-29 01:32:00" itemprop="dateCreated datePublished" datetime="2024-09-29T01:32:00+08:00">2024-09-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>514</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="配置Google-Analytics"><a href="#配置Google-Analytics" class="headerlink" title="配置Google Analytics"></a>配置Google Analytics</h3><h4 id="创建Google-Analytics-账号"><a href="#创建Google-Analytics-账号" class="headerlink" title="创建Google Analytics 账号"></a>创建Google Analytics 账号</h4><p>打开  <a target="_blank" rel="noopener" href="https://analytics.google.com/">Google Analytics</a> 并使用你的 Google 帐户登录。</p>
+<p><a target="_blank" rel="noopener" href="https://analytics.google.com/">https://analytics.google.com/</a></p>
+<p>按提示创建账号 </p>
+<p><img src="https://img.wangwen135.top:23456/note/2024/09/66f57d542223e.png" alt="1727364435788.png"></p>
+<h4 id="创建资源"><a href="#创建资源" class="headerlink" title="创建资源"></a>创建资源</h4><p>（就是一个名字）</p>
+<p><img src="https://img.wangwen135.top:23456/note/2024/09/66f57dfb93b95.png" alt="1727364603317.png"></p>
+<h4 id="目标选择流量分析"><a href="#目标选择流量分析" class="headerlink" title="目标选择流量分析"></a>目标选择流量分析</h4><p><img src="https://img.wangwen135.top:23456/note/2024/09/66f57e2a81a39.png" alt="1727364650222.png"></p>
+<h4 id="配置网站"><a href="#配置网站" class="headerlink" title="配置网站"></a>配置网站</h4><p><img src="https://img.wangwen135.top:23456/note/2024/09/66f57e7fc3cd0.png" alt="1727364735473.png"></p>
+<h4 id="获得追踪ID"><a href="#获得追踪ID" class="headerlink" title="获得追踪ID"></a>获得追踪ID</h4><p>之后就能得到一个ID，如：G-MXXXXXXXXX</p>
+<p><img src="https://img.wangwen135.top:23456/note/2024/09/66f5827fb7bc2.png" alt="1727365759366.png"></p>
+<hr>
+<h3 id="配置hexo"><a href="#配置hexo" class="headerlink" title="配置hexo"></a>配置hexo</h3><p>这里使用的next主题，打开配置文件：_config.next.yml</p>
+<p>找到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Google Analytics</span><br><span class="line"># See: https://analytics.google.com</span><br><span class="line">google_analytics:</span><br><span class="line">  tracking_id: G-XXXXXXXXXX   # 替换为你的 GA4 追踪 ID</span><br><span class="line">  </span><br><span class="line">  # By default, NexT will load an external gtag.js script on your site.</span><br><span class="line">  # If you only need the pageview feature, set the following option to true to get a better performance.</span><br><span class="line">  only_pageview: true   # 如果只需要页面浏览量追踪，可以设置为 true</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>替换为你的 GA4 追踪 ID</p>
+</blockquote>
+<p>保存配置并重新生成网站</p>
+<p>在源代码中应该能看到 Google Analytics 相关的内容：</p>
+<p><img src="https://img.wangwen135.top:23456/note/2024/09/66f58a1c24c10.png" alt="1727367707827.png"></p>
+<h3 id="测试验证"><a href="#测试验证" class="headerlink" title="测试验证"></a>测试验证</h3><p>访问你的网站，并在 Google Analytics 后台的“实时（Real-time）”页面查看是否能看到访客信息。如果能看到你的访问记录，说明 Google Analytics 已成功集成。</p>
+<p>当访问页面时会向 <a target="_blank" rel="noopener" href="http://www.google-analytics.com/">www.google-analytics.com</a> 发送一个post请求，内容如：</p>
+<p><img src="https://img.wangwen135.top:23456/note/2024/09/66f5a0501cced.png" alt="1727373391674.png"></p>
+<blockquote>
+<p><strong>注意，这个脚本太老了，在google nalytics上看不到请求数据</strong></p>
+</blockquote>
+<hr>
+<h3 id="重新配置"><a href="#重新配置" class="headerlink" title="重新配置"></a>重新配置</h3><p>使用google提供的代码，通过自定义head部分的方式配置</p>
+<p>参考文档：<br><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/advanced-settings/custom-files">https://theme-next.js.org/docs/advanced-settings/custom-files</a></p>
+<p>在 <strong>source</strong> 目录中添加 <strong>_data</strong> 目录，然后添加：<strong>head.njk</strong> 文件</p>
+<p>在文件中添加google提供的代码，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- Google tag (gtag.js) --&gt;</span><br><span class="line">&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">  window.dataLayer = window.dataLayer || [];</span><br><span class="line">  function gtag()&#123;dataLayer.push(arguments);&#125;</span><br><span class="line">  gtag(&#x27;js&#x27;, new Date());</span><br><span class="line"></span><br><span class="line">  gtag(&#x27;config&#x27;, &#x27;G-MBG120GJ9P&#x27;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意替换你自己的ID</p>
+</blockquote>
+<p>然后取消NexT配置文件<code>_config.next.yml</code> 中 custom_file_path 下 head 的注释</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Define custom file paths.</span><br><span class="line"># Create your custom files in site directory `source/_data` and uncomment needed files below.</span><br><span class="line">custom_file_path:</span><br><span class="line">  head: source/_data/head.njk</span><br><span class="line">  #header: source/_data/header.njk</span><br><span class="line">  #sidebar: source/_data/sidebar.njk</span><br></pre></td></tr></table></figure>
+
+<h3 id="重新测试验证"><a href="#重新测试验证" class="headerlink" title="重新测试验证"></a>重新测试验证</h3><p>重新发布，刷新页面查看效果  </p>
+<p>查看源代码可以看到head部分已经添加了上面的内容</p>
+<p>请求如：<br><img src="https://img.wangwen135.top:23456/note/2024/10/66fae0522c24a.png" alt="1727717457398.png"></p>
+<p>实时效果如：<br><img src="https://img.wangwen135.top:23456/note/2024/10/66fae020a6e3e.png" alt="1727717407814.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1271,7 +1415,7 @@
 <li>-R：用于指定反向隧道的选项。</li>
 <li>8080：远程服务器上的端口号。</li>
 <li>localhost:3000：本地机器上运行服务的地址和端口号。</li>
-<li><a href="mailto:&#117;&#x73;&#101;&#x72;&#x40;&#114;&#101;&#109;&#x6f;&#116;&#x65;&#46;&#101;&#120;&#97;&#109;&#112;&#108;&#x65;&#46;&#99;&#111;&#109;">&#117;&#x73;&#101;&#x72;&#x40;&#114;&#101;&#109;&#x6f;&#116;&#x65;&#46;&#101;&#120;&#97;&#109;&#112;&#108;&#x65;&#46;&#99;&#111;&#109;</a>：远程服务器的 SSH 用户和地址。</li>
+<li><a href="mailto:&#117;&#x73;&#101;&#x72;&#x40;&#114;&#101;&#109;&#x6f;&#116;&#101;&#x2e;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;">&#117;&#x73;&#101;&#x72;&#x40;&#114;&#101;&#109;&#x6f;&#116;&#101;&#x2e;&#x65;&#x78;&#97;&#x6d;&#x70;&#108;&#x65;&#x2e;&#99;&#111;&#x6d;</a>：远程服务器的 SSH 用户和地址。</li>
 </ul>
 <h4 id="访问方法-2"><a href="#访问方法-2" class="headerlink" title="访问方法"></a>访问方法</h4><p>在执行上述命令后，你可以在远程服务器上访问 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080</a> 来访问本地机器上 localhost:3000 端口运行的服务。</p>
 <hr>
@@ -1550,217 +1694,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E5%8D%9A%E5%AE%A2/Hexo/Hexo%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">Hexo个性化配置</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2024-07-25 00:00:00" itemprop="dateCreated datePublished" datetime="2024-07-25T00:00:00+08:00">2024-07-25</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">博客</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%8D%9A%E5%AE%A2/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.6k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>6 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="config-yml配置文件说明"><a href="#config-yml配置文件说明" class="headerlink" title="_config.yml配置文件说明"></a>_config.yml配置文件说明</h3><h4 id="站点基本信息"><a href="#站点基本信息" class="headerlink" title="站点基本信息"></a>站点基本信息</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 站点名称</span><br><span class="line">title: 王某某的笔记</span><br><span class="line"></span><br><span class="line"># 站点副标题</span><br><span class="line">subtitle: 记录我的编程之路</span><br><span class="line"></span><br><span class="line"># 站点描述</span><br><span class="line">description: 这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。</span><br><span class="line"></span><br><span class="line"># 作者名称</span><br><span class="line">author: 王某某</span><br><span class="line"></span><br><span class="line"># 站点语言</span><br><span class="line">language: zh-CN</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="站点的-URL-结构"><a href="#站点的-URL-结构" class="headerlink" title="站点的 URL 结构"></a>站点的 URL 结构</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># URL 前缀，例如如果站点部署在子目录下，需要设置此项</span><br><span class="line">root: /</span><br><span class="line"></span><br><span class="line"># 生成文件的目录</span><br><span class="line">public_dir: public</span><br><span class="line"></span><br><span class="line"># Source 文件夹</span><br><span class="line">source_dir: source</span><br><span class="line"></span><br><span class="line"># 默认布局</span><br><span class="line">default_layout: post</span><br><span class="line"></span><br><span class="line"># permalink 配置</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里将permalink:<br>permalink: :title&#x2F;</p>
-</blockquote>
-<h4 id="设置站点的时间格式和时区"><a href="#设置站点的时间格式和时区" class="headerlink" title="设置站点的时间格式和时区"></a>设置站点的时间格式和时区</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 时间格式</span><br><span class="line">date_format: YYYY-MM-DD</span><br><span class="line">time_format: HH:mm:ss</span><br><span class="line"></span><br><span class="line"># 时区设置</span><br><span class="line">timezone: Asia/Shanghai</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="配置站点的分页功能"><a href="#配置站点的分页功能" class="headerlink" title="配置站点的分页功能"></a>配置站点的分页功能</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 每页显示的文章数</span><br><span class="line">per_page: 10</span><br><span class="line"></span><br><span class="line"># 分页路径</span><br><span class="line">pagination_dir: page</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="配置404页面"><a href="#配置404页面" class="headerlink" title="配置404页面"></a>配置404页面</h4><p>在站点根目录创建一个名为404的新文件夹，然后在其中创建一个新页面：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">hexo new page 404</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>确保relative_link已禁用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">relative_link: false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>能否将用户重定向到 404 页面取决于网站托管服务商或 Web 服务器的设置，而非 Hexo 的设置。例如，如果您使用 Nginx 作为服务器，您还需要在nginx.conf文件中配置 404 页面。</p>
-</blockquote>
-<hr>
-<h3 id="使用NexT主题"><a href="#使用NexT主题" class="headerlink" title="使用NexT主题"></a>使用NexT主题</h3><p><strong>NexT</strong> 主题</p>
-<p>github地址：<br><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">https://github.com/next-theme/hexo-theme-next</a></p>
-<p>详细安装说明：<br><a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/getting-started/installation.html">https://theme-next.js.org/docs/getting-started/installation.html</a></p>
-<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>使用npm安装</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">npm install hexo-theme-next</span><br></pre></td></tr></table></figure>
-<p>或者你可以克隆整个存储库：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">git clone https://github.com/next-theme/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>修改：Hexo的 _config.yml 文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: next</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>默认主题是：landscape</p>
-</blockquote>
-<h4 id="复制主题配置文件"><a href="#复制主题配置文件" class="headerlink" title="复制主题配置文件"></a>复制主题配置文件</h4><p>将主题的配置文件复制到根目录，命名为：_config.next.yml</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line"></span><br><span class="line">## npm方式安装则：</span><br><span class="line">cp ./node_modules/hexo-theme-next/_config.yml _config.next.yml</span><br><span class="line"></span><br><span class="line">## git克隆则：</span><br><span class="line">cp ./themes/next/_config.yml _config.next.yml</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>然后相关配置都是修改 <strong>_config.next.yml</strong> 这个配置文件</p>
-<h4 id="选择方案"><a href="#选择方案" class="headerlink" title="选择方案"></a>选择方案</h4><p>Scheme 是 NexT 支持的一个功能，通过使用 Scheme，NexT 可以为您提供不同的视图。<br>到目前为止，NexT 支持 4 种方案，它们是：</p>
-<ul>
-<li>Muse→ Default Scheme，这是NexT的初始版本。使用黑白色调，主要看起来很干净。</li>
-<li>Mist→ Muse 的更紧凑版本，具有整洁的单列视图。</li>
-<li>Pisces→ 双列方案，像邻居的女儿一样新鲜。</li>
-<li>Gemini→ 看起来像双鱼座，但有明显的带阴影的柱块，看起来更加敏感。</li>
-</ul>
-<p>可以通过编辑来更改方案NexT 配置文件，搜索scheme关键字</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># Schemes</span><br><span class="line">scheme: Muse</span><br><span class="line">#scheme: Mist</span><br><span class="line">scheme: Pisces</span><br><span class="line">#scheme: Gemini</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里选Pisces</p>
-</blockquote>
-<h4 id="侧边栏头像设置"><a href="#侧边栏头像设置" class="headerlink" title="侧边栏头像设置"></a>侧边栏头像设置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Sidebar Avatar</span><br><span class="line">avatar:</span><br><span class="line">  # Replace the default image and set the url here.</span><br><span class="line">  url: /images/avatar.jpg</span><br><span class="line">  # If true, the avatar will be displayed in circle.</span><br><span class="line">  rounded: true</span><br><span class="line">  # If true, the avatar will be rotated with the cursor.</span><br><span class="line">  rotated: false</span><br></pre></td></tr></table></figure>
-
-<p>将头像图片avatar.jpg 放到 .&#x2F;source&#x2F;images&#x2F; 目录中</p>
-<h4 id="配置菜单项"><a href="#配置菜单项" class="headerlink" title="配置菜单项"></a>配置菜单项</h4><p>菜单设置项包含 3 个值：  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Key: /link/ || icon</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Key→ 是菜单项的名称（home、archives等）。如果在语言中可以找到此菜单的翻译，则将加载此翻译；如果没有，Key则将使用名称。</li>
-<li>分隔符之前的值||（&#x2F;link&#x2F;）→ 是您网站内相对 URL 的目标链接。</li>
-<li>||分隔符 ( ) →后的值icon是 Font Awesome 图标的名称。该图标的名称可以在Font Awesome [<a target="_blank" rel="noopener" href="https://fontawesome.com/search]">https://fontawesome.com/search]</a><br>中找。</li>
-</ul>
-<blockquote>
-<p>默认情况下，所有菜单项均被注释掉，以确保您可以在备用主题配置中覆盖它们。</p>
-</blockquote>
-<p>这里修改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || fa fa-home</span><br><span class="line">  about: /about/ || fa fa-user</span><br><span class="line">  tags: /tags/ || fa fa-tags</span><br><span class="line">  categories: /categories/ || fa fa-th</span><br><span class="line">  archives: /archives/ || fa fa-archive</span><br></pre></td></tr></table></figure>
-
-<h4 id="社交链接"><a href="#社交链接" class="headerlink" title="社交链接"></a>社交链接</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 社交链接设置</span><br><span class="line">social:</span><br><span class="line">  GitHub: https://github.com/your-username || fa fa-github</span><br><span class="line">  Weibo: https://weibo.com/your-username || fa fa-weibo</span><br><span class="line">  Zhihu: https://www.zhihu.com/people/your-username || fa fa-zhihu</span><br><span class="line">  Email: mailto:your-email@example.com || fa fa-envelope</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h4 id="配置Tags页面"><a href="#配置Tags页面" class="headerlink" title="配置Tags页面"></a>配置Tags页面</h4><p>Next主题默认没有Tags页面，点击左侧菜单“标签”会进入一个404页面<br>只需要增加一个tags页面，将页面类型设置为<strong>tags</strong> 即可</p>
-<p>先增加页面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo new page tags</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: D:\code\blog\blog1\source\tags\index.md</span><br></pre></td></tr></table></figure>
-<p>再修改页面 .&#x2F;source&#x2F;tags&#x2F;index.md ，设置类型</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2024-07-24 22:18:58</span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-
-<p>上面菜单已经配置好了，直接重启看效果</p>
-<h4 id="配置Categories页面"><a href="#配置Categories页面" class="headerlink" title="配置Categories页面"></a>配置Categories页面</h4><p>默认也是没有Categories页面的<br>配置同 tags，type设置为：<strong>categories</strong></p>
-<p>增加页面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
-<p>页面.&#x2F;source&#x2F;categories&#x2F;index.md 内容修改为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2024-07-24 22:29:50</span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line">comments: false</span><br><span class="line">---</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="配置About页面"><a href="#配置About页面" class="headerlink" title="配置About页面"></a>配置About页面</h4><p>categories和tags是系统已经定义好的类型，系统会自动填充内容到里面。<br>about页面就不行了，得自己写</p>
-<p>首先创建页面</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page about</span><br></pre></td></tr></table></figure>
-<p>然后再修改页面：.&#x2F;source&#x2F;about&#x2F;index.md<br>内容如：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: about</span><br><span class="line">date: 2024-07-22 22:40:20</span><br><span class="line">---</span><br><span class="line">### 关于我</span><br><span class="line">程序员  主要做Java</span><br><span class="line"></span><br><span class="line">----</span><br><span class="line">### 关于本博客</span><br><span class="line">2024年使用Hexo + Next 重建</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="帖子元数据设置"><a href="#帖子元数据设置" class="headerlink" title="帖子元数据设置"></a>帖子元数据设置</h4><p>NexT 支持帖子创建日期、帖子更新日期和帖子类别显示。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Post meta display settings</span><br><span class="line">post_meta:</span><br><span class="line">  item_text: true</span><br><span class="line">  created_at: true</span><br><span class="line">  updated_at:</span><br><span class="line">    enable: false</span><br><span class="line">    another_day: true</span><br><span class="line">  categories: true</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>关闭“更新于”</p>
-</blockquote>
-<h4 id="文章字数统计"><a href="#文章字数统计" class="headerlink" title="文章字数统计"></a>文章字数统计</h4><p>安装：hexo-word-counter</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-word-counter</span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-<p>Hexo配置（_config.yml）中增加：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#文章字数和阅读时间</span><br><span class="line">symbols_count_time:</span><br><span class="line">  # 是否显示文章的字符数</span><br><span class="line">  symbols: true</span><br><span class="line">  # 是否显示文章的预计阅读时间</span><br><span class="line">  time: true</span><br><span class="line">  # 是否显示全部文章的总字符数（站点底部）</span><br><span class="line">  total_symbols: false</span><br><span class="line">  # 是否显示全部文章总阅读时间（站点底部）</span><br><span class="line">  total_time: true</span><br><span class="line">  # AWL 代表 Average Words per Line（每行的平均单词数），用于估算阅读时间。通常用于更精确的阅读时间估算。</span><br><span class="line">  awl: 4</span><br><span class="line">  # WPM 代表 Words Per Minute（每分钟的单词数），用于计算阅读时间。</span><br><span class="line">  wpm: 275</span><br></pre></td></tr></table></figure>
-<p>Next中有默认设置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">symbols_count_time:</span><br><span class="line">  separated_meta: true</span><br><span class="line">  item_text_total: false</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Next默认显示字数和阅读时长  </p>
-</blockquote>
-<h4 id="其他设置"><a href="#其他设置" class="headerlink" title="其他设置"></a>其他设置</h4><blockquote>
-<p>测试时注意：这些设置一般需要重启服务后才能生效</p>
-</blockquote>
-<h5 id="回到顶部"><a href="#回到顶部" class="headerlink" title="回到顶部"></a>回到顶部</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">back2top:</span><br><span class="line">  # 控制“返回顶部”按钮是否启用</span><br><span class="line">  enable: true</span><br><span class="line">  # 控制“返回顶部”按钮是否显示在侧边栏</span><br><span class="line">  sidebar: false</span><br><span class="line">  # 控制“返回顶部”按钮上是否显示滚动百分比标签</span><br><span class="line">  scrollpercent: false</span><br></pre></td></tr></table></figure>
-<h5 id="阅读进度条"><a href="#阅读进度条" class="headerlink" title="阅读进度条"></a>阅读进度条</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reading_progress:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-
-<h5 id="启用书签支持"><a href="#启用书签支持" class="headerlink" title="启用书签支持"></a>启用书签支持</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bookmark:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>用户只需点击页面左上角的书签图标即可保存滚动位置。当他们下次访问你的博客时，他们可以自动恢复到上一次滚动位置。</p>
-</blockquote>
-<h5 id="深色模式"><a href="#深色模式" class="headerlink" title="深色模式"></a>深色模式</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Dark Mode</span><br><span class="line">darkmode: false</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1790,7 +1723,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:05</span>
+    <span title="站点阅读时长">9:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动

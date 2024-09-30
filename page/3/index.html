@@ -40,8 +40,6 @@
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>王某某的笔记</title>
   
-  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-MBG120GJ9P","only_pageview":true,"measure_protocol_api_secret":null}</script>
-  <script src="/js/third-party/analytics/google-analytics.js"></script>
 
 
 
@@ -49,7 +47,15 @@
 
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBG120GJ9P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MBG120GJ9P');
+</script>
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
@@ -127,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">169</span>
+          <span class="site-state-item-count">170</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -138,7 +144,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">146</span>
+        <span class="site-state-item-count">147</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -169,6 +175,110 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/Nginx/Nginx%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E8%84%9A%E6%9C%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="王某某">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="王某某的笔记">
+      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 王某某的笔记">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/Nginx/Nginx%20%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%87%AA%E5%8A%A8%E5%A4%87%E4%BB%BD%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">Nginx-配置文件自动备份脚本</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-02-18 23:41:00" itemprop="dateCreated datePublished" datetime="2023-02-18T23:41:00+08:00">2023-02-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Nginx/" itemprop="url" rel="index"><span itemprop="name">Nginx</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>276</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line"></span><br><span class="line"># 配置源目录和备份目录</span><br><span class="line">source_dir=&quot;/etc/nginx/conf.d&quot;</span><br><span class="line">backup_dir=&quot;/www/mnt/backup/nginx&quot;</span><br><span class="line"></span><br><span class="line"># 创建备份目录（如果不存在）</span><br><span class="line">mkdir -p &quot;$backup_dir&quot;</span><br><span class="line"></span><br><span class="line"># 获取当前日期（格式：YYYY-MM-DD）</span><br><span class="line">current_date=$(date +%Y-%m-%d)</span><br><span class="line"></span><br><span class="line"># 压缩配置文件到临时tar包</span><br><span class="line">tar_filename=&quot;/tmp/nginx_config_backup_$current_date.tar.gz&quot;</span><br><span class="line">tar -czf &quot;$tar_filename&quot; -C &quot;$source_dir&quot; .</span><br><span class="line"></span><br><span class="line"># 检查上一个备份是否存在且与当前备份不同</span><br><span class="line">last_backup=$(ls -t &quot;$backup_dir&quot; | head -1)</span><br><span class="line">if [ -n &quot;$last_backup&quot; ]; then</span><br><span class="line">    # 解压上一个备份和当前备份</span><br><span class="line">    mkdir -p /tmp/last_backup /tmp/current_backup</span><br><span class="line">    tar -xzf &quot;$backup_dir/$last_backup&quot; -C /tmp/last_backup</span><br><span class="line">    tar -xzf &quot;$tar_filename&quot; -C /tmp/current_backup</span><br><span class="line"></span><br><span class="line">    # 使用diff命令比较两个目录中的文件差异</span><br><span class="line">    diff_output=$(diff -r /tmp/last_backup /tmp/current_backup)</span><br><span class="line"></span><br><span class="line">    # 清理临时目录</span><br><span class="line">    rm -r /tmp/last_backup /tmp/current_backup</span><br><span class="line"></span><br><span class="line">    if [ -z &quot;$diff_output&quot; ]; then</span><br><span class="line">        # 上一个备份与当前备份相同，抛弃当前备份</span><br><span class="line">        echo &quot;No changes in Nginx configuration. Discarding backup.&quot;</span><br><span class="line">        rm &quot;$tar_filename&quot;</span><br><span class="line">        exit 0</span><br><span class="line">    fi</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line"># 移动当前备份到备份目录</span><br><span class="line">mv &quot;$tar_filename&quot; &quot;$backup_dir&quot;</span><br><span class="line"></span><br><span class="line"># 删除多余的备份（保留最多10个备份）</span><br><span class="line">backup_count=$(ls -1 &quot;$backup_dir&quot; | wc -l)</span><br><span class="line">if [ &quot;$backup_count&quot; -gt 10 ]; then</span><br><span class="line">    oldest_backup=$(ls -t &quot;$backup_dir&quot; | tail -1)</span><br><span class="line">    rm &quot;$backup_dir/$oldest_backup&quot;</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">echo &quot;Nginx configuration backup completed.&quot;</span><br></pre></td></tr></table></figure>
+
+<p>编辑定时任务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+
+<p>增加：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5     3       *       *       *       /opt/shell/nginx/nginx_config_backup.sh</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1442,121 +1552,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangwen135.github.io/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96WebDAV%E6%96%B9%E5%BC%8F%E5%A4%96%E7%BD%91%E6%98%A0%E5%B0%84%E7%A3%81%E7%9B%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="王某某">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="王某某的笔记">
-      <meta itemprop="description" content="这是一个使用 Hexo 构建的博客，用于分享我的编程经验和学习笔记。">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | 王某某的笔记">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/%E7%BE%A4%E6%99%96WebDAV%E6%96%B9%E5%BC%8F%E5%A4%96%E7%BD%91%E6%98%A0%E5%B0%84%E7%A3%81%E7%9B%98/" class="post-title-link" itemprop="url">群晖WebDAV方式外网映射磁盘</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-27 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-27T00:00:00+08:00">2021-09-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">硬件与物联网</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%A1%AC%E4%BB%B6%E4%B8%8E%E7%89%A9%E8%81%94%E7%BD%91/%E9%BB%91%E7%BE%A4%E6%99%96/" itemprop="url" rel="index"><span itemprop="name">黑群晖</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>411</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>已有公网IP<br>已配置DDNS，IP地址绑定了域名 （阿里云域名）<br>已经设置了ssl证书  （阿里云免费）  </p>
-</blockquote>
-<h3 id="WebDAV"><a href="#WebDAV" class="headerlink" title="WebDAV"></a>WebDAV</h3><p>基于Web的分布式编写和版本控制（WebDAV）是超文本传输协议（HTTP）的扩展，有利于用户间协同编辑和管理存储在万维网服务器文档。  </p>
-<p>WebDAV协议为用户在服务器上创建、更改和移动文档提供了一个框架。WebDAV协议最重要的功能包括维护作者或修改日期的属性、名字空间管理、集合和覆盖保护。维护属性包括创建、删除和查询文件信息等。名字空间管理处理在服务器名称空间内复制和移动网页的能力。集合（Collections）处理各种资源的创建、删除和列举。覆盖保护处理与锁定文件相关的方面。</p>
-<p>许多现代操作系统为WebDAV提供了内置的客户端支持。</p>
-<h3 id="一、配置WebDAV"><a href="#一、配置WebDAV" class="headerlink" title="一、配置WebDAV"></a>一、配置WebDAV</h3><p>群晖按照 WebDAV套件，设置启用HTTPS，端口为5006</p>
-<h3 id="二、路由器配置端口映射"><a href="#二、路由器配置端口映射" class="headerlink" title="二、路由器配置端口映射"></a>二、路由器配置端口映射</h3><p>如将路由器端口 15006 映射到 192.168.1.6（群晖）的 5006端口上</p>
-<h3 id="三、使用RaiDrive软件来映射WebDAV网络磁盘"><a href="#三、使用RaiDrive软件来映射WebDAV网络磁盘" class="headerlink" title="三、使用RaiDrive软件来映射WebDAV网络磁盘"></a>三、使用RaiDrive软件来映射WebDAV网络磁盘</h3><p>安装 RaiDrive 【RaiDrive_1.5.3.1.exe】<br>需要安装 .net FramWork  </p>
-<p>安装完成之后点击 添加 WebDAV</p>
-<p>地址: <a target="_blank" rel="noopener" href="https://xxxxxx.com/">https://xxxxxx.com</a>  端口：15006<br>    path：&#x2F;</p>
-<p>Account填写你的账号和密码</p>
-<hr>
-<hr>
-<hr>
-<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><h4 id="问题1：登录时提示没有权限"><a href="#问题1：登录时提示没有权限" class="headerlink" title="问题1：登录时提示没有权限"></a>问题1：登录时提示没有权限</h4><ul>
-<li>检查用户密码是否错误，用admin账号试试看</li>
-<li>检查群晖的控制面板 -&gt; 权限 -&gt; WebDAV Server  【使用需要登录的账号 允许访问】</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
@@ -1586,7 +1581,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9:05</span>
+    <span title="站点阅读时长">9:07</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
